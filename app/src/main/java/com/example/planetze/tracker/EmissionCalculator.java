@@ -1,4 +1,4 @@
-package com.example.b07demosummer2024.tracker;
+package com.example.planetze.tracker;
 
 public class EmissionCalculator {
 }

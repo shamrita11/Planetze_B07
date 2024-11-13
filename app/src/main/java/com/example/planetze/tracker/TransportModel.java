@@ -1,22 +1,22 @@
 package com.example.planetze.tracker;
 
 //Presenter?
-public class TransportPresenter {
+public class TransportModel {
 
     private String id;
-    private String distanceDriven;
-    private String transportTime;
-    private String distanceWalked;
-    private String numFlight;
+    private double distanceDriven;
+    private double transportTime;
+    private double distanceWalked;
+    private int numFlight;
     private String transportActivity;
     private String transportType;
     private String haul;
 
-    public TransportPresenter() {}
+    public TransportModel() {}
 
-    public TransportPresenter(String id, String distanceDriven, String transportTime,
-                              String distanceWalked, String numFlight, String transportActivity,
-                              String transportType, String haul) {
+    public TransportModel(String id, double distanceDriven, double transportTime,
+                          double distanceWalked, int numFlight, String transportActivity,
+                          String transportType, String haul) {
         this.id = id;
         this.distanceDriven = distanceDriven;
         this.transportTime = transportTime;
@@ -30,13 +30,27 @@ public class TransportPresenter {
     // Getters and setters
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
-    public String getDistanceDriven() { return distanceDriven; }
-    public void setDistanceDriven(String distanceDriven) { this.distanceDriven = distanceDriven; }
-    public String getTransportTime() { return transportTime; }
-    public void setTransportTime(String transportTime) { this.transportTime = transportTime; }
-    public String getDistanceWalked() { return distanceWalked; }
-    public void setDistanceWalked(String distanceWalked) { this.distanceWalked = distanceWalked; }
+
+    public double getDistanceDriven() { return distanceDriven; }
+    public void setDistanceDriven(double distanceDriven) { this.distanceDriven = distanceDriven; }
+
+    public double getTransportTime() { return transportTime; }
+    public void setTransportTime(double transportTime) { this.transportTime = transportTime; }
+
+    public double getDistanceWalked() { return distanceWalked; }
+    public void setDistanceWalked(double distanceWalked) { this.distanceWalked = distanceWalked; }
+
     // TODO: Change it to the correct variable name
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public int getNumFlight() { return numFlight; }
+    public void setNumFlight(int numFlight) { this.numFlight = numFlight; }
+
+    public String getTransportActivity() { return transportActivity; }
+    public void setTransportActivity(String transportActivity) { this.transportActivity
+            = transportActivity; }
+
+    public String getTransportType() { return transportType; }
+    public void setTransportType(String transportType) { this.transportType = transportType; }
+
+    public String getHaul() { return haul; }
+    public void setHaul(String haul) { this.haul = haul; }
 }

@@ -1,4 +1,4 @@
-package com.example.b07demosummer2024.tracker;
+package com.example.planetze.tracker;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +10,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.b07demosummer2024.R;
-import com.example.b07demosummer2024.ScrollerFragment;
-import com.example.b07demosummer2024.SpinnerFragment;
+import com.example.planetze.R;
+import com.example.planetze.ScrollerFragment;
+import com.example.planetze.SpinnerFragment;
 
 // View
 public class TrackerFragment extends Fragment {

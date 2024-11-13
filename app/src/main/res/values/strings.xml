@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">B07 Demo Summer 2024</string>
+    <string name="app_name">Planetze</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="delete_item">Delete Item</string>
@@ -9,11 +9,49 @@
     <string name="scroller">Scroller</string>
     <string name="spinner">Spinner</string>
     <string name="manage_items">Manage Items</string>
+    <string name="transportation">Transportation</string>
+    <string name="food">Food</string>
+    <string name="consumption">Consumption</string>
+    <string name="eco_tracker">Eco Tracker</string>
 
     <string-array name="categories_array">
         <item>Books</item>
         <item>Movies</item>
     </string-array>
 
+    <!-- The following are for EcoTracker Section A -->
+    <string-array name="transport_activity">
+        <item>Select an activity</item>
+        <item>Drive personal vehicle</item>
+        <item>Take public transportation</item>
+        <item>Cycling or walking</item>
+        <item>Flight</item>
+    </string-array>
+
+    <string-array name="transport_type">
+        <item>Select a transport type</item>
+        <item>bus</item>
+        <item>train</item>
+        <item>subway</item>
+    </string-array>
+
+    <string-array name="haul_type">
+        <item>Select the haul type</item>
+        <item>short haul</item>
+        <item>long haul</item>
+    </string-array>
+
+    <string-array name="food_activity">
+        <item>Meal</item>
+    </string-array>
+
+    <string-array name="food_type">
+        <item>beef</item>
+        <item>pork</item>
+        <item>chicken</item>
+        <item>fish</item>
+        <item>plant-based</item>
+    </string-array>
+    <!-- the resource for EcoTracker Section A ends here -->
 
 </resources>

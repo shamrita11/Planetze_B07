@@ -1,4 +1,4 @@
 package com.example.planetze.tracker;
 
-public class ConsumptionPresenter {
+public class ConsumptionModel {
 }
