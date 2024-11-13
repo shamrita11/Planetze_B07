@@ -26,6 +26,9 @@ public class Welcome extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btn_login);
         mAuth = FirebaseAuth.getInstance();
 
+        // temp - until we create sign out option
+        mAuth.signOut ();
+
         if(mAuth.getCurrentUser() != null){
             Intent intent = new Intent(getApplicationContext(), Dashboard.class);
             startActivity(intent);
