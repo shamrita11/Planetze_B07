@@ -42,10 +42,12 @@
     </string-array>
 
     <string-array name="food_activity">
+        <item>Select an activity</item>
         <item>Meal</item>
     </string-array>
 
     <string-array name="food_type">
+        <item>Select the food type</item>
         <item>beef</item>
         <item>pork</item>
         <item>chicken</item>

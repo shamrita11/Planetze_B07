@@ -39,6 +39,11 @@ public class LogFoodFragment extends Fragment {
 
         db = FirebaseDatabase.getInstance("https://b07-demo-summer-2024-default-rtdb.firebaseio.com/");
 
+        // Hide some of the fields initially
+        editTextNumServing.setVisibility(View.GONE);
+        spinnerFoodType.setVisibility(View.GONE);
+        buttonAdd.setVisibility(View.GONE);
+
         // Set up the spinner with categories
         ArrayAdapter<CharSequence> FoodActivityAdapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.food_activity, android.R.layout.simple_spinner_item);
@@ -49,6 +54,34 @@ public class LogFoodFragment extends Fragment {
                 R.array.food_type, android.R.layout.simple_spinner_item);
         FoodTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFoodType.setAdapter(FoodTypeAdapter);
+
+        // onItemSelected for spinnerTransportActivity
+        spinnerFoodActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedActivity = parent.getSelectedItem().toString();
+
+                switch (selectedActivity) {
+                    case "Select an activity":
+                        // if the placeholder is chosen again, hide all other fields
+                        editTextNumServing.setVisibility(View.GONE);
+                        spinnerFoodType.setVisibility(View.GONE);
+                        buttonAdd.setVisibility(View.GONE);
+                        return;
+                    // Show specific fields based on actual selection
+                    case "Meal":
+                        editTextNumServing.setVisibility(View.VISIBLE);
+                        spinnerFoodType.setVisibility(View.VISIBLE);
+                        buttonAdd.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // No action needed here; fields are hidden by default
+            }
+        });
 
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,30 +94,47 @@ public class LogFoodFragment extends Fragment {
     }
 
     private void addItem() {
-        String numServingStr = editTextNumServing.getText().toString().trim();
         String foodActivity = spinnerFoodActivity.getSelectedItem().toString().toLowerCase();
-        String foodType = spinnerFoodType.getSelectedItem().toString().toLowerCase();
-
-        // check if the fields are empty. If they are, raise a message to the user
-        if (numServingStr.isEmpty() || foodActivity.isEmpty() || foodType.isEmpty()) {
-            Toast.makeText(getContext(), "Please fill out all fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // if the fields have been filled out, turn certain fields into double / int as fit
+        String numServingStr, foodType;
         int numServing;
-        try {
-            numServing = Integer.parseInt(numServingStr);
-        } catch (NumberFormatException e) {
-            Toast.makeText(getContext(), "Please enter valid numbers in all fields", Toast.LENGTH_SHORT).show();
-            return;  // Stop the function if parsing fails
+
+        if (editTextNumServing.getVisibility() == View.VISIBLE) {
+            numServingStr = editTextNumServing.getText().toString().trim();
+            // check if user input is empty
+            if (numServingStr.isEmpty()) {
+                Toast.makeText(getContext(), "Please fill out number of servings",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+            // if not empty, convert it to a int
+            try {
+                numServing = Integer.parseInt(numServingStr);
+            } catch (NumberFormatException e) {
+                Toast.makeText(getContext(), "Please enter valid number of servings",
+                        Toast.LENGTH_SHORT).show();
+                return;  // Stop the function if parsing fails
+            }
+        } else {
+            numServing = 0;
         }
 
-        itemsRef = db.getReference("categories/food");
-        String id = itemsRef.push().getKey();
-        Item item = new Item(id, numServing, foodActivity, foodType);
+        if (spinnerFoodType.getVisibility() == View.VISIBLE) {
+            foodType = spinnerFoodType.getSelectedItem().toString().toLowerCase();
+            if (foodType.equals("select the food type")) {
+                Toast.makeText(getContext(), "Please choose the food type",
+                        Toast.LENGTH_SHORT).show();
+                return;
+            }
+        } else {
+            foodType = "";
+        }
 
-        itemsRef.child(id).setValue(item).addOnCompleteListener(task -> {
+        itemsRef = db.getReference("daily_emission/food");
+        // TODO: use date as the id (key)
+        String date_id = itemsRef.push().getKey();
+        FoodModel item = new FoodModel(date_id, numServing, foodType);
+
+        itemsRef.child(date_id).setValue(item).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Toast.makeText(getContext(), "Item added", Toast.LENGTH_SHORT).show();
             } else {
@@ -92,105 +142,4 @@ public class LogFoodFragment extends Fragment {
             }
         });
     }
-
-    public class LogTransportationFragment extends Fragment {
-        private EditText editTextDistanceDriven, editTextTransportTime, editTextDistanceWalked, editTextNumFlight;
-        private Spinner spinnerTransportActivity, spinnerTransportType, spinnerHaul;
-        private Button buttonAdd;
-        private FirebaseDatabase db;
-        private DatabaseReference itemsRef;
-
-        @Nullable
-        @Override
-        public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            //get view (TODO: change the xml file name to the correct one)
-            View view = inflater.inflate(R.layout.fragment_log_transport, container, false);
-
-            // retrieving the corresponding view by id
-            editTextDistanceDriven = view.findViewById(R.id.editTextDistanceDriven);
-            editTextTransportTime = view.findViewById(R.id.editTextTransportTime);
-            editTextDistanceWalked = view.findViewById(R.id.editTextDistanceWalked);
-            editTextNumFlight = view.findViewById(R.id.editTextNumFlight);
-            spinnerTransportActivity = view.findViewById(R.id.spinnerTransportActivity);
-            spinnerTransportType = view.findViewById(R.id.spinnerTransportType);
-            // TODO: when creating this xml object, remember to indicate what short haul and long haul
-            //  mean (i.e. short haul means <1500 km) in the text above spinner
-            spinnerHaul = view.findViewById(R.id.spinnerHaul);
-            buttonAdd = view.findViewById(R.id.buttonAdd);
-
-            db = FirebaseDatabase.getInstance("https://planetze-g16-default-rtdb.firebaseio.com/");
-
-            // Hide all other text fields, spinners and buttons initially
-            editTextDistanceDriven.setVisibility(View.GONE);
-            editTextTransportTime.setVisibility(View.GONE);
-            editTextDistanceWalked.setVisibility(View.GONE);
-            editTextNumFlight.setVisibility(View.GONE);
-            spinnerTransportType.setVisibility(View.GONE);
-            spinnerHaul.setVisibility(View.GONE);
-            buttonAdd.setVisibility(View.GONE);
-
-            // Set up the spinner with categories
-            ArrayAdapter<CharSequence> TransportActivityAdapter = ArrayAdapter.createFromResource(getContext(),
-                    R.array.transport_activity, android.R.layout.simple_spinner_item);
-            TransportActivityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerTransportActivity.setAdapter(TransportActivityAdapter);
-
-            ArrayAdapter<CharSequence> TransportTypeAdapter = ArrayAdapter.createFromResource(getContext(),
-                    R.array.transport_type, android.R.layout.simple_spinner_item);
-            TransportTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerTransportType.setAdapter(TransportTypeAdapter);
-
-            ArrayAdapter<CharSequence> HaulAdapter = ArrayAdapter.createFromResource(getContext(),
-                    R.array.haul_type, android.R.layout.simple_spinner_item);
-            HaulAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerHaul.setAdapter(HaulAdapter);
-
-            // onItemSelected for spinnerTransportActivity
-            spinnerTransportActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    String selectedActivity = spinnerTransportActivity.getSelectedItem().toString();
-
-                    if (selectedActivity.equals("Select an activity")) {
-                        editTextDistanceDriven.setText("");
-                        editTextTransportTime.setText("");
-                        editTextDistanceWalked.setText("");
-                        editTextNumFlight.setText("");
-                        spinnerTransportType.setSelection(0);
-                        spinnerHaul.setSelection(0);
-                        return;
-                    }
-
-                    if (selectedActivity.equals("Drive personal vehicle")) {
-                        editTextDistanceDriven.setVisibility(View.VISIBLE);
-                    } else if (selectedActivity.equals())
-                        case "Take public transportation":
-                            spinnerTransportType.setVisibility(View.VISIBLE);
-                            editTextTransportTime.setVisibility(View.VISIBLE);
-                            break;
-
-                        case "cycling or walking":
-                            editTextDistanceWalked.setVisibility(View.VISIBLE);
-                            break;
-
-                        case "flight":
-                            editTextNumFlight.setVisibility(View.VISIBLE);
-                            spinnerHaul.setVisibility(View.VISIBLE);
-                            break;
-                    }
-                    buttonAdd.setVisibility(View.VISIBLE);
-            };
-
-            });
-
-            // onclick for the button
-            buttonAdd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    addItem();
-                }
-            });
-
-            return view;
-        }
 }

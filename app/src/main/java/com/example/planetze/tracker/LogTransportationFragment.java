@@ -79,7 +79,7 @@ public class LogTransportationFragment extends Fragment {
                 String selectedActivity = parent.getSelectedItem().toString();
 
                 switch (selectedActivity) {
-                    case "Select an activity...":
+                    case "Select an activity":
                         // if the placeholder is chosen again, hide all other fields
                         editTextDistanceDriven.setVisibility(View.GONE);
                         editTextTransportTime.setVisibility(View.GONE);
@@ -234,13 +234,18 @@ public class LogTransportationFragment extends Fragment {
         }
 
         // TODO: check or create a path for storing those info
-        itemsRef = db.getReference("categories/transportation");
-        String id = itemsRef.push().getKey();
+        itemsRef = db.getReference("daily_emission/transportation");
+        // TODO: figure out how to get current date (and generate an id) to then create key-value
+        //  pair
+        // TODO: if we can use date as the key?
+        String date_id = itemsRef.push().getKey();
         // TODO: see if this is the structure of database we want
-        TransportModel item = new TransportModel(id, distanceDriven, transportTime,
-                distanceWalked, numFlight, transportActivity, transportType, haul);
+        // TODO: see if we can modify the items instead if already exist an item with this
+        //  specific date
+        TransportModel item = new TransportModel(date_id, distanceDriven, transportTime,
+                distanceWalked, numFlight, transportType, haul);
 
-        itemsRef.child(id).setValue(item).addOnCompleteListener(task -> {
+        itemsRef.child(date_id).setValue(item).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Toast.makeText(getContext(), "Item added", Toast.LENGTH_SHORT).show();
             } else {
