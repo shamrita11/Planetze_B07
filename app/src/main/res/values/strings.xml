@@ -54,6 +54,42 @@
         <item>fish</item>
         <item>plant-based</item>
     </string-array>
+
+    <string-array name="consumption_activity">
+        <item>Select an activity</item>
+        <item>Buy new clothes</item>
+        <item>Buy electronics</item>
+        <item>Other purchases</item>
+        <item>Energy bills</item>
+    </string-array>
+
+    <string-array name="device_type">
+        <item>Select the electronic device type</item>
+        <item>smartphone</item>
+        <item>laptop</item>
+        <item>TV</item>
+        <item>earphone</item>
+        <item>monitor</item>
+        <item>other</item>
+    </string-array>
+
+    <string-array name="purchase_type">
+        <item>Select the purchase type</item>
+        <item>furniture</item>
+        <item>appliances</item>
+        <item>entertainment</item>
+        <item>personal care</item>
+        <item>pet supplies</item>
+        <item>books and stationery</item>
+        <item>other</item>
+    </string-array>
+
+    <string-array name="bill_type">
+        <item>Select the type of bill</item>
+        <item>electricity</item>
+        <item>gas</item>
+        <item>water</item>
+    </string-array>
     <!-- the resource for EcoTracker Section A ends here -->
 
 </resources>

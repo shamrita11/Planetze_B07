@@ -12,8 +12,8 @@ public class TransportModel {
 
     public TransportModel() {}
 
-    public TransportModel(String id, double distanceDriven, double transportTime,
-                          double distanceWalked, int numFlight, String transportType,
+    public TransportModel(String id, double distanceDriven, String transportType,
+                          double transportTime, double distanceWalked, int numFlight,
                           String haul) {
         this.id = id;
         this.distanceDriven = distanceDriven;
