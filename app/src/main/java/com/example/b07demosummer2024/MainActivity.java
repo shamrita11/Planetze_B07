@@ -1,55 +1,69 @@
 package com.example.b07demosummer2024;
 
 import android.os.Bundle;
+import android.util.Log;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.widget.Button;
-import android.view.View;
-import android.content.Intent;
-
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    FirebaseDatabase db;
+    private FirebaseDatabase database;
+    private DatabaseReference habitsRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db = FirebaseDatabase.getInstance("https://b07-demo-summer-2024-default-rtdb.firebaseio.com/");
-        DatabaseReference myRef = db.getReference("testDemo");
+        // Reference to a button
+        Button navigateButton = findViewById(R.id.btn_habitList);
 
-//        myRef.setValue("B07 Demo!");
-        myRef.child("movies").setValue("B07 Demo!");
+        // Set click listener, this is going from Lucy's section A
+        // to my section B where it shows the habit list
+        navigateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an Intent to navigate to SecondActivity
+                Intent intent = new Intent(MainActivity.this, HabitListActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        if (savedInstanceState == null) {
-            loadFragment(new HomeFragment());
-        }
-    }
 
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
 
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed();
-        }
+//        // Initialize Firebase Database
+//        database = FirebaseDatabase.getInstance();
+//        habitsRef = database.getReference("habits");
+//
+//        // Retrieve and log the habits data
+//        habitsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot categorySnapshot : dataSnapshot.getChildren()) {
+//                    String category = categorySnapshot.getKey();
+//                    Log.d("MainActivity", "Category: " + category);
+//
+//                    for (DataSnapshot habitSnapshot : categorySnapshot.getChildren()) {
+//                        String habit = habitSnapshot.child("habit").getValue(String.class);
+//                        String impact = habitSnapshot.child("impact").getValue(String.class);
+//                        Log.d("MainActivity", "Habit: " + habit + ", Impact: " + impact);
+//                    }
+//                }
+//            }
+//        });
     }
 }
