@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.example.b07demosummer2024.R;
 import com.example.b07demosummer2024.presenter.LoginPresenter;
 import com.example.b07demosummer2024.presenter.LoginPresenterImpl;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends Activity implements LoginView {
 
@@ -20,7 +22,6 @@ public class LoginActivity extends Activity implements LoginView {
     private ProgressBar progressBar;
 
     private LoginPresenter loginPresenter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

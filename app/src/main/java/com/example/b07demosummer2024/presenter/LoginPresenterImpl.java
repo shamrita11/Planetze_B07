@@ -23,7 +23,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnLoginLis
 
     @Override
     public void onDestroy() {
-        loginView = null; // Avoid memory leaks
+        loginView = null; // to avoid memory leaks
     }
 
     @Override

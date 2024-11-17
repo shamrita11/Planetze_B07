@@ -9,6 +9,14 @@
     <string name="scroller">Scroller</string>
     <string name="spinner">Spinner</string>
     <string name="manage_items">Manage Items</string>
+    <string name="back_arrow">back_arrow</string>
+    <string name="welcome_back">welcome_back</string>
+    <string name="email_address">email_address</string>
+    <string name="password">password</string>
+    <string name="forgot_password">forgot_password</string>
+    <string name="log_in">log_in</string>
+    <string name="or">or</string>
+    <string name="sign_up">sign_up</string>
 
     <string-array name="categories_array">
         <item>Books</item>
