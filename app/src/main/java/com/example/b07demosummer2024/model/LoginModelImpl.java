@@ -17,11 +17,7 @@ public class LoginModelImpl implements LoginModel {
             DatabaseReference usersRef = database.getReference("users");
             DatabaseReference query = usersRef.child(username);
 
-            if (usersRef == null) {
-                listener.onLoginError("Database reference is null");
-            })
-
-            if (query.child("password").getValue(String.class).equals(password)) {
+            if (usersRef.child(username).child("password").getValue(String.class).equals(password)) {
                 listener.onLoginSuccess();
             } else {
                 listener.onLoginError("Invalid username or password");
