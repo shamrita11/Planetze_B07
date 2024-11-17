@@ -1,18 +1,25 @@
 <resources>
-    <string name="app_name">B07 Demo Summer 2024</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="delete_item">Delete Item</string>
-    <string name="add_item">Add Item</string>
-    <string name="back">Back</string>
-    <string name="recyclerview">RecyclerView</string>
-    <string name="scroller">Scroller</string>
-    <string name="spinner">Spinner</string>
-    <string name="manage_items">Manage Items</string>
+    <string name="app_name">Planetze</string>
+    <string name="dashboard_title">Your Dashboard!</string>
+    <string name="total_co2_emissions">Total CO2e Emissions</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="emissions_trend">Emissions Trend</string>
+    <string name="global_average">Global Average</string>
+    <string name="world_average">World Average</string>
+    <string name="default_average">0 kg/per year</string>
+    <string name="default_kg">0 kg</string>
 
-    <string-array name="categories_array">
-        <item>Books</item>
-        <item>Movies</item>
+    <!-- Content Descriptions -->
+    <string name="planetze_logo_desc">Planetze Logo</string>
+    <string name="pie_chart_desc">Pie Chart Breakdown</string>
+
+
+    <string-array name="time_range_array">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
     </string-array>
 
 

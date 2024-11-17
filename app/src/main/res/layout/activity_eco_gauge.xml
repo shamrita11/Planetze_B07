@@ -1,0 +1,279 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#d8dbe2"
+    android:padding="8dp">
+
+    <!--Logo Image Planetze -->
+
+    <ImageView
+        android:id="@+id/backgroundLogo"
+        android:layout_width="119dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/planetze_logo_desc"
+        android:scaleType="centerInside"
+        android:src="@drawable/planetze_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--Dashboard Title -->
+
+    <!--Total C02 emissions section -->
+    <TextView
+        android:id="@+id/dashboardTitle"
+        android:layout_width="280dp"
+        android:layout_height="42dp"
+        android:text="@string/dashboard_title"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/backgroundLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/backgroundLogo"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!--Total C02e Emissions Section -->
+
+    <LinearLayout
+        android:id="@+id/totalCO2Section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/rounded_corner_background"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dashboardTitle">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="@string/total_co2_emissions"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+
+        <!-- CO2e Value and Label Row -->
+        <LinearLayout
+            android:layout_width="369dp"
+            android:layout_height="86dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <!-- Week CO2 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/weekCO2Text"
+                    android:layout_width="88dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_button_background"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/default_kg"
+                    android:textColor="#009999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/week"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Month CO2 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/monthCO2Text"
+                    android:layout_width="88dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_button_background"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/default_kg"
+                    android:textColor="#009999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/month"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Year CO2 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/yearCO2Text"
+                    android:layout_width="88dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/rounded_button_background"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/default_kg"
+                    android:textColor="#009999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/year"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Emissions Trend Section -->
+
+    <TextView
+        android:id="@+id/emissionsTrendLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/emissions_trend"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/totalCO2Section" />
+
+    <!-- Dropdown Menu -->
+    <Spinner
+        android:id="@+id/spinner_time_range"
+        android:layout_width="160dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/dropdown_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/totalCO2Section" />
+
+    <!-- Line Chart -->
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="395dp"
+        android:layout_height="243dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/line_chart_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emissionsTrendLabel" />
+
+    <LinearLayout
+        android:id="@+id/averageSection"
+        android:layout_width="393dp"
+        android:layout_height="254dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/rounded_corner_background"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lineChart">
+
+        <!-- Pie Chart  -->
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="70dp"
+            android:layout_height="241dp"
+            android:layout_weight="1"
+            android:background="@drawable/pie_chart_border_background"
+            android:contentDescription="@string/pie_chart_desc" />
+
+        <!-- Average Information -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="8dp">
+
+            <TextView
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:text="@string/global_average"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/countryNameTextView"
+                android:layout_width="141dp"
+                android:layout_height="44dp"
+                android:text="Country"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/countryAverageTextView"
+                android:layout_width="154dp"
+                android:layout_height="65dp"
+                android:gravity="center"
+                android:text="@string/default_average"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="142dp"
+                android:layout_height="39dp"
+                android:text="@string/world_average"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/worldAverageTextView"
+                android:layout_width="142dp"
+                android:layout_height="55dp"
+                android:gravity="center"
+                android:text="@string/default_average"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Navigation Bar -->
+
+    <include
+        layout="@layout/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
