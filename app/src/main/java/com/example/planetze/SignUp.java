@@ -27,10 +27,11 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUp extends AppCompatActivity {
 
-    EditText editTextName, editTextEmail, editTextPassword;
-    Button buttonSignUp, buttonLogin, buttonBack;
-    FirebaseAuth mAuth;
-    ProgressBar progressBar;
+    private EditText editTextName, editTextEmail, editTextPassword;
+    private Button buttonSignUp, buttonLogin, buttonBack;
+    private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
+    private ImageView eyeIcon;
 
 
     @Override
@@ -57,6 +58,7 @@ public class SignUp extends AppCompatActivity {
         buttonLogin = findViewById(R.id.btn_login);
         buttonBack = findViewById(R.id.btn_back);
         progressBar = findViewById(R.id.progressBar);
+        eyeIcon = findViewById(R.id.eyeIcon);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,6 +141,25 @@ public class SignUp extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        // Initially set the input type to password
+        editTextPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+
+        // Set the listener for the eye icon to toggle password visibility
+        eyeIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editTextPassword.getTransformationMethod() instanceof PasswordTransformationMethod) {
+                    // Show password
+                    editTextPassword.setTransformationMethod(null);
+                    eyeIcon.setImageResource(R.drawable.icon_open_eye);  // Change to the 'eye open' icon
+                } else {
+                    // Hide password
+                    editTextPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    eyeIcon.setImageResource(R.drawable.icon_closed_eye);  // Change back to the 'eye closed' icon
+                }
             }
         });
     }

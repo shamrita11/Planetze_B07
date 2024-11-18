@@ -214,4 +214,18 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
+    <!-- Eye Icon to Toggle Password Visibility -->
+    <ImageView
+        android:id="@+id/eyeIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:contentDescription="Toggle password visibility"
+        android:src="@drawable/icon_closed_eye"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.556" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
