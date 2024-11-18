@@ -1,0 +1,183 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray">
+
+    <TextView
+        android:id="@+id/app_name2"
+        android:layout_width="140dp"
+        android:layout_height="41dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.1"
+        android:background="@drawable/planetze_logo" />
+
+    <FrameLayout
+        android:id="@+id/white_box_container"
+        android:layout_width="350dp"
+        android:layout_height="550dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp">
+
+        <TextView
+            android:id="@+id/food_habits"
+            android:layout_width="209dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="60dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/food_habits"
+            android:textColor="@color/dark_teal"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/food_habit1"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/rounded_text"
+            android:padding="20dp"
+            android:text="@string/food_habit1"
+            android:textColor="@color/dark_teal"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/food_habit2"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_text"
+            android:padding="20dp"
+            android:layout_marginTop="163dp"
+            android:text="@string/food_habit2"
+            android:textColor="@color/dark_teal"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/food_habit3"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_text"
+            android:padding="20dp"
+            android:layout_marginTop="246dp"
+            android:text="@string/food_habit3"
+            android:textColor="@color/dark_teal"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/food_habit4"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_text"
+            android:padding="20dp"
+            android:layout_marginTop="350dp"
+            android:text="@string/food_habit4"
+            android:textColor="@color/dark_teal"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/food_habit5"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_text"
+            android:padding="20dp"
+            android:layout_marginTop="430dp"
+            android:text="@string/food_habit5"
+            android:textColor="@color/dark_teal"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/adopt_habit_btn_food1"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="76dp"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/trp_adopt_habit_btn"
+            android:focusable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/adopt_food" />
+
+        <ImageButton
+            android:id="@+id/adopt_habit_btn_food2"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="163dp"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/trp_adopt_habit_btn"
+            android:focusable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/adopt_food" />
+
+        <ImageButton
+            android:id="@+id/adopt_habit_btn_food3"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="250dp"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/trp_adopt_habit_btn"
+            android:focusable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/adopt_food" />
+
+        <ImageButton
+            android:id="@+id/adopt_habit_btn_food4"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="350dp"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/trp_adopt_habit_btn"
+            android:focusable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/adopt_food" />
+
+        <ImageButton
+            android:id="@+id/adopt_habit_btn_food5"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="440dp"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/trp_adopt_habit_btn"
+            android:focusable="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/adopt_food" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/food_img"
+        android:layout_width="328dp"
+        android:layout_height="223dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="620dp"
+        android:layout_marginEnd="2dp"
+        android:alpha="0.2"
+        android:background="@drawable/food" />
+
+    <ImageButton
+        android:id="@+id/food_back"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="50dp"
+        android:background="@null"
+        android:clickable="true"
+        android:contentDescription="@string/back_btn"
+        android:focusable="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/food_back" />
+
+</RelativeLayout>
