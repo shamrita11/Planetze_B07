@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "378947947891",
+    "firebase_url": "https://planetze-g16-default-rtdb.firebaseio.com",
     "project_id": "planetze-g16",
     "storage_bucket": "planetze-g16.firebasestorage.app"
   },
@@ -9,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:378947947891:android:a1b6fa86c8f821208d0906",
         "android_client_info": {
-          "package_name": "com.example.b07demosummer2024"
+          "package_name": "com.example.planetze"
         }
       },
       "oauth_client": [],
