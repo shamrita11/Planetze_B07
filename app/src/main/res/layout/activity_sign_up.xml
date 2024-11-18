@@ -9,7 +9,6 @@
     android:background="@color/light_gray"
     tools:context=".SignUp" >
 
-    <!-- GIF + Back Button + Title Text -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -67,9 +66,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Terms & Conditions Text -->
-
-    <!-- Password Field -->
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,6 +81,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.658" />
 
+    <!-- Password Field -->
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
@@ -108,8 +105,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Create Account Text -->
-
-    <!-- Email Field -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -124,6 +119,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.208" />
 
+    <!-- Email Field -->
     <EditText
         android:id="@+id/email"
         android:layout_width="0dp"
@@ -147,13 +143,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Login Button -->
-
-    <!-- Sign Up Button -->
-
-    <!-- OR Text (between buttons) -->
-
-    <!-- Progress Bar -->
-
     <Button
         android:id="@+id/btn_login"
         android:layout_width="348dp"
@@ -174,6 +163,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.872" />
 
+    <!-- Sign Up Button -->
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="348dp"
@@ -194,6 +184,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.751" />
 
+    <!-- OR Text (between buttons) -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -211,6 +202,7 @@
         app:layout_constraintVertical_bias="0.791"
         tools:ignore="MissingConstraints" />
 
+    <!-- Progress Bar -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:visibility="gone"
