@@ -2,12 +2,16 @@
     <string name="app_name">Planetze</string>
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
+    <string name="logout">Log Out</string>
+    <string name="edit_survey">Edit Survey</string>
     <string name="password">Password</string>
     <string name="full_name">Full name</string>
     <string name="email_address">Email address</string>
+    <string name="total_emission">Total CO2 Emissions</string>
     <string name="slogan">Track your footprint, change the world</string>
     <string name="create_account">Create\nAccount</string>
     <string name="welcome_back">Welcome\nBack</string>
+    <string name="my_account">My Account</string>
     <string name="conditions">By signing up, you agree to our\nPrivacy Policy and Terms of Service.</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="OR">----------------- OR -----------------</string>
