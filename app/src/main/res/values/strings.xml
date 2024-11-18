@@ -2,8 +2,10 @@
     <string name="app_name">Planetze</string>
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
-    <string name="welcome">Welcome</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-
+    <string name="slogan">Track your footprint, change the world</string>
+    <string name="create_account">Create\nAccount</string>
+    <string name="conditions">By signing up, you agree to our\nPrivacy Policy and Terms of Service.</string>
+    <string name="OR">----------------- OR -----------------</string>
 </resources>
