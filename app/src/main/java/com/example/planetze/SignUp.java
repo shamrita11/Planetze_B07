@@ -1,11 +1,17 @@
 package com.example.planetze;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,13 +23,15 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignUp extends AppCompatActivity {
 
-    TextInputEditText editTextEmail, editTextPassword;
-    Button buttonSignUp, buttonLogin;
+    EditText editTextName, editTextEmail, editTextPassword;
+    Button buttonSignUp, buttonLogin, buttonBack;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
+
 
     @Override
     public void onStart() {
@@ -42,10 +50,12 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         mAuth = FirebaseAuth.getInstance();
-        editTextEmail = findViewById(R.id.email);
-        editTextPassword = findViewById(R.id.password);
+        editTextName = (EditText) findViewById(R.id.full_name);
+        editTextEmail = (EditText) findViewById(R.id.email);
+        editTextPassword = (EditText) findViewById(R.id.password);
         buttonSignUp = findViewById(R.id.btn_signup);
         buttonLogin = findViewById(R.id.btn_login);
+        buttonBack = findViewById(R.id.btn_back);
         progressBar = findViewById(R.id.progressBar);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -57,13 +67,29 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Welcome.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 progressBar.setVisibility(View.VISIBLE);
-                String email, password;
+                String name, email, password;
+                name = String.valueOf(editTextName.getText());
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
+
+                if (TextUtils.isEmpty(name)){
+                    Toast.makeText(SignUp.this, "Enter name",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (TextUtils.isEmpty(email)){
                     Toast.makeText(SignUp.this, "Enter email",
@@ -83,6 +109,10 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
+                            // Sign in successful
+                            // set user's full name
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(name).build();
                             mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -91,6 +121,7 @@ public class SignUp extends AppCompatActivity {
                                         Toast.makeText(SignUp.this, "Account created. Please check your inbox for a confirmation email.",
                                                 Toast.LENGTH_LONG).show();
                                         // reset fields
+                                        editTextName.setText("");
                                         editTextEmail.setText("");
                                         editTextPassword.setText("");
                                     }
@@ -99,7 +130,6 @@ public class SignUp extends AppCompatActivity {
                                         Toast.makeText(SignUp.this, task.getException().getMessage(),
                                                 Toast.LENGTH_LONG).show();
                                     }
-
                                 }
                             });
                         } else {
@@ -109,8 +139,6 @@ public class SignUp extends AppCompatActivity {
                         }
                     }
                 });
-
-
             }
         });
     }

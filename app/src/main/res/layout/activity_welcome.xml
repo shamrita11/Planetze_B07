@@ -9,7 +9,6 @@
     android:background="@drawable/welcome_bg"
     tools:context=".Welcome">
 
-    <!-- Logo and Slogan -->
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -45,6 +44,7 @@
             android:textSize="15sp" />
     </RelativeLayout>
 
+    <!-- Login Button -->
     <Button
         android:id="@+id/btn_login"
         android:layout_width="150dp"
@@ -65,6 +65,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.72" />
 
+    <!-- Sign Up Button -->
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="150dp"
