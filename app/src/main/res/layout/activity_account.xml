@@ -10,9 +10,6 @@
     tools:context=".Account">
 
     <!-- Logo Image Planetze -->
-
-    <!-- My Account Text -->
-
     <ImageView
         android:id="@+id/backgroundLogo"
         android:layout_width="119dp"
@@ -26,6 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- My Account Text -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

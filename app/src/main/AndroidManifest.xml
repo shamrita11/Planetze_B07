@@ -18,9 +18,6 @@
             android:name=".EditSurvey"
             android:exported="false" />
         <activity
-            android:name=".testUI"
-            android:exported="false" />
-        <activity
             android:name=".Account"
             android:exported="false" />
         <activity
