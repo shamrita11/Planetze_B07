@@ -12,6 +12,7 @@
 
     <!-- Buttons with icons in the footer -->
     <ImageButton
+        android:id="@+id/trackerButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
@@ -22,6 +23,7 @@
         android:scaleType="centerInside" />
 
     <ImageButton
+        android:id="@+id/gaugeButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
@@ -32,6 +34,7 @@
         android:scaleType="centerInside" />
 
     <ImageButton
+        android:id="@+id/hubButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
@@ -42,6 +45,7 @@
         android:scaleType="centerInside" />
 
     <ImageButton
+        android:id="@+id/balanceButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
@@ -52,6 +56,7 @@
         android:scaleType="centerInside" />
 
     <ImageButton
+        android:id="@+id/userButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
