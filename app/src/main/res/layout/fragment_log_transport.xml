@@ -167,7 +167,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:gravity="center"
-            android:text="Select Haul Type (Short Haul <1500km)"
+            android:text="Select Haul Type (Short Haul &lt;1500km)"
             android:textSize="20sp" />
         <Spinner
             android:id="@+id/spinnerHaul"

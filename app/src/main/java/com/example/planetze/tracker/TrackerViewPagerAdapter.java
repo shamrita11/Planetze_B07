@@ -24,6 +24,6 @@ public class TrackerViewPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return fragments.size();
+        return 3;
     }
 }

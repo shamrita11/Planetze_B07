@@ -51,7 +51,7 @@
                 android:layout_height="200dp"
                 android:layout_marginBottom="10dp"
                 android:contentDescription="Activity Chart"
-                android:src="@drawable/ic_chart_placeholder" />
+                android:src="@drawable/ic_food_icon" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
