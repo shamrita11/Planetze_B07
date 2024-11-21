@@ -87,7 +87,7 @@
 
         <!-- Number of Servings -->
         <TextView
-            android:id="@+id/labelNumFlight"
+            android:id="@+id/labelNumServing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
@@ -123,6 +123,7 @@
     <!-- Include the back button -->
     <include
         layout="@layout/back_btn"
+        android:id="@+id/includedBackButton"
         android:layout_width="match_parent"
         android:layout_height="fill_parent" />
 </LinearLayout>

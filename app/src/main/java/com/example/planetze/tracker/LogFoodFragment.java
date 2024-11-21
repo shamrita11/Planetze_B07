@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class LogFoodFragment extends Fragment {
     private EditText editTextNumServing;
     private Spinner spinnerFoodActivity, spinnerFoodType;
-    private Button buttonAdd;
+    private Button buttonAdd, buttonBack;
+    private TextView labelFoodType, labelNumServing;
+
 
     private FirebaseDatabase db;
     private DatabaseReference itemsRef;
@@ -30,17 +33,23 @@ public class LogFoodFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_log_food, container, false);
+        View includedView = view.findViewById(R.id.includedBackButton);
 
         editTextNumServing = view.findViewById(R.id.editTextNumServing);
         spinnerFoodActivity = view.findViewById(R.id.spinnerFoodActivity);
         spinnerFoodType = view.findViewById(R.id.spinnerFoodType);
+        labelFoodType = view.findViewById(R.id.labelFoodType);
+        labelNumServing = view.findViewById(R.id.labelNumServing);
         buttonAdd = view.findViewById(R.id.buttonAdd);
+        buttonBack = includedView.findViewById(R.id.buttonBack);
 
         db = FirebaseDatabase.getInstance("https://b07-demo-summer-2024-default-rtdb.firebaseio.com/");
 
         // Hide some of the fields initially
         editTextNumServing.setVisibility(View.GONE);
         spinnerFoodType.setVisibility(View.GONE);
+        labelFoodType.setVisibility(View.GONE);
+        labelNumServing.setVisibility(View.GONE);
         buttonAdd.setVisibility(View.GONE);
 
         // Set up the spinner with categories
@@ -65,12 +74,16 @@ public class LogFoodFragment extends Fragment {
                         // if the placeholder is chosen again, hide all other fields
                         editTextNumServing.setVisibility(View.GONE);
                         spinnerFoodType.setVisibility(View.GONE);
+                        labelFoodType.setVisibility(View.GONE);
+                        labelNumServing.setVisibility(View.GONE);
                         buttonAdd.setVisibility(View.GONE);
                         return;
                     // Show specific fields based on actual selection
                     case "Meal":
                         editTextNumServing.setVisibility(View.VISIBLE);
                         spinnerFoodType.setVisibility(View.VISIBLE);
+                        labelFoodType.setVisibility(View.VISIBLE);
+                        labelNumServing.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
                         break;
                 }
@@ -88,6 +101,9 @@ public class LogFoodFragment extends Fragment {
                 addItem();
             }
         });
+
+        // TODO: fix this back button (NullPointerError)
+        // buttonBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         return view;
     }

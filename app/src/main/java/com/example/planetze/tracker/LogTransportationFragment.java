@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,8 +21,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 //View
 public class LogTransportationFragment extends Fragment {
-    private EditText editTextDistanceDriven, editTextTransportTime, editTextDistanceWalked, editTextNumFlight;
+    private EditText editTextDistanceDriven, editTextTransportTime, editTextDistanceWalked
+            , editTextNumFlight;
     private Spinner spinnerTransportActivity, spinnerTransportType, spinnerHaul;
+    private TextView labelDistanceDriven, labelTransportType, labelTransportTime, labelDistanceWalked
+            , labelNumFlight, labelHaul;
     private Button buttonAdd;
     private FirebaseDatabase db;
     private DatabaseReference itemsRef;
@@ -34,25 +38,35 @@ public class LogTransportationFragment extends Fragment {
 
         // retrieving the corresponding view by id
         editTextDistanceDriven = view.findViewById(R.id.editTextDistanceDriven);
+        labelDistanceDriven = view.findViewById(R.id.labelDistanceDriven);
         editTextTransportTime = view.findViewById(R.id.editTextTransportTime);
+        labelTransportTime = view.findViewById(R.id.labelTransportTime);
         editTextDistanceWalked = view.findViewById(R.id.editTextDistanceWalked);
+        labelDistanceWalked = view.findViewById(R.id.labelDistanceWalked);
         editTextNumFlight = view.findViewById(R.id.editTextNumFlight);
+        labelNumFlight = view.findViewById(R.id.labelNumFlight);
         spinnerTransportActivity = view.findViewById(R.id.spinnerTransportActivity);
         spinnerTransportType = view.findViewById(R.id.spinnerTransportType);
-        // TODO: when creating this xml object, remember to indicate what short haul and long haul
-        //  mean (i.e. short haul means <1500 km) in the text above spinner
+        labelTransportType = view.findViewById(R.id.labelTransportType);
         spinnerHaul = view.findViewById(R.id.spinnerHaul);
+        labelHaul = view.findViewById(R.id.labelHaul);
         buttonAdd = view.findViewById(R.id.buttonAdd);
 
         db = FirebaseDatabase.getInstance("https://planetze-g16-default-rtdb.firebaseio.com/");
 
         // Hide some of the fields initially
         editTextDistanceDriven.setVisibility(View.GONE);
+        labelDistanceDriven.setVisibility(View.GONE);
         editTextTransportTime.setVisibility(View.GONE);
+        labelTransportTime.setVisibility(View.GONE);
         editTextDistanceWalked.setVisibility(View.GONE);
+        labelDistanceWalked.setVisibility(View.GONE);
         editTextNumFlight.setVisibility(View.GONE);
+        labelNumFlight.setVisibility(View.GONE);
         spinnerTransportType.setVisibility(View.GONE);
+        labelTransportType.setVisibility(View.GONE);
         spinnerHaul.setVisibility(View.GONE);
+        labelHaul.setVisibility(View.GONE);
         buttonAdd.setVisibility(View.GONE);
 
         // Set up the spinner with categories
@@ -82,30 +96,42 @@ public class LogTransportationFragment extends Fragment {
                     case "Select an activity":
                         // if the placeholder is chosen again, hide all other fields
                         editTextDistanceDriven.setVisibility(View.GONE);
+                        labelDistanceDriven.setVisibility(View.GONE);
                         editTextTransportTime.setVisibility(View.GONE);
+                        labelTransportTime.setVisibility(View.GONE);
                         editTextDistanceWalked.setVisibility(View.GONE);
+                        labelDistanceWalked.setVisibility(View.GONE);
                         editTextNumFlight.setVisibility(View.GONE);
+                        labelNumFlight.setVisibility(View.GONE);
                         spinnerTransportType.setVisibility(View.GONE);
+                        labelTransportType.setVisibility(View.GONE);
                         spinnerHaul.setVisibility(View.GONE);
+                        labelHaul.setVisibility(View.GONE);
                         buttonAdd.setVisibility(View.GONE);
                         return;
                     // Show specific fields based on actual selection
                     case "Drive Personal Vehicle":
                         editTextDistanceDriven.setVisibility(View.VISIBLE);
+                        labelDistanceDriven.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
                         break;
                     case "Take public transportation":
                         spinnerTransportType.setVisibility(View.VISIBLE);
                         editTextTransportTime.setVisibility(View.VISIBLE);
+                        labelTransportType.setVisibility(View.VISIBLE);
+                        labelTransportTime.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
                         break;
                     case "Cycling or walking":
                         editTextDistanceWalked.setVisibility(View.VISIBLE);
+                        labelDistanceWalked.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
                         break;
                     case "Flight":
                         editTextNumFlight.setVisibility(View.VISIBLE);
                         spinnerHaul.setVisibility(View.VISIBLE);
+                        labelNumFlight.setVisibility(View.VISIBLE);
+                        labelHaul.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
                         break;
                 }

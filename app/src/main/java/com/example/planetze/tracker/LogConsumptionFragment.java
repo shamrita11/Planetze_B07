@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class LogConsumptionFragment extends Fragment {
     private EditText editTextNumCloth, editTextNumDevice, editTextNumPurchase, editTextBill;
     private Spinner spinnerConsumeActivity, spinnerDeviceType, spinnerPurchaseType, spinnerBillType;
+    private TextView labelNumCloth, labelDeviceType, labelNumDevice, labelPurchaseType
+            , labelNumPurchase, labelBillType, labelBill;
     private Button buttonAdd;
     private FirebaseDatabase db;
     private DatabaseReference itemsRef;
@@ -41,6 +44,13 @@ public class LogConsumptionFragment extends Fragment {
         spinnerDeviceType = view.findViewById(R.id.spinnerDeviceType);
         spinnerPurchaseType = view.findViewById(R.id.spinnerPurchaseType);
         spinnerBillType = view.findViewById(R.id.spinnerBillType);
+        labelNumCloth = view.findViewById(R.id.labelNumCloth);
+        labelDeviceType = view.findViewById(R.id.labelDeviceType);
+        labelNumDevice = view.findViewById(R.id.labelNumDevice);
+        labelPurchaseType = view.findViewById(R.id.labelPurchaseType);
+        labelNumPurchase = view.findViewById(R.id.labelNumPurchase);
+        labelBillType = view.findViewById(R.id.labelBillType);
+        labelBill = view.findViewById(R.id.labelBill);
         buttonAdd = view.findViewById(R.id.buttonAdd);
 
         db = FirebaseDatabase.getInstance("https://planetze-g16-default-rtdb.firebaseio.com/");
@@ -53,6 +63,13 @@ public class LogConsumptionFragment extends Fragment {
         spinnerDeviceType.setVisibility(View.GONE);
         spinnerPurchaseType.setVisibility(View.GONE);
         spinnerBillType.setVisibility(View.GONE);
+        labelNumCloth.setVisibility(View.GONE);
+        labelDeviceType.setVisibility(View.GONE);
+        labelNumDevice.setVisibility(View.GONE);
+        labelPurchaseType.setVisibility(View.GONE);
+        labelNumPurchase.setVisibility(View.GONE);
+        labelBillType.setVisibility(View.GONE);
+        labelBill.setVisibility(View.GONE);
         buttonAdd.setVisibility(View.GONE);
 
         // Set up the spinner with categories
@@ -93,26 +110,40 @@ public class LogConsumptionFragment extends Fragment {
                         spinnerDeviceType.setVisibility(View.GONE);
                         spinnerPurchaseType.setVisibility(View.GONE);
                         spinnerBillType.setVisibility(View.GONE);
+                        labelNumCloth.setVisibility(View.GONE);
+                        labelDeviceType.setVisibility(View.GONE);
+                        labelNumDevice.setVisibility(View.GONE);
+                        labelPurchaseType.setVisibility(View.GONE);
+                        labelNumPurchase.setVisibility(View.GONE);
+                        labelBillType.setVisibility(View.GONE);
+                        labelBill.setVisibility(View.GONE);
                         buttonAdd.setVisibility(View.GONE);
                         return;
                     // Show specific fields based on actual selection
                     case "Buy new clothes":
                         editTextNumCloth.setVisibility(View.VISIBLE);
+                        labelNumCloth.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
                         break;
                     case "Buy electronics":
                         spinnerDeviceType.setVisibility(View.VISIBLE);
                         editTextNumDevice.setVisibility(View.VISIBLE);
+                        labelDeviceType.setVisibility(View.VISIBLE);
+                        labelNumDevice.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
                         break;
                     case "Other purchases":
                         spinnerPurchaseType.setVisibility(View.VISIBLE);
                         editTextNumPurchase.setVisibility(View.VISIBLE);
+                        labelPurchaseType.setVisibility(View.VISIBLE);
+                        labelNumPurchase.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
                         break;
                     case "Energy bills":
                         spinnerBillType.setVisibility(View.VISIBLE);
                         editTextBill.setVisibility(View.VISIBLE);
+                        labelBillType.setVisibility(View.VISIBLE);
+                        labelBill.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
                         break;
                 }
