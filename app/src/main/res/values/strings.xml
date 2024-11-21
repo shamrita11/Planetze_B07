@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">B07 Demo Summer 2024</string>
+    <string name="app_name">Planetze</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="delete_item">Delete Item</string>
@@ -10,13 +10,13 @@
     <string name="spinner">Spinner</string>
     <string name="manage_items">Manage Items</string>
     <string name="back_arrow">back_arrow</string>
-    <string name="welcome_back">welcome_back</string>
-    <string name="email_address">email_address</string>
-    <string name="password">password</string>
-    <string name="forgot_password">forgot_password</string>
-    <string name="log_in">log_in</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="log_in">Log In</string>
     <string name="or">or</string>
-    <string name="sign_up">sign_up</string>
+    <string name="sign_up">Sign Up</string>
 
     <string-array name="categories_array">
         <item>Books</item>

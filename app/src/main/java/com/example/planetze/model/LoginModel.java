@@ -1,4 +1,4 @@
-package com.example.b07demosummer2024.model;
+package com.example.planetze.model;
 
 public interface LoginModel {
     void login(String username, String password, OnLoginListener listener);

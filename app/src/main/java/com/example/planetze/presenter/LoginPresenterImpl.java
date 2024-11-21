@@ -1,8 +1,8 @@
-package com.example.b07demosummer2024.presenter;
+package com.example.planetze.presenter;
 
-import com.example.b07demosummer2024.view.LoginView;
-import com.example.b07demosummer2024.model.LoginModel;
-import com.example.b07demosummer2024.model.LoginModelImpl;
+import com.example.planetze.view.LoginView;
+import com.example.planetze.model.LoginModel;
+import com.example.planetze.model.LoginModelImpl;
 
 public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnLoginListener {
     private LoginView loginView;

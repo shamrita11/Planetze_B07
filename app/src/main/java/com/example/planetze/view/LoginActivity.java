@@ -1,6 +1,5 @@
-package com.example.b07demosummer2024.view;
+package com.example.planetze.view;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,13 +7,13 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.b07demosummer2024.R;
-import com.example.b07demosummer2024.presenter.LoginPresenter;
-import com.example.b07demosummer2024.presenter.LoginPresenterImpl;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends Activity implements LoginView {
+import com.example.planetze.R;
+import com.example.planetze.presenter.LoginPresenter;
+import com.example.planetze.presenter.LoginPresenterImpl;
+
+public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private EditText editTextUsername;
     private EditText editTextPassword;
@@ -27,10 +26,10 @@ public class LoginActivity extends Activity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        editTextUsername = findViewById(R.id.editTextUsername);
-        editTextPassword = findViewById(R.id.editTextPassword);
-        buttonLogin = findViewById(R.id.buttonLogin);
-        progressBar = findViewById(R.id.progressBar);
+        editTextUsername = findViewById(R.id.email_input);
+        editTextPassword = findViewById(R.id.password_input);
+        buttonLogin = findViewById(R.id.login_button);
+//        progressBar = findViewById(R.id.progressBar);
 
         loginPresenter = new LoginPresenterImpl(this);
 

@@ -1,15 +1,12 @@
-package com.example.b07demosummer2024;
+package com.example.planetze;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
-
-import com.example.b07demosummer2024.model.LoginModel;
-import com.example.b07demosummer2024.view.LoginView;
+import com.example.planetze.model.LoginModel;
+import com.example.planetze.view.LoginView;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

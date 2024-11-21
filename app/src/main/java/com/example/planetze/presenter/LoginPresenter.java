@@ -1,4 +1,4 @@
-package com.example.b07demosummer2024.presenter;
+package com.example.planetze.presenter;
 
 public interface LoginPresenter {
     void validateCredentials(String username, String password);

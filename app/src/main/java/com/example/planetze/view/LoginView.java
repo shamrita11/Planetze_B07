@@ -1,4 +1,4 @@
-package com.example.b07demosummer2024.view;
+package com.example.planetze.view;
 
 public interface LoginView {
     void showUsernameError();
