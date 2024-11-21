@@ -12,112 +12,112 @@
         android:padding="20dp">
 
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="600dp"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:elevation="4dp"
-        android:layout_margin="16dp"
-        android:padding="16dp"
-        android:background="@color/white">
-
-        <!-- Title -->
-        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/card_round_border"
+            android:minHeight="600dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
             android:elevation="4dp"
-            android:padding="20dp"
-            app:cardCornerRadius="16dp">
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            android:background="@color/white">
 
-            <FrameLayout
+            <!-- Title -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/card_round_border"
-                android:padding="10dp">
+                android:elevation="4dp"
+                android:padding="20dp"
+                app:cardCornerRadius="16dp">
 
-                <TextView
-                    android:id="@+id/titleLogTransport"
-                    android:layout_width="wrap_content"
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Food"
-                    android:textColor="@color/green"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-            </FrameLayout>
-        </androidx.cardview.widget.CardView>
+                    android:background="@drawable/card_round_border"
+                    android:padding="10dp">
 
-        <!-- Spinner for Food Activity -->
-        <TextView
-            android:id="@+id/labelFoodActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:gravity="center"
-            android:text="Select an Activity"
-            android:textSize="20sp" />
-        <Spinner
-            android:id="@+id/spinnerFoodActivity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/spinner_border" />
+                    <TextView
+                        android:id="@+id/titleLogTransport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Food"
+                        android:textColor="@color/green"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
 
-        <!-- Spinner for Food Type -->
-        <TextView
-            android:id="@+id/labelFoodType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:gravity="center"
-            android:text="Select the Food Type"
-            android:textSize="20sp" />
-        <Spinner
-            android:id="@+id/spinnerFoodType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/spinner_border" />
+            <!-- Spinner for Food Activity -->
+            <TextView
+                android:id="@+id/labelFoodActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="Select an Activity"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spinnerFoodActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/spinner_border" />
 
-        <!-- Number of Servings -->
-        <TextView
-            android:id="@+id/labelNumServing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:gravity="center"
-            android:text="Number of servings consumed"
-            android:textSize="20sp" />
-        <EditText
-            android:id="@+id/editTextNumServing"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:hint="e.g. 2"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/bottom_border" />
+            <!-- Spinner for Food Type -->
+            <TextView
+                android:id="@+id/labelFoodType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="Select the Food Type"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spinnerFoodType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/spinner_border" />
 
-        <!-- Add Button -->
-        <Button
-            android:id="@+id/buttonAdd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="32dp"
-            android:backgroundTint="@color/green"
-            android:minHeight="48dp"
-            android:padding="12dp"
-            android:text="Add"
-            android:textColor="@color/white"
-            android:textSize="23sp" />
-    </LinearLayout>
+            <!-- Number of Servings -->
+            <TextView
+                android:id="@+id/labelNumServing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="Number of servings consumed"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/editTextNumServing"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:hint="e.g. 2"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bottom_border" />
+
+            <!-- Add Button -->
+            <Button
+                android:id="@+id/buttonAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:backgroundTint="@color/green"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:text="Add"
+                android:textColor="@color/white"
+                android:textSize="23sp" />
+        </LinearLayout>
     </ScrollView>
 
     <!-- Include the back button -->

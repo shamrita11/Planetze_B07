@@ -19,6 +19,9 @@ import com.example.planetze.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 //View
 public class LogTransportationFragment extends Fragment {
     private EditText editTextDistanceDriven, editTextTransportTime, editTextDistanceWalked
@@ -110,10 +113,23 @@ public class LogTransportationFragment extends Fragment {
                         buttonAdd.setVisibility(View.GONE);
                         return;
                     // Show specific fields based on actual selection
-                    case "Drive Personal Vehicle":
+                    case "Drive personal vehicle":
                         editTextDistanceDriven.setVisibility(View.VISIBLE);
                         labelDistanceDriven.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
+
+                        // also make sure anything else need to be gone
+                        editTextTransportTime.setVisibility(View.GONE);
+                        labelTransportTime.setVisibility(View.GONE);
+                        editTextDistanceWalked.setVisibility(View.GONE);
+                        labelDistanceWalked.setVisibility(View.GONE);
+                        editTextNumFlight.setVisibility(View.GONE);
+                        labelNumFlight.setVisibility(View.GONE);
+                        spinnerTransportType.setVisibility(View.GONE);
+                        labelTransportType.setVisibility(View.GONE);
+                        spinnerHaul.setVisibility(View.GONE);
+                        labelHaul.setVisibility(View.GONE);
+
                         break;
                     case "Take public transportation":
                         spinnerTransportType.setVisibility(View.VISIBLE);
@@ -121,11 +137,33 @@ public class LogTransportationFragment extends Fragment {
                         labelTransportType.setVisibility(View.VISIBLE);
                         labelTransportTime.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
+
+                        editTextDistanceDriven.setVisibility(View.GONE);
+                        labelDistanceDriven.setVisibility(View.GONE);
+                        editTextDistanceWalked.setVisibility(View.GONE);
+                        labelDistanceWalked.setVisibility(View.GONE);
+                        editTextNumFlight.setVisibility(View.GONE);
+                        labelNumFlight.setVisibility(View.GONE);
+                        spinnerHaul.setVisibility(View.GONE);
+                        labelHaul.setVisibility(View.GONE);
+
                         break;
                     case "Cycling or walking":
                         editTextDistanceWalked.setVisibility(View.VISIBLE);
                         labelDistanceWalked.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
+
+                        editTextDistanceDriven.setVisibility(View.GONE);
+                        labelDistanceDriven.setVisibility(View.GONE);
+                        editTextTransportTime.setVisibility(View.GONE);
+                        labelTransportTime.setVisibility(View.GONE);
+                        editTextNumFlight.setVisibility(View.GONE);
+                        labelNumFlight.setVisibility(View.GONE);
+                        spinnerTransportType.setVisibility(View.GONE);
+                        labelTransportType.setVisibility(View.GONE);
+                        spinnerHaul.setVisibility(View.GONE);
+                        labelHaul.setVisibility(View.GONE);
+
                         break;
                     case "Flight":
                         editTextNumFlight.setVisibility(View.VISIBLE);
@@ -133,6 +171,16 @@ public class LogTransportationFragment extends Fragment {
                         labelNumFlight.setVisibility(View.VISIBLE);
                         labelHaul.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
+
+                        editTextDistanceDriven.setVisibility(View.GONE);
+                        labelDistanceDriven.setVisibility(View.GONE);
+                        editTextTransportTime.setVisibility(View.GONE);
+                        labelTransportTime.setVisibility(View.GONE);
+                        editTextDistanceWalked.setVisibility(View.GONE);
+                        labelDistanceWalked.setVisibility(View.GONE);
+                        spinnerTransportType.setVisibility(View.GONE);
+                        labelTransportType.setVisibility(View.GONE);
+
                         break;
                 }
             }
@@ -259,24 +307,109 @@ public class LogTransportationFragment extends Fragment {
             haul = "";
         }
 
-        // TODO: check or create a path for storing those info
-        itemsRef = db.getReference("daily_emission/transportation");
-        // TODO: figure out how to get current date (and generate an id) to then create key-value
-        //  pair
-        // TODO: if we can use date as the key?
-        String date_id = itemsRef.push().getKey();
+
+        // TODO: figure out how to get current date (and generate an id)
         // TODO: see if this is the structure of database we want
         // TODO: see if we can modify the items instead if already exist an item with this
         //  specific date
-        TransportModel item = new TransportModel(date_id, distanceDriven, transportType,
-                transportTime, distanceWalked, numFlight, haul);
+        String userId = "user1";
+        String dateKey = "2024-11-19";
+        itemsRef = db.getReference(userId);
 
-        itemsRef.child(date_id).setValue(item).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(getContext(), "Item added", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getContext(), "Failed to add item", Toast.LENGTH_SHORT).show();
-            }
-        });
+        // user1 > daily_emission > 2024-11-19 > transportation > transportActivity
+        DatabaseReference transportationRef = itemsRef.child("daily_emission").child(dateKey)
+                .child("transportation").child(transportActivity);
+
+        // Log data for driving personal vehicle
+        // ... transportation > "drive personal vehicle" > "distanceDriven": 1.5
+        if(transportActivity.equals("drive personal vehicle")) {
+            // Check if the distance fields already exist
+            transportationRef.child("distanceDriven").get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (task.getResult().exists()) {
+                        double existingDistance = task.getResult().getValue(Double.class);
+                        transportationRef.child("distanceDriven").setValue(existingDistance + distanceDriven);
+                        Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // the path does not exist, so create the path (include any node that are missing)
+                        transportationRef.child("distanceDriven").setValue(distanceDriven);
+                        Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    // Handle Firebase request failure
+                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        // ... transportation > "take public transportation" > "bus": 1.5
+        //                                                   > "subway": 0.5
+        if(transportActivity.equals("take public transportation")) {
+            transportationRef.child(transportType).get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (task.getResult().exists()) {
+                        double existingTime = task.getResult().getValue(Double.class);
+                        transportationRef.child(transportType).setValue(existingTime + transportTime);
+                        Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // the path does not exist, so create the path (include any node that are missing)
+                        transportationRef.child(transportType).setValue(transportTime);
+                        Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    // Handle Firebase request failure
+                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        // ... transportation > "cycling or walking" > "distanceWC": 1.5
+        if(transportActivity.equals("cycling or walking")) {
+            // distanceWC = distanceWalkedOrCycled
+            transportationRef.child("distanceWC").get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (task.getResult().exists()) {
+                        double existingDistance = task.getResult().getValue(Double.class);
+                        transportationRef.child("distanceWC").setValue(existingDistance
+                                + distanceWalked);
+                        Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // the path does not exist, so create the path (include any node that are missing)
+                        transportationRef.child("distanceWC").setValue(distanceWalked);
+                        Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    // Handle Firebase request failure
+                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }
+
+        // ... transportation > "flight" > "short haul": 2
+        //                               > "long haul": 1
+        if(transportActivity.equals("flight")) {
+            // distanceWC = distanceWalkedOrCycled
+            transportationRef.child(haul).get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (task.getResult().exists()) {
+                        int existingNumFlight = task.getResult().getValue(Integer.class);
+                        transportationRef.child(haul).setValue(existingNumFlight + numFlight);
+                        Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // the path does not exist, so create the path (include any node that are missing)
+                        transportationRef.child(haul).setValue(numFlight);
+                        Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    // Handle Firebase request failure
+                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

@@ -20,6 +20,9 @@ import com.example.planetze.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LogConsumptionFragment extends Fragment {
     private EditText editTextNumCloth, editTextNumDevice, editTextNumPurchase, editTextBill;
     private Spinner spinnerConsumeActivity, spinnerDeviceType, spinnerPurchaseType, spinnerBillType;
@@ -124,6 +127,21 @@ public class LogConsumptionFragment extends Fragment {
                         editTextNumCloth.setVisibility(View.VISIBLE);
                         labelNumCloth.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
+
+                        // hide the other elements
+                        editTextNumDevice.setVisibility(View.GONE);
+                        editTextNumPurchase.setVisibility(View.GONE);
+                        editTextBill.setVisibility(View.GONE);
+                        spinnerDeviceType.setVisibility(View.GONE);
+                        spinnerPurchaseType.setVisibility(View.GONE);
+                        spinnerBillType.setVisibility(View.GONE);
+                        labelDeviceType.setVisibility(View.GONE);
+                        labelNumDevice.setVisibility(View.GONE);
+                        labelPurchaseType.setVisibility(View.GONE);
+                        labelNumPurchase.setVisibility(View.GONE);
+                        labelBillType.setVisibility(View.GONE);
+                        labelBill.setVisibility(View.GONE);
+
                         break;
                     case "Buy electronics":
                         spinnerDeviceType.setVisibility(View.VISIBLE);
@@ -131,6 +149,18 @@ public class LogConsumptionFragment extends Fragment {
                         labelDeviceType.setVisibility(View.VISIBLE);
                         labelNumDevice.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
+
+                        editTextNumCloth.setVisibility(View.GONE);
+                        editTextNumPurchase.setVisibility(View.GONE);
+                        editTextBill.setVisibility(View.GONE);
+                        spinnerPurchaseType.setVisibility(View.GONE);
+                        spinnerBillType.setVisibility(View.GONE);
+                        labelNumCloth.setVisibility(View.GONE);
+                        labelPurchaseType.setVisibility(View.GONE);
+                        labelNumPurchase.setVisibility(View.GONE);
+                        labelBillType.setVisibility(View.GONE);
+                        labelBill.setVisibility(View.GONE);
+
                         break;
                     case "Other purchases":
                         spinnerPurchaseType.setVisibility(View.VISIBLE);
@@ -138,6 +168,18 @@ public class LogConsumptionFragment extends Fragment {
                         labelPurchaseType.setVisibility(View.VISIBLE);
                         labelNumPurchase.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
+
+                        editTextNumCloth.setVisibility(View.GONE);
+                        editTextNumDevice.setVisibility(View.GONE);
+                        editTextBill.setVisibility(View.GONE);
+                        spinnerDeviceType.setVisibility(View.GONE);
+                        spinnerBillType.setVisibility(View.GONE);
+                        labelNumCloth.setVisibility(View.GONE);
+                        labelDeviceType.setVisibility(View.GONE);
+                        labelNumDevice.setVisibility(View.GONE);
+                        labelBillType.setVisibility(View.GONE);
+                        labelBill.setVisibility(View.GONE);
+
                         break;
                     case "Energy bills":
                         spinnerBillType.setVisibility(View.VISIBLE);
@@ -145,6 +187,18 @@ public class LogConsumptionFragment extends Fragment {
                         labelBillType.setVisibility(View.VISIBLE);
                         labelBill.setVisibility(View.VISIBLE);
                         buttonAdd.setVisibility(View.VISIBLE);
+
+                        editTextNumCloth.setVisibility(View.GONE);
+                        editTextNumDevice.setVisibility(View.GONE);
+                        editTextNumPurchase.setVisibility(View.GONE);
+                        spinnerDeviceType.setVisibility(View.GONE);
+                        spinnerPurchaseType.setVisibility(View.GONE);
+                        labelNumCloth.setVisibility(View.GONE);
+                        labelDeviceType.setVisibility(View.GONE);
+                        labelNumDevice.setVisibility(View.GONE);
+                        labelPurchaseType.setVisibility(View.GONE);
+                        labelNumPurchase.setVisibility(View.GONE);
+
                         break;
                 }
             }
@@ -282,25 +336,105 @@ public class LogConsumptionFragment extends Fragment {
             billType = "";
         }
 
-        // TODO: check or create a path for storing those info
-        // TODO: do we want daily_emission/date/consumption?
-        itemsRef = db.getReference("daily_emission/consumption");
-        // TODO: figure out how to get current date (and generate an id) to then create key-value
-        //  pair
-        // TODO: if we can use date as the key?
-        String date_id = itemsRef.push().getKey();
-        // TODO: see if this is the structure of database we want
-        // TODO: see if we can modify the items instead if already exist an item with this
-        //  specific date
-        ConsumptionModel item = new ConsumptionModel(date_id, numCloth, deviceType, numDevice,
-                purchaseType, numPurchase, billType, bill);
+        String userId = "user1";
+        String dateKey = "2024-11-19";
+        itemsRef = db.getReference(userId);
 
-        itemsRef.child(date_id).setValue(item).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(getContext(), "Item added", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getContext(), "Failed to add item", Toast.LENGTH_SHORT).show();
-            }
-        });
+        // user1 > daily_emission > 2024-11-19 > consumption > consumptionActivity
+        DatabaseReference consumptionRef = itemsRef.child("daily_emission").child(dateKey)
+                .child("consumption").child(consumeActivity);
+
+
+        // Log data for number of clothes purchased
+        // ... consumption > "buy new clothes" > "numCloth": 1
+        if(consumeActivity.equals("buy new clothes")) {
+            // Check if the numCloth field already exist
+            consumptionRef.child("numCloth").get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (task.getResult().exists()) {
+                        int existingNum = task.getResult().getValue(Integer.class);
+                        consumptionRef.child("numCloth").setValue(existingNum + numCloth);
+                        Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // the path does not exist, so create the path (include any node that are missing)
+                        consumptionRef.child("numCloth").setValue(numCloth);
+                        Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    // Handle Firebase request failure
+                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        // ... consumption > "buy electronics" > "TV": 1
+        //                                     > "smartphone": 2
+        if(consumeActivity.equals("buy electronics")) {
+            // Check if the numCloth field already exist
+            consumptionRef.child(deviceType).get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (task.getResult().exists()) {
+                        int existingNum = task.getResult().getValue(Integer.class);
+                        consumptionRef.child(deviceType).setValue(existingNum + numDevice);
+                        Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // the path does not exist, so create the path (include any node that are missing)
+                        consumptionRef.child(deviceType).setValue(numDevice);
+                        Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    // Handle Firebase request failure
+                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        // ... consumption > "other purchases" > "furniture": 1
+        //                                     > "appliances": 1
+        if(consumeActivity.equals("other purchases")) {
+            // Check if the numCloth field already exist
+            consumptionRef.child(purchaseType).get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (task.getResult().exists()) {
+                        int existingNum = task.getResult().getValue(Integer.class);
+                        consumptionRef.child(purchaseType).setValue(existingNum + numPurchase);
+                        Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // the path does not exist, so create the path (include any node that are missing)
+                        consumptionRef.child(purchaseType).setValue(numPurchase);
+                        Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    // Handle Firebase request failure
+                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
+        // ... consumption > "energy bills" > "electricity": 150.5
+        //                                  > "water": 161
+        if(consumeActivity.equals("energy bills")) {
+            // Check if the numCloth field already exist
+            consumptionRef.child(billType).get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (task.getResult().exists()) {
+                        double existingAmount = task.getResult().getValue(Double.class);
+                        consumptionRef.child(billType).setValue(existingAmount + bill);
+                        Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // the path does not exist, so create the path (include any node that are missing)
+                        consumptionRef.child(billType).setValue(bill);
+                        Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    // Handle Firebase request failure
+                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }
