@@ -54,7 +54,6 @@ public class TrackerFragment extends Fragment {
         tabTitles.add("Calendar");
         tabDescriptions.add("View your activity calendar in the Calendar tab");
 
-        // TODO: why is there no Habits tab?
         fragments.add(new HabitsTabFragment());   // Fragment for "Habits" tab
         tabTitles.add("Habits");
         tabDescriptions.add("Track and manage habits in the Habits tab");
