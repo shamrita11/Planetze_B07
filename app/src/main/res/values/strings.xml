@@ -10,10 +10,17 @@
     <string name="world_average">World Average</string>
     <string name="default_average">0 kg/per year</string>
     <string name="default_kg">0 kg</string>
+    <string name="Project_title">Projects</string>
+    <string name="Eco_balance">Eco Balance</string>
+    <string name="Eco_Balance_Description">Ready to offset your CO2e emissions? Explore the projects below to find one that interests you. Each project details its impact and shows how your USD donation translates to CO2e reductions.</string>
+    <string name="TonnesInput">How many tonnes would you like to offset? (Ex. 1, 5, 7, 7.5) Note: Only use whole numbers or .5</string>
+    <string name="purchase_confirmation">Your purchase is confirmed!</string>
+    <string name="confirmation_message">Congratulations on offsetting CO₂e emissions and making a positive impact!</string>
 
     <!-- Content Descriptions -->
     <string name="planetze_logo_desc">Planetze Logo</string>
     <string name="pie_chart_desc">Pie Chart Breakdown</string>
+    <string name="planetze_globe_logo_desc">PlanetZe Globe Logo</string>
 
 
     <string-array name="time_range_array">

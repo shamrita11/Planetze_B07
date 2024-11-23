@@ -22,9 +22,16 @@
             </intent-filter>
         </activity>
 
-        <!-- Eco Gauge Activity -->
+        <!-- Activities -->
         <activity
             android:name=".EcoGaugeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EcoBalanceActivity"
+            android:exported="true" />
+        <activity android:name=".PurchaseProjectActivity" />
+        <activity
+            android:name=".PurchaseConfirmationActivity"
             android:exported="true" />
     </application>
 

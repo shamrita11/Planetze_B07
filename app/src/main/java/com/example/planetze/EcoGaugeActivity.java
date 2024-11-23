@@ -29,7 +29,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 
-public class EcoGaugeActivity extends AppCompatActivity {
+public class EcoGaugeActivity extends BaseActivity {
     private TextView weekCO2Text;
     private TextView monthCO2Text;
     private TextView yearCO2Text;
@@ -40,12 +40,13 @@ public class EcoGaugeActivity extends AppCompatActivity {
     private HashMap<String, Double> emissionsData;
     private PieChart pieChart;
     private LineChart lineChart;
-
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_eco_gauge;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eco_gauge);
-
         weekCO2Text = findViewById(R.id.weekCO2Text);
         monthCO2Text = findViewById(R.id.monthCO2Text);
         yearCO2Text = findViewById(R.id.yearCO2Text);

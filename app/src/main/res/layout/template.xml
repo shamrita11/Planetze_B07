@@ -24,7 +24,8 @@
 
     <!-- Navigation Bar -->
     <include
+        android:id="@+id/footer"
         layout="@layout/navigation_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"/>
 </LinearLayout>

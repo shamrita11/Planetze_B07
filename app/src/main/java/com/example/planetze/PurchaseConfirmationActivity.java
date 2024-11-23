@@ -2,10 +2,11 @@ package com.example.planetze;
 
 import android.os.Bundle;
 
-public class MainActivity extends BaseActivity {
+public class PurchaseConfirmationActivity extends BaseActivity {
+
     @Override
     protected int getLayoutResourceId() {
-        return R.layout.template;
+        return R.layout.purchase_confirmation_page; // Ensure this matches the XML file name
     }
 
     @Override
@@ -13,5 +14,3 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
     }
 }
-
-
