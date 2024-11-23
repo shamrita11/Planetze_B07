@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +26,8 @@ import java.util.Map;
 public class LogFoodFragment extends Fragment {
     private EditText editTextNumServing;
     private Spinner spinnerFoodActivity, spinnerFoodType;
-    private Button buttonAdd, buttonBack;
+    private Button buttonAdd;
+    private ImageButton buttonBack;
     private TextView labelFoodType, labelNumServing;
 
 
@@ -36,7 +38,7 @@ public class LogFoodFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_log_food, container, false);
-        View includedView = view.findViewById(R.id.includedBackButton);
+        View includedView = view.findViewById(R.id.includedButtonBack);
 
         editTextNumServing = view.findViewById(R.id.editTextNumServing);
         spinnerFoodActivity = view.findViewById(R.id.spinnerFoodActivity);
@@ -105,8 +107,7 @@ public class LogFoodFragment extends Fragment {
             }
         });
 
-        // TODO: fix this back button (NullPointerError)
-        // buttonBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+        buttonBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
 
         return view;
     }
@@ -153,11 +154,11 @@ public class LogFoodFragment extends Fragment {
         // String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         String dateKey = "2024-11-19";
 
-        itemsRef = db.getReference(userId);
+        itemsRef = db.getReference("users").child(userId).child("daily_emission")
+                .child(dateKey);
 
-        // user1 > daily_emission > 2024-11-19 > food > meal > foodType: numServing
-        DatabaseReference foodRef = itemsRef.child("daily_emission").child(dateKey)
-                .child("food").child(foodActivity);
+        // user1 > daily_emission > 2024-11-19 > food > chicken: 1
+        DatabaseReference foodRef = itemsRef.child("food");
 
         // Check if the food type path exists (to create it if not)
         foodRef.child(foodType).get().addOnCompleteListener(foodTask -> {

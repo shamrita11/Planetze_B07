@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,7 @@ public class LogTransportationFragment extends Fragment {
     private TextView labelDistanceDriven, labelTransportType, labelTransportTime, labelDistanceWalked
             , labelNumFlight, labelHaul;
     private Button buttonAdd;
+    private ImageButton buttonBack;
     private FirebaseDatabase db;
     private DatabaseReference itemsRef;
 
@@ -38,6 +40,7 @@ public class LogTransportationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //get view (TODO: change the xml file name to the correct one)
         View view = inflater.inflate(R.layout.fragment_log_transport, container, false);
+        View includedView = view.findViewById(R.id.includedButtonBack);
 
         // retrieving the corresponding view by id
         editTextDistanceDriven = view.findViewById(R.id.editTextDistanceDriven);
@@ -54,6 +57,7 @@ public class LogTransportationFragment extends Fragment {
         spinnerHaul = view.findViewById(R.id.spinnerHaul);
         labelHaul = view.findViewById(R.id.labelHaul);
         buttonAdd = view.findViewById(R.id.buttonAdd);
+        buttonBack = includedView.findViewById(R.id.buttonBack);
 
         db = FirebaseDatabase.getInstance("https://planetze-g16-default-rtdb.firebaseio.com/");
 
@@ -199,6 +203,8 @@ public class LogTransportationFragment extends Fragment {
             }
         });
 
+        buttonBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+
         return view;
     }
 
@@ -209,6 +215,7 @@ public class LogTransportationFragment extends Fragment {
         double distanceDriven, transportTime, distanceWalked;
         int numFlight;
 
+        //TODO: for numbers, check if they are negative
         if (editTextDistanceDriven.getVisibility() == View.VISIBLE) {
             distanceDrivenStr = editTextDistanceDriven.getText().toString().trim();
             // check if user input is empty
@@ -314,25 +321,27 @@ public class LogTransportationFragment extends Fragment {
         //  specific date
         String userId = "user1";
         String dateKey = "2024-11-19";
-        itemsRef = db.getReference(userId);
+        // TODO: confirm the actual path
+        itemsRef = db.getReference("users").child(userId).child("daily_emission")
+                .child(dateKey);
 
         // user1 > daily_emission > 2024-11-19 > transportation > transportActivity
-        DatabaseReference transportationRef = itemsRef.child("daily_emission").child(dateKey)
-                .child("transportation").child(transportActivity);
+        DatabaseReference transportationRef = itemsRef.child("transportation")
+                .child(transportActivity);
 
         // Log data for driving personal vehicle
-        // ... transportation > "drive personal vehicle" > "distanceDriven": 1.5
+        // ... transportation > "drive personal vehicle" > "distance driven": 1.5
         if(transportActivity.equals("drive personal vehicle")) {
             // Check if the distance fields already exist
-            transportationRef.child("distanceDriven").get().addOnCompleteListener(task -> {
+            transportationRef.child("distance_driven").get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     if (task.getResult().exists()) {
                         double existingDistance = task.getResult().getValue(Double.class);
-                        transportationRef.child("distanceDriven").setValue(existingDistance + distanceDriven);
+                        transportationRef.child("distance_driven").setValue(existingDistance + distanceDriven);
                         Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
                     } else {
                         // the path does not exist, so create the path (include any node that are missing)
-                        transportationRef.child("distanceDriven").setValue(distanceDriven);
+                        transportationRef.child("distance_driven").setValue(distanceDriven);
                         Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -343,18 +352,18 @@ public class LogTransportationFragment extends Fragment {
             });
         }
 
-        // ... transportation > "take public transportation" > "bus": 1.5
-        //                                                   > "subway": 0.5
+        // ... transportation > "take public transportation" > "transport time": 1.5
         if(transportActivity.equals("take public transportation")) {
-            transportationRef.child(transportType).get().addOnCompleteListener(task -> {
+            transportationRef.child("transport_time").get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     if (task.getResult().exists()) {
                         double existingTime = task.getResult().getValue(Double.class);
-                        transportationRef.child(transportType).setValue(existingTime + transportTime);
+                        transportationRef.child("transport_time").setValue(existingTime
+                                + transportTime);
                         Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
                     } else {
                         // the path does not exist, so create the path (include any node that are missing)
-                        transportationRef.child(transportType).setValue(transportTime);
+                        transportationRef.child("transport_time").setValue(transportTime);
                         Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -365,19 +374,19 @@ public class LogTransportationFragment extends Fragment {
             });
         }
 
-        // ... transportation > "cycling or walking" > "distanceWC": 1.5
+        // ... transportation > "cycling or walking" > "distance_wc": 1.5
         if(transportActivity.equals("cycling or walking")) {
             // distanceWC = distanceWalkedOrCycled
-            transportationRef.child("distanceWC").get().addOnCompleteListener(task -> {
+            transportationRef.child("distance_wc").get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     if (task.getResult().exists()) {
                         double existingDistance = task.getResult().getValue(Double.class);
-                        transportationRef.child("distanceWC").setValue(existingDistance
+                        transportationRef.child("distance_wc").setValue(existingDistance
                                 + distanceWalked);
                         Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
                     } else {
                         // the path does not exist, so create the path (include any node that are missing)
-                        transportationRef.child("distanceWC").setValue(distanceWalked);
+                        transportationRef.child("distance_wc").setValue(distanceWalked);
                         Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -389,19 +398,22 @@ public class LogTransportationFragment extends Fragment {
             });
         }
 
-        // ... transportation > "flight" > "short haul": 2
-        //                               > "long haul": 1
+        // ... transportation > "flight" > "short": 2
+        //                               > "long": 1
         if(transportActivity.equals("flight")) {
             // distanceWC = distanceWalkedOrCycled
-            transportationRef.child(haul).get().addOnCompleteListener(task -> {
+            String[] splitString = haul.split(" ");
+            String flightKey = splitString[0];
+            transportationRef.child(flightKey).get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     if (task.getResult().exists()) {
                         int existingNumFlight = task.getResult().getValue(Integer.class);
-                        transportationRef.child(haul).setValue(existingNumFlight + numFlight);
+
+                        transportationRef.child(flightKey).setValue(existingNumFlight + numFlight);
                         Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
                     } else {
                         // the path does not exist, so create the path (include any node that are missing)
-                        transportationRef.child(haul).setValue(numFlight);
+                        transportationRef.child(flightKey).setValue(numFlight);
                         Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
                     }
                 }

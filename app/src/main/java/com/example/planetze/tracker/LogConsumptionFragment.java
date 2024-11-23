@@ -1,5 +1,6 @@
 package com.example.planetze.tracker;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,9 +19,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,6 +35,7 @@ public class LogConsumptionFragment extends Fragment {
     private TextView labelNumCloth, labelDeviceType, labelNumDevice, labelPurchaseType
             , labelNumPurchase, labelBillType, labelBill;
     private Button buttonAdd;
+    private ImageButton buttonBack;
     private FirebaseDatabase db;
     private DatabaseReference itemsRef;
 
@@ -37,6 +44,7 @@ public class LogConsumptionFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //get view (TODO: change the xml file name to the correct one)
         View view = inflater.inflate(R.layout.fragment_log_consumption, container, false);
+        View includedView = view.findViewById(R.id.includedButtonBack);
 
         // retrieving the corresponding view by id
         editTextNumCloth = view.findViewById(R.id.editTextNumCloth);
@@ -55,6 +63,7 @@ public class LogConsumptionFragment extends Fragment {
         labelBillType = view.findViewById(R.id.labelBillType);
         labelBill = view.findViewById(R.id.labelBill);
         buttonAdd = view.findViewById(R.id.buttonAdd);
+        buttonBack = includedView.findViewById(R.id.buttonBack);
 
         db = FirebaseDatabase.getInstance("https://planetze-g16-default-rtdb.firebaseio.com/");
 
@@ -217,6 +226,8 @@ public class LogConsumptionFragment extends Fragment {
             }
         });
 
+        buttonBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
+
         return view;
     }
 
@@ -338,26 +349,25 @@ public class LogConsumptionFragment extends Fragment {
 
         String userId = "user1";
         String dateKey = "2024-11-19";
-        itemsRef = db.getReference(userId);
+        itemsRef = db.getReference("users").child(userId).child("daily_emission");
 
         // user1 > daily_emission > 2024-11-19 > consumption > consumptionActivity
-        DatabaseReference consumptionRef = itemsRef.child("daily_emission").child(dateKey)
-                .child("consumption").child(consumeActivity);
-
+        DatabaseReference consumptionRef = itemsRef.child(dateKey).child("consumption")
+                .child(consumeActivity);
 
         // Log data for number of clothes purchased
         // ... consumption > "buy new clothes" > "numCloth": 1
         if(consumeActivity.equals("buy new clothes")) {
             // Check if the numCloth field already exist
-            consumptionRef.child("numCloth").get().addOnCompleteListener(task -> {
+            consumptionRef.child("num_cloth").get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     if (task.getResult().exists()) {
                         int existingNum = task.getResult().getValue(Integer.class);
-                        consumptionRef.child("numCloth").setValue(existingNum + numCloth);
+                        consumptionRef.child("num_cloth").setValue(existingNum + numCloth);
                         Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
                     } else {
                         // the path does not exist, so create the path (include any node that are missing)
-                        consumptionRef.child("numCloth").setValue(numCloth);
+                        consumptionRef.child("num_cloth").setValue(numCloth);
                         Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -371,12 +381,12 @@ public class LogConsumptionFragment extends Fragment {
         // ... consumption > "buy electronics" > "TV": 1
         //                                     > "smartphone": 2
         if(consumeActivity.equals("buy electronics")) {
-            // Check if the numCloth field already exist
             consumptionRef.child(deviceType).get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     if (task.getResult().exists()) {
-                        int existingNum = task.getResult().getValue(Integer.class);
-                        consumptionRef.child(deviceType).setValue(existingNum + numDevice);
+                        Long existingNum = task.getResult().getValue(Long.class);
+                        int updatedNum = (existingNum != null ? existingNum.intValue() : 0) + numDevice;
+                        consumptionRef.child(deviceType).setValue(updatedNum);
                         Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
                     } else {
                         // the path does not exist, so create the path (include any node that are missing)
@@ -394,7 +404,6 @@ public class LogConsumptionFragment extends Fragment {
         // ... consumption > "other purchases" > "furniture": 1
         //                                     > "appliances": 1
         if(consumeActivity.equals("other purchases")) {
-            // Check if the numCloth field already exist
             consumptionRef.child(purchaseType).get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     if (task.getResult().exists()) {
@@ -414,19 +423,21 @@ public class LogConsumptionFragment extends Fragment {
             });
         }
 
-        // ... consumption > "energy bills" > "electricity": 150.5
-        //                                  > "water": 161
+        // ... > "daily_emission" > "bill" > "2024-11" > "water": 150
+        //                                        > "electricity": 165.2
         if(consumeActivity.equals("energy bills")) {
-            // Check if the numCloth field already exist
-            consumptionRef.child(billType).get().addOnCompleteListener(task -> {
+            String month = dateKey.substring(0, 7);
+
+            DatabaseReference billRef = itemsRef.child("bill").child(month);
+            billRef.child(billType).get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     if (task.getResult().exists()) {
                         double existingAmount = task.getResult().getValue(Double.class);
-                        consumptionRef.child(billType).setValue(existingAmount + bill);
+                        billRef.child(billType).setValue(existingAmount + bill);
                         Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
                     } else {
                         // the path does not exist, so create the path (include any node that are missing)
-                        consumptionRef.child(billType).setValue(bill);
+                        billRef.child(billType).setValue(bill);
                         Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -435,6 +446,64 @@ public class LogConsumptionFragment extends Fragment {
                     Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
                 }
             });
+
+            if(billType.equals("electricity")) {
+                // Other than uploading data into database, we also need to check for electricity bill
+                // for electricity bill, we made some assumptions for daily emission calculation
+                // See DailyEmissionProcessor.java for more info
+                // TODO: change to correct path
+                DatabaseReference billRangeRef = itemsRef.child("questionnaire_responses")
+                        .child("consumption").child("2").child("answer");
+                billRangeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        // Fetch the value
+                        if (dataSnapshot.exists()) {
+                            String billRange = dataSnapshot.getValue(String.class);
+
+                            // Assumption:
+                            // for the bill amount range, we assume it's lower inclusive and upper exclusive
+                            // (i.e. 50 <= amount < 100)
+                            int lower;
+                            int upper;
+                            //TODO: verify the string format
+                            if(billRange.startsWith("Under")) {
+                                upper = Integer.parseInt(billRange.replace("Under $", "").trim());
+                                lower = 0;
+                            } else if(billRange.startsWith("Over")) {
+                                lower = Integer.parseInt(billRange.replace("Over $", "").trim());
+                                upper = Integer.MAX_VALUE; // indicate no upper bound
+                            } else {
+                                String[] parts = billRange.replace("$", "").split("-");
+                                lower = Integer.parseInt(parts[0].trim());
+                                upper = Integer.parseInt(parts[1].trim());
+                            }
+
+                            // check if the bill amount this month falls in range
+                            // if not, we warn the user about it
+                            if(!(lower <= bill && bill < upper)) {
+                                showWarningDialog("The new bill amount is outside of your " +
+                                        "indicated monthly electricity bill range. Please ensure you " +
+                                        "update your questionnaire answer if your bill amount have " +
+                                        "significant changes.");
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         }
+    }
+
+    private void showWarningDialog(String message) {
+        new AlertDialog.Builder(getContext()).setTitle("Notice").setMessage(message)
+                .setCancelable(false).setPositiveButton("Ok", (dialog, which) -> {
+                    dialog.dismiss(); // close the dialog when "Ok" is clicked
+                })
+                .show();
     }
 }
