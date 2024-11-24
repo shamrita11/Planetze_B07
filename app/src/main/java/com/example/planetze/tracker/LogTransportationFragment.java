@@ -1,5 +1,6 @@
 package com.example.planetze.tracker;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.example.planetze.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -315,87 +318,36 @@ public class LogTransportationFragment extends Fragment {
         }
 
 
-        // TODO: figure out how to get current date (and generate an id)
-        // TODO: see if this is the structure of database we want
-        // TODO: see if we can modify the items instead if already exist an item with this
-        //  specific date
-        String userId = "user1";
-        String dateKey = "2024-11-19";
-        // TODO: confirm the actual path
-        itemsRef = db.getReference("users").child(userId).child("daily_emission")
-                .child(dateKey);
+        // Log data into database
+        FirebaseManager manager = new FirebaseManager(getContext());
+        String userId = "user1"; // switch to actual id
+        String dateKey = GetDate.getDate();
 
-        // user1 > daily_emission > 2024-11-19 > transportation > transportActivity
-        DatabaseReference transportationRef = itemsRef.child("transportation")
-                .child(transportActivity);
+//        itemsRef = db.getReference("users").child(userId).child("daily_emission")
+//                .child(dateKey);
+        // user1 > daily_emission > 2024-11-19 > transportation
+        String commonPath = "users/" + userId + "/daily_emission/" + dateKey + "/transportation/";
 
         // Log data for driving personal vehicle
         // ... transportation > "drive personal vehicle" > "distance driven": 1.5
+        // For daily logging section, we assume that if user input for the same activity twice,
+        // they are adding onto their already logged values. (ex. logged distance driven as 1.5,
+        // later logged distance driven again and put 0.4. We store as 1.9 km)
         if(transportActivity.equals("drive personal vehicle")) {
-            // Check if the distance fields already exist
-            transportationRef.child("distance_driven").get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if (task.getResult().exists()) {
-                        double existingDistance = task.getResult().getValue(Double.class);
-                        transportationRef.child("distance_driven").setValue(existingDistance + distanceDriven);
-                        Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // the path does not exist, so create the path (include any node that are missing)
-                        transportationRef.child("distance_driven").setValue(distanceDriven);
-                        Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    // Handle Firebase request failure
-                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
-                }
-            });
+            String carPath = commonPath + "drive_personal_vehicle/distance_driven";
+            manager.updateNode(carPath, distanceDriven, true);
         }
 
-        // ... transportation > "take public transportation" > "transport time": 1.5
+        // ... transportation > "take_public_transportation" > "transport time": 1.5
         if(transportActivity.equals("take public transportation")) {
-            transportationRef.child("transport_time").get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if (task.getResult().exists()) {
-                        double existingTime = task.getResult().getValue(Double.class);
-                        transportationRef.child("transport_time").setValue(existingTime
-                                + transportTime);
-                        Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // the path does not exist, so create the path (include any node that are missing)
-                        transportationRef.child("transport_time").setValue(transportTime);
-                        Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    // Handle Firebase request failure
-                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
-                }
-            });
+            String publicPath = commonPath + "take_public_transportation/transport_time";
+            manager.updateNode(publicPath, transportTime, true);
         }
 
-        // ... transportation > "cycling or walking" > "distance_wc": 1.5
+        // ... transportation > "cycling_or_walking" > "distance_wc": 1.5
         if(transportActivity.equals("cycling or walking")) {
-            // distanceWC = distanceWalkedOrCycled
-            transportationRef.child("distance_wc").get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if (task.getResult().exists()) {
-                        double existingDistance = task.getResult().getValue(Double.class);
-                        transportationRef.child("distance_wc").setValue(existingDistance
-                                + distanceWalked);
-                        Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // the path does not exist, so create the path (include any node that are missing)
-                        transportationRef.child("distance_wc").setValue(distanceWalked);
-                        Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    // Handle Firebase request failure
-                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
-
-                }
-            });
+            String walkPath = commonPath + "cycling_or_walking/distance_wc";
+            manager.updateNode(walkPath, distanceWalked, true);
         }
 
         // ... transportation > "flight" > "short": 2
@@ -404,24 +356,8 @@ public class LogTransportationFragment extends Fragment {
             // distanceWC = distanceWalkedOrCycled
             String[] splitString = haul.split(" ");
             String flightKey = splitString[0];
-            transportationRef.child(flightKey).get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if (task.getResult().exists()) {
-                        int existingNumFlight = task.getResult().getValue(Integer.class);
-
-                        transportationRef.child(flightKey).setValue(existingNumFlight + numFlight);
-                        Toast.makeText(getContext(), "Your transport data was updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // the path does not exist, so create the path (include any node that are missing)
-                        transportationRef.child(flightKey).setValue(numFlight);
-                        Toast.makeText(getContext(), "New transport data was logged", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    // Handle Firebase request failure
-                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
-                }
-            });
+            String flightPath = commonPath + "flight/" + flightKey;
+            manager.updateNode(flightPath, numFlight, true);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.planetze.tracker;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,8 @@ import com.example.planetze.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -148,36 +151,36 @@ public class LogFoodFragment extends Fragment {
             foodType = "";
         }
 
-        // TODO: replace with dynamic date generation
+        // Store data into database
         // Store data under userId > daily_emission > date > food > meal
+        FirebaseManager manager = new FirebaseManager(getContext());
         String userId = "user1";
         // String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String dateKey = "2024-11-19";
-
-        itemsRef = db.getReference("users").child(userId).child("daily_emission")
-                .child(dateKey);
+        String dateKey = GetDate.getDate();
+        //String dateKey = "2024-11-19";
 
         // user1 > daily_emission > 2024-11-19 > food > chicken: 1
-        DatabaseReference foodRef = itemsRef.child("food");
+        String foodRefPath = "users/" + userId + "/daily_emission/" + dateKey + "/food/" + foodType;
+        manager.updateNode(foodRefPath, numServing, true);
 
         // Check if the food type path exists (to create it if not)
-        foodRef.child(foodType).get().addOnCompleteListener(foodTask -> {
-            if (foodTask.isSuccessful()) {
-                if (foodTask.getResult().exists()) {
-                    // If the food activity already exists, get the current value and add to it
-                    int existingNumServing = foodTask.getResult().getValue(Integer.class);
-                    int newNumServing = existingNumServing + numServing;  // Adding to the existing value
-                    foodRef.child(foodType).setValue(newNumServing);
-                    Toast.makeText(getContext(), "Your food data was updated", Toast.LENGTH_SHORT).show();
-                } else {
-                    // If the food type oath doesn't exist, create this whole path
-                    foodRef.child(foodType).setValue(numServing);
-                    Toast.makeText(getContext(), "New food data was logged", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                // Handle Firebase request failure
-                Toast.makeText(getContext(), "Failed to fetch food data", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        foodRef.child(foodType).get().addOnCompleteListener(foodTask -> {
+//            if (foodTask.isSuccessful()) {
+//                if (foodTask.getResult().exists()) {
+//                    // If the food activity already exists, get the current value and add to it
+//                    int existingNumServing = foodTask.getResult().getValue(Integer.class);
+//                    int newNumServing = existingNumServing + numServing;  // Adding to the existing value
+//                    foodRef.child(foodType).setValue(newNumServing);
+//                    Toast.makeText(getContext(), "Your food data was updated", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    // If the food type oath doesn't exist, create this whole path
+//                    foodRef.child(foodType).setValue(numServing);
+//                    Toast.makeText(getContext(), "New food data was logged", Toast.LENGTH_SHORT).show();
+//                }
+//            } else {
+//                // Handle Firebase request failure
+//                Toast.makeText(getContext(), "Failed to fetch food data", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }

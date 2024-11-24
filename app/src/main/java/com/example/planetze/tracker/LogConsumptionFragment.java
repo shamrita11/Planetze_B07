@@ -25,10 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
-import java.util.HashMap;
-import java.util.Map;
-
 public class LogConsumptionFragment extends Fragment {
     private EditText editTextNumCloth, editTextNumDevice, editTextNumPurchase, editTextBill;
     private Spinner spinnerConsumeActivity, spinnerDeviceType, spinnerPurchaseType, spinnerBillType;
@@ -37,7 +33,6 @@ public class LogConsumptionFragment extends Fragment {
     private Button buttonAdd;
     private ImageButton buttonBack;
     private FirebaseDatabase db;
-    private DatabaseReference itemsRef;
 
     @Nullable
     @Override
@@ -347,123 +342,57 @@ public class LogConsumptionFragment extends Fragment {
             billType = "";
         }
 
+        // log data into database
+        FirebaseManager manager = new FirebaseManager(getContext());
         String userId = "user1";
-        String dateKey = "2024-11-19";
-        itemsRef = db.getReference("users").child(userId).child("daily_emission");
+        String dateKey = GetDate.getDate();
 
         // user1 > daily_emission > 2024-11-19 > consumption > consumptionActivity
-        DatabaseReference consumptionRef = itemsRef.child(dateKey).child("consumption")
-                .child(consumeActivity);
+        String commonPath = "users/" + userId + "/daily_emission/" + dateKey + "/consumption/";
 
-        // Log data for number of clothes purchased
-        // ... consumption > "buy new clothes" > "numCloth": 1
+        // ... consumption > "buy_new_clothes" > "numCloth": 1
         if(consumeActivity.equals("buy new clothes")) {
-            // Check if the numCloth field already exist
-            consumptionRef.child("num_cloth").get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if (task.getResult().exists()) {
-                        int existingNum = task.getResult().getValue(Integer.class);
-                        consumptionRef.child("num_cloth").setValue(existingNum + numCloth);
-                        Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // the path does not exist, so create the path (include any node that are missing)
-                        consumptionRef.child("num_cloth").setValue(numCloth);
-                        Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    // Handle Firebase request failure
-                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
-                }
-            });
+            String clothPath = commonPath + "buy_new_clothes/num_cloth";
+            manager.updateNode(clothPath, numCloth, true);
         }
 
-        // ... consumption > "buy electronics" > "TV": 1
+        // ... consumption > "buy_electronics" > "tv": 1
         //                                     > "smartphone": 2
         if(consumeActivity.equals("buy electronics")) {
-            consumptionRef.child(deviceType).get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if (task.getResult().exists()) {
-                        Long existingNum = task.getResult().getValue(Long.class);
-                        int updatedNum = (existingNum != null ? existingNum.intValue() : 0) + numDevice;
-                        consumptionRef.child(deviceType).setValue(updatedNum);
-                        Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // the path does not exist, so create the path (include any node that are missing)
-                        consumptionRef.child(deviceType).setValue(numDevice);
-                        Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    // Handle Firebase request failure
-                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
-                }
-            });
+            String devicePath = commonPath + "buy_electronics/" + deviceType;
+            manager.updateNode(devicePath, numDevice, true);
         }
 
-        // ... consumption > "other purchases" > "furniture": 1
+        // ... consumption > "other_purchases" > "furniture": 1
         //                                     > "appliances": 1
         if(consumeActivity.equals("other purchases")) {
-            consumptionRef.child(purchaseType).get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if (task.getResult().exists()) {
-                        int existingNum = task.getResult().getValue(Integer.class);
-                        consumptionRef.child(purchaseType).setValue(existingNum + numPurchase);
-                        Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // the path does not exist, so create the path (include any node that are missing)
-                        consumptionRef.child(purchaseType).setValue(numPurchase);
-                        Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    // Handle Firebase request failure
-                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
-                }
-            });
+            String otherPath = commonPath + "other_purchases/" + purchaseType;
+            manager.updateNode(otherPath, numPurchase, true);
         }
 
-        // ... > "daily_emission" > "bill" > "2024-11" > "water": 150
-        //                                        > "electricity": 165.2
+        // ... > "user1" > "bill" > "2024-11" > "water": 150
+        //                                    > "electricity": 165.2
         if(consumeActivity.equals("energy bills")) {
             String month = dateKey.substring(0, 7);
-
-            DatabaseReference billRef = itemsRef.child("bill").child(month);
-            billRef.child(billType).get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    if (task.getResult().exists()) {
-                        double existingAmount = task.getResult().getValue(Double.class);
-                        billRef.child(billType).setValue(existingAmount + bill);
-                        Toast.makeText(getContext(), "Your consumption data was updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // the path does not exist, so create the path (include any node that are missing)
-                        billRef.child(billType).setValue(bill);
-                        Toast.makeText(getContext(), "New consumption data was logged", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    // Handle Firebase request failure
-                    Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
-                }
-            });
+            String billPath = "users/" + userId + "/bill/" + month + "/" + billType;
+            manager.updateNode(billPath, bill, true);
 
             if(billType.equals("electricity")) {
                 // Other than uploading data into database, we also need to check for electricity bill
                 // for electricity bill, we made some assumptions for daily emission calculation
                 // See DailyEmissionProcessor.java for more info
                 // TODO: change to correct path
-                DatabaseReference billRangeRef = itemsRef.child("questionnaire_responses")
-                        .child("consumption").child("2").child("answer");
-                billRangeRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        // Fetch the value
-                        if (dataSnapshot.exists()) {
-                            String billRange = dataSnapshot.getValue(String.class);
+                DatabaseReference billRangeRef = db.getReference("users").child(userId)
+                        .child("questionnaire_responses").child("consumption")
+                        .child("2").child("answer");
+                billRangeRef.get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (task.getResult().exists()) {
+                            String billRange = task.getResult().getValue(String.class);
 
                             // Assumption:
                             // for the bill amount range, we assume it's lower inclusive and upper exclusive
-                            // (i.e. 50 <= amount < 100)
+                            // (i.e., 50 <= amount < 100)
                             int lower;
                             int upper;
                             //TODO: verify the string format
@@ -487,12 +416,14 @@ public class LogConsumptionFragment extends Fragment {
                                         "update your questionnaire answer if your bill amount have " +
                                         "significant changes.");
                             }
+                        } else {
+                            Toast.makeText(getContext(), "Bill range is not set. Please update your questionnaire."
+                                    , Toast.LENGTH_SHORT).show();
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(getContext(), "Failed to fetch data", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getContext(), "Failed to fetch bill range: "
+                                        + task.getException().getMessage()
+                                , Toast.LENGTH_SHORT).show();
                     }
                 });
             }
