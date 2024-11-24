@@ -49,7 +49,8 @@ public class DailyEmissionProcessor {
         db = FirebaseDatabase.getInstance();
         userId = "user1"; // change to get actual user id
         myRef = db.getReference("users").child(userId);
-        dateKey = "2024-11-19";
+        // dateKey = "2024-11-19";
+        dateKey = GetDate.getDate();
         monthKey = dateKey.substring(0, 7);
         this.context = context;
 
@@ -67,7 +68,7 @@ public class DailyEmissionProcessor {
         // transport ////////////////////////////////////////////
         // distance driven
         DatabaseReference distanceDrivenRef = myRef.child("daily_emission").child(dateKey)
-                .child("transportation").child("drive personal vehicle")
+                .child("transportation").child("drive_personal_vehicle")
                 .child("distance_driven");
         distanceDrivenRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -106,7 +107,7 @@ public class DailyEmissionProcessor {
 
         // time spent on public transport
         DatabaseReference transportTimeRef = myRef.child("daily_emission").child(dateKey)
-                .child("transportation").child("take public transportation")
+                .child("transportation").child("take_public_transportation")
                 .child("transport_time");
         transportTimeRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -296,7 +297,7 @@ public class DailyEmissionProcessor {
         // consumption ////////////////////////////////////////////
         // number of clothes purchased
         DatabaseReference clothesRef = myRef.child("daily_emission").child(dateKey)
-                .child("consumption").child("buy new clothes")
+                .child("consumption").child("buy_new_clothes")
                 .child("num_cloth");
         clothesRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -335,7 +336,7 @@ public class DailyEmissionProcessor {
 
         // number of electronic devices purchased
         DatabaseReference deviceRef = myRef.child("daily_emission").child(dateKey)
-                .child("consumption").child("buy electronics");
+                .child("consumption").child("buy_electronics");
         deviceRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (task.getResult().exists()) {
@@ -364,7 +365,7 @@ public class DailyEmissionProcessor {
 
         // bill amount
         String month = dateKey.substring(0, dateKey.length() - 3);
-        DatabaseReference billRef = myRef.child("daily_emission").child("bill")
+        DatabaseReference billRef = myRef.child("bill")
                 .child(month).child("electricity");
         billRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -575,7 +576,7 @@ public class DailyEmissionProcessor {
     }
 
     // TODO: complete this function
-    public double[] billCalculator() {
+    public double billCalculator() {
         // Assumptions:
         // based on the questionnaire intially, assume that the amount of bill each month
         // should fall in the same range as last year (which is realistic). If the user's
@@ -583,28 +584,13 @@ public class DailyEmissionProcessor {
         // answer if their monthly bill is increasing / decreasing (this notification will be done
         // in the fragment)
 
+        // Also, we only calculate the monthly emission because it would not make sense to
+        // provide a daily emission for an activity that occurs monthly
         if(electricityBill == 0) {
             // means the user have not yet logged their bill
-            return new double[]{0,0};
+            return 0;
         }
-
-        double monthlyEmission = annualBillEmission / 12.0;
-
-        String[] splitString = monthKey.split("-");
-        int month = Integer.parseInt(splitString[1]);
-        int year = Integer.parseInt(splitString[0]);
-        YearMonth yearMonth;
-        int daysInMonth;
-        double dailyEmission;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            yearMonth = YearMonth.of(year, month);
-            daysInMonth = yearMonth.lengthOfMonth();
-            dailyEmission = monthlyEmission / daysInMonth;
-        } else {
-            dailyEmission = 0;
-        }
-
-        return new double[]{monthlyEmission, dailyEmission};
+        return annualBillEmission / 12.0;
     }
 
     public double consumptionCalculator() {
@@ -616,7 +602,7 @@ public class DailyEmissionProcessor {
     public void consumptionUploader() {
         double clothEmission = clothesCalculator();
         double deviceEmission = deviceCalculator();
-        double billMonthlyEmission = billCalculator()[0]; // index 0 has monthly emission
+        double billMonthlyEmission = billCalculator();
         double total = consumptionCalculator();
 
         // Store in database
@@ -632,22 +618,15 @@ public class DailyEmissionProcessor {
                 .child("emission").child("consumption");
         totalRef.setValue(total);
 
-
-        DatabaseReference billRef = myRef.child("daily_emission").child(dateKey)
-                .child("emission").child("bill");
-        billRef.setValue(billCalculator()[1]);
-
         // upload the monthly emission
         // Here, we store monthly emission only.
-        DatabaseReference billMonthRef = myRef.child("daily_emission").child("bill")
-                .child(monthKey).child("monthly_emission");
+        DatabaseReference billMonthRef = myRef.child("bill").child(monthKey)
+                .child("monthly_emission");
         billMonthRef.setValue(billMonthlyEmission);
-
     }
 
     public double dailyTotalCalculator() {
-        return transportCalculator() + foodCalculator() + consumptionCalculator()
-                + billCalculator()[1];
+        return transportCalculator() + foodCalculator() + consumptionCalculator();
     }
 
     public void mainUploader() {

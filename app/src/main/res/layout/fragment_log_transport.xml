@@ -145,6 +145,23 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/bottom_border" />
 
+        <!-- Haul Type -->
+        <TextView
+            android:id="@+id/labelHaul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:gravity="center"
+            android:text="Select Haul Type (Short Haul &lt;1500km)"
+            android:textSize="20sp" />
+        <Spinner
+            android:id="@+id/spinnerHaul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/spinner_border" />
+
         <!-- Number of Flights -->
         <TextView
             android:id="@+id/labelNumFlight"
@@ -164,23 +181,6 @@
             android:inputType="number"
             android:layout_marginBottom="20dp"
             android:background="@drawable/bottom_border" />
-
-        <!-- Haul Type -->
-        <TextView
-            android:id="@+id/labelHaul"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="2dp"
-            android:gravity="center"
-            android:text="Select Haul Type (Short Haul &lt;1500km)"
-            android:textSize="20sp" />
-        <Spinner
-            android:id="@+id/spinnerHaul"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/spinner_border" />
 
         <!-- Add Button -->
         <Button

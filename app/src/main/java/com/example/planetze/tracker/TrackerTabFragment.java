@@ -88,10 +88,15 @@ public class TrackerTabFragment extends Fragment {
 
     @Override
     public void onResume() {
+        // Doesn't seem to on resume when getting back from logFragments
         super.onResume();
+        updateDisplay(true);
+    }
+
+    private void updateDisplay(boolean forceRefresh) {
         // Call the daily emission calculator and uploader here
         // Initialize the processor only once in onResume or onCreate
-        if (processor == null) {
+        if (processor == null || forceRefresh) {
             processor = new DailyEmissionProcessor(getContext(), () -> {
                 // All data loaded, now calculate and upload emissions
                 processor.mainUploader();  // Upload data after loading
@@ -103,8 +108,6 @@ public class TrackerTabFragment extends Fragment {
                 // update the chart once all data are calculated
                 updatePieChart();
             });
-        } else {
-            updatePieChart();
         }
     }
 
@@ -116,7 +119,6 @@ public class TrackerTabFragment extends Fragment {
         double foodEmission = processor.foodCalculator();
         double clothEmission = processor.clothesCalculator();
         double deviceEmission = processor.deviceCalculator();
-        double billEmission = processor.billCalculator()[1];
 
         if (dailyEmission > 0) {
             if (carEmission > 0) entries.add(new PieEntry((float) (carEmission / dailyEmission * 100), "Drive"));
@@ -125,7 +127,6 @@ public class TrackerTabFragment extends Fragment {
             if (foodEmission > 0) entries.add(new PieEntry((float) (foodEmission / dailyEmission * 100), "Food"));
             if (clothEmission > 0) entries.add(new PieEntry((float) (clothEmission / dailyEmission * 100), "Clothes"));
             if (deviceEmission > 0) entries.add(new PieEntry((float) (deviceEmission / dailyEmission * 100), "Electronics"));
-            if (billEmission > 0) entries.add(new PieEntry((float) (billEmission / dailyEmission * 100), "Bills"));
             pieChart.getDescription().setText("Emission Breakdown");
         } else {
             entries.add(new PieEntry(100f, "No Emissions Logged"));
@@ -141,7 +142,6 @@ public class TrackerTabFragment extends Fragment {
         colors.add(ContextCompat.getColor(getContext(), R.color.cream));
         colors.add(ContextCompat.getColor(getContext(), R.color.light_grey));
         colors.add(ContextCompat.getColor(getContext(), R.color.pale_yellow));
-        colors.add(ContextCompat.getColor(getContext(), R.color.soft_coral));
         pieDataSet.setColors(colors);
 
         PieData pieData = new PieData(pieDataSet);
@@ -180,17 +180,5 @@ public class TrackerTabFragment extends Fragment {
 
         pieChart.animateY(1000);
         pieChart.invalidate();
-    }
-
-    private void calculateAndDisplayDailyEmission() {
-
-        //        DailyEmissionProcessor processor = new DailyEmissionProcessor(this.getContext());
-//        double dailyEmission = processor.dailyTotalCalculator(); // Calculates total daily emissions
-//        processor.mainUploader(); // Uploads the data to Firebase or backend
-
-        // Update the total emission value in the UI
-        // Convert kg to tonnes
-//        String dailyEmissionText = String.format("%.2f tonnes", dailyEmission / 1000.0);
-//        totalEmission.setText(dailyEmissionText);
     }
 }
