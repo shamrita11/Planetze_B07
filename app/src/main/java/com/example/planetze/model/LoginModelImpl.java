@@ -1,33 +1,36 @@
 package com.example.planetze.model;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.AuthResult;
 
 public class LoginModelImpl implements LoginModel {
-    FirebaseDatabase database;
+    FirebaseAuth database;
+
+    public LoginModelImpl() {
+        this.database = FirebaseAuth.getInstance();
+    }
 
     @Override
-    public void login(String username, String password, OnLoginListener listener){
-        if (username.isEmpty()) {
+    public void login(String email, String password, OnLoginListener listener){
+        if (email.isEmpty()) {
             listener.onLoginError("Username cannot be empty");
-        } else if (password.isEmpty()) {
+        }
+        if (password.isEmpty()) {
             listener.onLoginError("Password cannot be empty");
-        } else {
-            database = FirebaseDatabase.getInstance("https://planetze-g16-default-rtdb.firebaseio.com/");
-            DatabaseReference usersRef = database.getReference("users");
+        }
 
-            usersRef.child(username).child("password").get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    String passwordFromDatabase = task.getResult().getValue(String.class);
-                    if (passwordFromDatabase != null && passwordFromDatabase.equals(password)) {
+        database.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        // Successful login
                         listener.onLoginSuccess();
                     } else {
-                        listener.onLoginError("Invalid username or password");
+                        // Failed login
+                        String errorMessage = task.getException() != null
+                                ? task.getException().getMessage()
+                                : "Authentication failed";
+                        listener.onLoginError(errorMessage);
                     }
-                } else {
-                    listener.onLoginError("Failed to retrieve data");
-                }
-            });
-        }
+                });
     }
 }

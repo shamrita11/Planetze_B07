@@ -6,7 +6,7 @@ import com.example.planetze.model.LoginModelImpl;
 
 public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnLoginListener {
     private LoginView loginView;
-    private LoginModel loginModel;
+    private final LoginModel loginModel;
 
     public LoginPresenterImpl(LoginView loginView) {
         this.loginView = loginView;
