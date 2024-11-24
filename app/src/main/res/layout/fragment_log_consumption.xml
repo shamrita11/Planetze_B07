@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
+    android:background="@color/light_grey"
     android:orientation="vertical">
 
     <ScrollView
@@ -45,7 +45,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Consumption"
-                        android:textColor="@color/green"
+                        android:textColor="@color/teal"
                         android:textSize="30sp"
                         android:textStyle="bold" />
                 </FrameLayout>
@@ -205,7 +205,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
-                android:backgroundTint="@color/green"
+                android:backgroundTint="@color/teal"
                 android:minHeight="48dp"
                 android:padding="12dp"
                 android:text="Add"

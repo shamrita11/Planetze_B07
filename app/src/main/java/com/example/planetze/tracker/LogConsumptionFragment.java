@@ -65,7 +65,7 @@ public class LogConsumptionFragment extends Fragment {
         buttonAdd = view.findViewById(R.id.buttonAdd);
         buttonBack = includedView.findViewById(R.id.buttonBack);
 
-        db = FirebaseDatabase.getInstance("https://planetze-g16-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance();
 
         // Hide some of the fields initially
         editTextNumCloth.setVisibility(View.GONE);

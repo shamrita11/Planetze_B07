@@ -1,11 +1,13 @@
 package com.example.planetze.tracker;
 
 import android.content.Context;
+import android.os.Build;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.YearMonth;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -44,7 +46,7 @@ public class DailyEmissionProcessor {
 
     public DailyEmissionProcessor(Context context, DataLoadListener listener) {
         // initialize the database reference
-        db = FirebaseDatabase.getInstance("https://planetze-g16-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance();
         userId = "user1"; // change to get actual user id
         myRef = db.getReference("users").child(userId);
         dateKey = "2024-11-19";
@@ -496,12 +498,12 @@ public class DailyEmissionProcessor {
 
         // Store in database
         DatabaseReference carRef = myRef.child("daily_emission").child(dateKey)
-                .child("emission").child("drive personal vehicle");
+                .child("emission").child("drive_personal_vehicle");
         carRef.setValue(carEmission);
 
         // Store in database
         DatabaseReference publicRef = myRef.child("daily_emission").child(dateKey)
-                .child("emission").child("take public transport");
+                .child("emission").child("take_public_transport");
         publicRef.setValue(publicEmission);
 
         // Store in database
@@ -573,17 +575,36 @@ public class DailyEmissionProcessor {
     }
 
     // TODO: complete this function
-    public double billCalculator() {
+    public double[] billCalculator() {
         // Assumptions:
         // based on the questionnaire intially, assume that the amount of bill each month
         // should fall in the same range as last year (which is realistic). If the user's
         // bill amount is outside of this range, notify the user to change their questionnaire
         // answer if their monthly bill is increasing / decreasing (this notification will be done
         // in the fragment)
-        // Here, we will only include the monthly emission because it would not make sense to
-        // to calculate daily emission based on activity that occurs monthly, as per requirements
-        // of the project
-        return annualBillEmission / 12.0;
+
+        if(electricityBill == 0) {
+            // means the user have not yet logged their bill
+            return new double[]{0,0};
+        }
+
+        double monthlyEmission = annualBillEmission / 12.0;
+
+        String[] splitString = monthKey.split("-");
+        int month = Integer.parseInt(splitString[1]);
+        int year = Integer.parseInt(splitString[0]);
+        YearMonth yearMonth;
+        int daysInMonth;
+        double dailyEmission;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            yearMonth = YearMonth.of(year, month);
+            daysInMonth = yearMonth.lengthOfMonth();
+            dailyEmission = monthlyEmission / daysInMonth;
+        } else {
+            dailyEmission = 0;
+        }
+
+        return new double[]{monthlyEmission, dailyEmission};
     }
 
     public double consumptionCalculator() {
@@ -595,31 +616,38 @@ public class DailyEmissionProcessor {
     public void consumptionUploader() {
         double clothEmission = clothesCalculator();
         double deviceEmission = deviceCalculator();
-        double billMonthlyEmission = billCalculator();
+        double billMonthlyEmission = billCalculator()[0]; // index 0 has monthly emission
         double total = consumptionCalculator();
 
         // Store in database
         DatabaseReference clothRef = myRef.child("daily_emission").child(dateKey)
-                .child("emission").child("buy new clothes");
+                .child("emission").child("buy_new_clothes");
         clothRef.setValue(clothEmission);
 
         DatabaseReference deviceRef = myRef.child("daily_emission").child(dateKey)
-                .child("emission").child("buy electronics");
+                .child("emission").child("buy_electronics");
         deviceRef.setValue(deviceEmission);
 
         DatabaseReference totalRef = myRef.child("daily_emission").child(dateKey)
                 .child("emission").child("consumption");
         totalRef.setValue(total);
 
+
+        DatabaseReference billRef = myRef.child("daily_emission").child(dateKey)
+                .child("emission").child("bill");
+        billRef.setValue(billCalculator()[1]);
+
         // upload the monthly emission
-        // Here, we store monthly emission only. When displaying
+        // Here, we store monthly emission only.
         DatabaseReference billMonthRef = myRef.child("daily_emission").child("bill")
                 .child(monthKey).child("monthly_emission");
         billMonthRef.setValue(billMonthlyEmission);
+
     }
 
     public double dailyTotalCalculator() {
-        return transportCalculator() + foodCalculator() + consumptionCalculator();
+        return transportCalculator() + foodCalculator() + consumptionCalculator()
+                + billCalculator()[1];
     }
 
     public void mainUploader() {
