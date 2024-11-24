@@ -3,11 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login"
+    android:id="@+id/signup"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    tools:context=".Login" >
+    tools:context=".SignUp" >
 
     <LinearLayout
         android:orientation="vertical"
@@ -42,27 +42,48 @@
             app:layout_constraintVertical_bias="0.72" />
     </RelativeLayout>
 
-    <!-- Forgot Password Text -->
+    <!-- Name Field -->
+    <EditText
+        android:id="@+id/full_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="32dp"
+        android:drawableStart="@drawable/icon_name"
+        android:drawablePadding="16dp"
+        android:fontFamily="@font/inter_bold"
+        android:hint="@string/full_name"
+        android:inputType="textPersonName"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/dark_gray"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Terms & Conditions Text -->
     <TextView
-        android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/inter_bold"
+        android:fontFamily="@font/inter"
         android:gravity="center"
-        android:text="@string/forgot_password"
+        android:text="@string/conditions"
         android:textColor="@color/dark_gray"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.835"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.606" />
+        app:layout_constraintVertical_bias="0.658" />
 
     <!-- Password Field -->
     <EditText
-        android:id="@+id/password_input"
+        android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -83,12 +104,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Welcome Back Text -->
+    <!-- Create Account Text -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/inter_bold"
-        android:text="@string/welcome_back"
+        android:text="@string/create_account"
         android:textColor="@color/dark_gray"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -100,7 +121,7 @@
 
     <!-- Email Field -->
     <EditText
-        android:id="@+id/email_input"
+        android:id="@+id/email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -123,14 +144,14 @@
 
     <!-- Login Button -->
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/btn_login"
         android:layout_width="348dp"
         android:layout_height="55dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/teal_btn"
+        android:background="@drawable/blue_btn"
         android:fontFamily="@font/inter_bold"
         android:text="@string/login"
         android:textColor="#d8dbe2"
@@ -140,7 +161,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.751" />
+        app:layout_constraintVertical_bias="0.872" />
 
     <!-- Sign Up Button -->
     <Button
@@ -151,7 +172,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/blue_btn"
+        android:background="@drawable/teal_btn"
         android:fontFamily="@font/inter_bold"
         android:text="@string/signup"
         android:textColor="#d8dbe2"
@@ -161,7 +182,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
+        app:layout_constraintVertical_bias="0.751" />
 
     <!-- OR Text (between buttons) -->
     <TextView

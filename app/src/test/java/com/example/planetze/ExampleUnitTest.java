@@ -7,6 +7,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.example.planetze.model.LoginModel;
 import com.example.planetze.view.LoginView;
+import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
