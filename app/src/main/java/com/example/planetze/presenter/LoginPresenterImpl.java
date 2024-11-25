@@ -81,4 +81,11 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
             loginView.backClicked();
         }
     }
+
+    @Override
+    public void onEyeIconClicked() {
+        if (loginView != null) {
+            loginView.eyeIconClicked();
+        }
+    }
 }

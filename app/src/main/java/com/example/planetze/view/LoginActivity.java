@@ -2,9 +2,11 @@ package com.example.planetze.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private Button buttonLogin, buttonBack;
     private TextView forgotPasswordLink;
     private ProgressBar progressBar;
+    private ImageView eyeIcon;
 
     private LoginPresenter loginPresenter;
     @Override
@@ -37,6 +40,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         buttonBack = findViewById(R.id.btn_back);
         forgotPasswordLink = findViewById(R.id.forgot_password);
         progressBar = findViewById(R.id.progressBar);
+        eyeIcon = findViewById(R.id.eyeIcon);
 
         loginPresenter = new LoginPresenterImpl(this);
 
@@ -54,6 +58,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             String email = editTextUsername.getText().toString().trim();
             loginPresenter.onForgotPasswordClicked(email);
         });
+
+        eyeIcon.setOnClickListener(v -> loginPresenter.onEyeIconClicked());
     }
 
     @Override
@@ -87,6 +93,19 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Intent intent = new Intent(getApplicationContext(), Welcome.class);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void eyeIconClicked() {
+        if (editTextPassword.getTransformationMethod() instanceof PasswordTransformationMethod) {
+            // Show password
+            editTextPassword.setTransformationMethod(null);
+            eyeIcon.setImageResource(R.drawable.icon_open_eye);  // Change to the 'eye open' icon
+        } else {
+            // Hide password
+            editTextPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            eyeIcon.setImageResource(R.drawable.icon_closed_eye);  // Change back to the 'eye closed' icon
+        }
     }
 
     @Override
