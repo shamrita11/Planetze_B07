@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private EditText editTextUsername;
     private EditText editTextPassword;
-    private Button buttonLogin;
+    private Button buttonLogin, buttonBack;
+    private TextView forgotPasswordLink;
     private ProgressBar progressBar;
 
     private LoginPresenter loginPresenter;
@@ -32,6 +34,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         editTextUsername = findViewById(R.id.email_input);
         editTextPassword = findViewById(R.id.password_input);
         buttonLogin = findViewById(R.id.login_button);
+        buttonBack = findViewById(R.id.btn_back);
+        forgotPasswordLink = findViewById(R.id.forgot_password);
         progressBar = findViewById(R.id.progressBar);
 
         loginPresenter = new LoginPresenterImpl(this);
@@ -40,6 +44,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             String username = editTextUsername.getText().toString();
             String password = editTextPassword.getText().toString();
             loginPresenter.validateCredentials(username, password);
+        });
+
+        buttonBack.setOnClickListener(v -> {
+            loginPresenter.onBackClicked();
+        });
+
+        forgotPasswordLink.setOnClickListener(v -> {
+            String email = editTextUsername.getText().toString().trim();
+            loginPresenter.onForgotPasswordClicked(email);
         });
     }
 
@@ -70,6 +83,18 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
+    public void backClicked() {
+        Intent intent = new Intent(getApplicationContext(), Welcome.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void showSuccess(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }
@@ -77,6 +102,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void hideProgress() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showForgotPasswordSuccess() {
+        Toast.makeText(this, "Password reset email sent", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showForgotPasswordFailure(String errorMsg) {
+        Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
     }
 
     @Override

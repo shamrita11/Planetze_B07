@@ -11,25 +11,37 @@ public class LoginModelImpl implements LoginModel {
     }
 
     @Override
-    public void login(String email, String password, OnLoginListener listener){
+    public void login(String email, String password, OnListener listener){
         if (email.isEmpty()) {
-            listener.onLoginError("Username cannot be empty");
+            listener.onFailure("Username cannot be empty");
         }
         if (password.isEmpty()) {
-            listener.onLoginError("Password cannot be empty");
+            listener.onFailure("Password cannot be empty");
         }
 
         database.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         // Successful login
-                        listener.onLoginSuccess();
+                        listener.onSuccess();
                     } else {
                         // Failed login
                         String errorMessage = task.getException() != null
                                 ? task.getException().getMessage()
                                 : "Authentication failed";
-                        listener.onLoginError(errorMessage);
+                        listener.onFailure(errorMessage);
+                    }
+                });
+    }
+
+    @Override
+    public void sendPasswordResetEmail(String email, OnListener listener){
+        database.sendPasswordResetEmail(email)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        listener.onSuccess();
+                    } else {
+                        listener.onFailure(task.getException().getMessage());
                     }
                 });
     }

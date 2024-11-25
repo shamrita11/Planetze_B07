@@ -5,6 +5,10 @@ public interface LoginView {
     void showPasswordError();
     void showLoginSuccess();
     void showLoginFailure();
+    void showSuccess(String message);
+    void backClicked();
     void showProgress();
     void hideProgress();
+    void showForgotPasswordSuccess();
+    void showForgotPasswordFailure(String errorMsg);
 }
