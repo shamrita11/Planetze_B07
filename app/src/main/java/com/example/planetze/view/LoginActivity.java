@@ -1,5 +1,6 @@
 package com.example.planetze.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.planetze.Dashboard;
 import com.example.planetze.R;
+import com.example.planetze.Welcome;
 import com.example.planetze.presenter.LoginPresenter;
 import com.example.planetze.presenter.LoginPresenterImpl;
 
@@ -29,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         editTextUsername = findViewById(R.id.email_input);
         editTextPassword = findViewById(R.id.password_input);
         buttonLogin = findViewById(R.id.login_button);
-//        progressBar = findViewById(R.id.progressBar);
+        progressBar = findViewById(R.id.progressBar);
 
         loginPresenter = new LoginPresenterImpl(this);
 
@@ -53,12 +56,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void showLoginSuccess() {
         Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
-        // Redirect to the next screen or activity
+
+        Intent intent = new Intent(getApplicationContext(), Dashboard.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
     public void showLoginFailure() {
         Toast.makeText(this, "Login Failed. Check credentials.", Toast.LENGTH_SHORT).show();
+
+        hideProgress();
     }
 
     @Override

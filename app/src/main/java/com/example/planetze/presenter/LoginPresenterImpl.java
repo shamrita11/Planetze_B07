@@ -1,5 +1,9 @@
 package com.example.planetze.presenter;
 
+import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.planetze.Dashboard;
 import com.example.planetze.view.LoginView;
 import com.example.planetze.model.LoginModel;
 import com.example.planetze.model.LoginModelImpl;
@@ -18,6 +22,20 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnLoginLis
         if (loginView != null) {
             loginView.showProgress();
         }
+
+        if (username.isEmpty()) {
+            assert loginView != null;
+            loginView.hideProgress();
+            loginView.showUsernameError();
+            return;
+        }
+
+        if (password.isEmpty()) {
+            assert loginView != null;
+            loginView.hideProgress();
+            loginView.showPasswordError();
+            return;
+        }
         loginModel.login(username, password, this);
     }
 
@@ -28,11 +46,11 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnLoginLis
 
     @Override
     public void onLoginSuccess() {
-
+        loginView.showLoginSuccess();
     }
 
     @Override
     public void onLoginError(String errorMsg) {
-
+        loginView.showLoginFailure();
     }
 }
