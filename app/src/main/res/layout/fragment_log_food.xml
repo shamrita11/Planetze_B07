@@ -99,7 +99,7 @@
             android:importantForAutofill="no"
             android:inputType="number"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/bottom_border" />
+            android:background="@drawable/input_bottom_border" />
 
         <!-- Add Button -->
         <Button

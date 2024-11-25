@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Planetze</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="delete_item">Delete Item</string>
-    <string name="add_item">Add Item</string>
-    <string name="back">Back</string>
-    <string name="recyclerview">RecyclerView</string>
-    <string name="scroller">Scroller</string>
-    <string name="spinner">Spinner</string>
-    <string name="manage_items">Manage Items</string>
+
+    <!-- The following are for EcoTracker Section A -->
     <string name="transportation">Transportation</string>
     <string name="food">Food</string>
     <string name="consumption">Consumption</string>
     <string name="eco_tracker">Eco Tracker</string>
+    <string name="no_activity_logged">(No activities logged for this day.)</string>
 
-    <string-array name="categories_array">
-        <item>Books</item>
-        <item>Movies</item>
-    </string-array>
-
-    <!-- The following are for EcoTracker Section A -->
     <string-array name="transport_activity">
         <item>Select an activity</item>
         <item>Drive personal vehicle</item>
@@ -92,5 +80,4 @@
         <item>water</item>
     </string-array>
     <!-- the resource for EcoTracker Section A ends here -->
-
 </resources>

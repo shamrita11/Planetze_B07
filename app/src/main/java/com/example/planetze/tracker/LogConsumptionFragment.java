@@ -366,7 +366,8 @@ public class LogConsumptionFragment extends Fragment {
         // ... consumption > "other_purchases" > "furniture": 1
         //                                     > "appliances": 1
         if(consumeActivity.equals("other purchases")) {
-            String otherPath = commonPath + "other_purchases/" + purchaseType;
+            String purchase = purchaseType.replace(" ", "-");
+            String otherPath = commonPath + "other_purchases/" + purchase;
             manager.updateNode(otherPath, numPurchase, true);
         }
 

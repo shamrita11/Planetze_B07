@@ -8,6 +8,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -39,6 +40,7 @@ public class DailyEmissionProcessor {
 
     // Consumption
     int numCloth;
+    Map<String, Integer> otherPurchase;
     String clothFrequency;
     int numDevice;
     double electricityBill;
@@ -363,6 +365,31 @@ public class DailyEmissionProcessor {
             }
         });
 
+        // number of each type of other purchases
+        DatabaseReference otherRef = myRef.child("daily_emission").child(dateKey)
+                .child("consumption").child("other_purchases");
+        otherRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (task.getResult().exists()) {
+                    // TODO: make sure to verify this works!!!!!!!
+                    Map<String, Object> otherMap = (Map<String, Object>) task.getResult().getValue();
+                    if (otherMap != null) {
+                        for (Map.Entry<String, Object> entry : otherMap.entrySet()) {
+                            String key = entry.getKey();
+                            int value = (Integer) entry.getValue();
+                            otherPurchase.put(key, value);
+                        }
+                    }
+                } else {
+                    otherPurchase = null;
+                }
+                onComplete.run();
+            } else {
+                // Handle Firebase request failure
+                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+        });
+
         // bill amount
         String month = dateKey.substring(0, dateKey.length() - 3);
         DatabaseReference billRef = myRef.child("bill")
@@ -513,6 +540,11 @@ public class DailyEmissionProcessor {
         flightRef.setValue(flightEmission);
 
         // Store in database
+        DatabaseReference walkRef = myRef.child("daily_emission").child(dateKey)
+                .child("emission").child("cycling_or_walking");
+        flightRef.setValue(0.0);
+
+        // Store in database
         DatabaseReference totalRef = myRef.child("daily_emission").child(dateKey)
                 .child("emission").child("transportation");
         totalRef.setValue(emission);
@@ -575,7 +607,51 @@ public class DailyEmissionProcessor {
         return numDevice * 300;
     }
 
-    // TODO: complete this function
+    public double otherCalculator() {
+        if(otherPurchase == null) {
+            return 0.0;
+        }
+
+        // Assumptions:
+        // No formulas are provided for other purchase, so we are going to calculate the
+        // emission based on online averages for each categories:
+        // Furniture: ~150 kg CO2e (taking an average between 50-200 kg)
+        // Appliances: ~600 kg CO2e (taking an average between 200-1,000 kg)
+        // Entertainment: ~350 kg CO2e (taking an average between 100-600 kg)
+        // Personal Care: ~3 kg CO2e (taking an average between 1-5 kg)
+        // Pet Supplies: ~30 kg CO2e (taking an average between 5-50 kg)
+        // Books and Stationery: ~3.5 kg CO2e (taking an average between 2-5 kg)
+        // Other Items: ~52.5 kg CO2e (taking an average between 5-100 kg)
+        double total = 0;
+        for (Map.Entry<String, Integer> entry : otherPurchase.entrySet()) {
+            String purchaseType = entry.getKey();
+            int numPurchase = entry.getValue();
+
+            if(purchaseType.equals("furniture")) {
+                total += numPurchase * 150;
+            }
+            if(purchaseType.equals("appliances")) {
+                total += numPurchase * 600;
+            }
+            if(purchaseType.equals("entertainment")) {
+                total += numPurchase * 350;
+            }
+            if(purchaseType.equals("personal_care")) {
+                total += numPurchase * 3;
+            }
+            if(purchaseType.equals("pet_supplies")) {
+                total += numPurchase * 30;
+            }
+            if(purchaseType.equals("books_and_stationery")) {
+                total += numPurchase * 3.5;
+            }
+            if(purchaseType.equals("other")) {
+                total += numPurchase * 52.5;
+            }
+        }
+        return total;
+    }
+
     public double billCalculator() {
         // Assumptions:
         // based on the questionnaire intially, assume that the amount of bill each month
@@ -596,12 +672,13 @@ public class DailyEmissionProcessor {
     public double consumptionCalculator() {
         // Assumptions, since monthly bills are tracked monthly, we do not include it in our
         // daily emission
-        return clothesCalculator() + deviceCalculator();
+        return clothesCalculator() + deviceCalculator() + otherCalculator();
     }
 
     public void consumptionUploader() {
         double clothEmission = clothesCalculator();
         double deviceEmission = deviceCalculator();
+        double otherEmission = otherCalculator();
         double billMonthlyEmission = billCalculator();
         double total = consumptionCalculator();
 
@@ -613,6 +690,10 @@ public class DailyEmissionProcessor {
         DatabaseReference deviceRef = myRef.child("daily_emission").child(dateKey)
                 .child("emission").child("buy_electronics");
         deviceRef.setValue(deviceEmission);
+
+        DatabaseReference otherRef = myRef.child("daily_emission").child(dateKey)
+                .child("emission").child("other_purchases");
+        otherRef.setValue(otherEmission);
 
         DatabaseReference totalRef = myRef.child("daily_emission").child(dateKey)
                 .child("emission").child("consumption");

@@ -102,7 +102,8 @@ public class TrackerTabFragment extends Fragment {
                 processor.mainUploader();  // Upload data after loading
                 dailyEmission = processor.dailyTotalCalculator();  // Calculate total emissions
                 // Convert kg to tonnes (the convert dailyEmission to a string to be displayed)
-                String dailyEmissionText = String.format("%.3f tonnes", dailyEmission / 1000.0);
+                // TODO: verify if we need to display in kg or tonnes
+                String dailyEmissionText = String.format("%.2f kg", dailyEmission);
                 totalEmission.setText(dailyEmissionText);  // Update the UI with the result
 
                 // update the chart once all data are calculated
