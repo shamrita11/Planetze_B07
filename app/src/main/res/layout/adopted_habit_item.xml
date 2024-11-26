@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:gravity="center_vertical"
+    android:weightSum="1">
+
+    <!-- Habit TextView -->
+    <TextView
+        android:id="@+id/habitTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.6"
+        android:background="@drawable/rounded_text"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_teal"
+        android:textSize="14sp"
+        android:layout_gravity="start"
+        android:text="Habit Name" />
+
+    <!-- Counter Section (Decrement Button, Counter, Increment Button, Trash Icon) -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end|center_vertical"
+        android:layout_weight="0.4"
+        android:layout_marginStart="5dp">
+
+        <!-- Decrement Button -->
+        <Button
+            android:id="@+id/decrementButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="-"
+            android:textSize="18sp"
+            android:background="@drawable/round_button"
+            android:textColor="@android:color/white"
+            android:layout_marginEnd="10dp" />
+
+        <!-- Days Counter TextView -->
+        <TextView
+            android:id="@+id/daysCompletedCounter"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
+            android:maxWidth="20dp"
+            android:singleLine="true" />
+
+        <!-- Increment Button -->
+        <Button
+            android:id="@+id/incrementButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="+"
+            android:textSize="18sp"
+            android:background="@drawable/round_button"
+            android:textColor="@android:color/white" />
+
+        <!-- Trash Icon -->
+        <ImageView
+            android:id="@+id/btnDeleteHabit"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:contentDescription="Delete Habit"
+            android:layout_marginStart="10dp"
+            app:tint="@android:color/darker_gray" />
+    </LinearLayout>
+
+</LinearLayout>

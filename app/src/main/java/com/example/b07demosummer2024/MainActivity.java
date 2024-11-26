@@ -1,69 +1,72 @@
 package com.example.b07demosummer2024;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     private DatabaseReference habitsRef;
+    private RecyclerView habitCategoryRecyclerView;
+    private HabitCategoryAdapter habitCategoryAdapter;
+    private List<String> habitCategories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Reference to a button
-        Button navigateButton = findViewById(R.id.btn_habitList);
+        // Initialize Firebase
+        database = FirebaseDatabase.getInstance();
+        habitsRef = database.getReference("habits");
 
-        // Set click listener, this is going from Lucy's section A
-        // to my section B where it shows the habit list
-        navigateButton.setOnClickListener(new View.OnClickListener() {
+        // Set up RecyclerView
+        habitCategoryRecyclerView = findViewById(R.id.habitCategoryRecyclerView);
+        habitCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        habitCategories = new ArrayList<>();
+        habitCategoryAdapter = new HabitCategoryAdapter(this, habitCategories);
+        habitCategoryRecyclerView.setAdapter(habitCategoryAdapter);
+
+        // Fetch habit categories from Firebase
+        habitsRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                // Create an Intent to navigate to SecondActivity
-                Intent intent = new Intent(MainActivity.this, HabitListActivity.class);
-                startActivity(intent);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Get habit categories keys from Firebase
+                    for (DataSnapshot habitCategorySnapshot : dataSnapshot.getChildren()) {
+                        String habitCategory = habitCategorySnapshot.getKey();
+                        habitCategories.add(habitCategory); // Add habit category to the list
+                    }
+                    habitCategoryAdapter.notifyDataSetChanged(); // Notify the adapter to update the UI
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("Firebase", "Error fetching data: " + databaseError.getMessage());
             }
         });
 
-
-
-//        // Initialize Firebase Database
-//        database = FirebaseDatabase.getInstance();
-//        habitsRef = database.getReference("habits");
-//
-//        // Retrieve and log the habits data
-//        habitsRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                for (DataSnapshot categorySnapshot : dataSnapshot.getChildren()) {
-//                    String category = categorySnapshot.getKey();
-//                    Log.d("MainActivity", "Category: " + category);
-//
-//                    for (DataSnapshot habitSnapshot : categorySnapshot.getChildren()) {
-//                        String habit = habitSnapshot.child("habit").getValue(String.class);
-//                        String impact = habitSnapshot.child("impact").getValue(String.class);
-//                        Log.d("MainActivity", "Habit: " + habit + ", Impact: " + impact);
-//                    }
-//                }
-//            }
-//        });
+        // Set up click listener for the Adopted Habits TextView
+        TextView btnAdoptedHabits = findViewById(R.id.btn_adopted_habits);
+        btnAdoptedHabits.setOnClickListener(v -> {
+            // Intent to navigate to AdoptedHabitsActivity
+            Intent intent = new Intent(MainActivity.this, AdoptedHabitsActivity.class);
+            startActivity(intent);  // Launch the AdoptedHabitsActivity
+        });
     }
 }
