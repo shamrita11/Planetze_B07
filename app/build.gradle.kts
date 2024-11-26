@@ -44,4 +44,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.google.firebase.auth)
     implementation(libs.google.firebase.database)
+    // Import Glide Library for GIF
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 }

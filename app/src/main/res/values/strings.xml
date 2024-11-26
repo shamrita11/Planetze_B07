@@ -11,4 +11,7 @@
     <string name="conditions">By signing up, you agree to our\nPrivacy Policy and Terms of Service.</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="OR">----------------- OR -----------------</string>
+    <string name="eco_agent">Eco Agent</string>
+    <string name="eco_agent_description">Your Personal Guide to a Greener Future.</string>
+    <string name="coming_soon">COMING SOON...</string>
 </resources>
