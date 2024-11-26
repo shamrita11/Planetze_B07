@@ -30,7 +30,7 @@ public class Account extends AppCompatActivity {
     private FirebaseUser user;
     private FirebaseDatabase db;
     private DatabaseReference ref;
-    private TextView tvName, tvEmail;
+    private TextView tvName, tvEmail, tvTotalCarbon;
     private String uid;
 
     @Override
@@ -46,6 +46,7 @@ public class Account extends AppCompatActivity {
         buttonEditSurvey = findViewById(R.id.btn_editsurvey);
         tvName = findViewById(R.id.userName);
         tvEmail = findViewById(R.id.userEmail);
+        tvTotalCarbon = findViewById(R.id.userTotalCarbon);
         uid = user.getUid();
 
         // display user's info
@@ -54,8 +55,11 @@ public class Account extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = snapshot.child(uid).child("name").getValue(String.class);
                 String email = snapshot.child(uid).child("email").getValue(String.class);
+                double carbon = snapshot.child(uid).child("TotalC02Emissions").getValue(Double.class);
+                String carbonString = String.format("%.2f", carbon);
                 tvName.setText(name);
                 tvEmail.setText(email);
+                tvTotalCarbon.setText(carbonString);
             }
 
             @Override
