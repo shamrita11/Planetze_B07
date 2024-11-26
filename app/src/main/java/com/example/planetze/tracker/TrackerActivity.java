@@ -23,21 +23,21 @@ public class TrackerActivity extends AppCompatActivity implements TrackerTabFrag
     }
 
     @Override
-    public void onFoodButtonClicked() {
+    public void onFoodButtonClicked(boolean isIncrement, String date) {
         // Handle navigation to LogFoodFragment
-        loadFragment(new LogFoodFragment());
+        loadFragment(new LogFoodFragment(isIncrement, date));
     }
 
     @Override
-    public void onTransportationButtonClicked() {
+    public void onTransportationButtonClicked(boolean isIncrement, String date) {
         // Handle navigation to LogTransportationFragment
-        loadFragment(new LogTransportationFragment());
+        loadFragment(new LogTransportationFragment(isIncrement, date));
     }
 
     @Override
-    public void onConsumptionButtonClicked() {
+    public void onConsumptionButtonClicked(boolean isIncrement, String date) {
         // Handle navigation to LogConsumptionFragment
-        loadFragment(new LogConsumptionFragment());
+        loadFragment(new LogConsumptionFragment(isIncrement, date));
     }
 
     private void loadFragment(Fragment fragment) {

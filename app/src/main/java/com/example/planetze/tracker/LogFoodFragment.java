@@ -32,10 +32,14 @@ public class LogFoodFragment extends Fragment {
     private Button buttonAdd;
     private ImageButton buttonBack;
     private TextView labelFoodType, labelNumServing;
+    DailyEmissionProcessor processor;
+    private final boolean isIncrement;
+    private final String dateKey;
 
-
-    private FirebaseDatabase db;
-    private DatabaseReference itemsRef;
+    public LogFoodFragment(boolean isIncrement, String date) {
+        this.isIncrement = isIncrement;
+        this.dateKey = date;
+    }
 
     @Nullable
     @Override
@@ -50,8 +54,6 @@ public class LogFoodFragment extends Fragment {
         labelNumServing = view.findViewById(R.id.labelNumServing);
         buttonAdd = view.findViewById(R.id.buttonAdd);
         buttonBack = includedView.findViewById(R.id.buttonBack);
-
-        db = FirebaseDatabase.getInstance();
 
         // Hide some of the fields initially
         editTextNumServing.setVisibility(View.GONE);
@@ -119,7 +121,7 @@ public class LogFoodFragment extends Fragment {
         String foodActivity = spinnerFoodActivity.getSelectedItem().toString().toLowerCase();
         String numServingStr, foodType;
         int numServing;
-
+        //TODO: make sure numbers are positive (input)
         if (editTextNumServing.getVisibility() == View.VISIBLE) {
             numServingStr = editTextNumServing.getText().toString().trim();
             // check if user input is empty
@@ -141,7 +143,7 @@ public class LogFoodFragment extends Fragment {
         }
 
         if (spinnerFoodType.getVisibility() == View.VISIBLE) {
-            foodType = spinnerFoodType.getSelectedItem().toString().toLowerCase();
+            foodType = spinnerFoodType.getSelectedItem().toString().toLowerCase().replace("-", "_");
             if (foodType.equals("select the food type")) {
                 Toast.makeText(getContext(), "Please choose the food type",
                         Toast.LENGTH_SHORT).show();
@@ -156,31 +158,26 @@ public class LogFoodFragment extends Fragment {
         FirebaseManager manager = new FirebaseManager(getContext());
         String userId = "user1";
         // String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String dateKey = GetDate.getDate();
+        // String dateKey = GetDate.getDate();
         //String dateKey = "2024-11-19";
 
         // user1 > daily_emission > 2024-11-19 > food > chicken: 1
         String foodRefPath = "users/" + userId + "/daily_emission/" + dateKey + "/food/" + foodType;
-        manager.updateNode(foodRefPath, numServing, true);
+        manager.updateNode(foodRefPath, numServing, isIncrement)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        uploadData(true); // Upload only after successful update
+                    } else {
+                        Toast.makeText(getContext(), "Failed to log food data", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 
-        // Check if the food type path exists (to create it if not)
-//        foodRef.child(foodType).get().addOnCompleteListener(foodTask -> {
-//            if (foodTask.isSuccessful()) {
-//                if (foodTask.getResult().exists()) {
-//                    // If the food activity already exists, get the current value and add to it
-//                    int existingNumServing = foodTask.getResult().getValue(Integer.class);
-//                    int newNumServing = existingNumServing + numServing;  // Adding to the existing value
-//                    foodRef.child(foodType).setValue(newNumServing);
-//                    Toast.makeText(getContext(), "Your food data was updated", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    // If the food type oath doesn't exist, create this whole path
-//                    foodRef.child(foodType).setValue(numServing);
-//                    Toast.makeText(getContext(), "New food data was logged", Toast.LENGTH_SHORT).show();
-//                }
-//            } else {
-//                // Handle Firebase request failure
-//                Toast.makeText(getContext(), "Failed to fetch food data", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+    private void uploadData(boolean forceRefresh) {
+        if (processor == null || forceRefresh) {
+            processor = new DailyEmissionProcessor(getContext(), dateKey, () -> {
+                processor.mainUploader();  // Upload food data after loading
+            });
+        }
     }
 }

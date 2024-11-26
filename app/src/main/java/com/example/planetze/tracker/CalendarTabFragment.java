@@ -31,6 +31,8 @@ import java.util.Locale;
 public class CalendarTabFragment extends Fragment {
     //TODO: change the code to be for Calender section
     private TrackerTabFragment.OnTrackerTabInteractionListener mListener;
+    private DailyEmissionProcessor processor;
+    private String date;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -60,43 +62,63 @@ public class CalendarTabFragment extends Fragment {
             calendarView.setDateTextAppearance(R.style.CalendarDayTextStyle);
         }
 
+        buttonTransportation.setEnabled(false);
+        buttonFood.setEnabled(false);
+        buttonConsumption.setEnabled(false);
+
         // listener for date selection to customize selected date background and text color
         calendarView.setOnDateChangeListener((calendarView1, year, month, dayOfMonth) -> {
-            String date = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month + 1, dayOfMonth);
+            date = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month + 1, dayOfMonth);
             Toast.makeText(getContext(), "Selected Date: " + date, Toast.LENGTH_SHORT).show();
             updateActivityList(date, userId, activityList);
+
+            buttonTransportation.setEnabled(true);
+            buttonFood.setEnabled(true);
+            buttonConsumption.setEnabled(true);
         });
 
         // handle the click of the three log buttons
-        // TODO: see if we can pass something into the fragment so we know if we want to
-        //  update or overwrite
+        // We make assumption:
+        // if user is updating data from the calender section, we assume that the data they enter is
+        // the updated data for that specific activity. So, we overwrite the old data for this
+        // activity in the database and replace with their newly entered data. (This is the
+        // editing functionality as mentioned in the requirement)
+        // TODO: check if the isIncrement variable is working as intended
         buttonTransportation.setOnClickListener(v -> {
             if (mListener != null) {
-                mListener.onTransportationButtonClicked();
+                mListener.onTransportationButtonClicked(false, date);
             }
         });
 
         buttonFood.setOnClickListener(v -> {
             if (mListener != null) {
-                mListener.onFoodButtonClicked();
+                mListener.onFoodButtonClicked(false, date);
             }
         });
 
         buttonConsumption.setOnClickListener(v -> {
             if (mListener != null) {
-                mListener.onConsumptionButtonClicked();
+                mListener.onConsumptionButtonClicked(false, date);
             }
         });
 
         return view;
     }
 
+    /**
+     * This method updates the text of the textView activity_list with data that were logged
+     * by the user on the specific date.
+     * @param dateKey is the chosen date, used to access the node within database
+     * @param userId is the user's id, used to access the current user's data from database
+     * @param activityList is the textview for which we update the text of
+     */
     private void updateActivityList(String dateKey, String userId, TextView activityList) {
         DatabaseReference commonRef = FirebaseDatabase.getInstance().getReference("users")
                 .child(userId);
         DatabaseReference dailyRef = commonRef.child("daily_emission").child(dateKey);
 
         dailyRef.get().addOnCompleteListener(task -> {
+            // Separate isSuccessful and getResult
             if (task.isSuccessful() && task.getResult().exists()) {
                 DataSnapshot dateSnapshot = task.getResult();
                 StringBuilder activityListBuilder = new StringBuilder();
@@ -187,8 +209,10 @@ public class CalendarTabFragment extends Fragment {
                 } else {
                     activityList.setText(activityListBuilder.toString());
                 }
-            } else {
+            } else if (!task.getResult().exists()) {
                 activityList.setText(getString(R.string.no_activity_logged));
+            } else {
+                Toast.makeText(getContext(), "Failed to retrieve data", Toast.LENGTH_SHORT).show();
             }
         });
     }

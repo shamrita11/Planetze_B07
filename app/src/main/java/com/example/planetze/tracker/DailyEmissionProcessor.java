@@ -46,13 +46,14 @@ public class DailyEmissionProcessor {
     double electricityBill;
     int annualBillEmission;
 
-    public DailyEmissionProcessor(Context context, DataLoadListener listener) {
+    public DailyEmissionProcessor(Context context, String dateKey, DataLoadListener listener) {
         // initialize the database reference
         db = FirebaseDatabase.getInstance();
         userId = "user1"; // change to get actual user id
         myRef = db.getReference("users").child(userId);
         // dateKey = "2024-11-19";
-        dateKey = GetDate.getDate();
+        // dateKey = GetDate.getDate();
+        this.dateKey = dateKey;
         monthKey = dateKey.substring(0, 7);
         this.context = context;
 
@@ -366,6 +367,7 @@ public class DailyEmissionProcessor {
         });
 
         // number of each type of other purchases
+        otherPurchase = new HashMap<>();
         DatabaseReference otherRef = myRef.child("daily_emission").child(dateKey)
                 .child("consumption").child("other_purchases");
         otherRef.get().addOnCompleteListener(task -> {
@@ -376,8 +378,9 @@ public class DailyEmissionProcessor {
                     if (otherMap != null) {
                         for (Map.Entry<String, Object> entry : otherMap.entrySet()) {
                             String key = entry.getKey();
-                            int value = (Integer) entry.getValue();
-                            otherPurchase.put(key, value);
+                            Object value = entry.getValue();
+                            int intValue = ((Number) value).intValue();
+                            otherPurchase.put(key, intValue);
                         }
                     }
                 } else {
@@ -531,7 +534,7 @@ public class DailyEmissionProcessor {
 
         // Store in database
         DatabaseReference publicRef = myRef.child("daily_emission").child(dateKey)
-                .child("emission").child("take_public_transport");
+                .child("emission").child("take_public_transportation");
         publicRef.setValue(publicEmission);
 
         // Store in database
@@ -710,17 +713,20 @@ public class DailyEmissionProcessor {
         return transportCalculator() + foodCalculator() + consumptionCalculator();
     }
 
-    public void mainUploader() {
+    public void dailyTotalUploader() {
         // Upload the daily total
         double total = dailyTotalCalculator();
         // upload to database
         DatabaseReference totalRef = myRef.child("daily_emission").child(dateKey)
                 .child("emission").child("total");
         totalRef.setValue(total);
+    }
 
-        // call other uploader to upload data
+    public void mainUploader() {
+        // call all uploader to upload data
         transportUploader();
         foodUploader();
         consumptionUploader();
+        dailyTotalUploader();
     }
 }

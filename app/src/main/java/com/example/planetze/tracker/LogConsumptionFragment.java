@@ -19,11 +19,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.R;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LogConsumptionFragment extends Fragment {
     private EditText editTextNumCloth, editTextNumDevice, editTextNumPurchase, editTextBill;
@@ -33,6 +38,14 @@ public class LogConsumptionFragment extends Fragment {
     private Button buttonAdd;
     private ImageButton buttonBack;
     private FirebaseDatabase db;
+    private DailyEmissionProcessor processor;
+    private final boolean isIncrement;
+    private final String dateKey;
+
+    public LogConsumptionFragment(boolean isIncrement, String date) {
+        this.isIncrement = isIncrement;
+        this.dateKey = date;
+    }
 
     @Nullable
     @Override
@@ -321,7 +334,7 @@ public class LogConsumptionFragment extends Fragment {
         }
 
         if (spinnerPurchaseType.getVisibility() == View.VISIBLE) {
-            purchaseType = spinnerPurchaseType.getSelectedItem().toString().toLowerCase();
+            purchaseType = spinnerPurchaseType.getSelectedItem().toString().toLowerCase().replace(" ", "_");
             if (purchaseType.equals("select the purchase type")) {
                 Toast.makeText(getContext(), "Please choose a purchase type",
                         Toast.LENGTH_SHORT).show();
@@ -344,8 +357,9 @@ public class LogConsumptionFragment extends Fragment {
 
         // log data into database
         FirebaseManager manager = new FirebaseManager(getContext());
+        List<Task<Void>> tasks = new ArrayList<>();
         String userId = "user1";
-        String dateKey = GetDate.getDate();
+        // String dateKey = GetDate.getDate();
 
         // user1 > daily_emission > 2024-11-19 > consumption > consumptionActivity
         String commonPath = "users/" + userId + "/daily_emission/" + dateKey + "/consumption/";
@@ -353,22 +367,21 @@ public class LogConsumptionFragment extends Fragment {
         // ... consumption > "buy_new_clothes" > "numCloth": 1
         if(consumeActivity.equals("buy new clothes")) {
             String clothPath = commonPath + "buy_new_clothes/num_cloth";
-            manager.updateNode(clothPath, numCloth, true);
+            tasks.add(manager.updateNode(clothPath, numCloth, isIncrement));
         }
 
         // ... consumption > "buy_electronics" > "tv": 1
         //                                     > "smartphone": 2
         if(consumeActivity.equals("buy electronics")) {
             String devicePath = commonPath + "buy_electronics/" + deviceType;
-            manager.updateNode(devicePath, numDevice, true);
+            tasks.add(manager.updateNode(devicePath, numDevice, isIncrement));
         }
 
         // ... consumption > "other_purchases" > "furniture": 1
         //                                     > "appliances": 1
         if(consumeActivity.equals("other purchases")) {
-            String purchase = purchaseType.replace(" ", "-");
-            String otherPath = commonPath + "other_purchases/" + purchase;
-            manager.updateNode(otherPath, numPurchase, true);
+            String otherPath = commonPath + "other_purchases/" + purchaseType;
+            tasks.add(manager.updateNode(otherPath, numPurchase, isIncrement));
         }
 
         // ... > "user1" > "bill" > "2024-11" > "water": 150
@@ -376,7 +389,7 @@ public class LogConsumptionFragment extends Fragment {
         if(consumeActivity.equals("energy bills")) {
             String month = dateKey.substring(0, 7);
             String billPath = "users/" + userId + "/bill/" + month + "/" + billType;
-            manager.updateNode(billPath, bill, true);
+            tasks.add(manager.updateNode(billPath, bill, isIncrement));
 
             if(billType.equals("electricity")) {
                 // Other than uploading data into database, we also need to check for electricity bill
@@ -429,6 +442,15 @@ public class LogConsumptionFragment extends Fragment {
                 });
             }
         }
+
+        Tasks.whenAllComplete(tasks).addOnCompleteListener(task -> {
+            // This block will run after all tasks are completed
+            if (task.isSuccessful()) {
+                uploadData(true);
+            } else {
+                Toast.makeText(getContext(), "Failed to log activities", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void showWarningDialog(String message) {
@@ -437,5 +459,13 @@ public class LogConsumptionFragment extends Fragment {
                     dialog.dismiss(); // close the dialog when "Ok" is clicked
                 })
                 .show();
+    }
+
+    private void uploadData(boolean forceRefresh) {
+        if (processor == null || forceRefresh) {
+            processor = new DailyEmissionProcessor(getContext(), dateKey, () -> {
+                processor.mainUploader();  // Upload food data after loading
+            });
+        }
     }
 }

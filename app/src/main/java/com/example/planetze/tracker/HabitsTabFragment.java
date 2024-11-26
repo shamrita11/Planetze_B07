@@ -25,27 +25,6 @@ public class HabitsTabFragment extends Fragment {
         Button buttonFood = view.findViewById(R.id.buttonFood);
         Button buttonConsumption = view.findViewById(R.id.buttonConsumption);
 
-        buttonTransportation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadFragment(new LogTransportationFragment());
-            }
-        });
-
-        buttonFood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadFragment(new LogFoodFragment());
-            }
-        });
-
-        buttonConsumption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadFragment(new LogConsumptionFragment());
-            }
-        });
-
         return view;
     }
 

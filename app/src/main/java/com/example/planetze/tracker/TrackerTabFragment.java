@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,10 +18,13 @@ import androidx.fragment.app.Fragment;
 import com.example.planetze.R;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -29,10 +33,13 @@ import java.util.Locale;
 
 public class TrackerTabFragment extends Fragment {
 
+    /**
+     * This interface helps TrackerTabFragment to load fragments in TrackerActivity
+     */
     public interface OnTrackerTabInteractionListener {
-        void onFoodButtonClicked();
-        void onTransportationButtonClicked();
-        void onConsumptionButtonClicked();
+        void onFoodButtonClicked(boolean isIncrement, String date);
+        void onTransportationButtonClicked(boolean isIncrement, String date);
+        void onConsumptionButtonClicked(boolean isIncrement, String date);
     }
 
     private OnTrackerTabInteractionListener mListener;
@@ -58,28 +65,38 @@ public class TrackerTabFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tracker_tab, container, false);
 
-        //TODO: figure out how to add a pie chart
         totalEmission = view.findViewById(R.id.total_emission_value);
         Button buttonTransportation = view.findViewById(R.id.buttonTransportation);
         Button buttonFood = view.findViewById(R.id.buttonFood);
         Button buttonConsumption = view.findViewById(R.id.buttonConsumption);
         pieChart = view.findViewById(R.id.pieChart);
+        String date = GetDate.getDate();
 
+        updateDisplay(true);
+
+        // We make an assumption here:
+        // For Tracker tab, when user log information, we assume that if they log for the same
+        // activity multiple time, they are adding onto their previous log. For example, if the
+        // use logged 1 hour of bus. If they log another 0.5 hour, we assume that today they
+        // in total took 1.5 hours of bus. This is reasonable because activities can happen
+        // through out the day, and the same activity can happen multiple times. So the user
+        // can choose to log whenever they want and add onto it later. (In calendar section,
+        // the assumption is different)
         buttonTransportation.setOnClickListener(v -> {
             if (mListener != null) {
-                mListener.onTransportationButtonClicked();
+                mListener.onTransportationButtonClicked(true, date);
             }
         });
 
         buttonFood.setOnClickListener(v -> {
             if (mListener != null) {
-                mListener.onFoodButtonClicked();
+                mListener.onFoodButtonClicked(true, date);
             }
         });
 
         buttonConsumption.setOnClickListener(v -> {
             if (mListener != null) {
-                mListener.onConsumptionButtonClicked();
+                mListener.onConsumptionButtonClicked(true, date);
             }
         });
 
@@ -97,12 +114,10 @@ public class TrackerTabFragment extends Fragment {
         // Call the daily emission calculator and uploader here
         // Initialize the processor only once in onResume or onCreate
         if (processor == null || forceRefresh) {
-            processor = new DailyEmissionProcessor(getContext(), () -> {
-                // All data loaded, now calculate and upload emissions
-                processor.mainUploader();  // Upload data after loading
+            processor = new DailyEmissionProcessor(getContext(), GetDate.getDate(), () -> {
                 dailyEmission = processor.dailyTotalCalculator();  // Calculate total emissions
-                // Convert kg to tonnes (the convert dailyEmission to a string to be displayed)
-                // TODO: verify if we need to display in kg or tonnes
+
+                // Update the daily emission text in the xml
                 String dailyEmissionText = String.format("%.2f kg", dailyEmission);
                 totalEmission.setText(dailyEmissionText);  // Update the UI with the result
 
@@ -120,6 +135,7 @@ public class TrackerTabFragment extends Fragment {
         double foodEmission = processor.foodCalculator();
         double clothEmission = processor.clothesCalculator();
         double deviceEmission = processor.deviceCalculator();
+        double otherEmission = processor.otherCalculator();
 
         if (dailyEmission > 0) {
             if (carEmission > 0) entries.add(new PieEntry((float) (carEmission / dailyEmission * 100), "Drive"));
@@ -128,6 +144,7 @@ public class TrackerTabFragment extends Fragment {
             if (foodEmission > 0) entries.add(new PieEntry((float) (foodEmission / dailyEmission * 100), "Food"));
             if (clothEmission > 0) entries.add(new PieEntry((float) (clothEmission / dailyEmission * 100), "Clothes"));
             if (deviceEmission > 0) entries.add(new PieEntry((float) (deviceEmission / dailyEmission * 100), "Electronics"));
+            if (otherEmission > 0) entries.add(new PieEntry((float) (otherEmission / dailyEmission * 100), "Other Purchases"));
             pieChart.getDescription().setText("Emission Breakdown");
         } else {
             entries.add(new PieEntry(100f, "No Emissions Logged"));
@@ -143,8 +160,14 @@ public class TrackerTabFragment extends Fragment {
         colors.add(ContextCompat.getColor(getContext(), R.color.cream));
         colors.add(ContextCompat.getColor(getContext(), R.color.light_grey));
         colors.add(ContextCompat.getColor(getContext(), R.color.pale_yellow));
-        pieDataSet.setColors(colors);
+        colors.add(ContextCompat.getColor(getContext(), R.color.soft_coral));
 
+        pieDataSet.setColors(colors);
+        pieDataSet.setSliceSpace(2f); // Add spacing between slices
+        pieDataSet.setValueLinePart1Length(0.6f); // Adjust the length of the value lines
+        pieDataSet.setValueLinePart2Length(0.2f); // Adjust the second part of the value lines
+        pieDataSet.setValueLineColor(Color.BLACK); // Make the lines clearer
+        pieDataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE); // Position value labels outside slices
         PieData pieData = new PieData(pieDataSet);
         pieData.setValueTextSize(15f);
         pieData.setValueTextColor(Color.BLACK);
@@ -156,6 +179,7 @@ public class TrackerTabFragment extends Fragment {
         pieChart.setTransparentCircleRadius(0f);
         pieChart.setCenterText("Emission by Activity");
         pieChart.setCenterTextColor(Color.BLACK);
+        pieChart.setExtraOffsets(15, 15, 15, 15);
 
         pieChart.setEntryLabelTextSize(15f);
         pieChart.setEntryLabelColor(Color.BLACK);
@@ -163,7 +187,22 @@ public class TrackerTabFragment extends Fragment {
         pieData.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-                return String.format(Locale.getDefault(), "%.1f%%", value);
+                return String.format(Locale.getDefault(), "%.2f%%", value);
+            }
+        });
+
+        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                if (e instanceof PieEntry) {
+                    PieEntry pieEntry = (PieEntry) e;
+                    Toast.makeText(getContext(), pieEntry.getLabel() + ": " + pieEntry.getValue() + "%", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected() {
+                // Do nothing
             }
         });
 
@@ -172,8 +211,10 @@ public class TrackerTabFragment extends Fragment {
         legend.setForm(Legend.LegendForm.CIRCLE);
         legend.setFormSize(15f);
         legend.setDrawInside(false);
+        legend.setWordWrapEnabled(true);
+        legend.setMaxSizePercent(0.95f);
         legend.setXEntrySpace(25f);
-        legend.setYEntrySpace(0f);
+        legend.setYEntrySpace(5f);
         legend.setYOffset(10f);
         legend.setXOffset(10f);
         legend.setTextSize(15f); // Slightly smaller for better wrapping

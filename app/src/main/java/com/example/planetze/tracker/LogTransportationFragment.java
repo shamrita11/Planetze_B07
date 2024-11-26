@@ -18,12 +18,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.R;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //View
@@ -35,8 +39,18 @@ public class LogTransportationFragment extends Fragment {
             , labelNumFlight, labelHaul;
     private Button buttonAdd;
     private ImageButton buttonBack;
-    private FirebaseDatabase db;
-    private DatabaseReference itemsRef;
+    private DailyEmissionProcessor processor;
+    // This field helps the FirebaseManager determine if the entered data is suppose to overwrite
+    // existing data, or increment the existing data (If this fragment is loaded by Tracker tab,
+    // we increment the data. If this fragment is loaded by the Calendar tab, we update, ie. overwrite
+    // the existing data)
+    private final boolean isIncrement;
+    private final String dateKey;
+
+    public LogTransportationFragment(boolean isIncrement, String date) {
+        this.isIncrement = isIncrement;
+        this.dateKey = date;
+    }
 
     @Nullable
     @Override
@@ -61,8 +75,6 @@ public class LogTransportationFragment extends Fragment {
         labelHaul = view.findViewById(R.id.labelHaul);
         buttonAdd = view.findViewById(R.id.buttonAdd);
         buttonBack = includedView.findViewById(R.id.buttonBack);
-
-        db = FirebaseDatabase.getInstance();
 
         // Hide some of the fields initially
         editTextDistanceDriven.setVisibility(View.GONE);
@@ -320,11 +332,10 @@ public class LogTransportationFragment extends Fragment {
 
         // Log data into database
         FirebaseManager manager = new FirebaseManager(getContext());
+        List<Task<Void>> tasks = new ArrayList<>();
         String userId = "user1"; // switch to actual id
-        String dateKey = GetDate.getDate();
+        // String dateKey = GetDate.getDate();
 
-//        itemsRef = db.getReference("users").child(userId).child("daily_emission")
-//                .child(dateKey);
         // user1 > daily_emission > 2024-11-19 > transportation
         String commonPath = "users/" + userId + "/daily_emission/" + dateKey + "/transportation/";
 
@@ -335,19 +346,19 @@ public class LogTransportationFragment extends Fragment {
         // later logged distance driven again and put 0.4. We store as 1.9 km)
         if(transportActivity.equals("drive personal vehicle")) {
             String carPath = commonPath + "drive_personal_vehicle/distance_driven";
-            manager.updateNode(carPath, distanceDriven, true);
+            tasks.add(manager.updateNode(carPath, distanceDriven, isIncrement));
         }
 
         // ... transportation > "take_public_transportation" > "transport time": 1.5
         if(transportActivity.equals("take public transportation")) {
             String publicPath = commonPath + "take_public_transportation/transport_time";
-            manager.updateNode(publicPath, transportTime, true);
+            tasks.add(manager.updateNode(publicPath, transportTime, isIncrement));
         }
 
         // ... transportation > "cycling_or_walking" > "distance_wc": 1.5
         if(transportActivity.equals("cycling or walking")) {
             String walkPath = commonPath + "cycling_or_walking/distance_wc";
-            manager.updateNode(walkPath, distanceWalked, true);
+            tasks.add(manager.updateNode(walkPath, distanceWalked, isIncrement));
         }
 
         // ... transportation > "flight" > "short": 2
@@ -357,7 +368,24 @@ public class LogTransportationFragment extends Fragment {
             String[] splitString = haul.split(" ");
             String flightKey = splitString[0];
             String flightPath = commonPath + "flight/" + flightKey;
-            manager.updateNode(flightPath, numFlight, true);
+            tasks.add(manager.updateNode(flightPath, numFlight, isIncrement));
+        }
+
+        Tasks.whenAllComplete(tasks).addOnCompleteListener(task -> {
+            // This block will run after all tasks are completed
+            if (task.isSuccessful()) {
+                uploadData(true);
+            } else {
+                Toast.makeText(getContext(), "Failed to log activities", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void uploadData(boolean forceRefresh) {
+        if (processor == null || forceRefresh) {
+            processor = new DailyEmissionProcessor(getContext(), dateKey, () -> {
+                processor.mainUploader();  // Upload transport data after loading
+            });
         }
     }
 }
