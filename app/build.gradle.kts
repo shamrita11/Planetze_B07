@@ -44,4 +44,8 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.google.firebase.auth)
     implementation(libs.google.firebase.database)
+    // library for open CSV
+    implementation(libs.opencsv)
+    implementation(libs.material.v180)
+    implementation(libs.viewpager2)
 }
