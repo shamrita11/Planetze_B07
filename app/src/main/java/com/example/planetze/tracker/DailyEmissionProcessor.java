@@ -209,7 +209,7 @@ public class DailyEmissionProcessor {
         // food ////////////////////////////////////////////
         // number of beef meal
         DatabaseReference beefRef = myRef.child("daily_emission").child(dateKey)
-                .child("food").child("beef");
+                .child("food").child("meal").child("beef");
         beefRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (task.getResult().exists()) {
@@ -227,7 +227,7 @@ public class DailyEmissionProcessor {
 
         // number of pork meal
         DatabaseReference porkRef = myRef.child("daily_emission").child(dateKey)
-                .child("food").child("pork");
+                .child("food").child("meal").child("pork");
         porkRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (task.getResult().exists()) {
@@ -245,7 +245,7 @@ public class DailyEmissionProcessor {
 
         // number of chicken meal
         DatabaseReference chickenRef = myRef.child("daily_emission").child(dateKey)
-                .child("food").child("chicken");
+                .child("food").child("meal").child("chicken");
         chickenRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (task.getResult().exists()) {
@@ -263,7 +263,7 @@ public class DailyEmissionProcessor {
 
         // number of fish meal
         DatabaseReference fishRef = myRef.child("daily_emission").child(dateKey)
-                .child("food").child("fish");
+                .child("food").child("meal").child("fish");
         fishRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (task.getResult().exists()) {
@@ -281,7 +281,7 @@ public class DailyEmissionProcessor {
 
         // number of plant-based meal
         DatabaseReference vegetableRef = myRef.child("daily_emission").child(dateKey)
-                .child("food").child("plant_based");
+                .child("food").child("meal").child("plant_based");
         vegetableRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (task.getResult().exists()) {
@@ -521,6 +521,7 @@ public class DailyEmissionProcessor {
     public double transportCalculator() {
         return carCalculator() + publicTransportCalculator() + flightCalculator();
     }
+
     public void transportUploader() {
         double carEmission = carCalculator();
         double publicEmission = publicTransportCalculator();

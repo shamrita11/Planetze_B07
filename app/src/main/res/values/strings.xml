@@ -8,6 +8,7 @@
     <string name="consumption">Consumption</string>
     <string name="eco_tracker">Eco Tracker</string>
     <string name="no_activity_logged">(No activities logged for this day.)</string>
+    <string name="no_detail">(No details available)</string>
 
     <string-array name="transport_activity">
         <item>Select an activity</item>

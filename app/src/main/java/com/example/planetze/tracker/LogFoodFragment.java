@@ -161,8 +161,8 @@ public class LogFoodFragment extends Fragment {
         // String dateKey = GetDate.getDate();
         //String dateKey = "2024-11-19";
 
-        // user1 > daily_emission > 2024-11-19 > food > chicken: 1
-        String foodRefPath = "users/" + userId + "/daily_emission/" + dateKey + "/food/" + foodType;
+        // user1 > daily_emission > 2024-11-19 > food > meal > chicken: 1
+        String foodRefPath = "users/" + userId + "/daily_emission/" + dateKey + "/food/meal/" + foodType;
         manager.updateNode(foodRefPath, numServing, isIncrement)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

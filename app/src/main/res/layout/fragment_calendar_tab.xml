@@ -21,7 +21,7 @@
             android:layout_marginBottom="10dp"
             android:background="@color/white"
             android:elevation="4dp"
-            android:padding="15dp"
+            android:padding="20dp"
             app:cardCornerRadius="16dp">
 
             <LinearLayout
@@ -42,13 +42,24 @@
                     android:textColor="@color/dark_grey"
                     android:textSize="25sp" />
 
-                <CalendarView
-                    android:id="@+id/calendarView"
+<!--                <CalendarView-->
+<!--                    android:id="@+id/calendarView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:dateTextAppearance="@style/CalendarDayTextStyle"-->
+<!--                    android:selectedDateVerticalBar="@color/light_grey"-->
+<!--                    android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Body1"-->
+<!--                    android:dateSelector="@drawable/calendar_selected_date" />-->
+
+                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                    android:id="@+id/materialCalendarView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:dateTextAppearance="@style/CalendarDayTextStyle"
-                    android:selectedDateVerticalBar="@color/light_grey"
-                    android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Body1" />
+                    app:mcv_dateTextAppearance="@style/CalendarDayTextStyle"
+                    app:mcv_headerTextAppearance="@style/CalendarHeaderTextStyle"
+                    app:mcv_selectionColor="@color/teal"
+                    app:mcv_showOtherDates="none"
+                    app:mcv_weekDayTextAppearance="@style/CalendarWeekDayTextStyle" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -75,21 +86,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="8dp"
                     android:text="Your Logged Activities for This Date"
                     android:textAlignment="center"
                     android:textColor="@color/dark_grey"
                     android:textSize="25sp" />
 
-                <TextView
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/activity_list"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="8dp"
-                    android:text="(No date selected)"
-                    android:textColor="@color/dark_grey"
-                    android:textSize="20sp" />
+                    android:clipToPadding="false"
+                    android:padding="10dp"
+                    android:scrollbars="vertical" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

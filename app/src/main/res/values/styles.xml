@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--<resources>-->
+<!--    &lt;!&ndash; Style for calendar dates &ndash;&gt;-->
+<!--    <style name="CalendarDayTextStyle" parent="TextAppearance.AppCompat.Body1">-->
+<!--        <item name="android:textColor">@color/teal</item>-->
+<!--        <item name="android:colorAccent">@color/white</item>-->
+<!--        <item name="android:textSize">18sp</item>-->
+<!--    </style>-->
+<!--</resources>-->
 <resources>
-    <!-- Style for calendar dates -->
     <style name="CalendarDayTextStyle" parent="TextAppearance.AppCompat.Body1">
         <item name="android:textColor">@color/teal</item>
-        <item name="android:colorFocusedHighlight">@color/teal</item>
-        <item name="android:focusedMonthDateColor">@color/white</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="CalendarWeekDayTextStyle" parent="TextAppearance.AppCompat.Body1">
-        <item name="android:textColor">@color/teal</item>
-        <item name="android:colorFocusedHighlight">@color/teal</item>
-        <item name="android:focusedMonthDateColor">@color/white</item>
+    <style name="CalendarWeekDayTextStyle" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:textColor">@color/dark</item>
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="CalendarHeaderTextStyle" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/teal</item>
+        <item name="android:textSize">20sp</item>
     </style>
 </resources>
