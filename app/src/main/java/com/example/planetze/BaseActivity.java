@@ -25,7 +25,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImageButton gaugeButton = findViewById(R.id.gaugeButton);
         ImageButton hubButton = findViewById(R.id.hubButton);
         ImageButton balanceButton = findViewById(R.id.balanceButton);
+        ImageButton agentButton = findViewById(R.id.agentButton);
         ImageButton userButton = findViewById(R.id.userButton);
+
 
         //if (trackerButton != null) {
            // trackerButton.setOnClickListener(v -> navigateToActivity(TrackerActivity.class));
@@ -39,6 +41,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (balanceButton != null) {
             balanceButton.setOnClickListener(v -> navigateToActivity(EcoBalanceActivity.class));
         }
+        //if (agentButton != null) {
+        // agentButton.setOnClickListener(v -> navigateToActivity(AgentActivity.class));
+        //}
+
         //if (userButton != null) {
            // userButton.setOnClickListener(v -> navigateToActivity(UserActivity.class));
         //}

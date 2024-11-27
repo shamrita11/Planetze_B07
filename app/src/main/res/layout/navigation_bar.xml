@@ -1,4 +1,3 @@
-<!-- res/layout/bottom_navigation.xml -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/footer"
@@ -7,7 +6,7 @@
     android:background="#009999"
     android:gravity="center"
     android:orientation="horizontal"
-    android:weightSum="5"
+    android:weightSum="6"
     android:padding="8dp">
 
     <!-- Buttons with icons in the footer -->
@@ -16,53 +15,58 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
-        android:layout_margin="4dp"
         android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/ic_tracker"
         android:contentDescription="Tracker Icon"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_tracker" />
 
     <ImageButton
         android:id="@+id/gaugeButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
-        android:layout_margin="4dp"
         android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/ic_gauge"
         android:contentDescription="Eco Gauge Icon"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_gauge" />
 
     <ImageButton
         android:id="@+id/hubButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
-        android:layout_margin="4dp"
         android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/ic_hub"
         android:contentDescription="Eco Hub Icon"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_hub" />
 
     <ImageButton
         android:id="@+id/balanceButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
-        android:layout_margin="4dp"
         android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/ic_balance"
         android:contentDescription="Eco Balance Icon"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_balance" />
+
+    <ImageButton
+        android:id="@+id/agentButton"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="Eco Agent Icon"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_agent" />
 
     <ImageButton
         android:id="@+id/userButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_weight="1"
-        android:layout_margin="4dp"
         android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/ic_user"
         android:contentDescription="User Icon"
-        android:scaleType="centerInside" />
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_user" />
 </LinearLayout>
