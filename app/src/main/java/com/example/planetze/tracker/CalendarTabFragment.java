@@ -100,7 +100,12 @@ public class CalendarTabFragment extends Fragment {
 //        });
 
         materialCalendarView.setOnDateChangedListener((widget, date, selected) -> {
-            materialCalendarView.addDecorator(new SelectedDateDecorator(date, getContext()));
+            materialCalendarView.removeDecorators();
+
+            if (selected) {
+                // Apply the background and text color for the newly selected date
+                materialCalendarView.addDecorator(new SelectedDateDecorator(date, getContext()));
+            }
 
             int year = date.getYear();
             int month = date.getMonth();
