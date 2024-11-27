@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.b07demosummer2024"
+    namespace = "com.example.planetze"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.b07demosummer2024"
+        applicationId = "com.example.planetze"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -33,8 +33,7 @@ android {
 }
 
 dependencies {
-    implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
-    implementation("com.google.firebase:firebase-database")
+    implementation(libs.google.firebase.database)
     implementation(libs.cardview)
     implementation(libs.appcompat)
     implementation(libs.material)

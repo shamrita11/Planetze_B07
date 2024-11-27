@@ -1,4 +1,4 @@
-package com.example.b07demosummer2024;
+package com.example.planetze;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -28,7 +28,6 @@ public class AdoptedHabitsAdapter extends RecyclerView.Adapter<AdoptedHabitsAdap
 
     @Override
     public AdoptedHabitsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // Inflate the item layout for each habit in the list
         View view = LayoutInflater.from(context).inflate(R.layout.adopted_habit_item, parent, false);
         return new AdoptedHabitsViewHolder(view);
     }
@@ -45,7 +44,6 @@ public class AdoptedHabitsAdapter extends RecyclerView.Adapter<AdoptedHabitsAdap
                 .child("adopted_habits")
                 .child(adoptedHabit.getCategory());
 
-        // Decrement button functionality
         holder.decrementButton.setOnClickListener(v -> {
             int currentCount = adoptedHabit.getDaysCompleted();
             if (currentCount > 0) {
@@ -55,7 +53,6 @@ public class AdoptedHabitsAdapter extends RecyclerView.Adapter<AdoptedHabitsAdap
             }
         });
 
-        // Increment button functionality
         holder.incrementButton.setOnClickListener(v -> {
             int currentCount = adoptedHabit.getDaysCompleted();
             adoptedHabit.setDaysCompleted(currentCount + 1);
@@ -63,7 +60,6 @@ public class AdoptedHabitsAdapter extends RecyclerView.Adapter<AdoptedHabitsAdap
             updateDaysCompletedInDatabase(adoptedHabit, adoptedHabitsRef);
         });
 
-        // Delete habit functionality (ImageView click listener)
         holder.btnDeleteHabit.setOnClickListener(v -> {
             // Remove the habit from Firebase under the correct user and category
             deleteHabitFromDatabase(adoptedHabit, adoptedHabitsRef, position);
@@ -135,7 +131,7 @@ public class AdoptedHabitsAdapter extends RecyclerView.Adapter<AdoptedHabitsAdap
         TextView daysCompletedCounter;
         Button decrementButton;
         Button incrementButton;
-        ImageView btnDeleteHabit; // Changed to ImageView for delete button
+        ImageView btnDeleteHabit;
 
         public AdoptedHabitsViewHolder(View itemView) {
             super(itemView);

@@ -1,13 +1,11 @@
-package com.example.b07demosummer2024;
+package com.example.planetze;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.content.Context;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;

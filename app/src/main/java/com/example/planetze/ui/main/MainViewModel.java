@@ -1,4 +1,4 @@
-package com.example.b07demosummer2024.ui.main;
+package com.example.planetze.ui.main;
 
 import androidx.lifecycle.ViewModel;
 

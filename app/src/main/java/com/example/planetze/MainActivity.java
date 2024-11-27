@@ -1,11 +1,7 @@
-package com.example.b07demosummer2024;
+package com.example.planetze;
 
 import android.app.AlarmManager;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -15,8 +11,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DataSnapshot;
@@ -41,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Request POST_NOTIFICATIONS permission if needed
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1);
@@ -55,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         habitsRef = database.getReference("habits");
 
-        // Set up RecyclerView
         habitCategoryRecyclerView = findViewById(R.id.habitCategoryRecyclerView);
         habitCategoryRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -96,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(this, NotificationReceiver.class);  // Custom BroadcastReceiver
 
-        // Add FLAG_IMMUTABLE to the PendingIntent to comply with Android 12+ requirements
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         // Cancel any existing alarm before setting a new one
