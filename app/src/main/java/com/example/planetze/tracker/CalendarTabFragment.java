@@ -49,7 +49,7 @@ public class CalendarTabFragment extends Fragment {
     private TrackerTabFragment.OnTrackerTabInteractionListener mListener;
     private DailyEmissionProcessor processor;
     MaterialCalendarView materialCalendarView;
-    private CalendarDay selectedDate;
+    Button buttonTransportation, buttonFood, buttonConsumption;
     ActivityListAdapter adapter;
     private String date;
     String userId;
@@ -71,13 +71,12 @@ public class CalendarTabFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calendar_tab, container, false);
 
-        Button buttonTransportation = view.findViewById(R.id.buttonTransportation);
-        Button buttonFood = view.findViewById(R.id.buttonFood);
-        Button buttonConsumption = view.findViewById(R.id.buttonConsumption);
+        buttonTransportation = view.findViewById(R.id.buttonTransportation);
+        buttonFood = view.findViewById(R.id.buttonFood);
+        buttonConsumption = view.findViewById(R.id.buttonConsumption);
         materialCalendarView = view.findViewById(R.id.materialCalendarView);
         RecyclerView recyclerView = view.findViewById(R.id.activity_list);
         userId = "user1"; // switch to actual user id
-
         // render calendar and date selection
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 //            calendarView.setDateTextAppearance(R.style.CalendarDayTextStyle);
@@ -111,7 +110,6 @@ public class CalendarTabFragment extends Fragment {
             int month = date.getMonth();
             int day = date.getDay();
             this.date = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month, day);
-            selectedDate = date;
 
             Toast.makeText(getContext(), "Selected Date: " + this.date, Toast.LENGTH_SHORT).show();
 
@@ -136,6 +134,9 @@ public class CalendarTabFragment extends Fragment {
                 if (task.isSuccessful()) {
                     Toast.makeText(getContext(), "Detail deleted successfully.", Toast.LENGTH_SHORT).show();
                     updateActivityList(); // Refresh the data
+                    processor = new DailyEmissionProcessor(getContext(), date, () -> {
+                            processor.mainUploader();  // Upload data
+                    });
                 } else {
                     Toast.makeText(getContext(), "Failed to delete detail.", Toast.LENGTH_SHORT).show();
                 }
@@ -175,6 +176,9 @@ public class CalendarTabFragment extends Fragment {
         super.onResume();
         materialCalendarView.clearSelection();
         activityItems.clear();
+        buttonTransportation.setEnabled(false);
+        buttonFood.setEnabled(false);
+        buttonConsumption.setEnabled(false);
     }
 
     /**

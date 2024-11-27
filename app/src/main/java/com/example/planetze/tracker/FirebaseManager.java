@@ -38,10 +38,12 @@ public class FirebaseManager {
                         if(value instanceof Double) {
                             double existingDouble = task.getResult().getValue(Double.class);
                             double newDouble = existingDouble + (double) value;  // Adding to the existing value
+                            Toast.makeText(context, "Activity Was Updated.", Toast.LENGTH_SHORT).show();
                             return ref.setValue(newDouble);
                         } else if(value instanceof Integer) {
                             int existingInt = task.getResult().getValue(Integer.class);
                             int newInt = existingInt + (int) value;  // Adding to the existing value
+                            Toast.makeText(context, "Activity Was Updated.", Toast.LENGTH_SHORT).show();
                             return ref.setValue(newInt);
                         } else {
                             Toast.makeText(context,"Increment not supported for this type.", Toast.LENGTH_SHORT).show();
@@ -50,9 +52,9 @@ public class FirebaseManager {
                     } else {
                         // only other choice is a string (no other type of input for now)
                         // do not increment a string
+                        Toast.makeText(context, "Activity Was Updated.", Toast.LENGTH_SHORT).show();
                         return ref.setValue(value);
                     }
-                    Toast.makeText(context, "Activity Was Updated.", Toast.LENGTH_SHORT).show();
                 } else {
                     // If the path doesn't exist, create this whole path
                     Toast.makeText(context, "New Activity Was Logged", Toast.LENGTH_SHORT).show();
