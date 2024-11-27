@@ -44,4 +44,6 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.google.firebase.auth)
     implementation(libs.google.firebase.database)
+    // Import for Splash Screen
+    implementation(libs.core.splashscreen)
 }
