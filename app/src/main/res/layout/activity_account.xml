@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/account"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    tools:context=".Account">
+    tools:context=".Account"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="10dp">
 
     <!-- Logo Image Planetze -->
     <ImageView
@@ -42,7 +43,7 @@
     <LinearLayout
         android:id="@+id/accountinfo"
         android:layout_width="370dp"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:layout_marginTop="180dp"
         android:background="@drawable/rounded_corner_background"
         android:orientation="horizontal"
@@ -103,6 +104,43 @@
                 android:textColor="@color/dark_gray"
                 android:textSize="15sp" />
 
+            <!-- Password Text -->
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/password"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:id="@+id/layout_password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
+                <!-- User Password Field -->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rounded_info_field"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="*********"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <!-- Change Password Button -->
+                <Button
+                    android:id="@+id/btn_changePassword"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="120dp"
+                    android:background="@drawable/blue_btn"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@string/reset_password"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
             <!-- Total CO2e Text -->
             <TextView
                 android:layout_width="300dp"
@@ -129,14 +167,14 @@
     <RelativeLayout
         android:layout_width="106dp"
         android:layout_height="106dp"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.12">
 
         <!-- Circle Background -->
@@ -173,7 +211,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
+        app:layout_constraintVertical_bias="0.943" />
 
     <!-- Edit Survey Button -->
     <Button
@@ -194,7 +232,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.751" />
+        app:layout_constraintVertical_bias="0.822" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

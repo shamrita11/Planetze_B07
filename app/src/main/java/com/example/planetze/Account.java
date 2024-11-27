@@ -1,19 +1,24 @@
 package com.example.planetze;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Account extends AppCompatActivity {
 
-    private Button buttonLogOut, buttonEditSurvey;
+    private Button buttonLogOut, buttonEditSurvey, buttonChangePassword;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
     private FirebaseDatabase db;
@@ -44,6 +49,7 @@ public class Account extends AppCompatActivity {
         ref = db.getReference("users");
         buttonLogOut = findViewById(R.id.btn_logout);
         buttonEditSurvey = findViewById(R.id.btn_editsurvey);
+        buttonChangePassword = findViewById(R.id.btn_changePassword);
         tvName = findViewById(R.id.userName);
         tvEmail = findViewById(R.id.userEmail);
         tvTotalCarbon = findViewById(R.id.userTotalCarbon);
@@ -85,6 +91,45 @@ public class Account extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), EditSurvey.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        buttonChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // creating a dialog to reset user password
+                final EditText resetPassword = new EditText(view.getContext());
+                final AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder((view.getContext()));
+                passwordResetDialog.setTitle("Change Password");
+                passwordResetDialog.setMessage("Enter new password");
+                passwordResetDialog.setView(resetPassword);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // read new password & set it
+                        String newPassword = resetPassword.getText().toString();
+                        user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(Account.this, "Password Reset Successfully.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(Account.this, "Password Reset Failed.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+                passwordResetDialog.create().show();
             }
         });
     }
