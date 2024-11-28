@@ -47,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="\nPlease identify your current location"
+                    android:text="@string/nplease_identify_your_current_location"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -78,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="8dp"
-                    android:text="TRANSPORTATION"
+                    android:text="@string/transportation"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -89,7 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q1: Do you own or regularly use a car?"
+                    android:text="@string/q1_do_you_own_or_regularly_use_a_car"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -106,7 +106,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Yes"
+                        android:text="@string/yes"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -114,7 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="No"
+                        android:text="@string/no"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -132,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q1.1: What type of car do you drive?"
+                    android:text="@string/q1_1_what_type_of_car_do_you_drive"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -149,7 +149,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Gasoline"
+                        android:text="@string/gasoline"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -157,7 +157,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Diesel"
+                        android:text="@string/diesel"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -165,7 +165,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Hybrid"
+                        android:text="@string/hybrid"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -173,7 +173,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Electric"
+                        android:text="@string/electric"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -181,7 +181,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="I don't know"
+                        android:text="@string/i_don_t_know"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -199,7 +199,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q1.2: How many kilometres/miles do you drive per year?"
+                    android:text="@string/q1_2_how_many_kilometres_miles_do_you_drive_per_year"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -216,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Up to 5,000 km (3,000 miles)"
+                        android:text="@string/up_to_5_000_km_3_000_miles"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -224,7 +224,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="5,000–10,000 km (3,000–6,000 miles)"
+                        android:text="@string/_5_000_10_000_km_3_000_6_000_miles"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -232,7 +232,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="10,000–15,000 km (6,000–9,000 miles)"
+                        android:text="@string/_10_000_15_000_km_6_000_9_000_miles"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -240,7 +240,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="15,000–20,000 km (9,000–12,000 miles)"
+                        android:text="@string/_15_000_20_000_km_9_000_12_000_miles"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -248,7 +248,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="20,000–25,000 km (12,000–15,000 miles)"
+                        android:text="@string/_20_000_25_000_km_12_000_15_000_miles"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -256,7 +256,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="More than 25,000 km (15,000 miles)"
+                        android:text="@string/more_than_25_000_km_15_000_miles"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -274,7 +274,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q2: How often do you use public transportation (bus, train, subway)?"
+                    android:text="@string/q2_how_often_do_you_use_public_transportation_bus_train_subway"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -291,7 +291,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Never"
+                        android:text="@string/never"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -299,7 +299,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Occasionally (1-2 times/week)"
+                        android:text="@string/occasionally_1_2_times_week"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -307,7 +307,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Frequently (3-4 times/week)"
+                        android:text="@string/frequently_3_4_times_week"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -315,7 +315,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Always (5+ times/week)"
+                        android:text="@string/always_5_times_week"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -333,7 +333,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q3: How much time do you spend on public transport per week (bus, train, subway)?"
+                    android:text="@string/q3_how_much_time_do_you_spend_on_public_transport_per_week_bus_train_subway"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -350,7 +350,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Under 1 hour"
+                        android:text="@string/under_1_hour"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -358,7 +358,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="1-3 hours"
+                        android:text="@string/_1_3_hours"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -366,7 +366,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="3-5 hours"
+                        android:text="@string/_3_5_hours"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -374,7 +374,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="5-10 hours"
+                        android:text="@string/_5_10_hours"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -382,7 +382,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="More than 10 hours"
+                        android:text="@string/more_than_10_hours"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -400,7 +400,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q4: How many short-haul flights (less than 1,500 km / 932 miles) have you taken in the past year?"
+                    android:text="@string/q4_how_many_short_haul_flights_less_than_1_500_km_932_miles_have_you_taken_in_the_past_year"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -417,7 +417,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="None"
+                        android:text="@string/none"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -425,7 +425,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="1-2 flights"
+                        android:text="@string/_1_2_flights"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -433,7 +433,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="3-5 flights"
+                        android:text="@string/_3_5_flights"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -441,7 +441,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="6-10 flights"
+                        android:text="@string/_6_10_flights"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -449,7 +449,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="More than 10 flights"
+                        android:text="@string/more_than_10_flights"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -468,7 +468,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q5: How many long-haul flights (more than 1,500 km / 932 miles) have you taken in the past year?"
+                    android:text="@string/q5_how_many_long_haul_flights_more_than_1_500_km_932_miles_have_you_taken_in_the_past_year"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -485,7 +485,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="None"
+                        android:text="@string/none"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -493,7 +493,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="1-2 flights"
+                        android:text="@string/_1_2_flights"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -501,7 +501,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="3-5 flights"
+                        android:text="@string/_3_5_flights"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -509,7 +509,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="6-10 flights"
+                        android:text="@string/_6_10_flights"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -517,7 +517,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="More than 10 flights"
+                        android:text="@string/more_than_10_flights"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -536,7 +536,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="8dp"
-                    android:text="FOOD"
+                    android:text="@string/food"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -547,7 +547,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q6: What best describes your diet?"
+                    android:text="@string/q6_what_best_describes_your_diet"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -564,7 +564,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Vegetarian"
+                        android:text="@string/vegetarian"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -572,7 +572,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Vegan"
+                        android:text="@string/vegan"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -580,7 +580,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Pescatarian (fish/seafood)"
+                        android:text="@string/pescatarian_fish_seafood"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -588,7 +588,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Meat-based (eat all types of animal products)"
+                        android:text="@string/meat_based_eat_all_types_of_animal_products"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -606,7 +606,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q6.1: How often do you eat the following animal-based products?"
+                    android:text="@string/q6_1_how_often_do_you_eat_the_following_animal_based_products"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -617,7 +617,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text=" Beef:"
+                    android:text="@string/beef"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -638,7 +638,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text=" Pork:"
+                    android:text="@string/pork"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -659,7 +659,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text=" Chicken:"
+                    android:text="@string/chicken"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -680,7 +680,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text=" Fish/Seafood:"
+                    android:text="@string/fish_seafood"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
@@ -708,7 +708,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q7: How often do you waste food or throw away uneaten leftovers?"
+                    android:text="@string/q7_how_often_do_you_waste_food_or_throw_away_uneaten_leftovers"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -725,7 +725,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Never"
+                        android:text="@string/never"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -733,7 +733,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Rarely"
+                        android:text="@string/rarely"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -741,7 +741,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Occasionally"
+                        android:text="@string/occasionally"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -749,7 +749,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Frequently"
+                        android:text="@string/frequently"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -769,7 +769,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="8dp"
-                    android:text="HOUSING"
+                    android:text="@string/housing"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -780,7 +780,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q8: What type of home do you live in?"
+                    android:text="@string/q8_what_type_of_home_do_you_live_in"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -797,7 +797,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Detached house"
+                        android:text="@string/detached_house"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -805,7 +805,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Semi-detached house"
+                        android:text="@string/semi_detached_house"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -813,7 +813,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Townhouse"
+                        android:text="@string/townhouse"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -821,7 +821,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Condo/Apartment"
+                        android:text="@string/condo_apartment"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -829,7 +829,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Other"
+                        android:text="@string/other"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -847,7 +847,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q9: How many people live in your household?"
+                    android:text="@string/q9_how_many_people_live_in_your_household"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -864,7 +864,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="1"
+                        android:text="@string/_1"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -872,7 +872,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="2"
+                        android:text="@string/_2"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -880,7 +880,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="3-4"
+                        android:text="@string/_3_4"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -888,7 +888,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="5 or more"
+                        android:text="@string/_5_or_more"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -906,7 +906,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q10: What is the size of your home?"
+                    android:text="@string/q10_what_is_the_size_of_your_home"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -923,7 +923,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Under 1000 sq. ft."
+                        android:text="@string/under_1000_sq_ft"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -931,7 +931,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="1000-2000 sq. ft."
+                        android:text="@string/_1000_2000_sq_ft"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -939,7 +939,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Over 2000 sq. ft."
+                        android:text="@string/over_2000_sq_ft"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -957,7 +957,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q11: What type of energy do you use to heat your home?"
+                    android:text="@string/q11_what_type_of_energy_do_you_use_to_heat_your_home"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -974,7 +974,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Natural Gas"
+                        android:text="@string/natural_gas"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -982,7 +982,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Electricity"
+                        android:text="@string/electricity"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -990,7 +990,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Oil"
+                        android:text="@string/oil"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -998,7 +998,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Propane"
+                        android:text="@string/propane"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1006,7 +1006,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Wood"
+                        android:text="@string/wood"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1014,7 +1014,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Other"
+                        android:text="@string/other"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -1032,7 +1032,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q12: What is your average monthly electricity bill?"
+                    android:text="@string/q12_what_is_your_average_monthly_electricity_bill"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -1049,7 +1049,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Under $50"
+                        android:text="@string/under_50"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1057,7 +1057,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="$50–$100"
+                        android:text="@string/_50_100"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1065,7 +1065,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="$100–$150"
+                        android:text="@string/_100_150"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1073,7 +1073,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="$150–$200"
+                        android:text="@string/_150_200"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1081,7 +1081,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Over $200"
+                        android:text="@string/over_200"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -1099,7 +1099,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q13: What type of energy do you use to heat water in your home?"
+                    android:text="@string/q13_what_type_of_energy_do_you_use_to_heat_water_in_your_home"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -1116,7 +1116,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Natural Gas"
+                        android:text="@string/natural_gas"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1124,7 +1124,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Electricity"
+                        android:text="@string/electricity"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1132,7 +1132,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Oil"
+                        android:text="@string/oil"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1140,7 +1140,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Propane"
+                        android:text="@string/propane"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1148,7 +1148,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Solar"
+                        android:text="@string/solar"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1156,7 +1156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Other"
+                        android:text="@string/other"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -1174,7 +1174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q14: Do you use any renewable energy sources for electricity or heating (e.g., solar, wind)?"
+                    android:text="@string/q14_do_you_use_any_renewable_energy_sources_for_electricity_or_heating_e_g_solar_wind"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -1191,7 +1191,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Yes, primarily (more than 50% of energy use)"
+                        android:text="@string/yes_primarily_more_than_50_of_energy_use"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1199,7 +1199,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Yes, partially (less than 50% of energy use)"
+                        android:text="@string/yes_partially_less_than_50_of_energy_use"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1207,7 +1207,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="No"
+                        android:text="@string/no"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -1225,7 +1225,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q15: How often do you buy new clothes?"
+                    android:text="@string/q15_how_often_do_you_buy_new_clothes"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -1242,7 +1242,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Monthly"
+                        android:text="@string/monthly"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1250,7 +1250,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Quarterly"
+                        android:text="@string/quarterly"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1258,7 +1258,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Annually"
+                        android:text="@string/annually"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1266,7 +1266,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Rarely"
+                        android:text="@string/rarely"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -1284,7 +1284,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q16: Do you buy second-hand or eco-friendly products?"
+                    android:text="@string/q16_do_you_buy_second_hand_or_eco_friendly_products"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -1301,7 +1301,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Yes, regularly"
+                        android:text="@string/yes_regularly"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1309,7 +1309,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Yes, occasionally"
+                        android:text="@string/yes_occasionally"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1317,7 +1317,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="No"
+                        android:text="@string/no"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -1335,7 +1335,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q17: How many electronic devices (phones, laptops, etc.) have you purchased in the past year?"
+                    android:text="@string/q17_how_many_electronic_devices_phones_laptops_etc_have_you_purchased_in_the_past_year"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -1352,7 +1352,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="None"
+                        android:text="@string/none"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1360,7 +1360,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="1"
+                        android:text="@string/_1"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1368,7 +1368,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="2"
+                        android:text="@string/_2"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1376,7 +1376,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="3 or more"
+                        android:text="@string/_3_or_more"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -1394,7 +1394,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="Q18: How often do you recycle?"
+                    android:text="@string/q18_how_often_do_you_recycle"
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -1411,7 +1411,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Never"
+                        android:text="@string/never"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1419,7 +1419,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Occasionally"
+                        android:text="@string/occasionally"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1427,7 +1427,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Frequently"
+                        android:text="@string/frequently"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -1435,7 +1435,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:text="Always"
+                        android:text="@string/always"
                         android:textSize="16sp" />
                 </RadioGroup>
             </LinearLayout>
@@ -1455,7 +1455,7 @@
                     android:layout_gravity="right"
                     android:layout_marginEnd="20dp"
                     android:backgroundTint="#009999"
-                    android:text="SUBMIT"
+                    android:text="@string/submit"
                     android:textColor="@android:color/white"
                     app:layout_constraintEnd_toEndOf="parent"
                     tools:layout_editor_absoluteY="646dp" />

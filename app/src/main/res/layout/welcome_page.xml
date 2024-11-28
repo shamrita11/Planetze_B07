@@ -85,7 +85,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Tracker Icon"
+            android:contentDescription="@string/tracker_icon"
             android:scaleType="centerInside"
             android:src="@drawable/ic_tracker" />
 
@@ -95,7 +95,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Eco Gauge Icon"
+            android:contentDescription="@string/eco_gauge_icon"
             android:scaleType="centerInside"
             android:src="@drawable/ic_gauge" />
 
@@ -105,7 +105,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Eco Hub Icon"
+            android:contentDescription="@string/eco_hub_icon"
             android:scaleType="centerInside"
             android:src="@drawable/ic_hub" />
 
@@ -115,7 +115,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Eco Balance Icon"
+            android:contentDescription="@string/eco_balance_icon"
             android:scaleType="centerInside"
             android:src="@drawable/ic_balance" />
 
@@ -125,7 +125,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Eco Agent Icon"
+            android:contentDescription="@string/eco_agent_icon"
             android:scaleType="centerInside"
             android:src="@drawable/img_1" />
 
@@ -135,7 +135,7 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="User Icon"
+            android:contentDescription="@string/user_icon"
             android:scaleType="centerInside"
             android:src="@drawable/ic_user" />
     </LinearLayout>
