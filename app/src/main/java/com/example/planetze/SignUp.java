@@ -17,6 +17,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.planetze.model.LoginModelImpl;
+import com.example.planetze.presenter.LoginPresenterImpl;
+import com.example.planetze.view.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -24,6 +27,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
@@ -32,6 +37,8 @@ public class SignUp extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private ImageView eyeIcon;
+    private FirebaseDatabase db;
+    private DatabaseReference ref;
 
 
     @Override
@@ -60,11 +67,13 @@ public class SignUp extends AppCompatActivity {
         buttonBack = findViewById(R.id.btn_back);
         progressBar = findViewById(R.id.progressBar);
         eyeIcon = findViewById(R.id.eyeIcon);
+        db = FirebaseDatabase.getInstance();
+        ref = db.getReference("users");
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Login.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -113,9 +122,11 @@ public class SignUp extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
                             // Sign in successful
-                            // set user's full name
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(name).build();
+                            // write user's full name & email to db
+                            User user = new User(name, email, false);
+                            String keyID = ref.push().getKey();
+                            ref.child(keyID).setValue(user);
+                            // send verification email
                             mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {

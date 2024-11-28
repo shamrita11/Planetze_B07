@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/light_gray"
-    tools:context=".Login" >
+    tools:context=".view.LoginActivity" >
 
     <LinearLayout
         android:orientation="vertical"
@@ -44,6 +44,7 @@
 
     <!-- Forgot Password Text -->
     <TextView
+        android:id="@+id/forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -61,7 +62,7 @@
 
     <!-- Password Field -->
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/password_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -99,7 +100,7 @@
 
     <!-- Email Field -->
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/email_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -122,7 +123,7 @@
 
     <!-- Login Button -->
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/login_button"
         android:layout_width="348dp"
         android:layout_height="55dp"
         android:layout_marginStart="32dp"
