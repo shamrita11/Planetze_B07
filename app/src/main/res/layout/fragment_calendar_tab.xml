@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F5F5"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- CardView for Total Emission and Chart -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:padding="20dp"
+            app:cardCornerRadius="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Total CO2 Emission -->
+                <TextView
+                    android:id="@+id/total_emission_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Choose a date to update your logging"
+                    android:textAlignment="center"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="25sp" />
+
+<!--                <CalendarView-->
+<!--                    android:id="@+id/calendarView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:dateTextAppearance="@style/CalendarDayTextStyle"-->
+<!--                    android:selectedDateVerticalBar="@color/light_grey"-->
+<!--                    android:weekDayTextAppearance="@style/TextAppearance.AppCompat.Body1"-->
+<!--                    android:dateSelector="@drawable/calendar_selected_date" />-->
+
+                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                    android:id="@+id/materialCalendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:mcv_dateTextAppearance="@style/CalendarDayTextStyle"
+                    app:mcv_headerTextAppearance="@style/CalendarHeaderTextStyle"
+                    app:mcv_selectionColor="@color/teal"
+                    app:mcv_showOtherDates="none"
+                    app:mcv_weekDayTextAppearance="@style/CalendarWeekDayTextStyle" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for Displaying Logged Activities -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:padding="15dp"
+            app:cardCornerRadius="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Activity List -->
+                <TextView
+                    android:id="@+id/activity_list_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Your Logged Activities for This Date"
+                    android:textAlignment="center"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="25sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/activity_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:clipToPadding="false"
+                    android:padding="10dp"
+                    android:scrollbars="vertical" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for Choosing Activities -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:padding="16dp"
+            app:cardCornerRadius="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Log Your Activities -->
+                <TextView
+                    android:id="@+id/log_activities_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Choose an activity to update"
+                    android:textColor="@color/dark_grey"
+                    android:textAlignment="center"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/log_activities_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:padding="10dp"
+                    android:text="Enter the updated value to edit the existing activities. Enter new values to log new activities."
+                    android:textColor="@color/dark_grey"
+                    android:textAlignment="center"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+
+                    <Button
+                        android:id="@+id/buttonTransportation"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal"
+                        android:drawableTop="@drawable/ic_transport_icon"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Transport"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/buttonFood"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal"
+                        android:drawableTop="@drawable/ic_food_icon"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Food"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/buttonConsumption"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal"
+                        android:drawableTop="@drawable/ic_shopping_icon"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Shopping"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>
+

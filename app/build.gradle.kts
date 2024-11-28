@@ -32,12 +32,13 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.database)
+    implementation(libs.mpandroidchart)
+    implementation("com.github.prolificinteractive:material-calendarview:2.0.1")
     implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)

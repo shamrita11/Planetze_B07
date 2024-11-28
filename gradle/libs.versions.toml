@@ -1,5 +1,5 @@
 [versions]
-agp = "8.4.1"
+agp = "8.7.2"
 coreSplashscreen = "1.0.0-alpha02"
 firebaseBom = "33.5.1"
 firebaseBomVersion = "33.6.0"
@@ -8,12 +8,13 @@ googleServicesVersion = "4.4.2"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-appcompat = "1.6.1"
-material = "1.10.0"
+appcompat = "1.7.0"
+material = "1.12.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
 googleGmsGoogleServices = "4.4.2"
 firebaseDatabase = "21.0.0"
+mpandroidchart = "3.1.0"
 mockitoVersion = "3.12.4"
 firebaseAuth = "23.1.0"
 
@@ -33,6 +34,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+mpandroidchart = { group = "com.github.PhilJay", name = "MPAndroidChart", version.ref = "mpandroidchart" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoVersion" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 

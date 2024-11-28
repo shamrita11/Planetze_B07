@@ -15,7 +15,7 @@
         android:theme="@style/Theme.PlanetZe"
         tools:targetApi="31">
         <activity
-            android:name=".Dashboard"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".Welcome"
@@ -32,10 +32,10 @@
         <activity
             android:name=".view.LoginActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"></activity>
-
+       <activity
+            android:name=".tracker.TrackerActivity"
+            android:name=".Dashboard"
+            android:exported="false" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
