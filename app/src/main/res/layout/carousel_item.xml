@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
+    android:padding="10dp"
+    android:gravity="center"
+    android:layout_marginTop="0dp"
+    android:layout_marginStart="20dp"
+    android:background="@drawable/carousel_bg">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- Icon ImageView -->
+        <ImageView
+            android:id="@+id/carousel_item_icon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <!-- Title TextView -->
+        <TextView
+            android:id="@+id/carousel_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:text="Title"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_marginTop="15dp"/>
+
+        <!-- Description TextView -->
+        <TextView
+            android:id="@+id/carousel_item_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter"
+            android:text="Description"
+            android:textColor="@color/dark_gray"
+            android:textSize="14sp"
+            android:gravity="center"/>
+
+        <!-- Learn More Fake Button -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/learn_more"
+            android:background="@drawable/blue_btn"
+            android:textColor="@color/light_gray"
+            android:textSize="18sp"
+            android:gravity="center"/>
+    </LinearLayout>
+</LinearLayout>

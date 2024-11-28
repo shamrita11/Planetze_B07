@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/account"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".Account"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="10dp">
+
+    <!-- Logo Image Planetze -->
+    <ImageView
+        android:id="@+id/backgroundLogo"
+        android:layout_width="119dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:contentDescription="PlanetZe Logo"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- My Account Text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/my_account"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0" />
+
+    <LinearLayout
+        android:id="@+id/accountinfo"
+        android:layout_width="370dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="180dp"
+        android:background="@drawable/rounded_corner_background"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Account Information -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingLeft="8dp">
+
+            <!-- Full Name Text -->
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/full_name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <!-- User Name Field -->
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_info_field"
+                android:fontFamily="@font/inter"
+                android:text="John Doe"
+                android:textColor="@color/dark_gray"
+                android:textSize="15sp" />
+
+            <!-- Email Address Text -->
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/email_address"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <!-- User Email Field -->
+            <TextView
+                android:id="@+id/userEmail"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_info_field"
+                android:fontFamily="@font/inter"
+                android:text="john.doe@example.com"
+                android:textColor="@color/dark_gray"
+                android:textSize="15sp" />
+
+            <!-- Password Text -->
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/password"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:id="@+id/layout_password"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content">
+                <!-- User Password Field -->
+                <TextView
+                    android:layout_width="110dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rounded_info_field"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="*********"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="15sp" />
+
+                <!-- Change Password Button -->
+                <Button
+                    android:id="@+id/btn_changePassword"
+                    android:layout_width="200dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="120dp"
+                    android:background="@drawable/blue_btn"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@string/reset_password"
+                    android:textColor="@color/light_gray"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <!-- Total CO2e Text -->
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/inter_bold"
+                android:text="@string/total_emission"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <!-- User CO2e Field -->
+            <TextView
+                android:id="@+id/userTotalCarbon"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_info_field"
+                android:fontFamily="@font/inter"
+                android:text="100"
+                android:textColor="@color/dark_gray"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="106dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12">
+
+        <!-- Circle Background -->
+        <ImageView
+            android:layout_width="106dp"
+            android:layout_height="106dp"
+            android:src="@drawable/circle_background" />
+
+        <!-- User Icon -->
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_user" />
+
+    </RelativeLayout>
+
+    <!-- Log Out Button -->
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="348dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/blue_btn"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/logout"
+        android:textColor="#d8dbe2"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.943" />
+
+    <!-- Edit Survey Button -->
+    <Button
+        android:id="@+id/btn_editsurvey"
+        android:layout_width="348dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/teal_btn"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/edit_survey"
+        android:textColor="#d8dbe2"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.822" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,9 +13,16 @@ import org.mockito.MockitoAnnotations;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import org.junit.Test;
 
-import static org.junit.Assert.assertNull;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.*;
+
+
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
+ */
 
 public class ExampleUnitTest {
 

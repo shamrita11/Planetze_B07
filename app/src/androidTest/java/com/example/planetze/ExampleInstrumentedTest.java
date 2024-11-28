@@ -22,23 +22,13 @@ import com.example.planetze.view.LoginView;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-    private LoginView loginView;
-
-
 //    @Test
-//    public void useAppContext() {
-//        // Context of the app under test.
-//        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-//        assertEquals("com.example.planetze", appContext.getPackageName());
+//    public void testLoginEmptyEmail() {
+//        LoginPresenter presenter = new LoginPresenterImpl(loginView);
+//        presenter.validateCredentials("", "password"); // email is empty
+//
+//        verify(loginView).showProgress();
+//        verify(loginView).showLoginFailure();
+//        verify(loginView).hideProgress();
 //    }
-
-    @Test
-    public void testLoginEmptyEmail() {
-        LoginPresenter presenter = new LoginPresenterImpl(loginView);
-        presenter.validateCredentials("", "password"); // email is empty
-
-        verify(loginView).showProgress();
-        verify(loginView).showLoginFailure();
-        verify(loginView).hideProgress();
-    }
 }

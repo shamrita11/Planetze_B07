@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray"
+    tools:context=".MainActivity">
+
+    <!-- Wrap Everything in ScrollView -->
+    <android.widget.ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Logo & Title -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <ImageView
+                    android:id="@+id/backgroundLogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="280dp"
+                    android:layout_marginTop="8dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/logo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.416"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@string/eco_hub"
+                    android:textColor="#000000"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </RelativeLayout>
+
+            <!-- About TextView -->
+            <TextView
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:text="@string/about_eco_hub"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                tools:layout_editor_absoluteX="20dp"
+                tools:layout_editor_absoluteY="101dp"
+                tools:ignore="MissingConstraints" />
+
+            <!-- Buttons for Different Resources -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btnBooks"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/teal_btn"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@string/books"
+                    android:textColor="#d8dbe2"
+                    android:textSize="12sp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btnArticles"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/teal_btn"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@string/articles"
+                    android:textColor="#d8dbe2"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:id="@+id/btnMovies"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/teal_btn"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@string/movies"
+                    android:textColor="#d8dbe2"
+                    android:textSize="12sp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btnVideos"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/teal_btn"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@string/videos"
+                    android:textColor="#d8dbe2"
+                    android:textSize="12sp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btnPodcasts"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/teal_btn"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="@string/podcasts"
+                    android:textColor="#d8dbe2"
+                    android:textSize="12sp"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <!-- Resources Carousel - RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/carouselRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"/>
+
+            <!-- Market Trends Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/market_trends"
+                android:textSize="25sp"
+                android:fontFamily="@font/inter_bold"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"/>
+
+            <!-- Market Trends Cards -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/trends_bg"
+                tools:ignore="MissingConstraints">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="70dp"
+                    android:text="@string/samsung_title"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/inter_bold"
+                    android:padding="25dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="115dp"
+                    android:fontFamily="@font/inter"
+                    android:text="@string/samsung_description"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:padding="24dp"
+                    android:layout_alignParentBottom="true"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:padding="10dp"
+                    android:src="@drawable/hub_samsung"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/trends_bg"
+                tools:ignore="MissingConstraints">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="70dp"
+                    android:text="@string/encircled_title"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/inter_bold"
+                    android:padding="25dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="@font/inter"
+                    android:text="@string/encircled_description"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:padding="24dp"
+                    android:layout_alignParentBottom="true"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:padding="10dp"
+                    android:src="@drawable/hub_encircled"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/trends_bg"
+                tools:ignore="MissingConstraints">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="70dp"
+                    android:text="@string/kasa_title"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/inter_bold"
+                    android:padding="25dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="@font/inter"
+                    android:text="@string/kasa_description"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:padding="24dp"
+                    android:layout_alignParentBottom="true"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:padding="10dp"
+                    android:src="@drawable/hub_kasa"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </android.widget.ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
