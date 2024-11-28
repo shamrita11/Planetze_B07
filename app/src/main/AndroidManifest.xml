@@ -16,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanetZe"
         tools:targetApi="31">
+
+        <!-- Declare WelcomeActivity and set it as the launcher -->
         <activity
             android:name=".EcoAgent"
             android:exported="false" />
@@ -30,6 +32,7 @@
             android:exported="false" />
         <activity
             android:name=".Welcome"
+            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -76,5 +79,10 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <!-- Declare CarbonFootprintQuestionnaireActivity -->
+        <activity
+            android:name=".CarbonFootprintQuestionnaireActivity"
+            android:exported="true" />
     </application>
 </manifest>
