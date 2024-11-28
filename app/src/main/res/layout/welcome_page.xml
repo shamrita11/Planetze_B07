@@ -64,80 +64,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- res/layout/bottom_navigation.xml -->
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#009999"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="8dp"
-        android:weightSum="6"
+    <!-- Navigation Bar -->
+    <include
+        android:id="@+id/navigation_bar"
+        layout="@layout/navigation_bar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <!-- Buttons with icons in the footer -->
-        <ImageButton
-            android:id="@+id/trackerButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/tracker_icon"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_tracker" />
-
-        <ImageButton
-            android:id="@+id/gaugeButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/eco_gauge_icon"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_gauge" />
-
-        <ImageButton
-            android:id="@+id/hubButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/eco_hub_icon"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_hub" />
-
-        <ImageButton
-            android:id="@+id/balanceButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/eco_balance_icon"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_balance" />
-
-        <ImageButton
-            android:id="@+id/agentButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/eco_agent_icon"
-            android:scaleType="centerInside"
-            android:src="@drawable/img_1" />
-
-        <ImageButton
-            android:id="@+id/userButton"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/user_icon"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_user" />
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
