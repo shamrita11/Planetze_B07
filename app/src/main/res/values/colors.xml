@@ -2,6 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="light_gray">#dee0e6</color>
+
+    <color name="dark_teal">#0c9a9a</color>
+
+    <color name="light_teal">#0c9a9a</color>
+
+    <color name="lighter_teal">#ddf2f5</color>
+
+    <color name="almost_white">#f4f5f7</color>
+    <color name="high_contrast_teal">#069494</color>
+    <color name="pastel_blue">#a9bcd0</color>
+    <color name="almost_black">#373f51</color>
+    <color name="dark_green">#2d4848</color>
+    <color name="grey_blue">#698c9d</color>
     <color name="light_grey">#d8dbe2</color>
     <color name="grey_blue">#a9bcd0</color>
     <color name="dark_grey">#555555</color>

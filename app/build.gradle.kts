@@ -29,14 +29,22 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation(libs.google.firebase.database)
+    implementation(libs.cardview)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.database)
+    implementation(libs.lifecycle.livedata.ktx)
+    implementation(libs.lifecycle.viewmodel.ktx)
+    implementation(libs.recyclerview)
     implementation(libs.mpandroidchart)
     implementation("com.github.prolificinteractive:material-calendarview:2.0.1")
     implementation(libs.firebase.auth)

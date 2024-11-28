@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.planetze">
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,10 +17,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanetZe"
         tools:targetApi="31">
+        <!-- Declaration for NotificationService -->
+        <service android:name="com.example.planetze.NotificationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Declaration for NotificationReceiver -->
+        <receiver android:name="com.example.planetze.NotificationReceiver"
+            android:enabled="true"
+            android:exported="false" />
+        <activity
+            android:name="com.example.planetze.HabitListActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.planetze.AdoptedHabitsActivity"
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <!-- MainActivity with the Intent Filter -->
         <activity
+            android:name="com.example.planetze.MainActivity"
             android:name=".Welcome"
             android:exported="true">
             <intent-filter>
@@ -25,6 +44,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity> <!-- Other Activities -->
         </activity>
         <activity
             android:name=".SignUp"
@@ -40,5 +60,4 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
 </manifest>

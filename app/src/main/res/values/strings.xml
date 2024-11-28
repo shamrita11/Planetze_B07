@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">B07 Demo Summer 2024</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="btn_habit_list">habit list placeholder</string>
+    <string name="btn_habit_list_title">Eco-friendly Habits</string>
+    <string name="btn_choose_category">Choose a category</string>
+    <string name="btn_transportation">Transportation</string>
+    <string name="btn_consumption">Consumption</string>
+    <string name="btn_food">Food</string>
+    <string name="btn_energy">Energy</string>
+    <string name="back_btn">Back button to navigate to the previous screen</string>
+
+    <string name="transportation_habits">Transportation Habits</string>
+    <string name="trp_habit1">Walk instead of drive</string>
+    <string name="trp_habit2">Use public transport</string>
+    <string name="trp_habit3">Bike instead of driving</string>
+    <string name="trp_habit4">Carpool with others</string>
+    <string name="trp_habit5">Drive electric vehicle</string>
+    <string name="trp_adopt_habit_btn">Adopt a habit button for transportation</string>
+
+    <string name="consumption_habits">Consumption Habits</string>
+    <string name="con_habit1">Avoid impulsive buying</string>
+    <string name="con_habit2">Avoid single-use plastic</string>
+    <string name="con_habit3">Buy Sustainable &amp; Ethical Products</string>
+    <string name="con_habit4">Reduce, Reuse, Recycle</string>
+    <string name="con_habit5">Donate unused items</string>
+    <string name="con_adopt_habit_btn">Adopt a habit button for consumption</string>
+
+    <string name="food_habits">Food Habits</string>
+    <string name="food_habit1">Eat plant-based meals</string>
+    <string name="food_habit2">Buy local produce</string>
+    <string name="food_habit3">Eat more veggies, fruits, grains &amp; beans</string>
+    <string name="food_habit4">Buy organic food</string>
+    <string name="food_habit5">Avoid buying food with plastic packaging</string>
+    <string name="food_adopt_habit_btn">Adopt a habit button for food</string>
+
+    <string name="energy_habits">Energy Habits</string>
+    <string name="energy_habit1">Switch to LED lights</string>
+    <string name="energy_habit2">Unplug unused devices</string>
+    <string name="energy_habit3">Compost food waste</string>
+    <string name="energy_habit4">Go paperless</string>
+    <string name="energy_habit5">Switch to renewable energy</string>
+    <string name="energy_adopt_habit_btn">Adopt a habit button for food</string>
+
+    <string name="your_habits">Your Habits!</string>
+    <string name="days_completed">Days Completed</string>
+    <string name="zero">0</string>
+    <string name="Search_Filter">Search and Filter</string>
+    <string name="Magnifying">Magnifying glass icon</string>
+    <string name="search_bar">search habit or keyword</string>
+    <string name="search_icon">search icon</string>
+
+
+    <string-array name="impacts">
+        <item>All</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
     <string name="app_name">Planetze</string>
 
     <!-- The following are for EcoTracker Section A -->
@@ -80,8 +137,6 @@
         <item>gas</item>
         <item>water</item>
     </string-array>
-    <!-- the resource for EcoTracker Section A ends here -->
-
     <string name="app_name">PlanetZe</string>
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
