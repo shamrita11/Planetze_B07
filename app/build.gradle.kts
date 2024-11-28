@@ -66,6 +66,10 @@ dependencies {
     androidTestImplementation(libs.mockito.android)
     androidTestImplementation(libs.espresso.core)
     
+    // library for open CSV
+    implementation(libs.opencsv)
+    implementation(libs.material.v180)
+    implementation(libs.viewpager2)
     // Import Glide Library for GIF
     implementation(libs.glide)
     annotationProcessor(libs.compiler)

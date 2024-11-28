@@ -1,5 +1,4 @@
 [versions]
-agp = "8.4.1"
 firebaseBom = "33.6.0"
 firebaseAuth = "23.1.0"
 cardview = "1.0.0"
@@ -20,6 +19,10 @@ googleGmsGoogleServices = "4.4.2"
 mockitoVersion = "4.8.1"
 core = "1.5.0"
 firebaseDatabase = "21.0.0"
+firebaseAuth = "23.1.0"
+materialVersion = "1.8.0"
+opencsv = "5.6"
+viewpager2 = "1.0.0"
 mpandroidchart = "v3.1.0"
 
 lifecycleLivedataKtx = "2.6.1"
@@ -50,6 +53,10 @@ mockito-android = { group = "org.mockito", name = "mockito-android", version.ref
 mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoVersion" }
 core = { group = "androidx.test", name = "core", version.ref = "core" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+material-v180 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+opencsv = { module = "com.opencsv:opencsv", version.ref = "opencsv" }
+viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "viewpager2" }
 mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 
 lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }

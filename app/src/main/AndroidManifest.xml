@@ -49,15 +49,18 @@
         <activity
             android:name=".HabitListActivity"
             android:exported="false" />
+      
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".EcoHub"
+            android:exported="false"/>
+      
         <activity
             android:name=".AdoptedHabitsActivity" />
 
         <activity
-            android:name=".EcoHabitActivity"
-            android:exported="false" />
-      <activity
-            android:name=".MainActivity"
-            android:exported="true" />
             android:name=".EcoHabitActivity"
             android:exported="false" />
         <activity
