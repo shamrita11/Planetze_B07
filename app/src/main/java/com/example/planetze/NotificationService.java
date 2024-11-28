@@ -25,7 +25,7 @@ public class NotificationService extends android.app.Service {
         createNotificationChannel();
 
         // Intent to launch MainActivity when the notification is clicked
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        Intent notificationIntent = new Intent(this, EcoHabitActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);  // To launch the activity cleanly
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
 

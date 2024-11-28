@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class EcoHabitActivity extends AppCompatActivity {
 
     private static final String CHANNEL_ID = "habit_reminder_channel";
     private FirebaseDatabase database;
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         TextView btnAdoptedHabits = findViewById(R.id.btn_adopted_habits);
         btnAdoptedHabits.setOnClickListener(v -> {
             // Intent to navigate to AdoptedHabitsActivity
-            Intent intent = new Intent(MainActivity.this, AdoptedHabitsActivity.class);
+            Intent intent = new Intent(EcoHabitActivity.this, AdoptedHabitsActivity.class);
             startActivity(intent);  // Launch the AdoptedHabitsActivity
         });
     }
