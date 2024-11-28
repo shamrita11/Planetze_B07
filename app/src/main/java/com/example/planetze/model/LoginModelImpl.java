@@ -3,8 +3,6 @@ package com.example.planetze.model;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
 
-import java.util.Objects;
-
 public class LoginModelImpl implements LoginModel {
     FirebaseAuth database;
 
@@ -21,28 +19,25 @@ public class LoginModelImpl implements LoginModel {
             listener.onFailure("Password cannot be empty");
         }
 
-        // if user verified their email and user cannot be null
-        if (Objects.requireNonNull(database.getCurrentUser()).isEmailVerified()) {
-            database.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            // Successful login
-                            listener.onSuccess();
-                        } else {
-                            // Failed login
-                            String errorMessage = task.getException() != null
-                                    ? task.getException().getMessage()
-                                    : "Authentication failed";
-                            listener.onFailure(errorMessage);
-                        }
-                    });
-        } else {
-            listener.onFailure("Please verify your email first");
-        }
+        // if the email is verified, then login
+        database.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && database.getCurrentUser().isEmailVerified()) {
+                        // Successful login
+                        listener.onSuccess();
+                    } else {
+                        // Failed login
+                        String errorMessage = task.getException() != null
+                                ? task.getException().getMessage()
+                                : "Authentication failed";
+                        listener.onFailure(errorMessage);
+                    }
+                });
     }
 
     @Override
     public void sendPasswordResetEmail(String email, OnListener listener){
+        // Send password reset email if email is in the database
         database.sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
