@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F5F5"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- CardView for Total Emission and Chart -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:padding="16dp"
+            app:cardCornerRadius="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Total CO2 Emission -->
+                <TextView
+                    android:id="@+id/total_emission_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Total Daily CO2 Emission"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/total_emission_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="0 kg"
+                    android:textColor="@color/teal"
+                    android:textSize="37sp" />
+
+                <!-- Activity Chart -->
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="420dp"
+                    android:layout_margin="15dp"
+                    android:padding="16dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- CardView for Log Activities -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:padding="16dp"
+            app:cardCornerRadius="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Log Your Activities -->
+                <TextView
+                    android:id="@+id/log_activities_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Log your activities"
+                    android:textColor="@color/dark_grey"
+                    android:textSize="25sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="3" >
+
+
+                    <Button
+                        android:id="@+id/buttonTransportation"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal"
+                        android:drawableTop="@drawable/ic_transport_icon"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Transport"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/buttonFood"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal"
+                        android:drawableTop="@drawable/ic_food_icon"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Food"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/buttonConsumption"
+                        android:layout_width="0dp"
+                        android:layout_height="110dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/teal"
+                        android:drawableTop="@drawable/ic_shopping_icon"
+                        android:drawablePadding="8dp"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="Shopping"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</ScrollView>
