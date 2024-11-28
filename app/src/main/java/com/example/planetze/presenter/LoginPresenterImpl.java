@@ -83,6 +83,13 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
     }
 
     @Override
+    public void onSignUpClicked() {
+        if (loginView != null) {
+            loginView.signUpClicked();
+        }
+    }
+
+    @Override
     public void onEyeIconClicked() {
         if (loginView != null) {
             loginView.eyeIconClicked();

@@ -7,6 +7,7 @@ public interface LoginView {
     void showLoginFailure();
     void showSuccess(String message);
     void backClicked();
+    void signUpClicked();
     void eyeIconClicked();
     void showProgress();
     void hideProgress();
