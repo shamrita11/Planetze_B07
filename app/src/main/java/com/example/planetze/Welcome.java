@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.planetze.view.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Welcome extends AppCompatActivity {
@@ -34,7 +35,7 @@ public class Welcome extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Login.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -48,6 +49,7 @@ public class Welcome extends AppCompatActivity {
                 finish();
             }
         });
+
 
     }
 }
