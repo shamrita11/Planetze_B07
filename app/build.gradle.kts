@@ -53,6 +53,10 @@ dependencies {
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))
     implementation(libs.google.firebase.auth)
+    implementation(libs.google.firebase.database)
+    // Import Glide Library for GIF
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
     // Import for Splash Screen
     implementation(libs.core.splashscreen)
 }
