@@ -24,21 +24,12 @@ import com.example.planetze.view.LoginView;
 public class ExampleInstrumentedTest {
     private LoginView loginView;
 
-
-//    @Test
-//    public void useAppContext() {
-//        // Context of the app under test.
-//        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-//        assertEquals("com.example.planetze", appContext.getPackageName());
-//    }
-
     @Test
-    public void testLoginEmptyEmail() {
-        LoginPresenter presenter = new LoginPresenterImpl(loginView);
-        presenter.validateCredentials("", "password"); // email is empty
+    public void useAppContext() {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        assertEquals("com.example.b07demosummer2024", appContext.getPackageName());
+        assertEquals("com.example.planetze", appContext.getPackageName());
 
-        verify(loginView).showProgress();
-        verify(loginView).showLoginFailure();
-        verify(loginView).hideProgress();
     }
 }

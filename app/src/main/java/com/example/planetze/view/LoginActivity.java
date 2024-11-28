@@ -19,6 +19,7 @@ import com.example.planetze.SignUp;
 import com.example.planetze.Welcome;
 import com.example.planetze.presenter.LoginPresenter;
 import com.example.planetze.presenter.LoginPresenterImpl;
+import com.example.planetze.tracker.TrackerActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -82,7 +83,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     public void showLoginSuccess() {
         Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(getApplicationContext(), Dashboard.class);
+        Intent intent = new Intent(getApplicationContext(), TrackerActivity.class);
         startActivity(intent);
         finish();
     }

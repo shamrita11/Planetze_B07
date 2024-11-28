@@ -2,16 +2,17 @@ package com.example.planetze;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.firebase.FirebaseApp;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.template;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseApp.initializeApp(this);
     }
 }
+
+

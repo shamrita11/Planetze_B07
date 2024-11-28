@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/light_gray"
+    tools:context=".HabitListActivity">
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="140dp"
+        android:layout_height="41dp"
+        android:layout_gravity="end"
+        android:alpha="0.1"
+        android:background="@drawable/planetze_logo" />
+
+    <TextView
+        android:id="@+id/textHabitTitle"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/pastel_blue"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinner_impact"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_background"
+        android:layout_marginTop="5dp"
+        android:padding="8dp"
+        android:spinnerMode="dropdown" />
+
+    <!-- RecyclerView for displaying habits -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/habitRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

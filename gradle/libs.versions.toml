@@ -1,27 +1,43 @@
 [versions]
 agp = "8.4.1"
 firebaseBom = "33.6.0"
+firebaseAuth = "23.1.0"
+cardview = "1.0.0"
+agp = "8.7.2"
+coreSplashscreen = "1.0.0-alpha02"
 firebaseBomVersion = "33.6.0"
+glide = "4.14.1"
 googleServices = "4.3.15"
 googleServicesVersion = "4.4.2"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-appcompat = "1.6.1"
-material = "1.10.0"
+appcompat = "1.7.0"
+material = "1.12.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
 googleGmsGoogleServices = "4.4.2"
 mockitoVersion = "4.8.1"
 core = "1.5.0"
+firebaseDatabase = "21.0.0"
+mpandroidchart = "v3.1.0"
 
+lifecycleLivedataKtx = "2.6.1"
+lifecycleViewmodelKtx = "2.6.1"
+materialCalendarview = "2.0.1"
+recyclerview = "1.3.2"
 [libraries]
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
+core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebase-bom-v3360 = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 google-firebase-database = { module = "com.google.firebase:firebase-database" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 google-services-v442 = { module = "com.google.gms:google-services", version.ref = "googleServicesVersion" }
+firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuth" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -33,8 +49,13 @@ mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mo
 mockito-android = { group = "org.mockito", name = "mockito-android", version.ref = "mockitoVersion"}
 mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoVersion" }
 core = { group = "androidx.test", name = "core", version.ref = "core" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 
+lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+material-calendarview = { module = "com.github.prolificinteractive:material-calendarview", version.ref = "materialCalendarview" }
+recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 google-gms-google-services = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
-

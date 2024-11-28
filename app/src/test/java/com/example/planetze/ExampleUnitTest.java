@@ -174,4 +174,5 @@ public class ExampleUnitTest {
         // Assert
 //        assertNull(loginPresenter.loginView);  // Check that the view is cleared to avoid memory leaks
     }
+
 }

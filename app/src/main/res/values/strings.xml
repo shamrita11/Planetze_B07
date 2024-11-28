@@ -1,14 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="your_habits">Your Habits!</string>
+    <string name="days_completed">Days Completed</string>
+    <string name="zero">0</string>
+    <string name="Search_Filter">Search and Filter</string>
+    <string name="Magnifying">Magnifying glass icon</string>
+    <string name="search_bar">search habit or keyword</string>
+    <string name="search_icon">search icon</string>
+
+
+    <string-array name="impacts">
+        <item>All</item>
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+    </string-array>
+
+    <!-- The following are for EcoTracker Section A -->
+    <string name="transportation">Transportation</string>
+    <string name="food">Food</string>
+    <string name="consumption">Consumption</string>
+    <string name="eco_tracker">Eco Tracker</string>
+    <string name="no_activity_logged">(No activities logged for this day.)</string>
+    <string name="no_detail">(No details available)</string>
+
+    <string-array name="transport_activity">
+        <item>Select an activity</item>
+        <item>Drive personal vehicle</item>
+        <item>Take public transportation</item>
+        <item>Cycling or walking</item>
+        <item>Flight</item>
+    </string-array>
+
+    <string-array name="transport_type">
+        <item>Select a transport type</item>
+        <item>bus</item>
+        <item>train</item>
+        <item>subway</item>
+    </string-array>
+
+    <string-array name="haul_type">
+        <item>Select the haul type</item>
+        <item>short haul</item>
+        <item>long haul</item>
+    </string-array>
+
+    <string-array name="food_activity">
+        <item>Select an activity</item>
+        <item>Meal</item>
+    </string-array>
+
+    <string-array name="food_type">
+        <item>Select the food type</item>
+        <item>beef</item>
+        <item>pork</item>
+        <item>chicken</item>
+        <item>fish</item>
+        <item>plant-based</item>
+    </string-array>
+
+    <string-array name="consumption_activity">
+        <item>Select an activity</item>
+        <item>Buy new clothes</item>
+        <item>Buy electronics</item>
+        <item>Other purchases</item>
+        <item>Energy bills</item>
+    </string-array>
+
+    <string-array name="device_type">
+        <item>Select the electronic device type</item>
+        <item>smartphone</item>
+        <item>laptop</item>
+        <item>TV</item>
+        <item>earphone</item>
+        <item>monitor</item>
+        <item>other</item>
+    <string name="app_name">Planetze</string>
+    <string name="dashboard_title">Your Dashboard!</string>
+    <string name="total_co2_emissions">Total CO2e Emissions</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+    <string name="emissions_trend">Emissions Trend</string>
+    <string name="global_average">Global Average</string>
+    <string name="world_average">World Average</string>
+    <string name="default_average">0 kg/per year</string>
+    <string name="default_kg">0 kg</string>
+    <string name="Project_title">Projects</string>
+    <string name="Eco_balance">Eco Balance</string>
+    <string name="Eco_Balance_Description">Ready to offset your CO2e emissions? Explore the projects below to find one that interests you. Each project details its impact and shows how your USD donation translates to CO2e reductions.</string>
+    <string name="TonnesInput">How many tonnes would you like to offset? (Ex. 1, 5, 7, 7.5) Note: Only use whole numbers or .5</string>
+    <string name="purchase_confirmation">Your purchase is confirmed!</string>
+    <string name="confirmation_message">Congratulations on offsetting CO₂e emissions and making a positive impact!</string>
+
+    <!-- Content Descriptions -->
+    <string name="planetze_logo_desc">Planetze Logo</string>
+    <string name="pie_chart_desc">Pie Chart Breakdown</string>
+    <string name="planetze_globe_logo_desc">PlanetZe Globe Logo</string>
+
+
+    <string-array name="time_range_array">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </string-array>
+
+    <string-array name="purchase_type">
+        <item>Select the purchase type</item>
+        <item>furniture</item>
+        <item>appliances</item>
+        <item>entertainment</item>
+        <item>personal care</item>
+        <item>pet supplies</item>
+        <item>books and stationery</item>
+        <item>other</item>
+    </string-array>
+
+    <string-array name="bill_type">
+        <item>Select the type of bill</item>
+        <item>electricity</item>
+        <item>gas</item>
+        <item>water</item>
+    </string-array>
     <string name="app_name">PlanetZe</string>
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
+    <string name="logout">Log Out</string>
+    <string name="edit_survey">Edit Survey</string>
     <string name="password">Password</string>
     <string name="full_name">Full name</string>
     <string name="email_address">Email address</string>
+    <string name="total_emission">Total CO2 Emissions</string>
     <string name="slogan">Track your footprint, change the world</string>
     <string name="create_account">Create\nAccount</string>
     <string name="welcome_back">Welcome\nBack</string>
+    <string name="my_account">My Account</string>
     <string name="conditions">By signing up, you agree to our\nPrivacy Policy and Terms of Service.</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="OR">----------------- OR -----------------</string>
+    <string name="eco_agent">Eco Agent</string>
+    <string name="eco_agent_description">Your Personal Guide to a Greener Future.</string>
+    <string name="coming_soon">COMING SOON...</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="adopt_habit">Adopt Habit</string>
+    <string name="btn_habit_list_title">Habit List</string>
+    <string name="btn_choose_category">Choose Category</string>
 </resources>
