@@ -1,6 +1,7 @@
 package com.example.planetze.model;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.AuthResult;
 
 public class LoginModelImpl implements LoginModel {
@@ -19,19 +20,26 @@ public class LoginModelImpl implements LoginModel {
             listener.onFailure("Password cannot be empty");
         }
 
+        // if the email is verified, then login
         database.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        // Successful login
+            .addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    // Successful login
+                    FirebaseUser user = database.getCurrentUser();
+                    if (user != null && user.isEmailVerified()) {
                         listener.onSuccess();
                     } else {
-                        // Failed login
-                        String errorMessage = task.getException() != null
-                                ? task.getException().getMessage()
-                                : "Authentication failed";
-                        listener.onFailure(errorMessage);
+                        database.signOut();
+                        listener.onFailure("Email not verified");
                     }
-                });
+                } else {
+                    // Failed login
+                    String errorMessage = task.getException() != null
+                            ? task.getException().getMessage()
+                            : "Authentication failed";
+                    listener.onFailure(errorMessage);
+                }
+            });
     }
 
     @Override
