@@ -1,7 +1,8 @@
 package com.example.planetze.model;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginModelImpl implements LoginModel {
     FirebaseAuth database;
@@ -22,9 +23,15 @@ public class LoginModelImpl implements LoginModel {
         // if the email is verified, then login
         database.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && database.getCurrentUser().isEmailVerified()) {
+                    if (task.isSuccessful()) {
                         // Successful login
-                        listener.onSuccess();
+                        FirebaseUser user = database.getCurrentUser();
+                        if (user != null && user.isEmailVerified()) {
+                            listener.onSuccess();
+                        } else {
+                            database.signOut();
+                            listener.onFailure("Email not verified");
+                        }
                     } else {
                         // Failed login
                         String errorMessage = task.getException() != null
@@ -37,13 +44,19 @@ public class LoginModelImpl implements LoginModel {
 
     @Override
     public void sendPasswordResetEmail(String email, OnListener listener){
-        // Send password reset email if email is in the database
+        // if the email is in db then send password reset email
+//        if (CheckEmailExistence.checkIfEmailExists(email))
         database.sendPasswordResetEmail(email)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         listener.onSuccess();
                     } else {
-                        listener.onFailure(task.getException().getMessage());
+                        Exception e = task.getException();
+                        if (e instanceof FirebaseAuthInvalidUserException) {
+                            listener.onFailure("Email not found.");
+                        } else {
+                            listener.onFailure(e.getMessage());
+                        }
                     }
                 });
     }
