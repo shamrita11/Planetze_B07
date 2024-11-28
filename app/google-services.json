@@ -8,7 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:378947947891:android:ddb279451cc5125f8d0906",
         "android_client_info": {
           "package_name": "com.example.planetze"
         }

@@ -81,4 +81,17 @@
         <item>water</item>
     </string-array>
     <!-- the resource for EcoTracker Section A ends here -->
+
+    <string name="app_name">PlanetZe</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full name</string>
+    <string name="email_address">Email address</string>
+    <string name="slogan">Track your footprint, change the world</string>
+    <string name="create_account">Create\nAccount</string>
+    <string name="welcome_back">Welcome\nBack</string>
+    <string name="conditions">By signing up, you agree to our\nPrivacy Policy and Terms of Service.</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="OR">----------------- OR -----------------</string>
 </resources>
