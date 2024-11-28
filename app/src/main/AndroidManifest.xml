@@ -8,14 +8,22 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanetZe"
         tools:targetApi="31">
+
+        <!-- Declaration for NotificationService -->
+        <service android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Declaration for NotificationReceiver -->
+        <receiver android:name=".NotificationReceiver"
+            android:enabled="true"
+            android:exported="false" />
 
         <!-- Declare WelcomeActivity and set it as the launcher -->
         <activity
@@ -32,7 +40,6 @@
             android:exported="false" />
         <activity
             android:name=".Welcome"
-            android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,15 +47,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Declaration for NotificationService -->
-        <service android:name=".NotificationService"
-            android:enabled="true"
-            android:exported="false" />
-
-        <!-- Declaration for NotificationReceiver -->
-        <receiver android:name=".NotificationReceiver"
-            android:enabled="true"
-            android:exported="false" />
         <activity
             android:name=".HabitListActivity"
             android:exported="false" />
@@ -76,7 +74,6 @@
        <activity
             android:name=".tracker.TrackerActivity"
             android:exported="false" />
-        <activity android:name=".Dashboard" android:exported="false"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

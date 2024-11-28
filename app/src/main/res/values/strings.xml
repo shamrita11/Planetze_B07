@@ -18,8 +18,6 @@
     </string-array>
 
     <!-- The following are for EcoTracker Section A -->
-    <string name="transportation">Transportation</string>
-    <string name="food">Food</string>
     <string name="consumption">Consumption</string>
     <string name="eco_tracker">Eco Tracker</string>
     <string name="no_activity_logged">(No activities logged for this day.)</string>
@@ -104,7 +102,7 @@
         <item>Daily</item>
         <item>Weekly</item>
         <item>Monthly</item>
-    <string name="app_name">B07 Demo Summer 2024</string>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="delete_item">Delete Item</string>

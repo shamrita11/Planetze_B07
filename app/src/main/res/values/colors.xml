@@ -19,14 +19,12 @@
     <color name="dark_grey">#555555</color>
     <color name="dark_blue">#373f51</color>
     <color name="dark">#1b1b1e</color>
-    <color name="cream">#F2F0EF</color>
     <color name="soft_green">#67c6c0</color>
     <color name="pale_yellow">#fcefb4</color>
     <color name="soft_coral">#f7b5b5</color>
     <!-- PlanetZe color palette -->
     <color name="light_gray">#d8dbe2</color>
     <color name="soft_blue">#a9bcd0</color>
-    <color name="teal">#009999</color>
     <color name="slate_blue">#373f51</color>
     <color name="dark_gray">#1b1b1e</color>
     <color name="teal">#009999</color>
