@@ -29,4 +29,8 @@
     <color name="teal">#009999</color>
     <color name="slate_blue">#373f51</color>
     <color name="dark_gray">#1b1b1e</color>
+    <color name="teal">#009999</color>
+    <color name="grey">#aaaaaa</color>
+    <color name="lightblue">#a9bcd0</color>
+    <color name="cream">#F2F0EF</color>
 </resources>

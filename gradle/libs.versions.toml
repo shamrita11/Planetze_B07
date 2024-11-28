@@ -1,4 +1,6 @@
 [versions]
+agp = "8.4.1"
+firebaseAuth = "23.1.0"
 cardview = "1.0.0"
 agp = "8.7.2"
 coreSplashscreen = "1.0.0-alpha02"
@@ -15,6 +17,8 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 googleGmsGoogleServices = "4.4.2"
 firebaseDatabase = "21.0.0"
+mpandroidchart = "v3.1.0"
+
 lifecycleLivedataKtx = "2.6.1"
 lifecycleViewmodelKtx = "2.6.1"
 materialCalendarview = "2.0.1"
@@ -28,6 +32,7 @@ google-firebase-auth = { module = "com.google.firebase:firebase-auth" }
 google-firebase-database = { module = "com.google.firebase:firebase-database" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 google-services-v442 = { module = "com.google.gms:google-services", version.ref = "googleServicesVersion" }
+firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuth" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -36,6 +41,8 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
+
 lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 material-calendarview = { module = "com.github.prolificinteractive:material-calendarview", version.ref = "materialCalendarview" }

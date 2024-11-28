@@ -9,7 +9,7 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
-    }
+        maven { url = uri("https://jitpack.io") } }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -17,6 +17,7 @@ dependencyResolutionManagement {
         maven("https://jitpack.io")
         google()
         mavenCentral()
+        maven ("https://jitpack.io")
     }
 }
 
