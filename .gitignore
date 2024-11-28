@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
+# contains API_key
+google-services.json

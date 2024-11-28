@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- PlanetZe color palette -->
+    <color name="light_gray">#d8dbe2</color>
+    <color name="soft_blue">#a9bcd0</color>
+    <color name="teal">#009999</color>
+    <color name="slate_blue">#373f51</color>
+    <color name="dark_gray">#1b1b1e</color>
 </resources>
