@@ -29,6 +29,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -41,7 +45,13 @@ dependencies {
     implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
+    testImplementation(libs.firebase.auth)
+    testImplementation(libs.firebase.database)
+    testImplementation(libs.core)
+//    testImplementation(libs.robolectric)
     androidTestImplementation(libs.ext.junit)
+    androidTestImplementation(libs.mockito.android)
     androidTestImplementation(libs.espresso.core)
     // Import the Firebase BoM
     implementation(platform(libs.firebase.bom))

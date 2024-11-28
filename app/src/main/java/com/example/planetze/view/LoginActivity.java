@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.planetze.Dashboard;
 import com.example.planetze.R;
+import com.example.planetze.SignUp;
 import com.example.planetze.Welcome;
 import com.example.planetze.presenter.LoginPresenter;
 import com.example.planetze.presenter.LoginPresenterImpl;
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private EditText editTextUsername;
     private EditText editTextPassword;
-    private Button buttonLogin, buttonBack;
+    private Button buttonLogin, buttonBack, buttonSignUp;
     private TextView forgotPasswordLink;
     private ProgressBar progressBar;
     private ImageView eyeIcon;
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         editTextPassword = findViewById(R.id.password_input);
         buttonLogin = findViewById(R.id.login_button);
         buttonBack = findViewById(R.id.btn_back);
+        buttonSignUp = findViewById(R.id.btn_signup);
         forgotPasswordLink = findViewById(R.id.forgot_password);
         progressBar = findViewById(R.id.progressBar);
         eyeIcon = findViewById(R.id.eyeIcon);
@@ -52,6 +54,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         buttonBack.setOnClickListener(v -> {
             loginPresenter.onBackClicked();
+        });
+
+        buttonSignUp.setOnClickListener(v -> {
+            loginPresenter.onSignUpClicked();
         });
 
         forgotPasswordLink.setOnClickListener(v -> {
@@ -83,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void showLoginFailure() {
-        Toast.makeText(this, "Login Failed. Check credentials.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
 
         hideProgress();
     }
@@ -91,6 +97,13 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void backClicked() {
         Intent intent = new Intent(getApplicationContext(), Welcome.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void signUpClicked() {
+        Intent intent = new Intent(getApplicationContext(), SignUp.class);
         startActivity(intent);
         finish();
     }

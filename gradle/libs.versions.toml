@@ -1,6 +1,6 @@
 [versions]
 agp = "8.4.1"
-firebaseBom = "33.5.1"
+firebaseBom = "33.6.0"
 firebaseBomVersion = "33.6.0"
 googleServices = "4.3.15"
 googleServicesVersion = "4.4.2"
@@ -13,8 +13,10 @@ activity = "1.8.0"
 constraintlayout = "2.1.4"
 googleGmsGoogleServices = "4.4.2"
 firebaseDatabase = "21.0.0"
-mockitoVersion = "3.12.4"
+mockitoVersion = "4.8.1"
 firebaseAuth = "23.1.0"
+robolectricVersion = "4.10"
+core = "1.5.0"
 
 [libraries]
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
@@ -32,7 +34,11 @@ activity = { group = "androidx.activity", name = "activity", version.ref = "acti
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoVersion" }
+mockito-android = { group = "org.mockito", name = "mockito-android", version.ref = "mockitoVersion"}
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoVersion" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+robolectric = { group = "org.robolectric", name = "robolectric", version = "robolectricVersion"}
+core = { group = "androidx.test", name = "core", version.ref = "core" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
