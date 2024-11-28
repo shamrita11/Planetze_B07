@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.b07demosummer2024"
+    namespace = "com.example.planetze"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.b07demosummer2024"
+        applicationId = "com.example.planetze"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -36,7 +36,14 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.firebase.database)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    // Import the Firebase BoM
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.google.firebase.auth)
+    implementation(libs.google.firebase.database)
+    // Import for Splash Screen
+    implementation(libs.core.splashscreen)
 }
