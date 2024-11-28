@@ -49,44 +49,16 @@
         <activity
             android:name=".HabitListActivity"
             android:exported="false" />
+      
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".EcoHub"
+            android:exported="false"/>
+      
         <activity
             android:name=".AdoptedHabitsActivity" />
-
-        <activity
-            android:name=".EcoHabitActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".SignUp"
-            android:exported="false" />
-        <activity
-            android:name=".view.LoginActivity"
-            android:exported="false" />
-       <activity
-            android:name=".tracker.TrackerActivity"
-            android:exported="false" />
-        <activity android:name=".Dashboard" android:exported="false"/>
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
-    </application>
-=======
->>>>>>> origin/develop
-
-        <!-- Declaration for NotificationService -->
-        <service android:name=".NotificationService"
-            android:enabled="true"
-            android:exported="false" />
-
-        <!-- Declaration for NotificationReceiver -->
-        <receiver android:name=".NotificationReceiver"
-            android:enabled="true"
-            android:exported="false" />
-        <activity
-            android:name=".HabitListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AdoptedHabitsActivity"/>
 
         <activity
             android:name=".EcoHabitActivity"

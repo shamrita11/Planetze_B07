@@ -76,7 +76,7 @@
         <item>earphone</item>
         <item>monitor</item>
         <item>other</item>
-    <string name="app_name">Planetze</string>
+    </string-array>  
     <string name="dashboard_title">Your Dashboard!</string>
     <string name="total_co2_emissions">Total CO2e Emissions</string>
     <string name="week">Week</string>
@@ -139,6 +139,21 @@
     <string name="conditions">By signing up, you agree to our\nPrivacy Policy and Terms of Service.</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="OR">----------------- OR -----------------</string>
+    <string name="learn_more">Learn More</string>
+    <string name="eco_hub">Eco Hub</string>
+    <string name="about_eco_hub">Feel empowered with knowledge, trends, and tools for sustainable living!</string>
+    <string name="books">Books</string>
+    <string name="articles">Articles</string>
+    <string name="movies">Movies</string>
+    <string name="videos">Videos</string>
+    <string name="podcasts">Podcasts</string>
+    <string name="market_trends">Market Trends</string>
+    <string name="samsung_title">Samsung Extra Wide Bottom Mount Freezer</string>
+    <string name="samsung_description">The Samsung RB6000D refrigerator is designed for energy efficiency, featuring a Digital Inverter Compressor. This technology adjusts the compressor speed based on cooling demand, reducing energy consumption and minimizing wear and tear.</string>
+    <string name="encircled_title"><![CDATA[Encircled | Ethical & Sustainable Women\'s Clothing]]></string>
+    <string name="encircled_description"><![CDATA[Canadian & female-founded sustainable clothing brand dedicated to ethical clothing that is comfortable, travel-friendly & made in Canada.]]></string>
+    <string name="kasa_title">TP-Link Kasa Smart Wi-Fi Plug</string>
+    <string name="kasa_description">An energy-efficient smart plug designed to control connected devices remotely through the Kasa Smart app. It helps reduce energy consumption by allowing users to schedule on/off times for appliances, monitor energy usage, and optimize power settings.</string>
     <string name="eco_agent">Eco Agent</string>
     <string name="eco_agent_description">Your Personal Guide to a Greener Future.</string>
     <string name="coming_soon">COMING SOON...</string>
