@@ -6,6 +6,7 @@ import com.example.planetze.presenter.LoginPresenterImpl;
 import com.example.planetze.view.LoginView;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -14,8 +15,15 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import org.junit.Test;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.verify;
 
 
 /**
@@ -23,7 +31,7 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-
+@RunWith(MockitoJUnitRunner.class)
 public class ExampleUnitTest {
 
     @Mock
@@ -38,7 +46,7 @@ public class ExampleUnitTest {
     public void setUp() {
 
 //        FirebaseApp.initializeApp(Mockito.mock(Context.class));  // Initialize Firebase App
-        MockitoAnnotations.openMocks(this);  // Initialize mocks
+        MockitoAnnotations.initMocks(this);  // Initialize mocks
         loginPresenter = new LoginPresenterImpl(loginView);  // Create the presenter
     }
 

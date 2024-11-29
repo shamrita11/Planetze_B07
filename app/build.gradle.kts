@@ -46,6 +46,8 @@ dependencies {
     implementation(libs.recyclerview)
     implementation(libs.material.calendarview)
     testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.init)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     // Import the Firebase BoM

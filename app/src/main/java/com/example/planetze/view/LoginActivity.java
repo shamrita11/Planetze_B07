@@ -54,11 +54,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         });
 
         buttonBack.setOnClickListener(v -> {
-            loginPresenter.onBackClicked();
+            backClicked();
         });
 
         buttonSignUp.setOnClickListener(v -> {
-            loginPresenter.onSignUpClicked();
+            signUpClicked();
         });
 
         forgotPasswordLink.setOnClickListener(v -> {
@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             loginPresenter.onForgotPasswordClicked(email);
         });
 
-        eyeIcon.setOnClickListener(v -> loginPresenter.onEyeIconClicked());
+        eyeIcon.setOnClickListener(v -> eyeIconClicked());
     }
 
     @Override
