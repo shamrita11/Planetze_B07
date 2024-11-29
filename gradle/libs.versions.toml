@@ -18,7 +18,8 @@ coreSplashscreen = "1.0.0"
 firebaseBom = "33.6.0"
 googleServices = "4.4.2"
 mockVersion = "4.11.0"
-mockInitVersion = "4.11.0"
+mockInlineVersion = "4.11.0"
+robolectric = "4.10"
 
 lifecycleLivedataKtx = "2.6.1"
 lifecycleViewmodelKtx = "2.6.1"
@@ -36,8 +37,9 @@ google-services = { module = "com.google.gms:google-services", version.ref = "go
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-mockito-init = { group = "org.mockito", name = "mockito-init", version.ref = "mockInitVersion" }
+mockito-inline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockInlineVersion" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockVersion" }
+#robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric"}
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }

@@ -61,6 +61,12 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
                 return;
             }
 
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                loginView.hideProgress();
+                loginView.showUsernameError();
+                return;
+            }
+
             loginModel.sendPasswordResetEmail(email, new LoginModel.OnListener() {
                 @Override
                 public void onSuccess() {
