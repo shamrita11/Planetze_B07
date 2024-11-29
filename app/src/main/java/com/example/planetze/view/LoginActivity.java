@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.planetze.Dashboard;
 import com.example.planetze.R;
+import com.example.planetze.SignUp;
 import com.example.planetze.Welcome;
 import com.example.planetze.presenter.LoginPresenter;
 import com.example.planetze.presenter.LoginPresenterImpl;
@@ -24,7 +25,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private EditText editTextUsername;
     private EditText editTextPassword;
-    private Button buttonLogin, buttonBack;
+    private Button buttonLogin, buttonBack, buttonSignUp;
     private TextView forgotPasswordLink;
     private ProgressBar progressBar;
     private ImageView eyeIcon;
@@ -38,6 +39,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         editTextUsername = findViewById(R.id.email_input);
         editTextPassword = findViewById(R.id.password_input);
         buttonLogin = findViewById(R.id.login_button);
+        buttonSignUp = findViewById(R.id.btn_signup);
         buttonBack = findViewById(R.id.btn_back);
         forgotPasswordLink = findViewById(R.id.forgot_password);
         progressBar = findViewById(R.id.progressBar);
@@ -49,6 +51,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             String username = editTextUsername.getText().toString();
             String password = editTextPassword.getText().toString();
             loginPresenter.validateCredentials(username, password);
+        });
+
+        buttonSignUp.setOnClickListener(v -> {
+            loginPresenter.navigateSignUp();
         });
 
         buttonBack.setOnClickListener(v -> {
@@ -92,6 +98,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void backClicked() {
         Intent intent = new Intent(getApplicationContext(), Welcome.class);
+        startActivity(intent);
+        finish();
+    }
+    @Override
+    public void navigateSignUp() {
+        Intent intent = new Intent(getApplicationContext(), SignUp.class);
         startActivity(intent);
         finish();
     }

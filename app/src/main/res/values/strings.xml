@@ -517,9 +517,12 @@
     <string name="eco_agent_description">Your Personal Guide to a Greener Future.</string>
     <string name="coming_soon">COMING SOON...</string>
     <string name="reset_password">Reset Password</string>
+    <string name="eco_habit">Eco Habit</string>
     <string name="adopt_habit">Adopt Habit</string>
-    <string name="btn_habit_list_title">Habit List</string>
+    <string name="adopted_habit">Adopted Habits</string>
+    <string name="habit_list_title">Eco-Friendly Habits</string>
     <string name="btn_choose_category">Choose Category</string>
+    <string name="habit_message"> Eco Habit feature provides users with eco-friendly habits they can adopt to reduce their carbon footprint</string>
     <string-array name="fish_seafood_eating_frequency">
         <item>--select--</item>
         <item>Daily</item>

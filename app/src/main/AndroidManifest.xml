@@ -25,7 +25,6 @@
             android:enabled="true"
             android:exported="false" />
 
-        <!-- Declare WelcomeActivity and set it as the launcher -->
         <activity
             android:name=".EcoAgent"
             android:exported="false" />
@@ -50,12 +49,9 @@
         <activity
             android:name=".HabitListActivity"
             android:exported="false" />
-      
+
         <activity
-            android:name=".MainActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".EcoHub"
+            android:name=".EcoHubActivity"
             android:exported="false"/>
       
         <activity
@@ -77,6 +73,16 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <activity
+            android:name=".EcoGaugeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".EcoBalanceActivity"
+            android:exported="true" />
+        <activity android:name=".PurchaseProjectActivity" />
+        <activity
+            android:name=".PurchaseConfirmationActivity"
+            android:exported="true" />
 
         <!-- Declare CarbonFootprintQuestionnaireActivity -->
         <activity

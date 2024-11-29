@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class QuestionnaireWelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +19,7 @@ public class WelcomeActivity extends AppCompatActivity {
         // Set up click listener for the button
         getStartedButton.setOnClickListener(v -> {
             // Navigate to the CarbonFootprintQuestionnaireActivity
-            Intent intent = new Intent(WelcomeActivity.this, CarbonFootprintQuestionnaireActivity.class);
+            Intent intent = new Intent(QuestionnaireWelcomeActivity.this, CarbonFootprintQuestionnaireActivity.class);
             startActivity(intent);
         });
     }

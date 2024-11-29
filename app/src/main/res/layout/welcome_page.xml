@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="#D8DBE2"
-    tools:context=".WelcomeActivity">
+    tools:context=".QuestionnaireWelcomeActivity">
 
     <!-- Logo -->
     <ImageView

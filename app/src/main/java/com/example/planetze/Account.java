@@ -3,6 +3,7 @@ package com.example.planetze;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,7 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Account extends AppCompatActivity {
+public class Account extends BaseActivity {
 
     private Button buttonLogOut, buttonEditSurvey, buttonChangePassword;
     private FirebaseAuth mAuth;
@@ -39,10 +40,14 @@ public class Account extends AppCompatActivity {
     private String uid;
 
     @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_account; // Ensure this matches your XML layout file name
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_account);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         db = FirebaseDatabase.getInstance();
@@ -61,16 +66,24 @@ public class Account extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = snapshot.child(uid).child("name").getValue(String.class);
                 String email = snapshot.child(uid).child("email").getValue(String.class);
-                double carbon = snapshot.child(uid).child("TotalC02Emissions").getValue(Double.class);
+
+                // Safely handle the retrieval of TotalC02Emissions with a default value
+                Double carbonValue = snapshot.child(uid).child("TotalC02Emissions").getValue(Double.class);
+                double carbon = (carbonValue != null) ? carbonValue : 0.0;
+
+                // Format carbon emissions to a string with 2 decimal places
                 String carbonString = String.format("%.2f", carbon);
-                tvName.setText(name);
-                tvEmail.setText(email);
+
+                // Set the retrieved data to the respective TextViews
+                tvName.setText(name != null ? name : "No name available");
+                tvEmail.setText(email != null ? email : "No email available");
                 tvTotalCarbon.setText(carbonString);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Account.this, "Failed to retrieve data.", Toast.LENGTH_LONG).show();
+                // Handle the error if the database read fails
+                Log.e("Firebase", "Error reading data: " + error.getMessage());
             }
         });
 
