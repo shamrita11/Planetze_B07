@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.R;
+import com.example.planetze.UserSession;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.database.DatabaseReference;
@@ -333,11 +334,12 @@ public class LogTransportationFragment extends Fragment {
         // Log data into database
         FirebaseManager manager = new FirebaseManager(getContext());
         List<Task<Void>> tasks = new ArrayList<>();
-        String userId = "user1"; // switch to actual id
+        // String userId = "user1"; // switch to actual id
         // String dateKey = GetDate.getDate();
 
         // user1 > daily_emission > 2024-11-19 > transportation
-        String commonPath = "users/" + userId + "/daily_emission/" + dateKey + "/transportation/";
+        String commonPath = "users/" + UserSession.userId + "/daily_emission/" + dateKey
+                + "/transportation/";
 
         // Log data for driving personal vehicle
         // ... transportation > "drive personal vehicle" > "distance driven": 1.5

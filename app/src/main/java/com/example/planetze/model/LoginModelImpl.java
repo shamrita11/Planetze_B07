@@ -1,5 +1,6 @@
 package com.example.planetze.model;
 
+import com.example.planetze.UserSession;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.AuthResult;
@@ -27,6 +28,7 @@ public class LoginModelImpl implements LoginModel {
                     // Successful login
                     FirebaseUser user = database.getCurrentUser();
                     if (user != null && user.isEmailVerified()) {
+                        UserSession.setUserId(user.getUid());
                         listener.onSuccess();
                     } else {
                         database.signOut();

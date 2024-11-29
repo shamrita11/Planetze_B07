@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrackerFragment extends Fragment {
-
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
 

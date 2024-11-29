@@ -90,6 +90,7 @@ public class Account extends BaseActivity {
         buttonLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UserSession.setUserId(null);
                 mAuth.signOut();
                 Intent intent = new Intent(getApplicationContext(), Welcome.class);
                 startActivity(intent);

@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.planetze.R;
+import com.example.planetze.UserSession;
 import com.google.android.material.datepicker.MaterialCalendar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,7 +53,7 @@ public class CalendarTabFragment extends Fragment {
     Button buttonTransportation, buttonFood, buttonConsumption;
     ActivityListAdapter adapter;
     private String date;
-    String userId;
+    // String userId;
     private List<ActivityItem> activityItems = new ArrayList<>();
 
     @Override
@@ -76,7 +77,7 @@ public class CalendarTabFragment extends Fragment {
         buttonConsumption = view.findViewById(R.id.buttonConsumption);
         materialCalendarView = view.findViewById(R.id.materialCalendarView);
         RecyclerView recyclerView = view.findViewById(R.id.activity_list);
-        userId = "user1"; // switch to actual user id
+        // userId = "user1"; // switch to actual user id
         // render calendar and date selection
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 //            calendarView.setDateTextAppearance(R.style.CalendarDayTextStyle);
@@ -127,7 +128,7 @@ public class CalendarTabFragment extends Fragment {
             Toast.makeText(getContext(), "Deleting Activity...", Toast.LENGTH_SHORT).show();
 
             DatabaseReference detailRef = FirebaseDatabase.getInstance().getReference("users")
-                    .child(userId).child("daily_emission").child(date)
+                    .child(UserSession.userId).child("daily_emission").child(date)
                     .child(activityType).child(activityKey).child(detailKey);
 
             detailRef.removeValue().addOnCompleteListener(task -> {
@@ -188,7 +189,7 @@ public class CalendarTabFragment extends Fragment {
         activityItems.clear();
 
         DatabaseReference commonRef = FirebaseDatabase.getInstance().getReference("users")
-                .child(userId);
+                .child(UserSession.userId);
         DatabaseReference dailyRef = commonRef.child("daily_emission").child(date);
 
         dailyRef.get().addOnCompleteListener(task -> {
@@ -297,72 +298,4 @@ public class CalendarTabFragment extends Fragment {
         });
 
     }
-
-//    // TODO: see if this works (understand the code
-//    private void showDeleteActivityDialog(String dateKey, String userId, TextView activityList
-//            , Button buttonDeleteActivity) {
-//        DatabaseReference dailyRef = FirebaseDatabase.getInstance().getReference("users")
-//                .child(userId).child("daily_emission").child(dateKey);
-//
-//        dailyRef.child("emission").get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful() && task.getResult().exists()) {
-//                DataSnapshot emissionSnapshot = task.getResult();
-//                List<String> activities = new ArrayList<>();
-//                List<String> activityKeys = new ArrayList<>();
-//
-//                // Fetch activity names and keys
-//                for (DataSnapshot child : emissionSnapshot.getChildren()) {
-//                    String activityKey = child.getKey();
-//                    double co2e = child.getValue(Double.class);
-//                    activities.add(activityKey.replace("_", " ") + " - " +
-//                            String.format(Locale.getDefault(), "%.2f", co2e) + " kg CO2e");
-//                    activityKeys.add(activityKey);
-//                }
-//
-//                // Show dialog with options
-//                new AlertDialog.Builder(getContext())
-//                        .setTitle("Select Activity to Delete")
-//                        .setItems(activities.toArray(new String[0]), (dialog, which) -> {
-//                            String selectedActivityKey = activityKeys.get(which);
-//                            deleteActivity(dateKey, userId, selectedActivityKey, activityList, buttonDeleteActivity);
-//                        })
-//                        .setNegativeButton("Cancel", null)
-//                        .show();
-//            } else {
-//                Toast.makeText(getContext(), "No activities to delete for this date.", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-//
-//    // TODO: understand this
-//    private void deleteActivity(String dateKey, String userId, String activityKey
-//            , TextView activityList, Button buttonDeleteActivity) {
-//        DatabaseReference dailyRef = FirebaseDatabase.getInstance().getReference("users")
-//                .child(userId).child("daily_emission").child(dateKey);
-//
-//        // Remove the activity node and emission entry
-//        dailyRef.child("transportation").child(activityKey).removeValue();
-//        dailyRef.child("consumption").child(activityKey).removeValue();
-//        dailyRef.child("food").child(activityKey).removeValue();
-//        dailyRef.child("emission").child(activityKey).removeValue()
-//                .addOnCompleteListener(task -> {
-//                    if (task.isSuccessful()) {
-//                        Toast.makeText(getContext(), "Activity deleted successfully.", Toast.LENGTH_SHORT).show();
-//
-//                        // Recalculate emissions
-//                        if (processor == null) {
-//                            processor = new DailyEmissionProcessor(getContext(), dateKey, () -> {
-//                                processor.mainUploader();
-//                                updateActivityList(dateKey, userId, activityList, buttonDeleteActivity); // Update UI
-//                            });
-//                        } else {
-//                            processor.mainUploader();
-//                            updateActivityList(dateKey, userId, activityList, buttonDeleteActivity); // Update UI
-//                        }
-//                    } else {
-//                        Toast.makeText(getContext(), "Failed to delete activity.", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//    }
-
 }

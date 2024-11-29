@@ -50,14 +50,4 @@ public class TrackerActivity extends BaseActivity implements TrackerTabFragment.
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
-    @Override
-    public void onBackPressed() {
-        // Handle back press: if there’s more than one fragment in the stack, pop the back stack
-        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed(); // Otherwise, follow the default behavior
-        }
-    }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.widget.Toast;
 
+import com.example.planetze.UserSession;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -17,7 +18,7 @@ public class DailyEmissionProcessor {
     // database
     private FirebaseDatabase db;
     private DatabaseReference myRef;
-    String userId;
+    // String userId;
     String dateKey;
     String monthKey;
     Context context;
@@ -49,10 +50,8 @@ public class DailyEmissionProcessor {
     public DailyEmissionProcessor(Context context, String dateKey, DataLoadListener listener) {
         // initialize the database reference
         db = FirebaseDatabase.getInstance();
-        userId = "user1"; // change to get actual user id
-        myRef = db.getReference("users").child(userId);
-        // dateKey = "2024-11-19";
-        // dateKey = GetDate.getDate();
+        // userId = "user1"; // change to get actual user id
+        myRef = db.getReference("users").child(UserSession.userId);
         this.dateKey = dateKey;
         monthKey = dateKey.substring(0, 7);
         this.context = context;

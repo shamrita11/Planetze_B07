@@ -30,6 +30,8 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Objects;
+
 public class SignUp extends AppCompatActivity {
 
     private EditText editTextName, editTextEmail, editTextPassword;
@@ -124,7 +126,9 @@ public class SignUp extends AppCompatActivity {
                             // Sign in successful
                             // write user's full name & email to db
                             User user = new User(name, email, false);
-                            String keyID = ref.push().getKey();
+                            // TODO: verify if this works
+                            // String keyID = ref.push().getKey();
+                            String keyID = Objects.requireNonNull(task.getResult().getUser()).getUid();
                             ref.child(keyID).setValue(user);
                             // send verification email
                             mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {

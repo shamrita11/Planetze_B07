@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.R;
+import com.example.planetze.UserSession;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.database.DataSnapshot;
@@ -358,11 +359,12 @@ public class LogConsumptionFragment extends Fragment {
         // log data into database
         FirebaseManager manager = new FirebaseManager(getContext());
         List<Task<Void>> tasks = new ArrayList<>();
-        String userId = "user1";
+        // String userId = "user1";
         // String dateKey = GetDate.getDate();
 
         // user1 > daily_emission > 2024-11-19 > consumption > consumptionActivity
-        String commonPath = "users/" + userId + "/daily_emission/" + dateKey + "/consumption/";
+        String commonPath = "users/" + UserSession.userId + "/daily_emission/" + dateKey
+                + "/consumption/";
 
         // ... consumption > "buy_new_clothes" > "numCloth": 1
         if(consumeActivity.equals("buy new clothes")) {
@@ -388,7 +390,7 @@ public class LogConsumptionFragment extends Fragment {
         //                                    > "electricity": 165.2
         if(consumeActivity.equals("energy bills")) {
             String month = dateKey.substring(0, 7);
-            String billPath = "users/" + userId + "/bill/" + month + "/" + billType;
+            String billPath = "users/" + UserSession.userId + "/bill/" + month + "/" + billType;
             tasks.add(manager.updateNode(billPath, bill, isIncrement));
 
             if(billType.equals("electricity")) {
@@ -396,7 +398,7 @@ public class LogConsumptionFragment extends Fragment {
                 // for electricity bill, we made some assumptions for daily emission calculation
                 // See DailyEmissionProcessor.java for more info
                 // TODO: change to correct path
-                DatabaseReference billRangeRef = db.getReference("users").child(userId)
+                DatabaseReference billRangeRef = db.getReference("users").child(UserSession.userId)
                         .child("questionnaire_responses").child("consumption")
                         .child("2").child("answer");
                 billRangeRef.get().addOnCompleteListener(task -> {
