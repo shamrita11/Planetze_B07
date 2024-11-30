@@ -11,7 +11,7 @@ public class QuestionnaireWelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.welcome_page); // Reference the welcome_page.xml
+        setContentView(R.layout.questionnaire_welcome_page); // Reference the welcome_page.xml
 
         // Link the "Get Started" button
         Button getStartedButton = findViewById(R.id.get_started_button);

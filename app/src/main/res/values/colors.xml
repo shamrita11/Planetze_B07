@@ -4,31 +4,29 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="dark_teal">#0c9a9a</color>
-
     <color name="light_teal">#0c9a9a</color>
 
+    <color name="light_gray">#d8dbe2</color>
+    <color name="soft_blue">#a9bcd0</color>
+    <color name="light_grey">#d8dbe2</color>
+    <color name="grey_blue">#a9bcd0</color>
+    <color name="lightblue">#a9bcd0</color>
+    <color name="almost_black">#373f51</color>
+    <color name="slate_blue">#373f51</color>
+    <color name="dark_gray">#1b1b1e</color>
+    <color name="dark">#1b1b1e</color>
     <color name="lighter_teal">#ddf2f5</color>
-
     <color name="almost_white">#f4f5f7</color>
     <color name="high_contrast_teal">#069494</color>
     <color name="pastel_blue">#a9bcd0</color>
-    <color name="almost_black">#373f51</color>
     <color name="dark_green">#2d4848</color>
-    <color name="light_grey">#d8dbe2</color>
-    <color name="grey_blue">#a9bcd0</color>
     <color name="dark_grey">#555555</color>
     <color name="dark_blue">#373f51</color>
-    <color name="dark">#1b1b1e</color>
     <color name="soft_green">#67c6c0</color>
     <color name="pale_yellow">#fcefb4</color>
     <color name="soft_coral">#f7b5b5</color>
     <!-- PlanetZe color palette -->
-    <color name="light_gray">#d8dbe2</color>
-    <color name="soft_blue">#a9bcd0</color>
-    <color name="slate_blue">#373f51</color>
-    <color name="dark_gray">#1b1b1e</color>
     <color name="teal">#009999</color>
     <color name="grey">#aaaaaa</color>
-    <color name="lightblue">#a9bcd0</color>
     <color name="cream">#F2F0EF</color>
 </resources>

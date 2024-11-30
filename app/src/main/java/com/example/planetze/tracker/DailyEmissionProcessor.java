@@ -50,7 +50,7 @@ public class DailyEmissionProcessor {
     public DailyEmissionProcessor(Context context, String dateKey, DataLoadListener listener) {
         // initialize the database reference
         db = FirebaseDatabase.getInstance();
-        // userId = "user1"; // change to get actual user id
+        //get actual user id
         myRef = db.getReference("users").child(UserSession.userId);
         this.dateKey = dateKey;
         monthKey = dateKey.substring(0, 7);

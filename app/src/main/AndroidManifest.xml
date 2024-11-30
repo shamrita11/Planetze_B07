@@ -24,19 +24,7 @@
         <receiver android:name=".NotificationReceiver"
             android:enabled="true"
             android:exported="false" />
-
-        <activity
-            android:name=".EcoAgent"
-            android:exported="false" />
-        <activity
-            android:name=".EditSurvey"
-            android:exported="false" />
-        <activity
-            android:name=".Account"
-            android:exported="false" />
-        <activity
-            android:name=".Dashboard"
-            android:exported="false" />
+        <!-- Launcher Activity -->
         <activity
             android:name=".Welcome"
             android:exported="true">
@@ -46,21 +34,28 @@
             </intent-filter>
         </activity>
 
+        <!-- Other Activities -->
+
+        <activity
+            android:name=".EcoAgent"
+            android:exported="false" />
+        <activity
+            android:name=".Account"
+            android:exported="false" />
+        <activity
+            android:name=".Dashboard"
+            android:exported="false" />
         <activity
             android:name=".HabitListActivity"
             android:exported="false" />
-
         <activity
             android:name=".EcoHubActivity"
             android:exported="false"/>
-      
         <activity
             android:name=".AdoptedHabitsActivity" />
-
         <activity
             android:name=".EcoHabitActivity"
             android:exported="false" />
-
         <activity
             android:name=".SignUp"
             android:exported="false" />
@@ -70,9 +65,6 @@
        <activity
             android:name=".tracker.TrackerActivity"
             android:exported="false" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
         <activity
             android:name=".EcoGaugeActivity"
             android:exported="true" />
@@ -83,10 +75,16 @@
         <activity
             android:name=".PurchaseConfirmationActivity"
             android:exported="true" />
-
-        <!-- Declare CarbonFootprintQuestionnaireActivity -->
         <activity
             android:name=".CarbonFootprintQuestionnaireActivity"
             android:exported="true" />
+        <activity
+            android:name=".QuestionnaireWelcomeActivity"
+            android:exported="true" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
     </application>
 </manifest>

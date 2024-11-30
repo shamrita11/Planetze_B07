@@ -10,13 +10,13 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="10dp">
 
-    <!-- Logo Image Planetze -->
+
     <ImageView
         android:id="@+id/backgroundLogo"
         android:layout_width="119dp"
         android:layout_height="40dp"
-        android:layout_marginTop="50dp"
-        android:contentDescription="PlanetZe Logo"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/planetze_logo_desc"
         android:scaleType="centerInside"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- My Account Text -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,21 +34,20 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.089"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/accountinfo"
-        android:layout_width="370dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="180dp"
+        android:layout_width="373dp"
+        android:layout_height="469dp"
+        android:layout_marginTop="164dp"
         android:background="@drawable/rounded_corner_background"
         android:orientation="horizontal"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -76,10 +74,9 @@
             <TextView
                 android:id="@+id/userName"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@drawable/rounded_info_field"
                 android:fontFamily="@font/inter"
-                android:text="John Doe"
                 android:textColor="@color/dark_gray"
                 android:textSize="15sp" />
 
@@ -97,10 +94,9 @@
             <TextView
                 android:id="@+id/userEmail"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:background="@drawable/rounded_info_field"
                 android:fontFamily="@font/inter"
-                android:text="john.doe@example.com"
                 android:textColor="@color/dark_gray"
                 android:textSize="15sp" />
 
@@ -151,16 +147,52 @@
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 
-            <!-- User CO2e Field -->
             <TextView
                 android:id="@+id/userTotalCarbon"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:background="@drawable/rounded_info_field"
                 android:fontFamily="@font/inter"
-                android:text="100"
                 android:textColor="@color/dark_gray"
-                android:textSize="15sp" />
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/userTotalCarbonFood"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:background="@drawable/rounded_info_field"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/dark_gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/userTotalCarbonTransportation"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:background="@drawable/rounded_info_field"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/dark_gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/userTotalCarbonConsumption"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:background="@drawable/rounded_info_field"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/dark_gray"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/userTotalCarbonHousing"
+                android:layout_width="300dp"
+                android:layout_height="35dp"
+                android:background="@drawable/rounded_info_field"
+                android:fontFamily="@font/inter"
+                android:textColor="@color/dark_gray"
+                android:textSize="12sp" />
+
+
         </LinearLayout>
     </LinearLayout>
 
@@ -177,13 +209,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.12">
 
-        <!-- Circle Background -->
+        <!-- User Icon -->
         <ImageView
             android:layout_width="106dp"
             android:layout_height="106dp"
             android:src="@drawable/circle_background" />
 
-        <!-- User Icon -->
         <ImageView
             android:layout_width="90dp"
             android:layout_height="90dp"
@@ -191,12 +222,6 @@
             android:src="@drawable/ic_user" />
 
     </RelativeLayout>
-
-    <!-- Log Out Button -->
-
-    <!-- Edit Survey Button -->
-
-    <!-- Navigation Bar -->
 
     <Button
         android:id="@+id/btn_editsurvey"
@@ -216,7 +241,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
+        app:layout_constraintVertical_bias="0.82" />
 
     <Button
         android:id="@+id/btn_logout"
@@ -236,7 +261,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintVertical_bias="0.905" />
 
     <include
         android:id="@+id/footer"

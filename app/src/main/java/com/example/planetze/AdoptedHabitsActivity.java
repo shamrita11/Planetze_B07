@@ -20,12 +20,21 @@ public class AdoptedHabitsActivity extends AppCompatActivity {
     private RecyclerView adoptedHabitsRecyclerView;
     private AdoptedHabitsAdapter adoptedHabitsAdapter;
     private List<AdoptedHabit> adoptedHabitsList;
-    private String userId = "user1";
+    private String userId; // Use dynamic user ID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adopted_habits);
+
+        // Get the current user ID from UserSession
+        userId = UserSession.userId;
+
+        if (userId == null || userId.isEmpty()) {
+            Toast.makeText(this, "User not logged in. Please log in.", Toast.LENGTH_SHORT).show();
+            finish(); // Exit the activity if the user is not logged in
+            return;
+        }
 
         // Initialize Firebase
         database = FirebaseDatabase.getInstance();
@@ -50,7 +59,7 @@ public class AdoptedHabitsActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     // Iterate over categories
                     for (DataSnapshot categorySnapshot : dataSnapshot.getChildren()) {
-                        String category = categorySnapshot.getKey();  // Category name
+                        String category = categorySnapshot.getKey(); // Category name
                         for (DataSnapshot habitSnapshot : categorySnapshot.getChildren()) {
                             // For each habit, retrieve the habit name and daysCompleted
                             String habit = habitSnapshot.child("habit").getValue(String.class);
