@@ -31,13 +31,22 @@ public class HabitListActivity extends AppCompatActivity {
     private List<String> habits;
     private List<String> filteredHabits;
     private String category;
-    private String userId = "user1";
+    private String userId; // Remove hardcoded value
     private String selectedImpact = ""; // To hold the selected impact
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habit_list);
+
+        // Retrieve the userId from UserSession
+        userId = UserSession.userId;
+        if (userId == null || userId.isEmpty()) {
+            Log.e("HabitListActivity", "User ID is null or empty. Please log in again.");
+            Toast.makeText(this, "User not logged in. Please log in again.", Toast.LENGTH_SHORT).show();
+            finish(); // Exit activity if user is not logged in
+            return;
+        }
 
         Spinner spinner = findViewById(R.id.spinner_impact);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(

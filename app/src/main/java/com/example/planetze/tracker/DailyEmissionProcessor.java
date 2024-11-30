@@ -545,7 +545,7 @@ public class DailyEmissionProcessor {
         // Store in database
         DatabaseReference walkRef = myRef.child("daily_emission").child(dateKey)
                 .child("emission").child("cycling_or_walking");
-        flightRef.setValue(0.0);
+        walkRef.setValue(0.0);
 
         // Store in database
         DatabaseReference totalRef = myRef.child("daily_emission").child(dateKey)

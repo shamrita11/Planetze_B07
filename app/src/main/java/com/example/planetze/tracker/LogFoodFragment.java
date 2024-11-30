@@ -110,6 +110,8 @@ public class LogFoodFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addItem();
+                editTextNumServing.setText("");
+                spinnerFoodType.setSelection(0);
             }
         });
 
@@ -134,6 +136,11 @@ public class LogFoodFragment extends Fragment {
             // if not empty, convert it to a int
             try {
                 numServing = Integer.parseInt(numServingStr);
+                if (numServing < 0) {
+                    Toast.makeText(getContext(), "Number of servings cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid number of servings",
                         Toast.LENGTH_SHORT).show();

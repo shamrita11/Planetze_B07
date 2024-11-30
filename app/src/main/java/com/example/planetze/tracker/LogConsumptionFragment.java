@@ -2,6 +2,7 @@ package com.example.planetze.tracker;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,7 @@ public class LogConsumptionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //get view (TODO: change the xml file name to the correct one)
+        //get view
         View view = inflater.inflate(R.layout.fragment_log_consumption, container, false);
         View includedView = view.findViewById(R.id.includedButtonBack);
 
@@ -94,7 +95,6 @@ public class LogConsumptionFragment extends Fragment {
         buttonAdd.setVisibility(View.GONE);
 
         // Set up the spinner with categories
-        //TODO: figure out where and how to change the view based on choice chosen from spinner
         ArrayAdapter<CharSequence> ConsumeActivityAdapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.consumption_activity, android.R.layout.simple_spinner_item);
         ConsumeActivityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -232,6 +232,13 @@ public class LogConsumptionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addItem();
+                editTextNumCloth.setText("");
+                editTextNumDevice.setText("");
+                editTextNumPurchase.setText("");
+                editTextBill.setText("");
+                spinnerDeviceType.setSelection(0);
+                spinnerPurchaseType.setSelection(0);
+                spinnerBillType.setSelection(0);
             }
         });
 
@@ -258,6 +265,11 @@ public class LogConsumptionFragment extends Fragment {
             // if not empty, convert it to a double
             try {
                 numCloth = Integer.parseInt(numClothStr);
+                if (numCloth < 0) {
+                    Toast.makeText(getContext(), "Number of clothes cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid number of clothes",
                         Toast.LENGTH_SHORT).show();
@@ -278,6 +290,11 @@ public class LogConsumptionFragment extends Fragment {
             // if not empty, turn it into double
             try {
                 numDevice = Integer.parseInt(numDeviceStr);
+                if (numDevice < 0) {
+                    Toast.makeText(getContext(), "Number of electronic devices cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid number of devices",
                         Toast.LENGTH_SHORT).show();
@@ -296,6 +313,11 @@ public class LogConsumptionFragment extends Fragment {
             }
             try {
                 numPurchase = Integer.parseInt(numPurchaseStr);
+                if (numPurchase < 0) {
+                    Toast.makeText(getContext(), "Number of purchases cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid number of purchase",
                         Toast.LENGTH_SHORT).show();
@@ -314,6 +336,11 @@ public class LogConsumptionFragment extends Fragment {
             }
             try {
                 bill = Double.parseDouble(billStr);
+                if (bill < 0) {
+                    Toast.makeText(getContext(), "Bill amount cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid bill amount",
                         Toast.LENGTH_SHORT).show();
@@ -398,13 +425,16 @@ public class LogConsumptionFragment extends Fragment {
                 // for electricity bill, we made some assumptions for daily emission calculation
                 // See DailyEmissionProcessor.java for more info
                 // TODO: change to correct path
-                DatabaseReference billRangeRef = db.getReference("users").child(UserSession.userId)
-                        .child("questionnaire_responses").child("consumption")
-                        .child("2").child("answer");
+//                DatabaseReference billRangeRef = db.getReference("users").child(UserSession.userId)
+//                        .child("questionnaire_responses").child("consumption")
+//                        .child("2").child("answer");
+                DatabaseReference billRangeRef = db.getReference("users");
                 billRangeRef.get().addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         if (task.getResult().exists()) {
-                            String billRange = task.getResult().getValue(String.class);
+                            // TODO: uncomment this
+                            // String billRange = task.getResult().getValue(String.class);
+                            String billRange = "Under $50";
 
                             // Assumption:
                             // for the bill amount range, we assume it's lower inclusive and upper exclusive
@@ -424,7 +454,7 @@ public class LogConsumptionFragment extends Fragment {
                                 upper = Integer.parseInt(parts[1].trim());
                             }
 
-                            // check if the bill amount this month falls in range
+                            // check if the bill amount this month changes in range
                             // if not, we warn the user about it
                             if(!(lower <= bill && bill < upper)) {
                                 showWarningDialog("The new bill amount is outside of your " +
