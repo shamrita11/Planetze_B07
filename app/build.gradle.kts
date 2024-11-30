@@ -34,7 +34,9 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.google.firebase.database)
+    implementation(libs.cardview)
+    implementation(libs.mpandroidchart)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -43,18 +45,21 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.recyclerview)
     implementation(libs.material.calendarview)
-    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.inline)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     // Import the Firebase BoM
-    implementation("com.google.firebase:firebase-database:21.0.0")
-    implementation("com.google.firebase:firebase-auth:23.1.0")
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.google.firebase.auth)
+    implementation(libs.google.firebase.database)
     // library for open CSV
     implementation(libs.opencsv)
-    implementation(libs.material.v180)
     implementation(libs.viewpager2)
     // Import Glide Library for GIF
-    implementation ("com.github.bumptech.glide:glide:4.14.1")
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.14.1")
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+    // Import for Splash Screen
+    implementation(libs.core.splashscreen)
 }

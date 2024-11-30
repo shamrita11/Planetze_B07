@@ -6,11 +6,13 @@ public interface LoginView {
     void showLoginSuccess();
     void showLoginFailure();
     void showSuccess(String message);
+    void navigateToTracker();
+    void navigateToQuestionnaire();
     void backClicked();
-    void navigateSignUp();
+    void signUpClicked();
     void eyeIconClicked();
     void showProgress();
     void hideProgress();
     void showForgotPasswordSuccess();
-    void showForgotPasswordFailure(String errorMsg);
+    void showFailureMessage(String errorMsg);
 }

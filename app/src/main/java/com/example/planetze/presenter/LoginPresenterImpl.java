@@ -1,19 +1,19 @@
 package com.example.planetze.presenter;
 
-import android.util.Patterns;
-
 import com.example.planetze.view.LoginView;
 import com.example.planetze.model.LoginModel;
-import com.example.planetze.model.LoginModelImpl;
-import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.regex.Pattern;
 
 public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener {
     private LoginView loginView;
     private final LoginModel loginModel;
+    private static final Pattern EMAIL_ADDRESS_PATTERN =
+            Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
 
-    public LoginPresenterImpl(LoginView loginView) {
+    public LoginPresenterImpl(LoginView loginView, LoginModel loginModel) {
         this.loginView = loginView;
-        this.loginModel = new LoginModelImpl();
+        this.loginModel = loginModel;
     }
 
     @Override
@@ -23,24 +23,52 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
         }
 
         if (username.isEmpty()) {
-            assert loginView != null;
-            loginView.hideProgress();
-            loginView.showUsernameError();
-            return;
+            if (loginView != null) {
+                loginView.hideProgress();
+                loginView.showUsernameError();
+                return;
+            }
         }
 
         if (password.isEmpty()) {
-            assert loginView != null;
-            loginView.hideProgress();
-            loginView.showPasswordError();
-            return;
+            if (loginView != null) {
+                loginView.hideProgress();
+                loginView.showPasswordError();
+                return;
+            }
         }
         loginModel.login(username, password, this);
     }
 
     @Override
-    public void onDestroy() {
-        loginView = null; // to avoid memory leaks
+    public void checkOnBoardingStatus(String userId) {
+        loginModel.fetchOnBoardingStatus(userId, new LoginModel.OnListener() {
+            @Override
+            public void onOnBoardingStatusFetched(Boolean onBoarded) {
+                if (loginView != null) {
+                    if (onBoarded) {
+                        loginView.navigateToTracker();
+                    } else {
+                        loginView.navigateToQuestionnaire();
+                    }
+                }
+            }
+
+            @Override
+            public void onSuccess() {
+                // Handle success if needed
+                if (loginView != null) {
+                    loginView.showSuccess("onBoardingStatus fetched successfully.");
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+                if (loginView != null) {
+                    loginView.showFailureMessage(errorMsg);
+                }
+            }
+        });
     }
 
     @Override
@@ -54,10 +82,21 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
     }
 
     @Override
+    public void onOnBoardingStatusFetched(Boolean onBoarded) {
+        loginView.hideProgress();
+    }
+
+    @Override
     public void onForgotPasswordClicked(String email) {
         if (loginView != null) {
             if (email.isEmpty()) {
                 loginView.showUsernameError();
+                return;
+            }
+
+            if (!EMAIL_ADDRESS_PATTERN.matcher(email).matches()) {
+                loginView.hideProgress();
+                loginView.showFailureMessage("Invalid email format.");
                 return;
             }
 
@@ -69,30 +108,19 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
 
                 @Override
                 public void onFailure(String errorMsg) {
-                    loginView.showForgotPasswordFailure(errorMsg);
+                    loginView.showFailureMessage(errorMsg);
+                }
+
+                @Override
+                public void onOnBoardingStatusFetched(Boolean onBoarded) {
+                    loginView.hideProgress();
                 }
             });
         }
     }
 
     @Override
-    public void onBackClicked() {
-        if (loginView != null) {
-            loginView.backClicked();
-        }
-    }
-
-    @Override
-    public void navigateSignUp() {
-        if (loginView != null) {
-            loginView.navigateSignUp();
-        }
-    }
-
-    @Override
-    public void onEyeIconClicked() {
-        if (loginView != null) {
-            loginView.eyeIconClicked();
-        }
+    public void onDestroy() {
+        loginView = null;
     }
 }

@@ -15,12 +15,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.planetze.Dashboard;
 import com.example.planetze.QuestionnaireWelcomeActivity;
 import com.example.planetze.R;
 import com.example.planetze.SignUp;
 import com.example.planetze.UserSession;
 import com.example.planetze.Welcome;
+import com.example.planetze.model.LoginModelImpl;
 import com.example.planetze.presenter.LoginPresenter;
 import com.example.planetze.presenter.LoginPresenterImpl;
 import com.example.planetze.tracker.TrackerActivity;
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         progressBar = findViewById(R.id.progressBar);
         eyeIcon = findViewById(R.id.eyeIcon);
 
-        loginPresenter = new LoginPresenterImpl(this);
+        loginPresenter = new LoginPresenterImpl(this, new LoginModelImpl());
 
         buttonLogin.setOnClickListener(v -> {
             String username = editTextUsername.getText().toString();
@@ -63,12 +63,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             loginPresenter.validateCredentials(username, password);
         });
 
-        buttonSignUp.setOnClickListener(v -> {
-            loginPresenter.navigateSignUp();
+        buttonBack.setOnClickListener(v -> {
+            backClicked();
         });
 
-        buttonBack.setOnClickListener(v -> {
-            loginPresenter.onBackClicked();
+        buttonSignUp.setOnClickListener(v -> {
+            signUpClicked();
         });
 
         forgotPasswordLink.setOnClickListener(v -> {
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             loginPresenter.onForgotPasswordClicked(email);
         });
 
-        eyeIcon.setOnClickListener(v -> loginPresenter.onEyeIconClicked());
+        eyeIcon.setOnClickListener(v -> eyeIconClicked());
     }
 
     @Override
@@ -97,40 +97,29 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             UserSession.setUserId(userId); // Store it in UserSession for global access
 
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(userId);
-
-            // Retrieve the `on_boarded` variable from Firebase
-            ref.child("on_boarded").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Boolean onBoarded = snapshot.getValue(Boolean.class);
-
-                    if (onBoarded != null && onBoarded) {
-                        // Navigate to TrackerActivity if on_boarded is true
-                        Intent intent = new Intent(getApplicationContext(), TrackerActivity.class);
-                        startActivity(intent);
-                    } else {
-                        // Navigate to QuestionnaireActivity if on_boarded is false
-                        Intent intent = new Intent(getApplicationContext(), QuestionnaireWelcomeActivity.class);
-                        startActivity(intent);
-                    }
-                    finish(); // Close the current activity
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Handle potential database errors
-                    Toast.makeText(LoginActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e("Firebase", "Database error: " + error.getMessage());
-                }
-            });
+            // Update the UI or navigate to the next activity based on onBoardingStatus
+            loginPresenter.checkOnBoardingStatus(userId);
         }
 
     @Override
     public void showLoginFailure() {
-        Toast.makeText(this, "Login Failed. Check credentials.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
 
         hideProgress();
+    }
+
+    @Override
+    public void navigateToTracker() {
+        Intent intent = new Intent(getApplicationContext(), TrackerActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void navigateToQuestionnaire() {
+        Intent intent = new Intent(getApplicationContext(), QuestionnaireWelcomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -139,8 +128,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         startActivity(intent);
         finish();
     }
+
     @Override
-    public void navigateSignUp() {
+    public void signUpClicked() {
         Intent intent = new Intent(getApplicationContext(), SignUp.class);
         startActivity(intent);
         finish();
@@ -180,7 +170,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void showForgotPasswordFailure(String errorMsg) {
+    public void showFailureMessage(String errorMsg) {
         Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
     }
 
