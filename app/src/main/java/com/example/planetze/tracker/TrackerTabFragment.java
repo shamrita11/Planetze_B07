@@ -25,7 +25,6 @@ import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +54,7 @@ public class TrackerTabFragment extends Fragment {
         if (context instanceof OnTrackerTabInteractionListener) {
             mListener = (OnTrackerTabInteractionListener) context; // Cast context to the interface
         } else {
-            throw new ClassCastException(context.toString()
+            throw new ClassCastException(context
                     + " must implement TrackerTabFragment.OnTrackerTabInteractionListener");
         }
     }
@@ -118,7 +117,7 @@ public class TrackerTabFragment extends Fragment {
                 processor.mainUploader();
                 dailyEmission = processor.dailyTotalCalculator();  // Calculate total emissions
                 // Update the daily emission text in the xml
-                String dailyEmissionText = String.format("%.2f kg", dailyEmission);
+                String dailyEmissionText = String.format(Locale.getDefault(),"%.2f kg", dailyEmission);
                 totalEmission.setText(dailyEmissionText);  // Update the UI with the result
 
                 // update the chart once all data are calculated
@@ -137,7 +136,7 @@ public class TrackerTabFragment extends Fragment {
         double deviceEmission = processor.deviceCalculator();
         double otherEmission = processor.otherCalculator();
 
-        if (dailyEmission > 0) {
+        if (dailyEmission + 0.000001 > 0.000001) {
             if (carEmission > 0) entries.add(new PieEntry((float) (carEmission / dailyEmission * 100), "Drive"));
             if (publicTransportEmission > 0) entries.add(new PieEntry((float) (publicTransportEmission / dailyEmission * 100), "Public Transport"));
             if (flightEmission > 0) entries.add(new PieEntry((float) (flightEmission / dailyEmission * 100), "Flight"));
@@ -147,8 +146,8 @@ public class TrackerTabFragment extends Fragment {
             if (otherEmission > 0) entries.add(new PieEntry((float) (otherEmission / dailyEmission * 100), "Other Purchases"));
             pieChart.getDescription().setText("Emission Breakdown");
         } else {
-            entries.add(new PieEntry(100f, "No Emissions Logged"));
-            pieChart.getDescription().setText("No Emissions Logged");
+            entries.add(new PieEntry(100f, "Walking and Cycling"));
+            pieChart.getDescription().setText("No Activity Logged");
         }
 
         PieDataSet pieDataSet = new PieDataSet(entries, "");
@@ -158,8 +157,9 @@ public class TrackerTabFragment extends Fragment {
         colors.add(ContextCompat.getColor(getContext(), R.color.teal));
         colors.add(ContextCompat.getColor(getContext(), R.color.soft_green));
         colors.add(ContextCompat.getColor(getContext(), R.color.cream));
-        colors.add(ContextCompat.getColor(getContext(), R.color.light_grey));
+        colors.add(ContextCompat.getColor(getContext(), R.color.light_gray));
         colors.add(ContextCompat.getColor(getContext(), R.color.pale_yellow));
+        colors.add(ContextCompat.getColor(getContext(), R.color.high_contrast_teal));
         colors.add(ContextCompat.getColor(getContext(), R.color.soft_coral));
 
         pieDataSet.setColors(colors);

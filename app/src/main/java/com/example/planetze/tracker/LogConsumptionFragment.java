@@ -2,7 +2,6 @@ package com.example.planetze.tracker;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +22,12 @@ import com.example.planetze.R;
 import com.example.planetze.UserSession;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class LogConsumptionFragment extends Fragment {
     private EditText editTextNumCloth, editTextNumDevice, editTextNumPurchase, editTextBill;
@@ -38,7 +35,6 @@ public class LogConsumptionFragment extends Fragment {
     private TextView labelNumCloth, labelDeviceType, labelNumDevice, labelPurchaseType
             , labelNumPurchase, labelBillType, labelBill;
     private Button buttonAdd;
-    private ImageButton buttonBack;
     private FirebaseDatabase db;
     private DailyEmissionProcessor processor;
     private final boolean isIncrement;
@@ -73,7 +69,7 @@ public class LogConsumptionFragment extends Fragment {
         labelBillType = view.findViewById(R.id.labelBillType);
         labelBill = view.findViewById(R.id.labelBill);
         buttonAdd = view.findViewById(R.id.buttonAdd);
-        buttonBack = includedView.findViewById(R.id.buttonBack);
+        ImageButton buttonBack = includedView.findViewById(R.id.buttonBack);
 
         db = FirebaseDatabase.getInstance();
 
@@ -95,22 +91,22 @@ public class LogConsumptionFragment extends Fragment {
         buttonAdd.setVisibility(View.GONE);
 
         // Set up the spinner with categories
-        ArrayAdapter<CharSequence> ConsumeActivityAdapter = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> ConsumeActivityAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.consumption_activity, android.R.layout.simple_spinner_item);
         ConsumeActivityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerConsumeActivity.setAdapter(ConsumeActivityAdapter);
 
-        ArrayAdapter<CharSequence> DeviceTypeAdapter = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> DeviceTypeAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.device_type, android.R.layout.simple_spinner_item);
         DeviceTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDeviceType.setAdapter(DeviceTypeAdapter);
 
-        ArrayAdapter<CharSequence> PurchaseTypeAdapter = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> PurchaseTypeAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.purchase_type, android.R.layout.simple_spinner_item);
         PurchaseTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerPurchaseType.setAdapter(PurchaseTypeAdapter);
 
-        ArrayAdapter<CharSequence> BillTypeAdapter = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> BillTypeAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.bill_type, android.R.layout.simple_spinner_item);
         BillTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerBillType.setAdapter(BillTypeAdapter);
@@ -228,18 +224,15 @@ public class LogConsumptionFragment extends Fragment {
         });
 
         // onclick for the button
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addItem();
-                editTextNumCloth.setText("");
-                editTextNumDevice.setText("");
-                editTextNumPurchase.setText("");
-                editTextBill.setText("");
-                spinnerDeviceType.setSelection(0);
-                spinnerPurchaseType.setSelection(0);
-                spinnerBillType.setSelection(0);
-            }
+        buttonAdd.setOnClickListener(v -> {
+            addItem();
+            editTextNumCloth.setText("");
+            editTextNumDevice.setText("");
+            editTextNumPurchase.setText("");
+            editTextBill.setText("");
+            spinnerDeviceType.setSelection(0);
+            spinnerPurchaseType.setSelection(0);
+            spinnerBillType.setSelection(0);
         });
 
         buttonBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
@@ -468,7 +461,7 @@ public class LogConsumptionFragment extends Fragment {
                         }
                     } else {
                         Toast.makeText(getContext(), "Failed to fetch bill range: "
-                                        + task.getException().getMessage()
+                                        + Objects.requireNonNull(task.getException()).getMessage()
                                 , Toast.LENGTH_SHORT).show();
                     }
                 });

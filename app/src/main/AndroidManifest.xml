@@ -64,7 +64,8 @@
             android:exported="false" />
        <activity
             android:name=".tracker.TrackerActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".EcoGaugeActivity"
             android:exported="true" />

@@ -1,6 +1,5 @@
 package com.example.planetze.tracker;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,19 +18,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.planetze.R;
 import com.example.planetze.UserSession;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LogFoodFragment extends Fragment {
     private EditText editTextNumServing;
-    private Spinner spinnerFoodActivity, spinnerFoodType;
+    private Spinner spinnerFoodType;
     private Button buttonAdd;
-    private ImageButton buttonBack;
     private TextView labelFoodType, labelNumServing;
     DailyEmissionProcessor processor;
     private final boolean isIncrement;
@@ -49,12 +40,14 @@ public class LogFoodFragment extends Fragment {
         View includedView = view.findViewById(R.id.includedButtonBack);
 
         editTextNumServing = view.findViewById(R.id.editTextNumServing);
-        spinnerFoodActivity = view.findViewById(R.id.spinnerFoodActivity);
+        editTextNumServing.setShowSoftInputOnFocus(true);
+        editTextNumServing.requestFocus();
+        Spinner spinnerFoodActivity = view.findViewById(R.id.spinnerFoodActivity);
         spinnerFoodType = view.findViewById(R.id.spinnerFoodType);
         labelFoodType = view.findViewById(R.id.labelFoodType);
         labelNumServing = view.findViewById(R.id.labelNumServing);
         buttonAdd = view.findViewById(R.id.buttonAdd);
-        buttonBack = includedView.findViewById(R.id.buttonBack);
+        ImageButton buttonBack = includedView.findViewById(R.id.buttonBack);
 
         // Hide some of the fields initially
         editTextNumServing.setVisibility(View.GONE);
@@ -64,12 +57,12 @@ public class LogFoodFragment extends Fragment {
         buttonAdd.setVisibility(View.GONE);
 
         // Set up the spinner with categories
-        ArrayAdapter<CharSequence> FoodActivityAdapter = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> FoodActivityAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.food_activity, android.R.layout.simple_spinner_item);
         FoodActivityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFoodActivity.setAdapter(FoodActivityAdapter);
 
-        ArrayAdapter<CharSequence> FoodTypeAdapter = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> FoodTypeAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.food_type, android.R.layout.simple_spinner_item);
         FoodTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFoodType.setAdapter(FoodTypeAdapter);
@@ -106,13 +99,10 @@ public class LogFoodFragment extends Fragment {
             }
         });
 
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addItem();
-                editTextNumServing.setText("");
-                spinnerFoodType.setSelection(0);
-            }
+        buttonAdd.setOnClickListener(v -> {
+            addItem();
+            editTextNumServing.setText("");
+            spinnerFoodType.setSelection(0);
         });
 
         buttonBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());
@@ -121,7 +111,6 @@ public class LogFoodFragment extends Fragment {
     }
 
     private void addItem() {
-        String foodActivity = spinnerFoodActivity.getSelectedItem().toString().toLowerCase();
         String numServingStr, foodType;
         int numServing;
         //TODO: make sure numbers are positive (input)
@@ -188,4 +177,5 @@ public class LogFoodFragment extends Fragment {
             });
         }
     }
+
 }

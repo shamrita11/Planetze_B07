@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Total Daily CO2 Emission"
+                    android:text="@string/daily_total_co2_emissions"
                     android:textColor="@color/dark_grey"
                     android:textSize="25sp" />
 
@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:text="0 kg"
+                    android:text="@string/kg_0"
                     android:textColor="@color/teal"
                     android:textSize="37sp" />
 
@@ -85,11 +85,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Log your activities"
+                    android:text="@string/log_activity"
                     android:textColor="@color/dark_grey"
                     android:textSize="25sp" />
 
                 <LinearLayout
+                    style="?android:attr/buttonBarStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -100,6 +101,7 @@
 
                     <Button
                         android:id="@+id/buttonTransportation"
+                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="110dp"
                         android:layout_marginStart="8dp"
@@ -110,12 +112,13 @@
                         android:drawablePadding="8dp"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Transport"
+                        android:text="@string/transport"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/buttonFood"
+                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="110dp"
                         android:layout_marginEnd="8dp"
@@ -125,12 +128,13 @@
                         android:drawablePadding="8dp"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Food"
+                        android:text="@string/Food"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
                     <Button
                         android:id="@+id/buttonConsumption"
+                        style="?android:attr/buttonBarButtonStyle"
                         android:layout_width="0dp"
                         android:layout_height="110dp"
                         android:layout_marginEnd="8dp"
@@ -140,7 +144,7 @@
                         android:drawablePadding="8dp"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Shopping"
+                        android:text="@string/shopping"
                         android:textColor="@color/white"
                         android:textSize="16sp" />
                 </LinearLayout>
