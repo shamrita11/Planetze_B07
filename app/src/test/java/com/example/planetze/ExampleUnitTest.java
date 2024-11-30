@@ -183,7 +183,7 @@ public class ExampleUnitTest {
         loginPresenter.onForgotPasswordClicked(email);
 
         // Assert
-        verify(loginView).showForgotPasswordFailure("Invalid email format.");
+        verify(loginView).showFailureMessage("Invalid email format.");
     }
 
     @Test
@@ -200,7 +200,23 @@ public class ExampleUnitTest {
         loginPresenter.onForgotPasswordClicked(email);
 
         // Assert
-        verify(loginView).showForgotPasswordFailure("Error message");
+        verify(loginView).showFailureMessage("Error message");
+    }
+
+    @Test
+    public void testOnForgotPasswordClicked_OnBoarding() {
+        String email = "janedoe@mail.com";
+        doAnswer(invocation -> {
+            LoginModel.OnListener listener = invocation.getArgument(1);
+            listener.onOnBoardingStatusFetched(true);  // Simulate failure in password reset
+            return null;
+        }).when(loginModel).sendPasswordResetEmail(eq(email), any(LoginModel.OnListener.class));
+
+        // Act
+        loginPresenter.onForgotPasswordClicked(email);
+
+        // Assert
+        verify(loginView).hideProgress();
     }
 
     @Test
@@ -221,6 +237,118 @@ public class ExampleUnitTest {
     public void testOnFailureCall() {
         loginPresenter.onFailure("Invalid email or password.");
         verify(loginView).showLoginFailure();
+    }
+
+    @Test
+    public void testOnOnBoardingStatusFetchedCall() {
+        loginPresenter.onOnBoardingStatusFetched(true);
+        verify(loginView).hideProgress();
+    }
+
+    @Test
+    public void testCheckOnBoardingStatusFetched_OnBoarded() {
+        String email = "shisnow2005@gmail.com";
+        doAnswer(invocation -> {
+            LoginModel.OnListener listener = invocation.getArgument(1);
+            listener.onOnBoardingStatusFetched(true);
+            return null;
+        }).when(loginModel).fetchOnBoardingStatus(eq(email), any(LoginModel.OnListener.class));
+
+        // Act
+        loginPresenter.checkOnBoardingStatus(email);
+
+        verify(loginView).navigateToTracker();
+    }
+
+    @Test
+    public void testCheckOnBoardingStatusFetched_NotOnBoarded() {
+        String email = "janedoe@mail.com";
+        doAnswer(invocation -> {
+            LoginModel.OnListener listener = invocation.getArgument(1);
+            listener.onOnBoardingStatusFetched(false);
+            return null;
+        }).when(loginModel).fetchOnBoardingStatus(eq(email), any(LoginModel.OnListener.class));
+
+        // Act
+        loginPresenter.checkOnBoardingStatus(email);
+
+        verify(loginView).navigateToQuestionnaire();
+    }
+
+    @Test
+    public void testCheckOnBoardingStatusFetched_NullLoginView() {
+        loginView = null;
+        String email = "janedoe@mail.com";
+        doAnswer(invocation -> {
+            LoginModel.OnListener listener = invocation.getArgument(1);
+            listener.onOnBoardingStatusFetched(true);
+            return null;
+        }).when(loginModel).fetchOnBoardingStatus(eq(email), any(LoginModel.OnListener.class));
+
+        loginPresenter = new LoginPresenterImpl(loginView, loginModel);
+        loginPresenter.checkOnBoardingStatus(email);
+
+        assertNull(loginView);
+    }
+
+    @Test
+    public void testCheckOnBoardingStatusFetched_NullLoginViewSuccess() {
+        loginView = null;
+        String email = "janedoe@mail.com";
+        doAnswer(invocation -> {
+            LoginModel.OnListener listener = invocation.getArgument(1);
+            listener.onSuccess();
+            return null;
+        }).when(loginModel).fetchOnBoardingStatus(eq(email), any(LoginModel.OnListener.class));
+
+        loginPresenter = new LoginPresenterImpl(loginView, loginModel);
+        loginPresenter.checkOnBoardingStatus(email);
+
+        assertNull(loginView);
+    }
+
+    @Test
+    public void testCheckOnBoardingStatusFetched_Success() {
+        String email = "janedoe@mail.com";
+        doAnswer(invocation -> {
+            LoginModel.OnListener listener = invocation.getArgument(1);
+            listener.onSuccess();
+            return null;
+        }).when(loginModel).fetchOnBoardingStatus(eq(email), any(LoginModel.OnListener.class));
+
+        loginPresenter.checkOnBoardingStatus(email);
+
+        verify(loginView).showSuccess("onBoardingStatus fetched successfully.");
+    }
+
+    @Test
+    public void testCheckOnBoardingStatusFetched_NullLoginViewFailure() {
+        loginView = null;
+        String email = "janedoe@mail.com";
+        doAnswer(invocation -> {
+            LoginModel.OnListener listener = invocation.getArgument(1);
+            listener.onFailure("Error fetching on_boarded status");
+            return null;
+        }).when(loginModel).fetchOnBoardingStatus(eq(email), any(LoginModel.OnListener.class));
+
+        loginPresenter = new LoginPresenterImpl(loginView, loginModel);
+        loginPresenter.checkOnBoardingStatus(email);
+
+        assertNull(loginView);
+    }
+
+    @Test
+    public void testCheckOnBoardingStatusFetched_Failure() {
+        String email = "janedoe@mail.com";
+        doAnswer(invocation -> {
+            LoginModel.OnListener listener = invocation.getArgument(1);
+            listener.onFailure("Error fetching on_boarded status");
+            return null;
+        }).when(loginModel).fetchOnBoardingStatus(eq(email), any(LoginModel.OnListener.class));
+
+        loginPresenter.checkOnBoardingStatus(email);
+
+        verify(loginView).showFailureMessage("Error fetching on_boarded status");
     }
 
     // Test: Presenter onDestroy

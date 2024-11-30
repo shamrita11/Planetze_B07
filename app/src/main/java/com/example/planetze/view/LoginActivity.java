@@ -15,7 +15,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.planetze.Dashboard;
 import com.example.planetze.QuestionnaireWelcomeActivity;
 import com.example.planetze.R;
 import com.example.planetze.SignUp;
@@ -98,34 +97,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             UserSession.setUserId(userId); // Store it in UserSession for global access
 
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(userId);
-
-            // Retrieve the `on_boarded` variable from Firebase
-
-            ref.child("on_boarded").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Boolean onBoarded = snapshot.getValue(Boolean.class);
-
-                    if (onBoarded != null && onBoarded) {
-                        // Navigate to TrackerActivity if on_boarded is true
-                        Intent intent = new Intent(getApplicationContext(), TrackerActivity.class);
-                        startActivity(intent);
-                    } else {
-                        // Navigate to QuestionnaireActivity if on_boarded is false
-                        Intent intent = new Intent(getApplicationContext(), QuestionnaireWelcomeActivity.class);
-                        startActivity(intent);
-                    }
-                    finish(); // Close the current activity
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    // Handle potential database errors
-                    Toast.makeText(LoginActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    Log.e("Firebase", "Database error: " + error.getMessage());
-                }
-            });
+            // Update the UI or navigate to the next activity based on onBoardingStatus
+            loginPresenter.checkOnBoardingStatus(userId);
         }
 
     @Override

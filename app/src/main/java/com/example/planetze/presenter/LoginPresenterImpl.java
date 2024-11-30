@@ -1,11 +1,7 @@
 package com.example.planetze.presenter;
 
-import android.util.Patterns;
-
 import com.example.planetze.view.LoginView;
 import com.example.planetze.model.LoginModel;
-import com.example.planetze.model.LoginModelImpl;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 

@@ -6,5 +6,6 @@ public interface LoginPresenter {
     void checkOnBoardingStatus(String userId);
     void onSuccess();
     void onFailure(String errorMsg);
+    void onOnBoardingStatusFetched(Boolean onBoarded);
     void onDestroy(); // Optional, to clean up resources
 }
