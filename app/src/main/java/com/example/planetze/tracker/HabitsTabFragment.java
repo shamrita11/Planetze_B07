@@ -6,14 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.example.planetze.AdoptedHabitsActivity;
 import com.example.planetze.EcoHabitActivity;
 import com.example.planetze.R;
 
@@ -30,12 +27,5 @@ public class HabitsTabFragment extends Fragment {
             startActivity(intent);  // Launch the AdoptedHabitsActivity
         });
         return view;
-    }
-
-    private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 }

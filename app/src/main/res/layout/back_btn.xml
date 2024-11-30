@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center" >
+    android:layout_height="match_parent"
+    android:gravity="center">
 
     <ImageButton
         android:id="@+id/buttonBack"
@@ -10,7 +12,8 @@
         android:layout_height="104dp"
         android:background="@drawable/circular_btn"
         android:src="@drawable/ic_back_arrow_btn"
-        android:contentDescription="Back Button"
-        android:scaleType="centerInside" />
+        android:contentDescription="@string/back_btn"
+        android:scaleType="centerInside"
+        tools:ignore="MissingConstraints" />
 
 </LinearLayout>

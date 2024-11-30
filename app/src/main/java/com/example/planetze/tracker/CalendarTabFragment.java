@@ -1,45 +1,29 @@
 package com.example.planetze.tracker;
 
-import android.app.AlertDialog;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.planetze.R;
 import com.example.planetze.UserSession;
-import com.google.android.material.datepicker.MaterialCalendar;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-import com.prolificinteractive.materialcalendarview.DayViewDecorator;
-import com.prolificinteractive.materialcalendarview.DayViewFacade;
-import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -53,7 +37,7 @@ public class CalendarTabFragment extends Fragment {
     ActivityListAdapter adapter;
     private String date;
     // String userId;
-    private List<ActivityItem> activityItems = new ArrayList<>();
+    private final List<ActivityItem> activityItems = new ArrayList<>();
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -61,7 +45,7 @@ public class CalendarTabFragment extends Fragment {
         if (context instanceof TrackerTabFragment.OnTrackerTabInteractionListener) {
             mListener = (TrackerTabFragment.OnTrackerTabInteractionListener) context; // Cast context to the interface
         } else {
-            throw new ClassCastException(context.toString()
+            throw new ClassCastException(context
                     + " must implement TrackerTabFragment.OnTrackerTabInteractionListener");
         }
     }
@@ -86,17 +70,6 @@ public class CalendarTabFragment extends Fragment {
         buttonTransportation.setEnabled(false);
         buttonFood.setEnabled(false);
         buttonConsumption.setEnabled(false);
-
-        // listener for date selection to customize selected date background and text color
-//        calendarView.setOnDateChangeListener((calendarView1, year, month, dayOfMonth) -> {
-//            date = String.format(Locale.getDefault(), "%04d-%02d-%02d", year, month + 1, dayOfMonth);
-//            Toast.makeText(getContext(), "Selected Date: " + date, Toast.LENGTH_SHORT).show();
-//            updateActivityList();
-//
-//            buttonTransportation.setEnabled(true);
-//            buttonFood.setEnabled(true);
-//            buttonConsumption.setEnabled(true);
-//        });
 
         materialCalendarView.setOnDateChangedListener((widget, date, selected) -> {
             materialCalendarView.removeDecorators();
@@ -184,6 +157,7 @@ public class CalendarTabFragment extends Fragment {
     /**
      * This method gets data from database to populate activityItems for use by recycler view
      */
+    @SuppressLint("NotifyDataSetChanged")
     private void updateActivityList() {
         activityItems.clear();
 
@@ -204,6 +178,7 @@ public class CalendarTabFragment extends Fragment {
 
                     for (DataSnapshot activitySnapshot : transportationSnapshot.getChildren()) {
                         String activityKey = activitySnapshot.getKey(); // e.g., "drive_personal_vehicle"
+                        assert activityKey != null;
                         String activityName = activityKey.replace("_", " ");
                         double co2eRaw = emissionSnapshot.child(activityKey).getValue(Double.class); // CO2e from emissions
                         String co2e = String.format(Locale.getDefault(), "%.2f", co2eRaw);
@@ -236,6 +211,7 @@ public class CalendarTabFragment extends Fragment {
 
                     for (DataSnapshot activitySnapshot : consumptionSnapshot.getChildren()) {
                         String activityKey = activitySnapshot.getKey(); // e.g., "buy_electronics"
+                        assert activityKey != null;
                         String activityName = activityKey.replace("_", " ");
                         double co2eRaw = emissionSnapshot.child(activityKey).getValue(Double.class);
                         String co2e = String.format(Locale.getDefault(), "%.2f", co2eRaw);
@@ -263,6 +239,7 @@ public class CalendarTabFragment extends Fragment {
 
                     for (DataSnapshot activitySnapshot : foodSnapshot.getChildren()) {
                         String activityKey = activitySnapshot.getKey(); // e.g., "meal"
+                        assert activityKey != null;
                         String activityName = activityKey.replace("_", " ");
                         double co2eRaw = emissionSnapshot.child("food").getValue(Double.class);
                         String co2e = String.format(Locale.getDefault(), "%.2f", co2eRaw);

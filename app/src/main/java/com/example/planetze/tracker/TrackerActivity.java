@@ -2,13 +2,11 @@ package com.example.planetze.tracker;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.planetze.BaseActivity;
 import com.example.planetze.R;
-import com.google.android.material.tabs.TabLayout;
 
 public class TrackerActivity extends BaseActivity implements TrackerTabFragment.OnTrackerTabInteractionListener {
     @Override

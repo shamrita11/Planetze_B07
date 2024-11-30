@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/light_gray"
     android:orientation="vertical">
 
@@ -14,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="600dp"
+            android:minHeight="550dp"
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:elevation="4dp"
@@ -26,7 +27,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/card_round_border"
                 android:elevation="4dp"
                 android:padding="20dp"
@@ -44,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Consumption"
+                        android:text="@string/Consumption"
                         android:textColor="@color/teal"
                         android:textSize="30sp"
                         android:textStyle="bold" />
@@ -58,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:gravity="center"
-                android:text="Select an Activity"
+                android:text="@string/select_activity"
                 android:textSize="20sp" />
             <Spinner
                 android:id="@+id/spinnerConsumeActivity"
@@ -75,14 +76,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:gravity="center"
-                android:text="Number of Clothing Purchased"
+                android:text="@string/num_clothes"
                 android:textSize="20sp" />
             <EditText
                 android:id="@+id/editTextNumCloth"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
-                android:hint="e.g. 2"
+                android:hint="@string/hint_int"
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:layout_marginBottom="20dp"
@@ -95,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:gravity="center"
-                android:text="Select the Type of Electronic Device"
+                android:text="@string/select_device_type"
                 android:textSize="20sp" />
             <Spinner
                 android:id="@+id/spinnerDeviceType"
@@ -112,14 +113,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:gravity="center"
-                android:text="Number of Devices Purchased"
+                android:text="@string/num_device"
                 android:textSize="20sp" />
             <EditText
                 android:id="@+id/editTextNumDevice"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
-                android:hint="e.g. 2"
+                android:hint="@string/hint_int"
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:layout_marginBottom="20dp"
@@ -132,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:gravity="center"
-                android:text="Select the Type of Purchase"
+                android:text="@string/select_purchase_type"
                 android:textSize="20sp" />
             <Spinner
                 android:id="@+id/spinnerPurchaseType"
@@ -149,14 +150,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:gravity="center"
-                android:text="Number of the Purchases"
+                android:text="@string/num_purchase"
                 android:textSize="20sp" />
             <EditText
                 android:id="@+id/editTextNumPurchase"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
-                android:hint="e.g. 2"
+                android:hint="@string/hint_int"
                 android:importantForAutofill="no"
                 android:inputType="number"
                 android:layout_marginBottom="20dp"
@@ -169,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:gravity="center"
-                android:text="Select the Type of Bill"
+                android:text="@string/select_bill_type"
                 android:textSize="20sp" />
             <Spinner
                 android:id="@+id/spinnerBillType"
@@ -186,14 +187,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:gravity="center"
-                android:text="Bill Amount ($)"
+                android:text="@string/bill_amount"
                 android:textSize="20sp" />
             <EditText
                 android:id="@+id/editTextBill"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:minHeight="48dp"
-                android:hint="e.g. 150"
+                android:hint="@string/hint_int_big"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
                 android:layout_marginBottom="20dp"
@@ -208,7 +209,7 @@
                 android:background="@drawable/rounded_corner_background"
                 android:minHeight="48dp"
                 android:padding="12dp"
-                android:text="Add"
+                android:text="@string/add"
                 android:textColor="@color/white"
                 android:textSize="23sp" />
         </LinearLayout>
@@ -219,5 +220,8 @@
         layout="@layout/back_btn"
         android:id="@+id/includedButtonBack"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </LinearLayout>

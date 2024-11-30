@@ -1,23 +1,18 @@
 package com.example.planetze.tracker;
 
 import android.content.Context;
-import android.os.Build;
 import android.widget.Toast;
 
 import com.example.planetze.UserSession;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.time.YearMonth;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class DailyEmissionProcessor {
-    // database
-    private FirebaseDatabase db;
-    private DatabaseReference myRef;
+    private final DatabaseReference myRef;
     // String userId;
     String dateKey;
     String monthKey;
@@ -49,7 +44,8 @@ public class DailyEmissionProcessor {
 
     public DailyEmissionProcessor(Context context, String dateKey, DataLoadListener listener) {
         // initialize the database reference
-        db = FirebaseDatabase.getInstance();
+        // database
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
         //get actual user id
         myRef = db.getReference("users").child(UserSession.userId);
         this.dateKey = dateKey;
@@ -343,7 +339,6 @@ public class DailyEmissionProcessor {
             if (task.isSuccessful()) {
                 if (task.getResult().exists()) {
                     // Retrieve the map of electronic devices
-                    // TODO: make sure to verify this works!!!!!!!
                     Map<String, Object> electronicsMap = (Map<String, Object>) task.getResult().getValue();
                     numDevice = 0;
                     if (electronicsMap != null) {
@@ -657,7 +652,7 @@ public class DailyEmissionProcessor {
 
     public double billCalculator() {
         // Assumptions:
-        // based on the questionnaire intially, assume that the amount of bill each month
+        // based on the questionnaire initially, assume that the amount of bill each month
         // should fall in the same range as last year (which is realistic). If the user's
         // bill amount is outside of this range, notify the user to change their questionnaire
         // answer if their monthly bill is increasing / decreasing (this notification will be done

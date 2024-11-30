@@ -1,6 +1,5 @@
 package com.example.planetze.tracker;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,15 +20,9 @@ import com.example.planetze.R;
 import com.example.planetze.UserSession;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 //View
 public class LogTransportationFragment extends Fragment {
@@ -39,7 +32,6 @@ public class LogTransportationFragment extends Fragment {
     private TextView labelDistanceDriven, labelTransportType, labelTransportTime, labelDistanceWalked
             , labelNumFlight, labelHaul;
     private Button buttonAdd;
-    private ImageButton buttonBack;
     private DailyEmissionProcessor processor;
     // This field helps the FirebaseManager determine if the entered data is suppose to overwrite
     // existing data, or increment the existing data (If this fragment is loaded by Tracker tab,
@@ -75,7 +67,7 @@ public class LogTransportationFragment extends Fragment {
         spinnerHaul = view.findViewById(R.id.spinnerHaul);
         labelHaul = view.findViewById(R.id.labelHaul);
         buttonAdd = view.findViewById(R.id.buttonAdd);
-        buttonBack = includedView.findViewById(R.id.buttonBack);
+        ImageButton buttonBack = includedView.findViewById(R.id.buttonBack);
 
         // Hide some of the fields initially
         editTextDistanceDriven.setVisibility(View.GONE);
@@ -93,17 +85,17 @@ public class LogTransportationFragment extends Fragment {
         buttonAdd.setVisibility(View.GONE);
 
         // Set up the spinner with categories
-        ArrayAdapter<CharSequence> TransportActivityAdapter = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> TransportActivityAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.transport_activity, android.R.layout.simple_spinner_item);
         TransportActivityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTransportActivity.setAdapter(TransportActivityAdapter);
 
-        ArrayAdapter<CharSequence> TransportTypeAdapter = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> TransportTypeAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.transport_type, android.R.layout.simple_spinner_item);
         TransportTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTransportType.setAdapter(TransportTypeAdapter);
 
-        ArrayAdapter<CharSequence> HaulAdapter = ArrayAdapter.createFromResource(getContext(),
+        ArrayAdapter<CharSequence> HaulAdapter = ArrayAdapter.createFromResource(requireContext(),
                 R.array.haul_type, android.R.layout.simple_spinner_item);
         HaulAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerHaul.setAdapter(HaulAdapter);
@@ -211,17 +203,14 @@ public class LogTransportationFragment extends Fragment {
         });
 
         // onclick for the button
-        buttonAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addItem();
-                editTextDistanceDriven.setText("");
-                editTextTransportTime.setText("");
-                editTextDistanceWalked.setText("");
-                editTextNumFlight.setText("");
-                spinnerTransportType.setSelection(0);
-                spinnerHaul.setSelection(0);
-            }
+        buttonAdd.setOnClickListener(v -> {
+            addItem();
+            editTextDistanceDriven.setText("");
+            editTextTransportTime.setText("");
+            editTextDistanceWalked.setText("");
+            editTextNumFlight.setText("");
+            spinnerTransportType.setSelection(0);
+            spinnerHaul.setSelection(0);
         });
 
         buttonBack.setOnClickListener(v -> getParentFragmentManager().popBackStack());

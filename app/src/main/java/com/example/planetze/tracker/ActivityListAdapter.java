@@ -4,11 +4,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,8 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListViewHolder> {
-    private List<ActivityItem> activityList;
-    private OnDetailButtonClickListener listener;
+    private final List<ActivityItem> activityList;
+    private final OnDetailButtonClickListener listener;
 
     public interface OnDetailButtonClickListener {
         void onDetailButtonClicked(String activityType, String activityKey, String detailKey);

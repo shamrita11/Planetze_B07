@@ -8,14 +8,12 @@ import androidx.core.content.ContextCompat;
 
 import com.example.planetze.R;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
-import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.DayViewDecorator;
 import com.prolificinteractive.materialcalendarview.DayViewFacade;
-import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 
 public class SelectedDateDecorator implements DayViewDecorator {
     private final CalendarDay selectedDate;
-    private Context context;
+    private final Context context;
 
     public SelectedDateDecorator(CalendarDay selectedDate, Context context) {
         this.selectedDate = selectedDate;
