@@ -46,7 +46,6 @@ import java.util.Locale;
 import java.util.Map;
 
 public class CalendarTabFragment extends Fragment {
-    //TODO: change the code to be for Calender section
     private TrackerTabFragment.OnTrackerTabInteractionListener mListener;
     private DailyEmissionProcessor processor;
     MaterialCalendarView materialCalendarView;

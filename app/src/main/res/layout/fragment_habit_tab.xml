@@ -8,6 +8,7 @@
     tools:context=".Account">
 
     <TextView
+        android:id="@id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -15,24 +16,28 @@
         android:text="@string/eco_habit"
         android:textColor="@color/slate_blue"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/account_info"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.263" />
+        app:layout_constraintVertical_bias="0.2" />
 
     <LinearLayout
-        android:id="@+id/accountinfo"
+        android:id="@+id/account_info"
         android:layout_width="345dp"
-        android:layout_height="144dp"
-        android:layout_marginTop="348dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/rounded_background_white"
         android:orientation="vertical"
-        android:padding="8dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toTopOf="@id/btn_eco_habit"
+        app:layout_constraintVertical_bias="0.4">
 
         <TextView
             android:id="@+id/tv_adopt_eco_habit"
@@ -40,7 +45,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:lineSpacingExtra="5dp"
-            android:text="@string/habit_message"
+            android:text="@string/habit_intro"
             android:textAlignment="center"
             android:textColor="@color/teal"
             android:textSize="24sp" />
@@ -52,18 +57,15 @@
         android:layout_width="348dp"
         android:layout_height="55dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/rounded_corner_background"
         android:fontFamily="@font/inter_bold"
-        android:text="Ready To Adopt Habits"
+        android:text="@string/habit_btn"
         android:textColor="#FFFFFF"
-        android:textSize="23sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@id/account_info"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

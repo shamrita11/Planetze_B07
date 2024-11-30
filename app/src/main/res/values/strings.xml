@@ -347,6 +347,8 @@
     <string name="Magnifying">Magnifying glass icon</string>
     <string name="search_bar">search habit or keyword</string>
     <string name="search_icon">search icon</string>
+    <string name="habit_intro"> Eco Habit feature provides users with eco-friendly habits they can adopt to reduce their carbon footprint</string>
+    <string name="habit_btn">Ready To Adopt Habits</string>
     <!-- The following are for Eco Gauge and Eco Balance -->
     <string name="dashboard_title">Your Dashboard!</string>
     <string name="total_co2_emissions">Total CO2e Emissions</string>
@@ -525,7 +527,6 @@
     <string name="adopted_habit">Adopted Habits</string>
     <string name="habit_list_title">Eco-Friendly Habits</string>
     <string name="btn_choose_category">Choose Category</string>
-    <string name="habit_message"> Eco Habit feature provides users with eco-friendly habits they can adopt to reduce their carbon footprint</string>
     <string name="country"> Country</string>
     <string name="purchase">Purchase</string>
     <string name="expiration_date">Expiration Date</string>

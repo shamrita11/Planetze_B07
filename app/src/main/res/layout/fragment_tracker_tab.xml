@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
-    android:fillViewport="true">
+    android:background="@color/light_gray"
+    android:fillViewport="true"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F5F5F5"
+        android:background="@color/light_gray"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp">
@@ -104,7 +105,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/teal"
+                        android:background="@drawable/rounded_corner_background"
                         android:drawableTop="@drawable/ic_transport_icon"
                         android:drawablePadding="8dp"
                         android:gravity="center"
@@ -119,7 +120,7 @@
                         android:layout_height="110dp"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/teal"
+                        android:background="@drawable/rounded_corner_background"
                         android:drawableTop="@drawable/ic_food_icon"
                         android:drawablePadding="8dp"
                         android:gravity="center"
@@ -134,7 +135,7 @@
                         android:layout_height="110dp"
                         android:layout_marginEnd="8dp"
                         android:layout_weight="1"
-                        android:backgroundTint="@color/teal"
+                        android:background="@drawable/rounded_corner_background"
                         android:drawableTop="@drawable/ic_shopping_icon"
                         android:drawablePadding="8dp"
                         android:gravity="center"
