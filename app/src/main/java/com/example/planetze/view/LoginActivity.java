@@ -101,6 +101,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(userId);
 
             // Retrieve the `on_boarded` variable from Firebase
+
             ref.child("on_boarded").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -132,6 +133,20 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Toast.makeText(this, "Invalid email or password.", Toast.LENGTH_SHORT).show();
 
         hideProgress();
+    }
+
+    @Override
+    public void navigateToTracker() {
+        Intent intent = new Intent(getApplicationContext(), TrackerActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void navigateToQuestionnaire() {
+        Intent intent = new Intent(getApplicationContext(), QuestionnaireWelcomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override
@@ -182,7 +197,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void showForgotPasswordFailure(String errorMsg) {
+    public void showFailureMessage(String errorMsg) {
         Toast.makeText(this, errorMsg, Toast.LENGTH_SHORT).show();
     }
 

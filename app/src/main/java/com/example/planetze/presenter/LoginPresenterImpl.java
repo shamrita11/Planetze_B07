@@ -45,6 +45,37 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
     }
 
     @Override
+    public void checkOnBoardingStatus(String userId) {
+        loginModel.fetchOnBoardingStatus(userId, new LoginModel.OnListener() {
+            @Override
+            public void onOnBoardingStatusFetched(Boolean onBoarded) {
+                if (loginView != null) {
+                    if (onBoarded) {
+                        loginView.navigateToTracker();
+                    } else {
+                        loginView.navigateToQuestionnaire();
+                    }
+                }
+            }
+
+            @Override
+            public void onSuccess() {
+                // Handle success if needed
+                if (loginView != null) {
+                    loginView.showSuccess("onBoardingStatus fetched successfully.");
+                }
+            }
+
+            @Override
+            public void onFailure(String errorMsg) {
+                if (loginView != null) {
+                    loginView.showFailureMessage(errorMsg);
+                }
+            }
+        });
+    }
+
+    @Override
     public void onSuccess() {
         loginView.showLoginSuccess();
     }
@@ -52,6 +83,11 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
     @Override
     public void onFailure(String errorMsg) {
         loginView.showLoginFailure();
+    }
+
+    @Override
+    public void onOnBoardingStatusFetched(Boolean onBoarded) {
+        loginView.hideProgress();
     }
 
     @Override
@@ -64,7 +100,7 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
 
             if (!EMAIL_ADDRESS_PATTERN.matcher(email).matches()) {
                 loginView.hideProgress();
-                loginView.showForgotPasswordFailure("Invalid email format.");
+                loginView.showFailureMessage("Invalid email format.");
                 return;
             }
 
@@ -76,7 +112,12 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
 
                 @Override
                 public void onFailure(String errorMsg) {
-                    loginView.showForgotPasswordFailure(errorMsg);
+                    loginView.showFailureMessage(errorMsg);
+                }
+
+                @Override
+                public void onOnBoardingStatusFetched(Boolean onBoarded) {
+                    loginView.hideProgress();
                 }
             });
         }
