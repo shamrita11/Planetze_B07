@@ -7,13 +7,17 @@ import com.example.planetze.model.LoginModel;
 import com.example.planetze.model.LoginModelImpl;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.regex.Pattern;
+
 public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener {
     private LoginView loginView;
     private final LoginModel loginModel;
+    private static final Pattern EMAIL_ADDRESS_PATTERN =
+            Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
 
-    public LoginPresenterImpl(LoginView loginView) {
+    public LoginPresenterImpl(LoginView loginView, LoginModel loginModel) {
         this.loginView = loginView;
-        this.loginModel = new LoginModelImpl();
+        this.loginModel = loginModel;
     }
 
     @Override
@@ -23,24 +27,22 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
         }
 
         if (username.isEmpty()) {
-            assert loginView != null;
-            loginView.hideProgress();
-            loginView.showUsernameError();
-            return;
+            if (loginView != null) {
+                loginView.hideProgress();
+                loginView.showUsernameError();
+                return;
+            }
         }
 
         if (password.isEmpty()) {
-            assert loginView != null;
-            loginView.hideProgress();
-            loginView.showPasswordError();
-            return;
+            if (loginView != null) {
+                loginView.hideProgress();
+                loginView.showPasswordError();
+                return;
+            }
         }
-        loginModel.login(username, password, this);
-    }
 
-    @Override
-    public void onDestroy() {
-        loginView = null; // to avoid memory leaks
+        loginModel.login(username, password, this);
     }
 
     @Override
@@ -61,9 +63,9 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
                 return;
             }
 
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            if (!EMAIL_ADDRESS_PATTERN.matcher(email).matches()) {
                 loginView.hideProgress();
-                loginView.showUsernameError();
+                loginView.showForgotPasswordFailure("Invalid email format.");
                 return;
             }
 
@@ -79,5 +81,10 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
                 }
             });
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        loginView = null;
     }
 }

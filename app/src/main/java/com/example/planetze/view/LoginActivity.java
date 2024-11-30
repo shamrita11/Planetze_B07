@@ -17,6 +17,7 @@ import com.example.planetze.Dashboard;
 import com.example.planetze.R;
 import com.example.planetze.SignUp;
 import com.example.planetze.Welcome;
+import com.example.planetze.model.LoginModelImpl;
 import com.example.planetze.presenter.LoginPresenter;
 import com.example.planetze.presenter.LoginPresenterImpl;
 import com.example.planetze.tracker.TrackerActivity;
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         progressBar = findViewById(R.id.progressBar);
         eyeIcon = findViewById(R.id.eyeIcon);
 
-        loginPresenter = new LoginPresenterImpl(this);
+        loginPresenter = new LoginPresenterImpl(this, new LoginModelImpl());
 
         buttonLogin.setOnClickListener(v -> {
             String username = editTextUsername.getText().toString();
