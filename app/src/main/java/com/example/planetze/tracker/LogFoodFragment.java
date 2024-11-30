@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.R;
+import com.example.planetze.UserSession;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -109,6 +110,8 @@ public class LogFoodFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addItem();
+                editTextNumServing.setText("");
+                spinnerFoodType.setSelection(0);
             }
         });
 
@@ -133,6 +136,11 @@ public class LogFoodFragment extends Fragment {
             // if not empty, convert it to a int
             try {
                 numServing = Integer.parseInt(numServingStr);
+                if (numServing < 0) {
+                    Toast.makeText(getContext(), "Number of servings cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid number of servings",
                         Toast.LENGTH_SHORT).show();
@@ -156,13 +164,13 @@ public class LogFoodFragment extends Fragment {
         // Store data into database
         // Store data under userId > daily_emission > date > food > meal
         FirebaseManager manager = new FirebaseManager(getContext());
-        String userId = "user1";
-        // String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        // String userId = "user1";
         // String dateKey = GetDate.getDate();
         //String dateKey = "2024-11-19";
 
         // user1 > daily_emission > 2024-11-19 > food > meal > chicken: 1
-        String foodRefPath = "users/" + userId + "/daily_emission/" + dateKey + "/food/meal/" + foodType;
+        String foodRefPath = "users/" + UserSession.userId + "/daily_emission/" + dateKey
+                + "/food/meal/" + foodType;
         manager.updateNode(foodRefPath, numServing, isIncrement)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

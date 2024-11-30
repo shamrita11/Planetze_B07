@@ -21,6 +21,9 @@ import com.google.firebase.database.Transaction;
 import java.math.BigDecimal;
 
 public class PurchaseProjectActivity extends BaseActivity {
+
+    private String userId; // Declare userId as a class variable
+
     @Override
     protected int getLayoutResourceId() {
         return R.layout.activity_purchase_project; // Ensure this matches your XML filename
@@ -30,6 +33,18 @@ public class PurchaseProjectActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_project);
+
+        // Retrieve the current user's ID from UserSession
+        userId = UserSession.userId;
+
+        // Check if userId is valid
+        if (userId == null || userId.isEmpty()) {
+            // Handle invalid session, redirect to login
+            Intent intent = new Intent(this, EcoBalanceActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         // Get references to the views
         TextView projectNameText = findViewById(R.id.projectNameText);
@@ -62,7 +77,7 @@ public class PurchaseProjectActivity extends BaseActivity {
 
         Button purchaseButton = findViewById(R.id.purchaseButton);
 
-        //changes the total cost depending on how much tonnes the user wants to offset
+        // Changes the total cost depending on how many tonnes the user wants to offset
         co2OffsetInput.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -90,6 +105,7 @@ public class PurchaseProjectActivity extends BaseActivity {
                 // No action needed
             }
         });
+
         purchaseButton.setOnClickListener(v -> {
             // Retrieve user input
             String inputTonnes = co2OffsetInput.getText().toString();
@@ -110,15 +126,10 @@ public class PurchaseProjectActivity extends BaseActivity {
                 return;
             }
 
-            // Get the user ID from Firebase Auth
-            FirebaseAuth auth = FirebaseAuth.getInstance();
-            //String userId = auth.getCurrentUser().getUid();
-            String userId = "user1";
-
             // Reference to the user's offset data in the database
             DatabaseReference userRef = FirebaseDatabase.getInstance()
                     .getReference("users")
-                    .child(userId)
+                    .child(userId) // Use the dynamic userId here
                     .child("totaloffsetc02");
 
             // Use Firebase transaction to update the totaloffsetc02 value

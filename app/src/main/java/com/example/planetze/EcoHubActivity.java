@@ -3,11 +3,6 @@ package com.example.planetze;
 import android.os.Bundle;
 import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.opencsv.CSVReader;
@@ -15,15 +10,19 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EcoHub extends AppCompatActivity {
+public class EcoHubActivity extends BaseActivity {
 
     private RecyclerView carouselRecyclerView;
     private Button btnBooks, btnArticles, btnVideos, btnMovies, btnPodcasts;
 
     @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_eco_hub; // Ensure this matches your XML layout file name
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eco_hub);
 
         btnBooks = findViewById(R.id.btnBooks);
         btnArticles = findViewById(R.id.btnArticles);

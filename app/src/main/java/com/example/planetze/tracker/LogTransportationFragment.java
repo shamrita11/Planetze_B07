@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.R;
+import com.example.planetze.UserSession;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.database.DatabaseReference;
@@ -92,7 +93,6 @@ public class LogTransportationFragment extends Fragment {
         buttonAdd.setVisibility(View.GONE);
 
         // Set up the spinner with categories
-        //TODO: figure out where and how to change the view based on choice chosen from spinner
         ArrayAdapter<CharSequence> TransportActivityAdapter = ArrayAdapter.createFromResource(getContext(),
                 R.array.transport_activity, android.R.layout.simple_spinner_item);
         TransportActivityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -215,6 +215,12 @@ public class LogTransportationFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addItem();
+                editTextDistanceDriven.setText("");
+                editTextTransportTime.setText("");
+                editTextDistanceWalked.setText("");
+                editTextNumFlight.setText("");
+                spinnerTransportType.setSelection(0);
+                spinnerHaul.setSelection(0);
             }
         });
 
@@ -242,6 +248,11 @@ public class LogTransportationFragment extends Fragment {
             // if not empty, convert it to a double
             try {
                 distanceDriven = Double.parseDouble(distanceDrivenStr);
+                if (distanceDriven < 0) {
+                    Toast.makeText(getContext(), "Distance driven cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid distance driven",
                         Toast.LENGTH_SHORT).show();
@@ -262,6 +273,11 @@ public class LogTransportationFragment extends Fragment {
             // if not empty, turn it into double
             try {
                 transportTime = Double.parseDouble(transportTimeStr);
+                if (transportTime < 0) {
+                    Toast.makeText(getContext(), "Transport time cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid time",
                         Toast.LENGTH_SHORT).show();
@@ -280,6 +296,11 @@ public class LogTransportationFragment extends Fragment {
             }
             try {
                 distanceWalked = Double.parseDouble(distanceWalkedStr);
+                if (distanceWalked < 0) {
+                    Toast.makeText(getContext(), "Distance walked or cycled cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid distance walked/cycled",
                         Toast.LENGTH_SHORT).show();
@@ -298,6 +319,11 @@ public class LogTransportationFragment extends Fragment {
             }
             try {
                 numFlight = Integer.parseInt(numFlightStr);
+                if (numFlight < 0) {
+                    Toast.makeText(getContext(), "Number of flights cannot be negative",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid number of flights",
                         Toast.LENGTH_SHORT).show();
@@ -333,11 +359,12 @@ public class LogTransportationFragment extends Fragment {
         // Log data into database
         FirebaseManager manager = new FirebaseManager(getContext());
         List<Task<Void>> tasks = new ArrayList<>();
-        String userId = "user1"; // switch to actual id
+        // String userId = "user1"; // switch to actual id
         // String dateKey = GetDate.getDate();
 
         // user1 > daily_emission > 2024-11-19 > transportation
-        String commonPath = "users/" + userId + "/daily_emission/" + dateKey + "/transportation/";
+        String commonPath = "users/" + UserSession.userId + "/daily_emission/" + dateKey
+                + "/transportation/";
 
         // Log data for driving personal vehicle
         // ... transportation > "drive personal vehicle" > "distance driven": 1.5

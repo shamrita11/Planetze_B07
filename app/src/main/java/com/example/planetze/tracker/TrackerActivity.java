@@ -6,15 +6,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.planetze.BaseActivity;
 import com.example.planetze.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class TrackerActivity extends AppCompatActivity implements TrackerTabFragment.OnTrackerTabInteractionListener {
+public class TrackerActivity extends BaseActivity implements TrackerTabFragment.OnTrackerTabInteractionListener {
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_eco_tracker; // Ensure this matches your XML layout file name
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eco_tracker);
 
         // Load the TrackerFragment when the activity is created
         if (savedInstanceState == null) {
@@ -45,15 +49,5 @@ public class TrackerActivity extends AppCompatActivity implements TrackerTabFrag
         transaction.replace(R.id.fragment_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-    }
-
-    @Override
-    public void onBackPressed() {
-        // Handle back press: if there’s more than one fragment in the stack, pop the back stack
-        if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed(); // Otherwise, follow the default behavior
-        }
     }
 }

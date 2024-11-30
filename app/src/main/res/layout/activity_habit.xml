@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/light_gray">
+
 
     <TextView
         android:id="@+id/app_name"
@@ -15,6 +17,7 @@
         android:alpha="0.1"
         android:background="@drawable/planetze_logo" />
 
+
     <TextView
         android:id="@+id/eco_friendly_habits_title"
         android:layout_width="wrap_content"
@@ -23,10 +26,11 @@
         android:background="@drawable/rounded_title"
         android:padding="10dp"
         android:layout_marginTop="40dp"
-        android:text="@string/btn_habit_list_title"
+        android:text="@string/habit_list_title"
         android:textSize="40sp"
         android:textStyle="bold"
         android:textColor="@color/dark_teal" />
+
 
     <TextView
         android:id="@+id/btn_adopted_habits"
@@ -37,11 +41,12 @@
         android:textColor="@color/dark_teal"
         android:background="@drawable/transparent_button"
         android:backgroundTint="@null"
-        android:text="Adopted Habits"
+        android:text="@string/adopted_habit"
         android:textSize="25sp"
         android:padding="10dp"
         android:layout_marginTop="40dp"
         />
+
 
     <FrameLayout
         android:id="@+id/white_box_container"
@@ -49,7 +54,7 @@
         android:layout_height="427dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
-        android:background="@drawable/rounded_corners">
+        android:background="@drawable/rounded_button_background">
 
         <TextView
             android:id="@+id/choose_category"
@@ -63,6 +68,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/habitCategoryRecyclerView"
             android:layout_width="wrap_content"
@@ -70,8 +76,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="60dp" />
 
-
     </FrameLayout>
-
 
 </LinearLayout>

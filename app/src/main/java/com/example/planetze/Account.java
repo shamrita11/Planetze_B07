@@ -3,6 +3,7 @@ package com.example.planetze;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,23 +29,27 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Account extends AppCompatActivity {
+public class Account extends BaseActivity {
 
     private Button buttonLogOut, buttonEditSurvey, buttonChangePassword;
     private FirebaseAuth mAuth;
-    private FirebaseUser user;
     private FirebaseDatabase db;
     private DatabaseReference ref;
-    private TextView tvName, tvEmail, tvTotalCarbon;
-    private String uid;
+    private TextView tvName, tvEmail, tvTotalCarbon, TotalCarbonFood;
+    private TextView TotalCarbonTransportation, TotalCarbonConsumption, TotalCarbonHousing;
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_account; // Ensure this matches your XML layout file name
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_account);
+
+        // Initialize Firebase and UI elements
         mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
         db = FirebaseDatabase.getInstance();
         ref = db.getReference("users");
         buttonLogOut = findViewById(R.id.btn_logout);
@@ -53,30 +58,72 @@ public class Account extends AppCompatActivity {
         tvName = findViewById(R.id.userName);
         tvEmail = findViewById(R.id.userEmail);
         tvTotalCarbon = findViewById(R.id.userTotalCarbon);
-        uid = user.getUid();
+        TotalCarbonFood = findViewById(R.id.userTotalCarbonFood);
+        TotalCarbonTransportation = findViewById(R.id.userTotalCarbonTransportation);
+        TotalCarbonConsumption = findViewById(R.id.userTotalCarbonConsumption);
+        TotalCarbonHousing = findViewById(R.id.userTotalCarbonHousing);
 
-        // display user's info
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String name = snapshot.child(uid).child("name").getValue(String.class);
-                String email = snapshot.child(uid).child("email").getValue(String.class);
-                double carbon = snapshot.child(uid).child("TotalC02Emissions").getValue(Double.class);
-                String carbonString = String.format("%.2f", carbon);
-                tvName.setText(name);
-                tvEmail.setText(email);
-                tvTotalCarbon.setText(carbonString);
-            }
+        // Fetch user ID from UserSession
+        String uid = UserSession.userId;
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Account.this, "Failed to retrieve data.", Toast.LENGTH_LONG).show();
-            }
-        });
+        if (uid != null) {
+            // Display user's info
+            ref.child(uid).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    // Fetch name and email
+                    String name = snapshot.child("name").getValue(String.class);
+                    String email = snapshot.child("email").getValue(String.class);
+
+                    // Safely handle the retrieval of TotalC02Emissions with a default value
+                    Double carbonValue = snapshot.child("TotalC02Emissions").getValue(Double.class);
+                    double carbon = (carbonValue != null) ? carbonValue : 0.0;
+
+                    // Fetch the breakdown of CO2 emissions
+                    Double carbonFood = snapshot.child("averagetotalc02emissionsperyear_food").getValue(Double.class);
+                    Double carbonTransportation = snapshot.child("averagetotalc02emissionsperyear_transportation").getValue(Double.class);
+                    Double carbonConsumption = snapshot.child("averagetotalc02emissionsperyear_consumption").getValue(Double.class);
+                    Double carbonHousing = snapshot.child("averagetotalc02emissionsperyear_housing").getValue(Double.class);
+
+                    // Use default values if any of the above values are null
+                    carbonFood = (carbonFood != null) ? carbonFood : 0.0;
+                    carbonTransportation = (carbonTransportation != null) ? carbonTransportation : 0.0;
+                    carbonConsumption = (carbonConsumption != null) ? carbonConsumption : 0.0;
+                    carbonHousing = (carbonHousing != null) ? carbonHousing : 0.0;
+
+                    // Format the values with 2 decimal places
+                    String carbonString = String.format("Total: %.2f", carbon);
+                    String carbonFoodString = String.format("Food: %.2f kg per year", carbonFood);
+                    String carbonTransportationString = String.format("Transportation: %.2f kg per year", carbonTransportation);
+                    String carbonConsumptionString = String.format("Consumption: %.2f kg per year", carbonConsumption);
+                    String carbonHousingString = String.format("Housing: %.2f kg per year", carbonHousing);
+
+                    // Set the retrieved data to the respective TextViews
+                    tvName.setText(name != null ? name : "No name available");
+                    tvEmail.setText(email != null ? email : "No email available");
+                    tvTotalCarbon.setText(carbonString);
+
+                    // Initialize the additional TextViews with respective values
+                    TotalCarbonFood.setText(carbonFoodString);
+                    TotalCarbonTransportation.setText(carbonTransportationString);
+                    TotalCarbonConsumption.setText(carbonConsumptionString);
+                    TotalCarbonHousing.setText(carbonHousingString);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle the error if the database read fails
+                    Log.e("Firebase", "Error reading data: " + error.getMessage());
+                }
+            });
+        } else {
+            Toast.makeText(this, "User ID is not available. Please log in again.", Toast.LENGTH_SHORT).show();
+        }
 
         buttonLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UserSession.setUserId(null);
                 mAuth.signOut();
                 Intent intent = new Intent(getApplicationContext(), Welcome.class);
                 startActivity(intent);
@@ -88,7 +135,7 @@ public class Account extends AppCompatActivity {
         buttonEditSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), EditSurvey.class);
+                Intent intent = new Intent(getApplicationContext(), QuestionnaireWelcomeActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -109,7 +156,7 @@ public class Account extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         // read new password & set it
                         String newPassword = resetPassword.getText().toString();
-                        user.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        mAuth.getCurrentUser().updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(Account.this, "Password Reset Successfully.",

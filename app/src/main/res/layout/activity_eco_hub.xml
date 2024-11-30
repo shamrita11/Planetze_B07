@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray"
-    tools:context=".MainActivity">
-
+    android:background="@color/light_gray">
     <!-- Wrap Everything in ScrollView -->
     <android.widget.ScrollView
         android:layout_width="match_parent"
@@ -249,4 +247,16 @@
             </RelativeLayout>
         </LinearLayout>
     </android.widget.ScrollView>
+
+    <!-- Navigation Bar -->
+
+    <include
+        android:id="@+id/footer"
+        layout="@layout/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

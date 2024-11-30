@@ -26,10 +26,10 @@
         <!-- Back Button -->
         <Button
             android:id="@+id/btn_back"
-            android:layout_width="23dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="46dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/icon_back"

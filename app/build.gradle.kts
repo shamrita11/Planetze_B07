@@ -48,7 +48,6 @@ dependencies {
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
-//    testImplementation(libs.robolectric)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     // Import the Firebase BoM

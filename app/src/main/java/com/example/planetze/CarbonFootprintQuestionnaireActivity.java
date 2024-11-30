@@ -1,5 +1,6 @@
 package com.example.planetze;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -7,7 +8,15 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.planetze.tracker.TrackerActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,61 +91,103 @@ public class CarbonFootprintQuestionnaireActivity extends AppCompatActivity {
         setupQuestionFlow();
 
         btnSubmit.setOnClickListener(v -> {
-            // List to store the keys of unanswered subquestions or optional questions
             ArrayList<String> unansweredQuestionKeys = new ArrayList<>();
 
-            // Validate all visible subquestions or optional questions in responses
             for (Map<String, String> response : responses) {
-                // Extract question key and answer
                 String questionKey = response.keySet().stream().filter(k -> k.startsWith("q")).findFirst().orElse("");
                 String answerKey = response.keySet().stream().filter(k -> k.startsWith("a")).findFirst().orElse("");
                 String answer = response.get(answerKey);
 
-                // Skip mandatory root questions (Q1 through Q18), but validate subquestions (e.g., Q1.1, Q6.1, spinners)
                 if (questionKey.matches("q[1-9]|q1[0-8]")) {
                     continue; // Skip main questions
                 }
 
-                // Check if the answer is empty for visible questions
                 if (answer == null || answer.isEmpty()) {
-                    unansweredQuestionKeys.add(questionKey.replace("_", ".")); // Convert q6_1_beef to q6.1.beef
+                    unansweredQuestionKeys.add(questionKey.replace("_", "."));
                 }
             }
 
-            // Explicitly validate spinners for Q6.1
             String[] q6_1_keys = {"q6_1_beef", "q6_1_pork", "q6_1_chicken", "q6_1_fish"};
             for (int i = 0; i < spinners.length; i++) {
-                if (spinners[i].getVisibility() == View.VISIBLE) {
-                    // Check if spinner selection is valid (position > 0 means a valid selection)
-                    if (spinners[i].getSelectedItemPosition() == 0) {
-                        unansweredQuestionKeys.add(q6_1_keys[i].replace("_", "."));
-                    }
+                if (spinners[i].getVisibility() == View.VISIBLE && spinners[i].getSelectedItemPosition() == 0) {
+                    unansweredQuestionKeys.add(q6_1_keys[i].replace("_", "."));
                 }
             }
 
             if (!unansweredQuestionKeys.isEmpty()) {
-                // Show error message with the question numbers of unanswered optional/subquestions
                 String errorMessage = "Please answer the following question(s): " + String.join(", ", unansweredQuestionKeys);
                 Toast.makeText(CarbonFootprintQuestionnaireActivity.this, errorMessage, Toast.LENGTH_LONG).show();
             } else {
-                // Show success message
-                Toast.makeText(CarbonFootprintQuestionnaireActivity.this, "Submitted successfully!", Toast.LENGTH_LONG).show();
+                Toast.makeText(CarbonFootprintQuestionnaireActivity.this, "Submitted! View Your Results in Your Eco Gauge Dashboard and User Page!", Toast.LENGTH_LONG).show();
 
-                // You can navigate to another activity or handle the submitted data here
-                // Intent intent = new Intent(this, AnotherActivity.class);
-                // startActivity(intent);
+                String userId = UserSession.userId;
+                DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(userId);
 
+                // Check if variables are already initialized
+                ref.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        // Map for variables to initialize
+                        Map<String, Object> updates = new HashMap<>();
+
+
+                            String selectedCountry = countrySpinner.getSelectedItem().toString();
+                            updates.put("usercountry", selectedCountry);
+
+                        if (!snapshot.hasChild("averagetotalc02emissionsperyear")) {
+                            updates.put("averagetotalc02emissionsperyear", 0);
+                        }
+
+                        if (!snapshot.hasChild("averagetotalc02emissionsperyear_food")) {
+                            updates.put("averagetotalc02emissionsperyear_food", 0);
+                        }
+
+                        if (!snapshot.hasChild("averagetotalc02emissionsperyear_consumption")) {
+                            updates.put("averagetotalc02emissionsperyear_consumption", 0);
+                        }
+
+                        if (!snapshot.hasChild("averagetotalc02emissionsperyear_housing")) {
+                            updates.put("averagetotalc02emissionsperyear_housing", 0);
+                        }
+
+                        if (!snapshot.hasChild("averagetotalc02emissionsperyear_transportation")) {
+                            updates.put("averagetotalc02emissionsperyear_transportation", 0);
+                        }
+
+                        updates.put("on_boarded", true); // Always set "on_boarded" to true
+
+                        if (!updates.isEmpty()) {
+                            ref.updateChildren(updates).addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Intent intent = new Intent(CarbonFootprintQuestionnaireActivity.this, TrackerActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(CarbonFootprintQuestionnaireActivity.this, "Failed to update user data. Please try again.", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        } else {
+                            // If no updates are needed, navigate directly to TrackerActivity
+                            Intent intent = new Intent(CarbonFootprintQuestionnaireActivity.this, TrackerActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(CarbonFootprintQuestionnaireActivity.this, "Failed to check user data. Please try again.", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
-
-
-
     }
 
-    /**
-     * Sets up the question flow to display one question at a time
-     * while dynamically managing question visibility and responses.
-     */
+
+        /**
+         * Sets up the question flow to display one question at a time
+         * while dynamically managing question visibility and responses.
+         */
     private void setupQuestionFlow() {
         // Q0: Country Selection
         countrySpinner.setOnItemSelectedListener(new android.widget.AdapterView.OnItemSelectedListener() {

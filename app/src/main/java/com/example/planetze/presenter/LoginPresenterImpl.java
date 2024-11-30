@@ -41,7 +41,6 @@ public class LoginPresenterImpl implements LoginPresenter, LoginModel.OnListener
                 return;
             }
         }
-
         loginModel.login(username, password, this);
     }
 

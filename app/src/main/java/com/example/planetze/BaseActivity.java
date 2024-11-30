@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.planetze.tracker.TrackerActivity;
+
 public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,25 +31,25 @@ public abstract class BaseActivity extends AppCompatActivity {
         ImageButton userButton = findViewById(R.id.userButton);
 
 
-        //if (trackerButton != null) {
-           // trackerButton.setOnClickListener(v -> navigateToActivity(TrackerActivity.class));
-        //}
+        if (trackerButton != null) {
+            trackerButton.setOnClickListener(v -> navigateToActivity(TrackerActivity.class));
+        }
         if (gaugeButton != null) {
             gaugeButton.setOnClickListener(v -> navigateToActivity(EcoGaugeActivity.class));
         }
-        //if (hubButton != null) {
-            //hubButton.setOnClickListener(v -> navigateToActivity(EcoHubActivity.class));
-        //}
+        if (hubButton != null) {
+            hubButton.setOnClickListener(v -> navigateToActivity(EcoHubActivity.class));
+        }
         if (balanceButton != null) {
             balanceButton.setOnClickListener(v -> navigateToActivity(EcoBalanceActivity.class));
         }
-        //if (agentButton != null) {
-        // agentButton.setOnClickListener(v -> navigateToActivity(AgentActivity.class));
-        //}
+        if (agentButton != null) {
+            agentButton.setOnClickListener(v -> navigateToActivity(EcoAgent.class));
+        }
 
-        //if (userButton != null) {
-           // userButton.setOnClickListener(v -> navigateToActivity(UserActivity.class));
-        //}
+        if (userButton != null) {
+           userButton.setOnClickListener(v -> navigateToActivity(Account.class));
+        }
     }
 
     private void navigateToActivity(Class<?> activityClass) {

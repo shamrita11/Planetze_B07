@@ -54,6 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dashboardTitle">
 
+        <!-- CO2e Value and Label Row -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,7 +63,6 @@
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
-        <!-- CO2e Value and Label Row -->
         <LinearLayout
             android:layout_width="369dp"
             android:layout_height="86dp"
@@ -223,25 +223,17 @@
             android:paddingLeft="8dp">
 
             <TextView
-                android:layout_width="142dp"
-                android:layout_height="wrap_content"
-                android:text="@string/global_average"
+                android:layout_width="141dp"
+                android:layout_height="42dp"
+                android:text="@string/your_average"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/countryNameTextView"
-                android:layout_width="141dp"
-                android:layout_height="44dp"
-                android:text="Country"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/countryAverageTextView"
-                android:layout_width="154dp"
-                android:layout_height="65dp"
+                android:id="@+id/YourAverageTextView"
+                android:layout_width="140dp"
+                android:layout_height="38dp"
                 android:gravity="center"
                 android:text="@string/default_average"
                 android:textColor="#FFFFFF"
@@ -249,16 +241,41 @@
 
             <TextView
                 android:layout_width="142dp"
-                android:layout_height="39dp"
+                android:layout_height="wrap_content"
+                android:text="@string/global_average"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/countryNameTextView"
+                android:layout_width="138dp"
+                android:layout_height="32dp"
+                android:text="@string/country"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/countryAverageTextView"
+                android:layout_width="154dp"
+                android:layout_height="38dp"
+                android:gravity="center"
+                android:text="@string/default_average"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="136dp"
+                android:layout_height="wrap_content"
                 android:text="@string/world_average"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/worldAverageTextView"
-                android:layout_width="142dp"
-                android:layout_height="55dp"
+                android:layout_width="143dp"
+                android:layout_height="38dp"
                 android:gravity="center"
                 android:text="@string/default_average"
                 android:textColor="#FFFFFF"

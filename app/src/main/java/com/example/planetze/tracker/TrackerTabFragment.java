@@ -115,8 +115,8 @@ public class TrackerTabFragment extends Fragment {
         // Initialize the processor only once in onResume or onCreate
         if (processor == null || forceRefresh) {
             processor = new DailyEmissionProcessor(getContext(), GetDate.getDate(), () -> {
+                processor.mainUploader();
                 dailyEmission = processor.dailyTotalCalculator();  // Calculate total emissions
-
                 // Update the daily emission text in the xml
                 String dailyEmissionText = String.format("%.2f kg", dailyEmission);
                 totalEmission.setText(dailyEmissionText);  // Update the UI with the result
