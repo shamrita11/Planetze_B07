@@ -19,10 +19,10 @@ public class TransportationCalculator {
         // Car distance ranges (in km)
         Map<String, Integer> carDistanceMap = Map.of(
                 "Up to 5,000 km (3,000 miles)", 5000,
-                "5,000–10,000 km (3,000-6,000 miles)", 10000,
-                "10,000–15,000 km (6,000-9,000 miles)", 15000,
-                "15,000–20,000 km (9,000-12,000 miles)", 20000,
-                "20,000–25,000 km (12,000-15,000 miles)", 25000,
+                "5,000–10,000 km (3,000–6,000 miles)", 10000,
+                "10,000–15,000 km (6,000–9,000 miles)", 15000,
+                "15,000–20,000 km (9,000–12,000 miles)", 20000,
+                "20,000–25,000 km (12,000–15,000 miles)", 25000,
                 "More than 25,000 km (15,000 miles)", 35000
         );
 
