@@ -34,6 +34,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -132,26 +133,42 @@ public class TrackerTabFragment extends Fragment {
 
     private void updateBarChart() {
         ArrayList<BarEntry> entries = new ArrayList<>();
-        double carEmission = processor.carCalculator();
-        double publicTransportEmission = processor.publicTransportCalculator();
-        double flightEmission = processor.flightCalculator();
-        double foodEmission = processor.foodCalculator();
-        double clothEmission = processor.clothesCalculator();
-        double deviceEmission = processor.deviceCalculator();
-        double otherEmission = processor.otherCalculator();
+        double[] emissions = new double[7];
+        String[] strings = new String[7];
+        String[] xaxis = new String[8];
+        int index = 0;
+
+        emissions[0] = processor.carCalculator(); // carEmission
+        emissions[1] = processor.publicTransportCalculator(); // public transport
+        emissions[2] = processor.flightCalculator(); //flight
+        emissions[3] = processor.foodCalculator(); // food
+        emissions[4] = processor.clothesCalculator(); // clothes
+        emissions[5] = processor.deviceCalculator(); // device
+        emissions[6] = processor.otherCalculator(); // other purchase
+
+        strings[0] = "Drive";
+        strings[1] = "Public Transit";
+        strings[2] = "Flight";
+        strings[3] = "Food";
+        strings[4] = "Clothes";
+        strings[5] = "Electronics";
+        strings[6] = "Other";
 
         if (dailyEmission > 0) {
-            if (carEmission > 0) entries.add(new BarEntry(0, (float) carEmission, "Drive"));
-            if (publicTransportEmission > 0) entries.add(new BarEntry(1, (float) publicTransportEmission, "Public Transport"));
-            if (flightEmission > 0) entries.add(new BarEntry(2, (float) flightEmission, "Flight"));
-            if (foodEmission > 0) entries.add(new BarEntry(3, (float) foodEmission, "Food"));
-            if (clothEmission > 0) entries.add(new BarEntry(4, (float) clothEmission, "Clothes"));
-            if (deviceEmission > 0) entries.add(new BarEntry(5, (float) deviceEmission, "Electronics"));
-            if (otherEmission > 0) entries.add(new BarEntry(6, (float) otherEmission, "Other"));
-            entries.add(new BarEntry(7, 0, "Walking and Cycling"));
+            for(int i = 0; i < 7; i++) {
+                if(emissions[i] > 0) {
+                    entries.add(new BarEntry(index, (float) emissions[i], strings[i]));
+                    xaxis[index] = strings[i];
+                    index++;
+                }
+            }
+            entries.add(new BarEntry(index, 0, "Walking/Cycling"));
+            xaxis[index] = "Walking/Cycling";
         } else {
-            entries.add(new BarEntry(7, 0, "Walking and Cycling"));
+            entries.add(new BarEntry(0, 0, "Walking/Cycling"));
+            xaxis[0] = "Walking/Cycling";
         }
+        entries.sort((entry1, entry2) -> Float.compare(entry1.getX(), entry2.getX()));
 
         BarDataSet barDataSet = new BarDataSet(entries, "");
 
@@ -179,7 +196,7 @@ public class TrackerTabFragment extends Fragment {
         barChart.setData(barData);
         barChart.getDescription().setEnabled(false);
         barChart.setFitBars(true); // Make the bars fit nicely within the chart
-        barChart.setExtraOffsets(13, 10, 13, 60);
+        barChart.setExtraOffsets(13, 10, 13, 75);
         barChart.setDoubleTapToZoomEnabled(false);
         barChart.getXAxis().setLabelCount(entries.size(), false);
 
@@ -188,9 +205,8 @@ public class TrackerTabFragment extends Fragment {
         xAxis.setGranularity(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
-        xAxis.setLabelRotationAngle(-40f); // Rotate labels if they are long
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(
-                new String[]{"Drive", "Public Transit", "Flight", "Food", "Clothes", "Electronics", "Other", "Walking/Cycling"}));
+        xAxis.setLabelRotationAngle(-50f); // Rotate labels if they are long
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(xaxis));
         xAxis.setYOffset(10f);
         xAxis.setTextSize(14f);
 
