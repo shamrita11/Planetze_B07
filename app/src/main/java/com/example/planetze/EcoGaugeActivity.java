@@ -71,7 +71,7 @@ public class EcoGaugeActivity extends BaseActivity {
         calculator = new EcoGaugeCalculator();
 
         // Retrieve the current user ID from UserSession
-        String userId = UserSession.userId;
+        String userId = UserSession.getUserId(this);
 
         if (userId == null) {
             Log.e("EcoGaugeActivity", "User ID is null. Please log in again.");

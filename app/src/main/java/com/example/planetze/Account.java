@@ -1,5 +1,7 @@
 package com.example.planetze;
 
+import static java.security.AccessController.getContext;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,7 +66,7 @@ public class Account extends BaseActivity {
         TotalCarbonHousing = findViewById(R.id.userTotalCarbonHousing);
 
         // Fetch user ID from UserSession
-        String uid = UserSession.userId;
+        String uid = UserSession.getUserId(this);
 
         if (uid != null) {
             // Display user's info
@@ -123,7 +125,7 @@ public class Account extends BaseActivity {
         buttonLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserSession.setUserId(null);
+                UserSession.clearUserId(getApplicationContext());
                 mAuth.signOut();
                 Intent intent = new Intent(getApplicationContext(), Welcome.class);
                 startActivity(intent);

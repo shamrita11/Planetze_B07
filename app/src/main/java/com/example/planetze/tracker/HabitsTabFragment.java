@@ -15,7 +15,6 @@ import com.example.planetze.EcoHabitActivity;
 import com.example.planetze.R;
 
 public class HabitsTabFragment extends Fragment {
-    // NOTE: this is a placeholder java class for Habits section
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
