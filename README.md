@@ -29,14 +29,14 @@ The app’s user interface (UI) was initially designed using Figma, adhering to 
 <p align="center">
   <img src=https://github.com/user-attachments/assets/96370829-ac61-4817-890b-bf552c712055 align="left" width=210 height=430> 
   <img src=https://github.com/user-attachments/assets/8e02d3d0-6236-4822-8275-0241bf94cb47 width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/505b295e-9410-4e09-94e1-3b84c720eab5 align="right" width=210 height=430>
 </p>
-  **insert signup image**
 
 ### Eco Tracker
 <p align="center">
-  <img src=https://github.com/user-attachments/assets/9b573573-c946-427b-915a-904bdceb6dd3 align="left" width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/0d8e5e91-b9e8-488b-b19f-b2761f25da7b align="left" width=210 height=430> 
   <img src=https://github.com/user-attachments/assets/94a4ee45-c8cf-43d6-b014-9434b10c9597 width=210 height=430> 
-  <img src=https://github.com/user-attachments/assets/8e6a49b8-d325-4724-827b-5b35da859084 align="right" width=210 height=430>
+  <img src=https://github.com/user-attachments/assets/4cd1b6ae-8bfa-4f0a-8105-862be999fc88 align="right" width=210 height=430>
 </p>
 
 ### Eco Habits
@@ -56,9 +56,8 @@ The app’s user interface (UI) was initially designed using Figma, adhering to 
 ### User Account & Eco Agent 
 <p align="center">
   <img src=https://github.com/user-attachments/assets/778773ce-e937-4827-b3df-3faaee3cb436 align="left" width=210 height=430> 
-  <img src=https://github.com/user-attachments/assets/37110205-5b7d-46be-9c1b-7060de794064 width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/d382e86e-68b1-47e6-8090-aa864bc71fd6 width=210 height=430> 
 </p>
-**insert account image**
 
 ## Installation
 1. Clone the repository to your local machine: 
