@@ -1,10 +1,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#d8dbe2"
-    android:padding="8dp">
+    android:background="#d8dbe2">
 
     <!--Logo Image Planetze -->
 
@@ -32,12 +32,14 @@
         android:textColor="#009999"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:paddingStart="5dp"
         app:layout_constraintBottom_toBottomOf="@id/backgroundLogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.008"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/backgroundLogo"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="RtlSymmetry" />
 
     <!--Total C02e Emissions Section -->
 
@@ -45,7 +47,7 @@
         android:id="@+id/totalCO2Section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_margin="4dp"
         android:background="@drawable/rounded_corner_background"
         android:orientation="vertical"
         android:padding="16dp"
@@ -187,9 +189,10 @@
         android:layout_width="395dp"
         android:layout_height="243dp"
         android:layout_marginTop="16dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:background="@drawable/line_chart_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emissionsTrendLabel" />
 
