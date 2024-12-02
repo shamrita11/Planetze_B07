@@ -47,7 +47,6 @@ dependencies {
     implementation(libs.material.calendarview)
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
-    testImplementation(libs.mockito.inline)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     // Import the Firebase BoM
