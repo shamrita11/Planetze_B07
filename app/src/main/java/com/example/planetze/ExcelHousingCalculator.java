@@ -67,7 +67,7 @@ public class ExcelHousingCalculator {
 
     public double calculateHousingScore(ArrayList<Map<String, String>> responses) {
         double totalHousing = 0.0;
-        int[][] rowSelector = {{9, 17, 25}, {33, 41, 49}, {57, 65, 73}, {81, 90, 98}, {57, 65, 73}};
+        int[][] rowSelector = {{9, 33, 57, 81, 57}, {17, 41, 65, 90, 65}, {25, 49, 73, 98, 73}};
         int[] heatingOffsets = {2, 7, 12, 17, 22, 27};
 
         // Extract answers
