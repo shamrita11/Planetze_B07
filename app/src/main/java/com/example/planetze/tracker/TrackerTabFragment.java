@@ -188,7 +188,7 @@ public class TrackerTabFragment extends Fragment {
         xAxis.setGranularity(1f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
-        xAxis.setLabelRotationAngle(-35f); // Rotate labels if they are long
+        xAxis.setLabelRotationAngle(-40f); // Rotate labels if they are long
         xAxis.setValueFormatter(new IndexAxisValueFormatter(
                 new String[]{"Drive", "Public Transit", "Flight", "Food", "Clothes", "Electronics", "Other", "Walking/Cycling"}));
         xAxis.setYOffset(10f);
