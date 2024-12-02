@@ -150,7 +150,7 @@ public class TrackerTabFragment extends Fragment {
             if (otherEmission > 0) entries.add(new BarEntry(6, (float) otherEmission, "Other"));
             entries.add(new BarEntry(7, 0, "Walking and Cycling"));
         } else {
-            entries.add(new BarEntry(1, 0, "Walking and Cycling"));
+            entries.add(new BarEntry(7, 0, "Walking and Cycling"));
         }
 
         BarDataSet barDataSet = new BarDataSet(entries, "");
@@ -181,6 +181,7 @@ public class TrackerTabFragment extends Fragment {
         barChart.setFitBars(true); // Make the bars fit nicely within the chart
         barChart.setExtraOffsets(13, 10, 13, 60);
         barChart.setDoubleTapToZoomEnabled(false);
+        barChart.getXAxis().setLabelCount(entries.size(), false);
 
         // Configure X-axis labels
         XAxis xAxis = barChart.getXAxis();

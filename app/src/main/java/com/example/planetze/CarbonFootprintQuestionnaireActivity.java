@@ -641,7 +641,7 @@ public class CarbonFootprintQuestionnaireActivity extends AppCompatActivity {
             String answer = "";
 
             if (checkedId == R.id.radio_10_option_1) {
-                answer = "Less than 1000 sq. ft.";
+                answer = "Under 1000 sq. ft.";
             } else if (checkedId == R.id.radio_10_option_2) {
                 answer = "1000–2000 sq. ft.";
             } else if (checkedId == R.id.radio_10_option_3) {
@@ -905,10 +905,6 @@ public class CarbonFootprintQuestionnaireActivity extends AppCompatActivity {
             responses.add(newResponse);
         }
     }
-
-
-
-
 
 }
 

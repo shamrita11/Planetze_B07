@@ -65,22 +65,29 @@ public class ExcelHousingCalculator {
         return ""; // Return an empty string if the answer is not found
     }
 
-
     public double calculateHousingScore(ArrayList<Map<String, String>> responses) {
         double totalHousing = 0.0;
         int[][] rowSelector = {{9, 17, 25}, {33, 41, 49}, {57, 65, 73}, {81, 90, 98}, {57, 65, 73}};
-        int[] heatingOffsets = {2, 7, 12, 17, 22};
+        int[] heatingOffsets = {2, 7, 12, 17, 22, 27};
 
         // Extract answers
-        String homeType = getAnswer("a8", responses); // Q8
-        String householdSize = getAnswer("a9", responses); // Q9
-        String homeSize = getAnswer("a10", responses); // Q10
-        String heatingEnergy = getAnswer("a11", responses); // Q11
-        String waterHeatingEnergy = getAnswer("a13", responses); // Q13
-        String renewableEnergy = getAnswer("a14", responses); // Q14
+        String homeSize = getAnswer("a10", responses);
+        String householdSize = getAnswer("a9", responses);
+        String heatingEnergy = getAnswer("a11", responses);
+        String electricityBill = getAnswer("a12", responses);
+        String waterHeatingEnergy = getAnswer("a13", responses);
+        String renewableEnergy = getAnswer("a14", responses);
+
+        // Debug inputs
+        System.out.println("Debug - Home Size: " + homeSize);
+        System.out.println("Debug - Household Size: " + householdSize);
+        System.out.println("Debug - Heating Energy: " + heatingEnergy);
+        System.out.println("Debug - Electricity Bill: " + electricityBill);
+        System.out.println("Debug - Water Heating Energy: " + waterHeatingEnergy);
+        System.out.println("Debug - Renewable Energy: " + renewableEnergy);
 
         // Validate inputs
-        if (homeSize.isEmpty() || householdSize.isEmpty()) {
+        if (homeSize == null || householdSize == null || homeSize.isEmpty() || householdSize.isEmpty()) {
             throw new IllegalArgumentException("Missing required input: homeSize or householdSize");
         }
 
@@ -88,8 +95,11 @@ public class ExcelHousingCalculator {
         int row13 = mapHomeSizeToIndex(homeSize);
         int row15 = mapHouseholdSizeToIndex(householdSize);
 
-        if (row13 == -1 || row15 == -1) {
-            throw new IllegalArgumentException("Invalid indices for home size or household size: " + homeSize + ", " + householdSize);
+        // Validate mapped indices
+        if (row13 < 0 || row13 >= rowSelector.length || row15 < 0 || row15 >= rowSelector[row13].length) {
+            throw new IllegalArgumentException("Invalid indices for home size or household size. " +
+                    "Home Size: " + homeSize + " (" + row13 + "), " +
+                    "Household Size: " + householdSize + " (" + row15 + ")");
         }
 
         int baseRow = rowSelector[row13][row15] + 3;
@@ -118,16 +128,30 @@ public class ExcelHousingCalculator {
         }
 
         // Renewable energy adjustments
-        if (renewableEnergy.equalsIgnoreCase("Yes, primarily (more than 50% of energy use)")) {
+        if ("Yes, primarily (more than 50% of energy use)".equalsIgnoreCase(renewableEnergy)) {
             totalHousing -= 6000;
-        } else if (renewableEnergy.equalsIgnoreCase("Yes, partially (less than 50% of energy use)")) {
+        } else if ("Yes, partially (less than 50% of energy use)".equalsIgnoreCase(renewableEnergy)) {
             totalHousing -= 4000;
+        }
+
+        // Electricity bill adjustment
+        Map<String, Double> electricityEmissions = Map.of(
+                "Under $50", 500.0,
+                "$50–$100", 1000.0,
+                "$100–$150", 1500.0,
+                "$150–$200", 2000.0,
+                "Over $200", 2500.0
+        );
+
+        if (electricityEmissions.containsKey(electricityBill)) {
+            totalHousing += electricityEmissions.get(electricityBill);
+        } else {
+            System.out.println("Invalid or missing electricity bill data.");
         }
 
         return totalHousing;
     }
-
-
+    
 
     private int mapHomeSizeToIndex(String homeSize) {
         switch (homeSize) {
