@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/light_gray"
+    android:orientation="vertical">
+
+    <ScrollView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="550dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:elevation="4dp"
+        android:layout_margin="16dp"
+        android:padding="20dp"
+        android:background="@color/white">
+
+            <!-- Title -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/card_round_border"
+                android:elevation="4dp"
+                android:padding="20dp"
+                app:cardCornerRadius="16dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/card_round_border"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/titleLogTransport"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/Transportation"
+                        android:textColor="@color/teal"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Spinner for Transport Activity -->
+            <TextView
+                android:id="@+id/labelTransportActivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="@string/select_activity"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spinnerTransportActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/spinner_border" />
+
+            <!-- Distance Driven -->
+            <TextView
+                android:id="@+id/labelDistanceDriven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="@string/distance_driven"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/editTextDistanceDriven"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:hint="@string/hint_double"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_bottom_border" />
+
+            <!-- Transport Type -->
+            <TextView
+                android:id="@+id/labelTransportType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="@string/select_transport_type"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spinnerTransportType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/spinner_border" />
+
+            <!-- Transport Time -->
+            <TextView
+                android:id="@+id/labelTransportTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="@string/time_spent"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/editTextTransportTime"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:hint="@string/hint_double"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_bottom_border" />
+
+            <!-- Distance Walked -->
+            <TextView
+                android:id="@+id/labelDistanceWalked"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="@string/distance_walked"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/editTextDistanceWalked"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:hint="@string/hint_double"
+                android:importantForAutofill="no"
+                android:inputType="numberDecimal"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_bottom_border" />
+
+            <!-- Haul Type -->
+            <TextView
+                android:id="@+id/labelHaul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="@string/select_haul_type"
+                android:textSize="20sp" />
+            <Spinner
+                android:id="@+id/spinnerHaul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/spinner_border" />
+
+            <!-- Number of Flights -->
+            <TextView
+                android:id="@+id/labelNumFlight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:text="@string/num_flight"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/editTextNumFlight"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:hint="@string/hint_int"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/input_bottom_border" />
+
+            <!-- Add Button -->
+            <Button
+                android:id="@+id/buttonAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:background="@drawable/rounded_corner_background"
+                android:minHeight="48dp"
+                android:padding="12dp"
+                android:text="@string/add"
+                android:textColor="@color/white"
+                android:textSize="23sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Include the back button -->
+    <include
+        layout="@layout/back_btn"
+        android:id="@+id/includedButtonBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</LinearLayout>

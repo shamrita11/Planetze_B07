@@ -1,0 +1,1659 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#D8DBE2">
+
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="377dp"
+        android:layout_height="749dp"
+        android:background="@drawable/rounded_white_rectangle"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+
+            <!-- Logo -->
+            <ImageView
+                android:id="@+id/planetze_logo"
+                android:layout_width="269dp"
+                android:layout_height="59dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:contentDescription="@string/planetze_logo"
+                android:src="@drawable/img" />
+
+
+            <!-- Question 0 -->
+            <LinearLayout
+                android:id="@+id/question_0_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+
+                <TextView
+                    android:id="@+id/question_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/nplease_identify_your_current_location"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <!-- Spinner for Country Selection -->
+                <Spinner
+                    android:id="@+id/country_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/spinner_arrow"
+                    android:entries="@array/country_list"
+                    android:padding="8dp"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/question_1_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <!-- Transportation Header -->
+                <TextView
+                    android:id="@+id/transportation_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/transportation"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <!-- Question 1 -->
+                <TextView
+                    android:id="@+id/question_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q1_do_you_own_or_regularly_use_a_car"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_option_yes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/yes"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_option_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/no"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <!-- Question 1.1 -->
+            <LinearLayout
+                android:id="@+id/question_1_1_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_1_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q1_1_what_type_of_car_do_you_drive"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_1_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_1_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/gasoline"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_1_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/diesel"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_1_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/hybrid"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_1_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/electric"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_1_option_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/i_don_t_know"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <!-- Question 1.2 -->
+            <LinearLayout
+                android:id="@+id/question_1_2_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_1_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q1_2_how_many_kilometres_miles_do_you_drive_per_year"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_1_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_2_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/up_to_5_000_km_3_000_miles"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_2_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_5_000_10_000_km_3_000_6_000_miles"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_2_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_10_000_15_000_km_6_000_9_000_miles"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_2_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_15_000_20_000_km_9_000_12_000_miles"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_2_option_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_20_000_25_000_km_12_000_15_000_miles"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_1_2_option_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/more_than_25_000_km_15_000_miles"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <!-- Question 2 -->
+            <LinearLayout
+                android:id="@+id/question_2_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q2_how_often_do_you_use_public_transportation_bus_train_subway"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_2_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/never"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_2_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/occasionally_1_2_times_week"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_2_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/frequently_3_4_times_week"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_2_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/always_5_times_week"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <!-- Question 3 -->
+            <LinearLayout
+                android:id="@+id/question_3_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q3_how_much_time_do_you_spend_on_public_transport_per_week_bus_train_subway"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_3_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/under_1_hour"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_3_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_1_3_hours"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_3_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_3_5_hours"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_3_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_5_10_hours"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_3_option_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/more_than_10_hours"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <!-- Question 4 -->
+            <LinearLayout
+                android:id="@+id/question_4_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q4_how_many_short_haul_flights_less_than_1_500_km_932_miles_have_you_taken_in_the_past_year"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_4_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/none"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_4_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_1_2_flights"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_4_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_3_5_flights"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_4_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_6_10_flights"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_4_option_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/more_than_10_flights"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <!-- Question 5 -->
+            <LinearLayout
+                android:id="@+id/question_5_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q5_how_many_long_haul_flights_more_than_1_500_km_932_miles_have_you_taken_in_the_past_year"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_5_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/none"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_5_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_1_2_flights"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_5_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_3_5_flights"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_5_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_6_10_flights"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_5_option_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/more_than_10_flights"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/question_6_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <!-- Food Header -->
+                <TextView
+                    android:id="@+id/food_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/food"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <!-- Question 6 -->
+                <TextView
+                    android:id="@+id/question_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q6_what_best_describes_your_diet"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_6_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/vegetarian"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_6_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/vegan"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_6_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/pescatarian_fish_seafood"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_6_option_meat_based"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/meat_based_eat_all_types_of_animal_products"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <!-- Question 6.1 -->
+            <LinearLayout
+                android:id="@+id/question_6_1_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_6_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q6_1_how_often_do_you_eat_the_following_animal_based_products"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <!-- Beef -->
+                <TextView
+                    android:id="@+id/beef"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/beef"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+
+                <!-- Spinner for Beef -->
+                <Spinner
+                    android:id="@+id/beef_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/spinner_arrow"
+                    android:entries="@array/beef_eating_frequency"
+                    android:padding="8dp"
+                    android:spinnerMode="dropdown" />
+
+
+                <!-- Pork -->
+                <TextView
+                    android:id="@+id/pork"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/pork"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+
+                <!-- Spinner for Pork -->
+                <Spinner
+                    android:id="@+id/pork_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/spinner_arrow"
+                    android:entries="@array/pork_eating_frequency"
+                    android:padding="8dp"
+                    android:spinnerMode="dropdown" />
+
+
+                <!-- Chicken -->
+                <TextView
+                    android:id="@+id/chicken"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/chicken"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+
+                <!-- Spinner for Chicken -->
+                <Spinner
+                    android:id="@+id/chicken_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/spinner_arrow"
+                    android:entries="@array/chicken_eating_frequency"
+                    android:padding="8dp"
+                    android:spinnerMode="dropdown" />
+
+
+                <!-- Fish/Seafood -->
+                <TextView
+                    android:id="@+id/fish_seafood"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/fish_seafood"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+
+                <!-- Spinner for Fish/Seafood -->
+                <Spinner
+                    android:id="@+id/fish_seafood_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/spinner_arrow"
+                    android:entries="@array/fish_seafood_eating_frequency"
+                    android:padding="8dp"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/question_7_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q7_how_often_do_you_waste_food_or_throw_away_uneaten_leftovers"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_7_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/never"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_7_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/rarely"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_7_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/occasionally"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_7_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/frequently"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_8_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <!-- Housing Header -->
+                <TextView
+                    android:id="@+id/housing_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/housing"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <!-- Question 8 -->
+                <TextView
+                    android:id="@+id/question_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q8_what_type_of_home_do_you_live_in"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_8_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/detached_house"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_8_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/semi_detached_house"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_8_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/townhouse"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_8_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/condo_apartment"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_8_option_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/other"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_9_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q9_how_many_people_live_in_your_household"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_9_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_1"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_9_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_2"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_9_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_3_4"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_9_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_5_or_more"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_10_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q10_what_is_the_size_of_your_home"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_10_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/under_1000_sq_ft"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_10_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_1000_2000_sq_ft"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_10_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/over_2000_sq_ft"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_11_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q11_what_type_of_energy_do_you_use_to_heat_your_home"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_11_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/natural_gas"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_11_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/electricity"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_11_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/oil"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_11_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/propane"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_11_option_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/wood"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_11_option_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/other"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_12_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q12_what_is_your_average_monthly_electricity_bill"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_12_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/under_50"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_12_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_50_100"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_12_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_100_150"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_12_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_150_200"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_12_option_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/over_200"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_13_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q13_what_type_of_energy_do_you_use_to_heat_water_in_your_home"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_13_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/natural_gas"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_13_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/electricity"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_13_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/oil"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_13_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/propane"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_13_option_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/solar"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_13_option_6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/other"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_14_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q14_do_you_use_any_renewable_energy_sources_for_electricity_or_heating_e_g_solar_wind"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_14_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/yes_primarily_more_than_50_of_energy_use"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_14_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/yes_partially_less_than_50_of_energy_use"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_14_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/no"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_15_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <!-- Consumption Header -->
+                <TextView
+                    android:id="@+id/Consumption_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/consumption"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/question_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q15_how_often_do_you_buy_new_clothes"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_15_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/monthly"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_15_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/quarterly"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_15_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/annually"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_15_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/rarely"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_16_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q16_do_you_buy_second_hand_or_eco_friendly_products"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_16_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/yes_regularly"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_16_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/yes_occasionally"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_16_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/no"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_17_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q17_how_many_electronic_devices_phones_laptops_etc_have_you_purchased_in_the_past_year"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_17_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/none"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_17_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_1"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_17_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_2"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_17_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/_3_or_more"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:id="@+id/question_18_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    android:id="@+id/question_18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/q18_how_often_do_you_recycle"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <RadioGroup
+                    android:id="@+id/radio_group_18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:orientation="vertical">
+
+
+                    <RadioButton
+                        android:id="@+id/radio_18_option_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/never"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_18_option_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/occasionally"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_18_option_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/frequently"
+                        android:textSize="16sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/radio_18_option_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:text="@string/always"
+                        android:textSize="16sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+
+            <!-- Submit Button -->
+            <LinearLayout
+                android:id="@+id/submit_button_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="#009999"
+                    android:text="@string/submit"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:layout_editor_absoluteY="646dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+

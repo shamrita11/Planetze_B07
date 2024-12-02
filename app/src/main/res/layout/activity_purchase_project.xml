@@ -1,0 +1,177 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8EBF2">
+
+    <!--Logo Image Planetze -->
+
+    <ImageView
+        android:id="@+id/backgroundLogo"
+        android:layout_width="412dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/planetze_logo_desc"
+        android:alpha="0.1"
+        android:scaleType="centerInside"
+        android:src="@drawable/planetze_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Project Name -->
+
+    <TextView
+        android:id="@+id/projectNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textColor="#009999"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Project Details -->
+    <TextView
+        android:id="@+id/projectDetailsText"
+        android:layout_width="384dp"
+        android:layout_height="99dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_background_white"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/project_details"
+        android:textColor="#009999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/projectNameText" />
+
+    <TextView
+        android:id="@+id/TonnesInputText"
+        android:layout_width="385dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/rounded_background_white"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/TonnesInput"
+        android:textColor="#009999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/projectNameText" />
+
+    <EditText
+        android:id="@+id/co2OffsetInput"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/rounded_background_white"
+        android:hint="@string/number_of_tonnes_to_offset"
+        android:inputType="number"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/projectDetailsText" />
+
+    <TextView
+        android:id="@+id/totalCostText"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_background_white"
+        android:padding="16dp"
+        android:text="@string/total_0_00"
+        android:textColor="#009999"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/co2OffsetInput" />
+
+    <LinearLayout
+        android:id="@+id/makePurchaseSection"
+        android:layout_width="402dp"
+        android:layout_height="375dp"
+        android:layout_marginTop="232dp"
+        android:background="@drawable/rounded_corner_background"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/projectDetailsText">
+
+        <!-- Title Inside the Teal Box -->
+        <TextView
+            android:id="@+id/makePurchaseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/your_purchase"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/cardNumberInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_background_white"
+            android:hint="@string/card_number"
+            android:inputType="number"
+            android:padding="16dp" />
+
+        <EditText
+            android:id="@+id/cardNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_background_white"
+            android:hint="@string/name_on_card"
+            android:padding="16dp" />
+
+        <EditText
+            android:id="@+id/cvvInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/rounded_background_white"
+            android:hint="@string/cvv"
+            android:inputType="number"
+            android:padding="16dp" />
+
+        <EditText
+            android:id="@+id/expiryDateInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_background_white"
+            android:hint="@string/expiration_date"
+            android:padding="16dp" />
+
+        <!-- Purchase Button -->
+        <Button
+            android:id="@+id/purchaseButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="#FFFFFF"
+            android:text="@string/purchase"
+            android:textColor="#009999"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/footer"
+        layout="@layout/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

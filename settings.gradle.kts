@@ -9,15 +9,17 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
-    }
+        maven { url = uri("https://jitpack.io") } }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        maven("https://jitpack.io")
         google()
         mavenCentral()
+        maven ("https://jitpack.io")
     }
 }
 
-rootProject.name = "B07 Demo Summer 2024"
+rootProject.name = "Planetze"
 include(":app")
