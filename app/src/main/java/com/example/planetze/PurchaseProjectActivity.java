@@ -35,7 +35,7 @@ public class PurchaseProjectActivity extends BaseActivity {
         setContentView(R.layout.activity_purchase_project);
 
         // Retrieve the current user's ID from UserSession
-        userId = UserSession.userId;
+        userId = UserSession.getUserId(this);
 
         // Check if userId is valid
         if (userId == null || userId.isEmpty()) {

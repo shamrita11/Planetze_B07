@@ -52,12 +52,12 @@
                     android:textSize="37sp" />
 
                 <!-- Activity Chart -->
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pieChart"
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
                     android:layout_width="match_parent"
-                    android:layout_height="420dp"
-                    android:layout_margin="15dp"
-                    android:padding="16dp" />
+                    android:layout_height="480dp"
+                    android:layout_margin="10dp"
+                    android:padding="10dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

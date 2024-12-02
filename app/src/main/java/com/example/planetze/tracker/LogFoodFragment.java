@@ -74,8 +74,8 @@ public class LogFoodFragment extends Fragment {
                 String selectedActivity = parent.getSelectedItem().toString();
 
                 switch (selectedActivity) {
+                    // if the placeholder is chosen again, hide all other fields
                     case "Select an activity":
-                        // if the placeholder is chosen again, hide all other fields
                         editTextNumServing.setVisibility(View.GONE);
                         spinnerFoodType.setVisibility(View.GONE);
                         labelFoodType.setVisibility(View.GONE);
@@ -113,15 +113,18 @@ public class LogFoodFragment extends Fragment {
     private void addItem() {
         String numServingStr, foodType;
         int numServing;
-        //TODO: make sure numbers are positive (input)
+
+        // obtain user input
         if (editTextNumServing.getVisibility() == View.VISIBLE) {
             numServingStr = editTextNumServing.getText().toString().trim();
+
             // check if user input is empty
             if (numServingStr.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill out number of servings",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
+
             // if not empty, convert it to a int
             try {
                 numServing = Integer.parseInt(numServingStr);
@@ -153,12 +156,10 @@ public class LogFoodFragment extends Fragment {
         // Store data into database
         // Store data under userId > daily_emission > date > food > meal
         FirebaseManager manager = new FirebaseManager(getContext());
-        // String userId = "user1";
-        // String dateKey = GetDate.getDate();
-        //String dateKey = "2024-11-19";
+        String userId = UserSession.getUserId(getContext());
 
         // user1 > daily_emission > 2024-11-19 > food > meal > chicken: 1
-        String foodRefPath = "users/" + UserSession.userId + "/daily_emission/" + dateKey
+        String foodRefPath = "users/" + userId + "/daily_emission/" + dateKey
                 + "/food/meal/" + foodType;
         manager.updateNode(foodRefPath, numServing, isIncrement)
                 .addOnCompleteListener(task -> {
@@ -173,7 +174,7 @@ public class LogFoodFragment extends Fragment {
     private void uploadData(boolean forceRefresh) {
         if (processor == null || forceRefresh) {
             processor = new DailyEmissionProcessor(getContext(), dateKey, () -> {
-                processor.mainUploader();  // Upload food data after loading
+                processor.mainUploader();  // Upload data after loading
             });
         }
     }

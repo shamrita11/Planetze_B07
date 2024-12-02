@@ -33,10 +33,6 @@ public class LogTransportationFragment extends Fragment {
             , labelNumFlight, labelHaul;
     private Button buttonAdd;
     private DailyEmissionProcessor processor;
-    // This field helps the FirebaseManager determine if the entered data is suppose to overwrite
-    // existing data, or increment the existing data (If this fragment is loaded by Tracker tab,
-    // we increment the data. If this fragment is loaded by the Calendar tab, we update, ie. overwrite
-    // the existing data)
     private final boolean isIncrement;
     private final String dateKey;
 
@@ -48,7 +44,7 @@ public class LogTransportationFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //get view (TODO: change the xml file name to the correct one)
+        //get view
         View view = inflater.inflate(R.layout.fragment_log_transport, container, false);
         View includedView = view.findViewById(R.id.includedButtonBack);
 
@@ -107,8 +103,8 @@ public class LogTransportationFragment extends Fragment {
                 String selectedActivity = parent.getSelectedItem().toString();
 
                 switch (selectedActivity) {
+                    // if the placeholder is chosen again, hide all other fields
                     case "Select an activity":
-                        // if the placeholder is chosen again, hide all other fields
                         editTextDistanceDriven.setVisibility(View.GONE);
                         labelDistanceDriven.setVisibility(View.GONE);
                         editTextTransportTime.setVisibility(View.GONE);
@@ -202,7 +198,6 @@ public class LogTransportationFragment extends Fragment {
             }
         });
 
-        // onclick for the button
         buttonAdd.setOnClickListener(v -> {
             addItem();
             editTextDistanceDriven.setText("");
@@ -225,15 +220,17 @@ public class LogTransportationFragment extends Fragment {
         double distanceDriven, transportTime, distanceWalked;
         int numFlight;
 
-        //TODO: for numbers, check if they are negative
+        // obtain user input
         if (editTextDistanceDriven.getVisibility() == View.VISIBLE) {
             distanceDrivenStr = editTextDistanceDriven.getText().toString().trim();
+
             // check if user input is empty
             if (distanceDrivenStr.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill out distance driven",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
+
             // if not empty, convert it to a double
             try {
                 distanceDriven = Double.parseDouble(distanceDrivenStr);
@@ -253,13 +250,13 @@ public class LogTransportationFragment extends Fragment {
 
         if (editTextTransportTime.getVisibility() == View.VISIBLE) {
             transportTimeStr = editTextTransportTime.getText().toString().trim();
-            // check if user input is empty
+
             if (transportTimeStr.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill out transport time",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
-            // if not empty, turn it into double
+
             try {
                 transportTime = Double.parseDouble(transportTimeStr);
                 if (transportTime < 0) {
@@ -270,7 +267,7 @@ public class LogTransportationFragment extends Fragment {
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid time",
                         Toast.LENGTH_SHORT).show();
-                return;  // Stop the function if parsing fails
+                return;
             }
         } else {
             transportTime = 0;
@@ -278,11 +275,13 @@ public class LogTransportationFragment extends Fragment {
 
         if (editTextDistanceWalked.getVisibility() == View.VISIBLE) {
             distanceWalkedStr = editTextDistanceWalked.getText().toString().trim();
+
             if (distanceWalkedStr.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill out distance walked or cycled",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
+
             try {
                 distanceWalked = Double.parseDouble(distanceWalkedStr);
                 if (distanceWalked < 0) {
@@ -293,7 +292,7 @@ public class LogTransportationFragment extends Fragment {
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid distance walked/cycled",
                         Toast.LENGTH_SHORT).show();
-                return;  // Stop the function if parsing fails
+                return;
             }
         } else {
             distanceWalked = 0;
@@ -301,11 +300,13 @@ public class LogTransportationFragment extends Fragment {
 
         if (editTextNumFlight.getVisibility() == View.VISIBLE) {
             numFlightStr = editTextNumFlight.getText().toString().trim();
+
             if (numFlightStr.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill out number of flight",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
+
             try {
                 numFlight = Integer.parseInt(numFlightStr);
                 if (numFlight < 0) {
@@ -316,7 +317,7 @@ public class LogTransportationFragment extends Fragment {
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid number of flights",
                         Toast.LENGTH_SHORT).show();
-                return;  // Stop the function if parsing fails
+                return;
             }
         } else {
             numFlight = 0;
@@ -344,28 +345,22 @@ public class LogTransportationFragment extends Fragment {
             haul = "";
         }
 
-
         // Log data into database
         FirebaseManager manager = new FirebaseManager(getContext());
         List<Task<Void>> tasks = new ArrayList<>();
-        // String userId = "user1"; // switch to actual id
-        // String dateKey = GetDate.getDate();
+        String userId = UserSession.getUserId(getContext());
 
-        // user1 > daily_emission > 2024-11-19 > transportation
-        String commonPath = "users/" + UserSession.userId + "/daily_emission/" + dateKey
+        // userId > daily_emission > 2024-11-19 > transportation
+        String commonPath = "users/" + userId + "/daily_emission/" + dateKey
                 + "/transportation/";
 
-        // Log data for driving personal vehicle
-        // ... transportation > "drive personal vehicle" > "distance driven": 1.5
-        // For daily logging section, we assume that if user input for the same activity twice,
-        // they are adding onto their already logged values. (ex. logged distance driven as 1.5,
-        // later logged distance driven again and put 0.4. We store as 1.9 km)
+        // ... transportation > "drive personal vehicle" > "distance_driven": 1.5
         if(transportActivity.equals("drive personal vehicle")) {
             String carPath = commonPath + "drive_personal_vehicle/distance_driven";
             tasks.add(manager.updateNode(carPath, distanceDriven, isIncrement));
         }
 
-        // ... transportation > "take_public_transportation" > "transport time": 1.5
+        // ... transportation > "take_public_transportation" > "transport_time": 1.5
         if(transportActivity.equals("take public transportation")) {
             String publicPath = commonPath + "take_public_transportation/transport_time";
             tasks.add(manager.updateNode(publicPath, transportTime, isIncrement));
@@ -380,7 +375,6 @@ public class LogTransportationFragment extends Fragment {
         // ... transportation > "flight" > "short": 2
         //                               > "long": 1
         if(transportActivity.equals("flight")) {
-            // distanceWC = distanceWalkedOrCycled
             String[] splitString = haul.split(" ");
             String flightKey = splitString[0];
             String flightPath = commonPath + "flight/" + flightKey;

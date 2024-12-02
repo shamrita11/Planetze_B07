@@ -379,7 +379,11 @@
     <string name="Magnifying">Magnifying glass icon</string>
     <string name="search_bar">search habit or keyword</string>
     <string name="search_icon">search icon</string>
-    <string name="habit_intro"> Eco Habit feature provides users with eco-friendly habits they can adopt to reduce their carbon footprint</string>
+    <string name="habit_intro">The Eco Habit feature provides users with eco-friendly habits they can adopt to reduce their carbon footprint!</string>
+    <string name="habit_suggestion">Suggested Habits Based on Your Daily CO₂ Emissions:</string>
+    <string name="habit_suggestion_high">Big Carbon Footprint (30+ kg CO₂/day): Start with high-impact habits to make a significant change!</string>
+    <string name="habit_suggestion_med">Average Carbon Footprint (15-30 kg CO₂/day): Focus on medium-impact habits for steady improvements!</string>
+    <string name="habit_suggestion_low">Small Carbon Footprint (less than 15 kg CO₂/day): Choose low-impact habits to maintain or enhance your progress!</string>
     <string name="habit_btn">Ready To Adopt Habits</string>
     <!-- The following are for Eco Gauge and Eco Balance -->
     <string name="dashboard_title">Your Dashboard!</string>
@@ -523,7 +527,7 @@
     <string name="login">Login</string>
     <string name="signup">Sign Up</string>
     <string name="logout">Log Out</string>
-    <string name="edit_survey">Edit Survey</string>
+    <string name="redo_survey">Re-Do Survey</string>
     <string name="password">Password</string>
     <string name="full_name">Full name</string>
     <string name="email_address">Email address</string>
@@ -570,6 +574,8 @@
     <string name="number_of_tonnes_to_offset">Number of Tonnes To Offset</string>
     <string name="project_details">Project Details</string>
     <string name="your_average">Your Average C02 Emissions Per Year</string>
+    <string name="consumption">Consumption</string>
+
 
 
 </resources>

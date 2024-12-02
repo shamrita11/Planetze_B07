@@ -53,7 +53,6 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListViewHo
                 String detailValue = detail.getValue();
 
                 // Create a horizontal layout for the detail and its button
-                // Create a horizontal layout for the detail and its button
                 View detailView = LayoutInflater.from(holder.itemView.getContext())
                         .inflate(R.layout.activity_list_item_detail, holder.detailsContainer
                                 , false);
@@ -75,7 +74,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListViewHo
                 holder.detailsContainer.addView(detailView);
             }
         } else {
-            // Optional: Handle case where there are no details
+            // Handle case where there are no details
             TextView noDetailsText = new TextView(holder.itemView.getContext());
             noDetailsText.setText(R.string.no_detail);
             noDetailsText.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.dark_grey));

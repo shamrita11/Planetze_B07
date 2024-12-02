@@ -40,7 +40,7 @@ public class HabitListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_habit_list);
 
         // Retrieve the userId from UserSession
-        userId = UserSession.userId;
+        userId = UserSession.getUserId(this);
         if (userId == null || userId.isEmpty()) {
             Log.e("HabitListActivity", "User ID is null or empty. Please log in again.");
             Toast.makeText(this, "User not logged in. Please log in again.", Toast.LENGTH_SHORT).show();

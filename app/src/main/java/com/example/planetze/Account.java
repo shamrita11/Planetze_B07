@@ -1,5 +1,7 @@
 package com.example.planetze;
 
+import static java.security.AccessController.getContext;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,7 +66,7 @@ public class Account extends BaseActivity {
         TotalCarbonHousing = findViewById(R.id.userTotalCarbonHousing);
 
         // Fetch user ID from UserSession
-        String uid = UserSession.userId;
+        String uid = UserSession.getUserId(this);
 
         if (uid != null) {
             // Display user's info
@@ -92,7 +94,7 @@ public class Account extends BaseActivity {
                     carbonHousing = (carbonHousing != null) ? carbonHousing : 0.0;
 
                     // Format the values with 2 decimal places
-                    String carbonString = String.format("Total: %.2f", carbon);
+                    String carbonString = String.format("Total: %.2f kg", carbon);
                     String carbonFoodString = String.format("Food: %.2f kg per year", carbonFood);
                     String carbonTransportationString = String.format("Transportation: %.2f kg per year", carbonTransportation);
                     String carbonConsumptionString = String.format("Consumption: %.2f kg per year", carbonConsumption);
@@ -123,7 +125,7 @@ public class Account extends BaseActivity {
         buttonLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserSession.setUserId(null);
+                UserSession.clearUserId(getApplicationContext());
                 mAuth.signOut();
                 Intent intent = new Intent(getApplicationContext(), Welcome.class);
                 startActivity(intent);
@@ -135,7 +137,7 @@ public class Account extends BaseActivity {
         buttonEditSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), QuestionnaireWelcomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CarbonFootprintQuestionnaireActivity.class);
                 startActivity(intent);
                 finish();
             }

@@ -18,31 +18,31 @@ public class TransportationCalculator {
 
         // Car distance ranges (in km)
         Map<String, Integer> carDistanceMap = Map.of(
-                "Up to 5,000 km", 5000,
-                "5,000–10,000 km", 10000,
-                "10,000–15,000 km", 15000,
-                "15,000–20,000 km", 20000,
-                "20,000–25,000 km", 25000,
-                "More than 25,000 km", 35000
+                "Up to 5,000 km (3,000 miles)", 5000,
+                "5,000–10,000 km (3,000-6,000 miles)", 10000,
+                "10,000–15,000 km (6,000-9,000 miles)", 15000,
+                "15,000–20,000 km (9,000-12,000 miles)", 20000,
+                "20,000–25,000 km (12,000-15,000 miles)", 25000,
+                "More than 25,000 km (15,000 miles)", 35000
         );
 
         // Public transport emissions table
         Map<String, Map<String, Double>> publicTransportEmissions = Map.of(
-                "Occasionally", Map.of(
+                "Occasionally (1-2 times/week)", Map.of(
                         "Under 1 hour", 246.0,
                         "1-3 hours", 819.0,
                         "3-5 hours", 1638.0,
                         "5-10 hours", 3071.0,
                         "More than 10 hours", 4095.0
                 ),
-                "Frequently", Map.of(
+                "Frequently (3-4 times/week)", Map.of(
                         "Under 1 hour", 573.0,
                         "1-3 hours", 1911.0,
                         "3-5 hours", 3822.0,
                         "5-10 hours", 7166.0,
                         "More than 10 hours", 9555.0
                 ),
-                "Always", Map.of(
+                "Always (5+ times/week)", Map.of(
                         "Under 1 hour", 573.0,
                         "1-3 hours", 1911.0,
                         "3-5 hours", 3822.0,
@@ -68,77 +68,81 @@ public class TransportationCalculator {
                 "More than 10 flights", 6600.0
         );
 
-        // Variables to store user responses for public transportation
-        String transportFrequency = "";
-        String transportTime = "";
+        // Fetch responses
+        String carOwnership = getResponseValue("q1", "a1", responses);
+        String carType = getResponseValue("q1_1", "a1_1", responses);
+        String carDistance = getResponseValue("q1_2", "a1_2", responses);
+        String transportFrequency = getResponseValue("q2", "a2", responses);
+        String transportTime = getResponseValue("q3", "a3", responses);
+        String shortHaulFlightCount = getResponseValue("q4", "a4", responses);
+        String longHaulFlightCount = getResponseValue("q5", "a5", responses);
 
-        // Process responses
-        for (Map<String, String> response : responses) {
-            String question = response.getOrDefault("question", "");
-            String answer = response.getOrDefault("answer", "");
-
-            switch (question) {
-                case "Do you own or regularly use a car?":
-                    if (answer.equalsIgnoreCase("No")) {
-                        // Skip car-related calculations if the user doesn't own a car
-                        break;
-                    }
-                    break;
-
-                case "What type of car do you drive?":
-                    // Store car emission factor for later calculation
-                    if (carEmissionFactors.containsKey(answer)) {
-                        double emissionFactor = carEmissionFactors.get(answer);
-                        totalEmissions += emissionFactor; // Add emission factor for distance calculation
-                    }
-                    break;
-
-                case "How many kilometers/miles do you drive per year?":
-                    // Calculate car emissions
-                    if (carDistanceMap.containsKey(answer)) {
-                        int distance = carDistanceMap.get(answer);
-                        double emissionFactor = carEmissionFactors.getOrDefault(response.get("CarType"), 0.0);
-                        totalEmissions += emissionFactor * distance;
-                    }
-                    break;
-
-                case "How often do you use public transportation?":
-                    // Store transport frequency
-                    transportFrequency = answer;
-                    break;
-
-                case "How much time do you spend on public transport per week?":
-                    // Store transport time
-                    transportTime = answer;
-                    break;
-
-                case "How many short-haul flights have you taken in the past year?":
-                    // Calculate short-haul flight emissions
-                    if (shortHaulFlights.containsKey(answer)) {
-                        totalEmissions += shortHaulFlights.get(answer);
-                    }
-                    break;
-
-                case "How many long-haul flights have you taken in the past year?":
-                    // Calculate long-haul flight emissions
-                    if (longHaulFlights.containsKey(answer)) {
-                        totalEmissions += longHaulFlights.get(answer);
-                    }
-                    break;
-
-                default:
-                    // Ignore unrelated questions
-                    break;
+        // Calculate car emissions
+        if ("Yes".equalsIgnoreCase(carOwnership)) {
+            if (carEmissionFactors.containsKey(carType)) {
+                if (carDistanceMap.containsKey(carDistance)) {
+                    double emissionFactor = carEmissionFactors.get(carType);
+                    int distance = carDistanceMap.get(carDistance);
+                    totalEmissions += emissionFactor * distance;
+                } else {
+                    System.out.println("Car distance not found: " + carDistance);
+                }
+            } else {
+                System.out.println("Car type not found: " + carType);
             }
+        } else {
+            System.out.println("User does not own a car.");
         }
 
-        // Calculate public transport emissions based on frequency and time
-        if (!transportFrequency.equalsIgnoreCase("Never") && publicTransportEmissions.containsKey(transportFrequency)) {
+
+
+        // Calculate public transport emissions
+        if (publicTransportEmissions.containsKey(transportFrequency)) {
             if (publicTransportEmissions.get(transportFrequency).containsKey(transportTime)) {
                 totalEmissions += publicTransportEmissions.get(transportFrequency).get(transportTime);
+            } else {
+                System.out.println("Transport time not found: " + transportTime);
             }
+        } else {
+            System.out.println("Transport frequency not found: " + transportFrequency);
         }
 
-        return totalEmissions; // Return total transportation emissions in kg/year
+
+
+
+        // Calculate short-haul flight emissions
+        if (shortHaulFlights.containsKey(shortHaulFlightCount)) {
+            totalEmissions += shortHaulFlights.get(shortHaulFlightCount);
+        } else {
+            System.out.println("Short-haul flight data missing.");
+        }
+
+        // Calculate long-haul flight emissions
+        if (longHaulFlights.containsKey(longHaulFlightCount)) {
+            totalEmissions += longHaulFlights.get(longHaulFlightCount);
+        } else {
+            System.out.println("Long-haul flight data missing.");
+        }
+
+        System.out.println("Total Transportation Emissions: " + totalEmissions + " kg/year");
+        return totalEmissions;
     }
+
+    /**
+     * Helper method to fetch a response value by question and answer keys.
+     */
+    private String getResponseValue(String questionKey, String answerKey, ArrayList<Map<String, String>> responses) {
+        for (Map<String, String> response : responses) {
+            if (response.containsKey(questionKey) && response.containsKey(answerKey)) {
+                return response.get(answerKey);
+            }
+        }
+        return ""; // Default if not found
+    }
+
 }
+
+
+
+
+

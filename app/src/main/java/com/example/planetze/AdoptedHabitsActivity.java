@@ -1,5 +1,7 @@
 package com.example.planetze;
 
+import static java.security.AccessController.getContext;
+
 import android.os.Bundle;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +30,7 @@ public class AdoptedHabitsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_adopted_habits);
 
         // Get the current user ID from UserSession
-        userId = UserSession.userId;
+        userId = UserSession.getUserId(this);
 
         if (userId == null || userId.isEmpty()) {
             Toast.makeText(this, "User not logged in. Please log in.", Toast.LENGTH_SHORT).show();

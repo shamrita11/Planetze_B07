@@ -35,7 +35,6 @@ public class LoginModelImpl implements LoginModel {
                     // Successful login
                     FirebaseUser user = database.getCurrentUser();
                     if (user != null && user.isEmailVerified()) {
-                        UserSession.setUserId(user.getUid());
                         listener.onSuccess();
                     } else {
                         database.signOut();

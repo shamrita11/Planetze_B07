@@ -95,11 +95,11 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
             // Retrieve the current user's ID from UserSession
             String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            UserSession.setUserId(userId); // Store it in UserSession for global access
+            UserSession.setUserId(getApplicationContext(), userId); // Store it in UserSession for global access
 
             // Update the UI or navigate to the next activity based on onBoardingStatus
             loginPresenter.checkOnBoardingStatus(userId);
-        }
+    }
 
     @Override
     public void showLoginFailure() {
