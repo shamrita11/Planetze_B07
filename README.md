@@ -16,19 +16,50 @@ PlanetZe is a carbon-tracking Android application designed to help users track a
 - **Eco Balance**: Offset carbon emissions to reduce environmental impact.
 - **Eco Hub**: Resource centre with educational content and market trends to keep users informed. 
 ## Scrum Methodology
-For the development of PlanetZe, we used the Agile Scrum framework to manage the project efficiently and ensure a collaborative and iterative process. The team worked in two sprints, focusing on key features such as carbon tracking, eco-friendly habits, emissions offsetting, and a visually appealing dashboard. We used Jira to track user stories and monitor progress, ensuring that tasks were completed on time and aligned with the project's goals.
+For the development of PlanetZe, we used the **Agile Scrum framework** to manage the project efficiently and ensure a collaborative and iterative process. The team worked in two sprints, focusing on key features such as carbon tracking, eco-friendly habits, emissions offsetting, and a visually appealing dashboard. We used Jira to track user stories and monitor progress, ensuring that tasks were completed on time and aligned with the project's goals.
 
 By employing Scrum, we were able to break down complex features into manageable chunks and maintain flexibility throughout the development process. Regular sprint meetings and daily stand-ups kept the team aligned and allowed us to quickly address challenges, ultimately resulting in a well-rounded and functional app that meets users' needs.
 ## Backend
-For the backend of PlanetZe, we chose Firebase for its powerful, scalable, and secure capabilities. Firebase Authentication ensures a seamless and secure user experience by handling user login, sign-up, email verification, and password resets with ease. This made managing user credentials both reliable and efficient.
+For the backend of PlanetZe, we chose **Firebase** for its powerful, scalable, and secure capabilities. **Firebase Authentication** ensures a seamless and secure user experience by handling user login, sign-up, email verification, and password resets with ease. This made managing user credentials both reliable and efficient.
 
-We also used Firebase Realtime Database to store and sync user information in real-time. This ensures that updates, like changes in carbon footprint, progress on eco-habits, or the amount of carbon emissions offset, are instantly reflected for users. Firebase's ability to handle data in real-time kept the app responsive and ensured that users always had the latest information at their fingertips. With Firebase’s scalability and security, PlanetZe is equipped to grow with our user base while keeping data secure and accessible.
+We also used **Firebase Realtime Database** to store and sync user information in real-time. This ensures that updates, like changes in carbon footprint, progress on eco-habits, or the amount of carbon emissions offset, are instantly reflected for users. Firebase's ability to handle data in real-time kept the app responsive and ensured that users always had the latest information at their fingertips. With Firebase’s scalability and security, PlanetZe is equipped to grow with our user base while keeping data secure and accessible.
 ## Design
 The app’s user interface (UI) was initially designed using Figma, adhering to the company’s color palette to create a cohesive and visually appealing experience. 
 ### Welcome
+<p align="center">
+  <img src=https://github.com/user-attachments/assets/96370829-ac61-4817-890b-bf552c712055 align="left" width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/8e02d3d0-6236-4822-8275-0241bf94cb47 width=210 height=430> 
+</p>
+  **insert signup image**
+
 ### Eco Tracker
+<p align="center">
+  <img src=https://github.com/user-attachments/assets/9b573573-c946-427b-915a-904bdceb6dd3 align="left" width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/94a4ee45-c8cf-43d6-b014-9434b10c9597 width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/8e6a49b8-d325-4724-827b-5b35da859084 align="right" width=210 height=430>
+</p>
+
 ### Eco Habits
+<p align="center">
+  <img src=https://github.com/user-attachments/assets/130fb9af-b3ab-448b-b2c9-cd6e27b54c02 align="left" width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/838ac10c-0630-497b-a756-91805dfef3d0 width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/e8da156a-ee41-47b3-a34b-ece6a802013d align="right" width=210 height=430>
+</p>
+
 ### Eco Features
+<p align="center">
+  <img src=https://github.com/user-attachments/assets/5ca7b3d2-b7cf-4050-9582-a26d162545f6 align="left" width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/37110205-5b7d-46be-9c1b-7060de794064 width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/0302354d-2da1-4375-b1aa-4ac5763a7e64 align="right" width=210 height=430>
+</p>
+
+### User Account & Eco Agent 
+<p align="center">
+  <img src=https://github.com/user-attachments/assets/778773ce-e937-4827-b3df-3faaee3cb436 align="left" width=210 height=430> 
+  <img src=https://github.com/user-attachments/assets/37110205-5b7d-46be-9c1b-7060de794064 width=210 height=430> 
+</p>
+**insert account image**
+
 ## Installation
 1. Clone the repository to your local machine: 
 `git clone https://github.com/shamrita11/Planetze_B07.git`
