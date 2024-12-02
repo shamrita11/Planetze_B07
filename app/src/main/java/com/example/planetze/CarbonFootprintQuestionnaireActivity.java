@@ -121,7 +121,7 @@ public class CarbonFootprintQuestionnaireActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(CarbonFootprintQuestionnaireActivity.this, "Submitted! View Your Results in Your Eco Gauge Dashboard and User Page!", Toast.LENGTH_LONG).show();
 
-                String userId = UserSession.userId;
+                String userId = UserSession.getUserId(CarbonFootprintQuestionnaireActivity.this);
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(userId);
 
                 // Perform calculations
@@ -136,6 +136,8 @@ public class CarbonFootprintQuestionnaireActivity extends AppCompatActivity {
                 String busFrequency = getResponseValue("q2", "a2");
                 String busTime = getResponseValue("q3", "a3");
                 String clothesFrequency = getResponseValue("q15", "a15");
+                String renewableEnergy = getResponseValue("q14", "a14");
+                String billRange = getResponseValue("q12", "a12");
 
                 // Create the updates map
                 Map<String, Object> updates = new HashMap<>();
@@ -150,6 +152,8 @@ public class CarbonFootprintQuestionnaireActivity extends AppCompatActivity {
                 updates.put("bus_frequency", busFrequency);
                 updates.put("bus_time", busTime);
                 updates.put("clothes_purchase_frequency", clothesFrequency);
+                updates.put("renewable_energy", renewableEnergy);
+                updates.put("bill_range", billRange);
                 updates.put("on_boarded", true);
 
                 // Log updates map

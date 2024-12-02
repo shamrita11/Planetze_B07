@@ -36,7 +36,7 @@ public class CalendarTabFragment extends Fragment {
     Button buttonTransportation, buttonFood, buttonConsumption;
     ActivityListAdapter adapter;
     private String date;
-    // String userId;
+    private String userId;
     private final List<ActivityItem> activityItems = new ArrayList<>();
 
     @Override
@@ -60,11 +60,7 @@ public class CalendarTabFragment extends Fragment {
         buttonConsumption = view.findViewById(R.id.buttonConsumption);
         materialCalendarView = view.findViewById(R.id.materialCalendarView);
         RecyclerView recyclerView = view.findViewById(R.id.activity_list);
-        // userId = "user1"; // switch to actual user id
-        // render calendar and date selection
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            calendarView.setDateTextAppearance(R.style.CalendarDayTextStyle);
-//        }
+        userId = UserSession.getUserId(getContext());
 
         // TODO: change the disabled color of buttons
         buttonTransportation.setEnabled(false);
@@ -86,7 +82,7 @@ public class CalendarTabFragment extends Fragment {
 
             Toast.makeText(getContext(), "Selected Date: " + this.date, Toast.LENGTH_SHORT).show();
 
-            // Update activity list or perform other actions
+            // Update activity list
             updateActivityList();
 
             // Enable buttons after a date is selected
@@ -96,11 +92,11 @@ public class CalendarTabFragment extends Fragment {
         });
 
         adapter = new ActivityListAdapter(activityItems, (activityType, activityKey, detailKey) -> {
-            // Handle the button click for the specific detail
+            // Handle the delete button click for the specific detail
             Toast.makeText(getContext(), "Deleting Activity...", Toast.LENGTH_SHORT).show();
 
             DatabaseReference detailRef = FirebaseDatabase.getInstance().getReference("users")
-                    .child(UserSession.userId).child("daily_emission").child(date)
+                    .child(userId).child("daily_emission").child(date)
                     .child(activityType).child(activityKey).child(detailKey);
 
             detailRef.removeValue().addOnCompleteListener(task -> {
@@ -120,9 +116,7 @@ public class CalendarTabFragment extends Fragment {
 
         // We make assumption:
         // if user is updating data from the calender section, we assume that the data they enter is
-        // the updated data for that specific activity. So, we overwrite the old data for this
-        // activity in the database and replace with their newly entered data. (This is the
-        // editing functionality as mentioned in the requirement)
+        // the updated data for that specific activity. So, we overwrite the old data.
         buttonTransportation.setOnClickListener(v -> {
             if (mListener != null) {
                 mListener.onTransportationButtonClicked(false, date);
@@ -162,7 +156,7 @@ public class CalendarTabFragment extends Fragment {
         activityItems.clear();
 
         DatabaseReference commonRef = FirebaseDatabase.getInstance().getReference("users")
-                .child(UserSession.userId);
+                .child(userId);
         DatabaseReference dailyRef = commonRef.child("daily_emission").child(date);
 
         dailyRef.get().addOnCompleteListener(task -> {

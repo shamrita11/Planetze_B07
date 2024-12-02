@@ -21,6 +21,8 @@ public class FirebaseManager {
 
     /**
      * Update or create a Firebase database node and value
+     * @param refPath is the reference to the database node under which we store the value
+     * @param value is the value we want to store into the database
      * @param isIncrement allows user to choose whether the value should be added to the
      *                    existing value in database, or overwrite it. For logging activity
      *                    for each day, this will increment it. For updating logged activity

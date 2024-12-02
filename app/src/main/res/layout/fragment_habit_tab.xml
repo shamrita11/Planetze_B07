@@ -11,7 +11,7 @@
         android:id="@id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/inter_bold"
         android:text="@string/eco_habit"
         android:textColor="@color/slate_blue"

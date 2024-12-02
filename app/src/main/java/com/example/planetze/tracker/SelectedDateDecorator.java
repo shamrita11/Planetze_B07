@@ -22,13 +22,14 @@ public class SelectedDateDecorator implements DayViewDecorator {
 
     @Override
     public boolean shouldDecorate(CalendarDay day) {
-        return day.equals(selectedDate); // Apply only to the selected date
+        // Apply only to the selected date
+        return day.equals(selectedDate);
     }
 
     @Override
     public void decorate(DayViewFacade view) {
         view.setSelectionDrawable(ContextCompat.getDrawable(context, R.drawable.teal_circle)); // Custom drawable
-        view.addSpan(new ForegroundColorSpan(Color.WHITE)); // Set text color to white
+        view.addSpan(new ForegroundColorSpan(Color.WHITE));
     }
 
 }

@@ -16,12 +16,19 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.planetze.R;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
@@ -45,7 +52,7 @@ public class TrackerTabFragment extends Fragment {
     private TextView totalEmission;
     private DailyEmissionProcessor processor;
     double dailyEmission;
-    private PieChart pieChart;
+    private BarChart barChart;
 
 
     @Override
@@ -68,10 +75,8 @@ public class TrackerTabFragment extends Fragment {
         Button buttonTransportation = view.findViewById(R.id.buttonTransportation);
         Button buttonFood = view.findViewById(R.id.buttonFood);
         Button buttonConsumption = view.findViewById(R.id.buttonConsumption);
-        pieChart = view.findViewById(R.id.pieChart);
+        barChart = view.findViewById(R.id.barChart);
         String date = GetDate.getDate();
-
-        updateDisplay(true);
 
         // We make an assumption here:
         // For Tracker tab, when user log information, we assume that if they log for the same
@@ -104,7 +109,6 @@ public class TrackerTabFragment extends Fragment {
 
     @Override
     public void onResume() {
-        // Doesn't seem to on resume when getting back from logFragments
         super.onResume();
         updateDisplay(true);
     }
@@ -121,13 +125,13 @@ public class TrackerTabFragment extends Fragment {
                 totalEmission.setText(dailyEmissionText);  // Update the UI with the result
 
                 // update the chart once all data are calculated
-                updatePieChart();
+                updateBarChart();
             });
         }
     }
 
-    private void updatePieChart() {
-        ArrayList<PieEntry> entries = new ArrayList<>();
+    private void updateBarChart() {
+        ArrayList<BarEntry> entries = new ArrayList<>();
         double carEmission = processor.carCalculator();
         double publicTransportEmission = processor.publicTransportCalculator();
         double flightEmission = processor.flightCalculator();
@@ -136,91 +140,72 @@ public class TrackerTabFragment extends Fragment {
         double deviceEmission = processor.deviceCalculator();
         double otherEmission = processor.otherCalculator();
 
-        if (dailyEmission + 0.000001 > 0.000001) {
-            if (carEmission > 0) entries.add(new PieEntry((float) (carEmission / dailyEmission * 100), "Drive"));
-            if (publicTransportEmission > 0) entries.add(new PieEntry((float) (publicTransportEmission / dailyEmission * 100), "Public Transport"));
-            if (flightEmission > 0) entries.add(new PieEntry((float) (flightEmission / dailyEmission * 100), "Flight"));
-            if (foodEmission > 0) entries.add(new PieEntry((float) (foodEmission / dailyEmission * 100), "Food"));
-            if (clothEmission > 0) entries.add(new PieEntry((float) (clothEmission / dailyEmission * 100), "Clothes"));
-            if (deviceEmission > 0) entries.add(new PieEntry((float) (deviceEmission / dailyEmission * 100), "Electronics"));
-            if (otherEmission > 0) entries.add(new PieEntry((float) (otherEmission / dailyEmission * 100), "Other Purchases"));
-            pieChart.getDescription().setText("Emission Breakdown");
+        if (dailyEmission > 0) {
+            if (carEmission > 0) entries.add(new BarEntry(0, (float) carEmission, "Drive"));
+            if (publicTransportEmission > 0) entries.add(new BarEntry(1, (float) publicTransportEmission, "Public Transport"));
+            if (flightEmission > 0) entries.add(new BarEntry(2, (float) flightEmission, "Flight"));
+            if (foodEmission > 0) entries.add(new BarEntry(3, (float) foodEmission, "Food"));
+            if (clothEmission > 0) entries.add(new BarEntry(4, (float) clothEmission, "Clothes"));
+            if (deviceEmission > 0) entries.add(new BarEntry(5, (float) deviceEmission, "Electronics"));
+            if (otherEmission > 0) entries.add(new BarEntry(6, (float) otherEmission, "Other"));
+            entries.add(new BarEntry(7, 0, "Walking and Cycling"));
         } else {
-            entries.add(new PieEntry(100f, "Walking and Cycling"));
-            pieChart.getDescription().setText("No Activity Logged");
+            entries.add(new BarEntry(1, 0, "Walking and Cycling"));
         }
 
-        PieDataSet pieDataSet = new PieDataSet(entries, "");
+        BarDataSet barDataSet = new BarDataSet(entries, "");
 
-        List<Integer> colors = new ArrayList<>();
-        colors.add(ContextCompat.getColor(getContext(), R.color.grey_blue));
-        colors.add(ContextCompat.getColor(getContext(), R.color.teal));
-        colors.add(ContextCompat.getColor(getContext(), R.color.soft_green));
-        colors.add(ContextCompat.getColor(getContext(), R.color.cream));
-        colors.add(ContextCompat.getColor(getContext(), R.color.light_gray));
-        colors.add(ContextCompat.getColor(getContext(), R.color.pale_yellow));
-        colors.add(ContextCompat.getColor(getContext(), R.color.high_contrast_teal));
-        colors.add(ContextCompat.getColor(getContext(), R.color.soft_coral));
+        // Customize the BarChart appearance
+        barDataSet.setColors(new int[]{
+                ContextCompat.getColor(getContext(), R.color.grey_blue),
+                ContextCompat.getColor(getContext(), R.color.teal),
+                ContextCompat.getColor(getContext(), R.color.soft_green),
+                ContextCompat.getColor(getContext(), R.color.cream),
+                ContextCompat.getColor(getContext(), R.color.light_grey),
+                ContextCompat.getColor(getContext(), R.color.pale_yellow),
+                ContextCompat.getColor(getContext(), R.color.soft_coral)
+        });
+        barDataSet.setValueTextColor(Color.BLACK);
+        barDataSet.setValueTextSize(15f);
 
-        pieDataSet.setColors(colors);
-        pieDataSet.setSliceSpace(2f); // Add spacing between slices
-        pieDataSet.setValueLinePart1Length(0.6f); // Adjust the length of the value lines
-        pieDataSet.setValueLinePart2Length(0.2f); // Adjust the second part of the value lines
-        pieDataSet.setValueLineColor(Color.BLACK); // Make the lines clearer
-        pieDataSet.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE); // Position value labels outside slices
-        PieData pieData = new PieData(pieDataSet);
-        pieData.setValueTextSize(15f);
-        pieData.setValueTextColor(Color.BLACK);
-
-        pieChart.setData(pieData);
-        pieChart.getDescription().setEnabled(false);
-        pieChart.setUsePercentValues(true);
-        pieChart.setHoleRadius(30f);
-        pieChart.setTransparentCircleRadius(0f);
-        pieChart.setCenterText("Emission by Activity");
-        pieChart.setCenterTextColor(Color.BLACK);
-        pieChart.setExtraOffsets(15, 15, 15, 15);
-
-        pieChart.setEntryLabelTextSize(15f);
-        pieChart.setEntryLabelColor(Color.BLACK);
-        //set customized format for the labels
-        pieData.setValueFormatter(new ValueFormatter() {
+        BarData barData = new BarData(barDataSet);
+        barData.setValueFormatter(new ValueFormatter() {
             @Override
             public String getFormattedValue(float value) {
-                return String.format(Locale.getDefault(), "%.2f%%", value);
+                return String.format(Locale.getDefault(), "%.2f kg", value);
             }
         });
 
-        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-            @Override
-            public void onValueSelected(Entry e, Highlight h) {
-                if (e instanceof PieEntry) {
-                    PieEntry pieEntry = (PieEntry) e;
-                    Toast.makeText(getContext(), pieEntry.getLabel() + ": " + pieEntry.getValue() + "%", Toast.LENGTH_SHORT).show();
-                }
-            }
+        barChart.setData(barData);
+        barChart.getDescription().setEnabled(false);
+        barChart.setFitBars(true); // Make the bars fit nicely within the chart
+        barChart.setExtraOffsets(13, 10, 13, 60);
+        barChart.setDoubleTapToZoomEnabled(false);
 
-            @Override
-            public void onNothingSelected() {
-                // Do nothing
-            }
-        });
+        // Configure X-axis labels
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setGranularity(1f);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+        xAxis.setLabelRotationAngle(-35f); // Rotate labels if they are long
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(
+                new String[]{"Drive", "Public Transit", "Flight", "Food", "Clothes", "Electronics", "Other", "Walking/Cycling"}));
+        xAxis.setYOffset(10f);
+        xAxis.setTextSize(14f);
+
+        // Configure Y-axis (left and right)
+        YAxis leftAxis = barChart.getAxisLeft();
+        leftAxis.setAxisMinimum(0f); // Start Y-axis at zero
+        leftAxis.setTextSize(12f);
+
+        YAxis rightAxis = barChart.getAxisRight();
+        rightAxis.setEnabled(false); // Disable right Y-axis
 
         // Configure legend
-        Legend legend = pieChart.getLegend();
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setFormSize(15f);
-        legend.setDrawInside(false);
-        legend.setWordWrapEnabled(true);
-        legend.setMaxSizePercent(0.95f);
-        legend.setXEntrySpace(25f);
-        legend.setYEntrySpace(5f);
-        legend.setYOffset(10f);
-        legend.setXOffset(10f);
-        legend.setTextSize(15f); // Slightly smaller for better wrapping
-        legend.setTextColor(Color.BLACK);
+        Legend legend = barChart.getLegend();
+        legend.setEnabled(false);
 
-        pieChart.animateY(1000);
-        pieChart.invalidate();
+        barChart.animateY(1000);
+        barChart.invalidate();
     }
 }

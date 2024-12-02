@@ -111,15 +111,15 @@ public class LogConsumptionFragment extends Fragment {
         BillTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerBillType.setAdapter(BillTypeAdapter);
 
-        // onItemSelected for spinnerTransportActivity
+        // onItemSelected for spinnerConsumeActivity
         spinnerConsumeActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedActivity = parent.getSelectedItem().toString();
 
                 switch (selectedActivity) {
+                    // if the placeholder is chosen again, hide all other fields
                     case "Select an activity":
-                        // if the placeholder is chosen again, hide all other fields
                         editTextNumCloth.setVisibility(View.GONE);
                         editTextNumDevice.setVisibility(View.GONE);
                         editTextNumPurchase.setVisibility(View.GONE);
@@ -223,7 +223,6 @@ public class LogConsumptionFragment extends Fragment {
             }
         });
 
-        // onclick for the button
         buttonAdd.setOnClickListener(v -> {
             addItem();
             editTextNumCloth.setText("");
@@ -247,14 +246,17 @@ public class LogConsumptionFragment extends Fragment {
         int numCloth, numDevice, numPurchase;
         double bill;
 
+        // obtain user input
         if (editTextNumCloth.getVisibility() == View.VISIBLE) {
             numClothStr = editTextNumCloth.getText().toString().trim();
+
             // check if user input is empty
             if (numClothStr.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill out the number of clothes purchased",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
+
             // if not empty, convert it to a double
             try {
                 numCloth = Integer.parseInt(numClothStr);
@@ -274,13 +276,13 @@ public class LogConsumptionFragment extends Fragment {
 
         if (editTextNumDevice.getVisibility() == View.VISIBLE) {
             numDeviceStr = editTextNumDevice.getText().toString().trim();
-            // check if user input is empty
+
             if (numDeviceStr.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill out the number of devices purchased",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
-            // if not empty, turn it into double
+
             try {
                 numDevice = Integer.parseInt(numDeviceStr);
                 if (numDevice < 0) {
@@ -291,7 +293,7 @@ public class LogConsumptionFragment extends Fragment {
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid number of devices",
                         Toast.LENGTH_SHORT).show();
-                return;  // Stop the function if parsing fails
+                return;
             }
         } else {
             numDevice = 0;
@@ -299,11 +301,13 @@ public class LogConsumptionFragment extends Fragment {
 
         if (editTextNumPurchase.getVisibility() == View.VISIBLE) {
             numPurchaseStr = editTextNumPurchase.getText().toString().trim();
+
             if (numPurchaseStr.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill out the number of purchases made",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
+
             try {
                 numPurchase = Integer.parseInt(numPurchaseStr);
                 if (numPurchase < 0) {
@@ -314,7 +318,7 @@ public class LogConsumptionFragment extends Fragment {
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid number of purchase",
                         Toast.LENGTH_SHORT).show();
-                return;  // Stop the function if parsing fails
+                return;
             }
         } else {
             numPurchase = 0;
@@ -322,11 +326,13 @@ public class LogConsumptionFragment extends Fragment {
 
         if (editTextBill.getVisibility() == View.VISIBLE) {
             billStr = editTextBill.getText().toString().trim();
+
             if (billStr.isEmpty()) {
                 Toast.makeText(getContext(), "Please fill out the bill amount",
                         Toast.LENGTH_SHORT).show();
                 return;
             }
+
             try {
                 bill = Double.parseDouble(billStr);
                 if (bill < 0) {
@@ -337,7 +343,7 @@ public class LogConsumptionFragment extends Fragment {
             } catch (NumberFormatException e) {
                 Toast.makeText(getContext(), "Please enter valid bill amount",
                         Toast.LENGTH_SHORT).show();
-                return;  // Stop the function if parsing fails
+                return;
             }
         } else {
             bill = 0;
@@ -379,14 +385,13 @@ public class LogConsumptionFragment extends Fragment {
         // log data into database
         FirebaseManager manager = new FirebaseManager(getContext());
         List<Task<Void>> tasks = new ArrayList<>();
-        // String userId = "user1";
-        // String dateKey = GetDate.getDate();
+        String userId = UserSession.getUserId(getContext());
 
         // user1 > daily_emission > 2024-11-19 > consumption > consumptionActivity
-        String commonPath = "users/" + UserSession.userId + "/daily_emission/" + dateKey
+        String commonPath = "users/" + userId + "/daily_emission/" + dateKey
                 + "/consumption/";
 
-        // ... consumption > "buy_new_clothes" > "numCloth": 1
+        // ... consumption > "buy_new_clothes" > "num_cloth": 1
         if(consumeActivity.equals("buy new clothes")) {
             String clothPath = commonPath + "buy_new_clothes/num_cloth";
             tasks.add(manager.updateNode(clothPath, numCloth, isIncrement));
@@ -410,31 +415,29 @@ public class LogConsumptionFragment extends Fragment {
         //                                    > "electricity": 165.2
         if(consumeActivity.equals("energy bills")) {
             String month = dateKey.substring(0, 7);
-            String billPath = "users/" + UserSession.userId + "/bill/" + month + "/" + billType;
+            String billPath = "users/" + userId + "/bill/" + month + "/" + billType;
             tasks.add(manager.updateNode(billPath, bill, isIncrement));
 
             if(billType.equals("electricity")) {
-                // Other than uploading data into database, we also need to check for electricity bill
-                // for electricity bill, we made some assumptions for daily emission calculation
-                // See DailyEmissionProcessor.java for more info
+                // Checking if the electricity bill amount falls in the indicated range
                 // TODO: change to correct path
 //                DatabaseReference billRangeRef = db.getReference("users").child(UserSession.userId)
 //                        .child("questionnaire_responses").child("consumption")
 //                        .child("2").child("answer");
-                DatabaseReference billRangeRef = db.getReference("users");
+                DatabaseReference billRangeRef = db.getReference("users").child(userId)
+                        .child("bill_range");
                 billRangeRef.get().addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         if (task.getResult().exists()) {
-                            // TODO: uncomment this
-                            // String billRange = task.getResult().getValue(String.class);
-                            String billRange = "Under $50";
+                            String billRange = task.getResult().getValue(String.class);
 
                             // Assumption:
                             // for the bill amount range, we assume it's lower inclusive and upper exclusive
                             // (i.e., 50 <= amount < 100)
                             int lower;
                             int upper;
-                            //TODO: verify the string format
+
+                            assert billRange != null;
                             if(billRange.startsWith("Under")) {
                                 upper = Integer.parseInt(billRange.replace("Under $", "").trim());
                                 lower = 0;
@@ -442,13 +445,13 @@ public class LogConsumptionFragment extends Fragment {
                                 lower = Integer.parseInt(billRange.replace("Over $", "").trim());
                                 upper = Integer.MAX_VALUE; // indicate no upper bound
                             } else {
-                                String[] parts = billRange.replace("$", "").split("-");
+                                String[] parts = billRange.replace("$", "").split("–");
                                 lower = Integer.parseInt(parts[0].trim());
                                 upper = Integer.parseInt(parts[1].trim());
                             }
 
                             // check if the bill amount this month changes in range
-                            // if not, we warn the user about it
+                            // if yes, we warn the user about it
                             if(!(lower <= bill && bill < upper)) {
                                 showWarningDialog("The new bill amount is outside of your " +
                                         "indicated monthly electricity bill range. Please ensure you " +
@@ -481,7 +484,7 @@ public class LogConsumptionFragment extends Fragment {
     private void showWarningDialog(String message) {
         new AlertDialog.Builder(getContext()).setTitle("Notice").setMessage(message)
                 .setCancelable(false).setPositiveButton("Ok", (dialog, which) -> {
-                    dialog.dismiss(); // close the dialog when "Ok" is clicked
+                    dialog.dismiss();
                 })
                 .show();
     }
@@ -489,7 +492,7 @@ public class LogConsumptionFragment extends Fragment {
     private void uploadData(boolean forceRefresh) {
         if (processor == null || forceRefresh) {
             processor = new DailyEmissionProcessor(getContext(), dateKey, () -> {
-                processor.mainUploader();  // Upload food data after loading
+                processor.mainUploader();  // Upload data after loading
             });
         }
     }

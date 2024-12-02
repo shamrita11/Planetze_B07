@@ -1,8 +1,11 @@
 package com.example.planetze.tracker;
 
+import static java.security.AccessController.getContext;
+
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.planetze.R;
 import com.example.planetze.UserSession;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -13,16 +16,19 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class DailyEmissionProcessor {
     private final DatabaseReference myRef;
-    // String userId;
+    String userId;
     String dateKey;
     String monthKey;
     Context context;
 
     // Transportation
     double distanceDriven;
-    String carType; // convert to lowercase
+    String carType;
     double transportTime;
     String frequency;
+    Map<String, Integer> Occasionally;
+    Map<String, Integer> Frequently;
+    Map<String, Integer> Always;
     String timeSpent;
     int numShortHaul;
     int numLongHaul;
@@ -41,21 +47,41 @@ public class DailyEmissionProcessor {
     int numDevice;
     double electricityBill;
     int annualBillEmission;
+    String renewableEnergy;
 
     public DailyEmissionProcessor(Context context, String dateKey, DataLoadListener listener) {
-        // initialize the database reference
-        // database
+        // initialize the database and variables
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        //get actual user id
-        myRef = db.getReference("users").child(UserSession.userId);
+        userId = UserSession.getUserId(context);
+        myRef = db.getReference("users").child(userId);
         this.dateKey = dateKey;
         monthKey = dateKey.substring(0, 7);
         this.context = context;
 
+        Occasionally = new HashMap<>();
+        Occasionally.put("under 1 hour", 246);
+        Occasionally.put("1-3 hours", 819);
+        Occasionally.put("3-5 hours", 1638);
+        Occasionally.put("5-10 hours", 3071);
+        Occasionally.put("more than 10 hours", 4095);
+
+        Frequently = new HashMap<>();
+        Frequently.put("under 1 hour", 573);
+        Frequently.put("1-3 hours", 1911);
+        Frequently.put("3-5 hours", 3822);
+        Frequently.put("5-10 hours", 7166);
+        Frequently.put("more than 10 hours", 9555);
+
+        Always = new HashMap<>();
+        Always.put("under 1 hour", 1050);
+        Always.put("1-3 hours", 2363);
+        Always.put("3-5 hours", 4103);
+        Always.put("5-10 hours", 9611);
+        Always.put("more than 10 hours", 13750);
+
         // Track task completion (so that we only call the calculations and uploader
-        // once all data are retrieved from database
-        // TODO: change the value to total firebase queries
-        AtomicInteger pendingTasks = new AtomicInteger(12);
+        // once all data are retrieved from database)
+        AtomicInteger pendingTasks = new AtomicInteger(19);
         Runnable onComplete = () -> {
             if (pendingTasks.decrementAndGet() == 0 && listener != null) {
                 listener.onDataLoaded(); // Notify when all data is loaded
@@ -76,32 +102,28 @@ public class DailyEmissionProcessor {
                     // if doesn't exist, set it to 0
                     distanceDriven = 0;
                 }
-                onComplete.run();
             } else {
                 // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // the type of car the user has
-        // TODO: find the correct index for this car type question
-        // TODO: uncomment this for the final project
-//        DatabaseReference carTypeRef = myRef.child("questionnaire_responses")
-//                .child("transportation").child("2").child("answer");
-//        carTypeRef.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                if (task.getResult().exists()) {
-//                    carType = task.getResult().getValue(String.class);
-//                } else {
-//                    // if doesn't exist, set it to ""0""
-//                    carType = "";
-//                }
-//            } else {
-//                // Handle Firebase request failure
-//                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        carType = "Gasoline";
+        DatabaseReference carTypeRef = myRef.child("car_type");
+        carTypeRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (task.getResult().exists()) {
+                    carType = task.getResult().getValue(String.class);
+                } else {
+                    carType = "";
+                }
+            } else {
+                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+            onComplete.run();
+        });
+        //carType = "Gasoline";
 
         // time spent on public transport
         DatabaseReference transportTimeRef = myRef.child("daily_emission").child(dateKey)
@@ -112,56 +134,45 @@ public class DailyEmissionProcessor {
                 if (task.getResult().exists()) {
                     transportTime = task.getResult().getValue(Double.class);
                 } else {
-                    // if doesn't exist, set it to 0
                     transportTime = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // frequency of taking bus in a year (from questionnaire)
-        // TODO: find the correct index for this questionnaire
-        // TODO: uncomment this
-//        DatabaseReference frequencyRef = myRef.child("questionnaire_responses")
-//                .child("transportation").child("4").child("answer");
-//        frequencyRef.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                if (task.getResult().exists()) {
-//                    // If the food activity already exists, get the current value and add to it
-//                    frequency = task.getResult().getValue(String.class);
-//                } else {
-//                    // if doesn't exist, set it to ""
-//                    frequency = "";
-//                }
-//            } else {
-//                // Handle Firebase request failure
-//                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        frequency = "Yes, occasionally";
+        DatabaseReference frequencyRef = myRef.child("bus_frequency");
+        frequencyRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (task.getResult().exists()) {
+                    frequency = task.getResult().getValue(String.class);
+                } else {
+                    frequency = "";
+                }
+            } else {
+                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+            onComplete.run();
+        });
+        // frequency = "Yes, occasionally";
 
         // Time spent on bus per week (from questionnaire)
-        // TODO: find the correct index for this questionnaire
-        // TODO: uncomment this
-//        DatabaseReference timeSpentRef = myRef.child("questionnaire_responses")
-//                .child("transportation").child("5").child("answer");
-//        timeSpentRef.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                if (task.getResult().exists()) {
-//                    timeSpent = task.getResult().getValue(String.class);
-//                } else {
-//                    // if doesn't exist, set it to ""
-//                    timeSpent = "";
-//                }
-//            } else {
-//                // Handle Firebase request failure
-//                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        timeSpent = "Under 1 hour";
+        DatabaseReference timeSpentRef = myRef.child("bus_time");
+        timeSpentRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (task.getResult().exists()) {
+                    timeSpent = task.getResult().getValue(String.class);
+                } else {
+                    timeSpent = "";
+                }
+            } else {
+                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+            onComplete.run();
+        });
+        // timeSpent = "Under 1 hour";
 
         // number of short flight
         DatabaseReference shortHaulRef = myRef.child("daily_emission").child(dateKey)
@@ -172,14 +183,12 @@ public class DailyEmissionProcessor {
                 if (task.getResult().exists()) {
                     numShortHaul = task.getResult().getValue(Integer.class);
                 } else {
-                    // if doesn't exist, set it to 0
                     numShortHaul = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // number of long flight
@@ -191,14 +200,12 @@ public class DailyEmissionProcessor {
                 if (task.getResult().exists()) {
                     numLongHaul = task.getResult().getValue(Integer.class);
                 } else {
-                    // if doesn't exist, set it to 0
                     numLongHaul = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // food ////////////////////////////////////////////
@@ -210,14 +217,12 @@ public class DailyEmissionProcessor {
                 if (task.getResult().exists()) {
                     numBeef = task.getResult().getValue(Integer.class);
                 } else {
-                    // if doesn't exist, set it to 0
                     numBeef = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // number of pork meal
@@ -228,14 +233,12 @@ public class DailyEmissionProcessor {
                 if (task.getResult().exists()) {
                     numPork = task.getResult().getValue(Integer.class);
                 } else {
-                    // if doesn't exist, set it to 0
                     numPork = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // number of chicken meal
@@ -246,14 +249,12 @@ public class DailyEmissionProcessor {
                 if (task.getResult().exists()) {
                     numChicken = task.getResult().getValue(Integer.class);
                 } else {
-                    // if doesn't exist, set it to 0
                     numChicken = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // number of fish meal
@@ -264,14 +265,12 @@ public class DailyEmissionProcessor {
                 if (task.getResult().exists()) {
                     numFish = task.getResult().getValue(Integer.class);
                 } else {
-                    // if doesn't exist, set it to 0
                     numFish = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // number of plant-based meal
@@ -282,14 +281,12 @@ public class DailyEmissionProcessor {
                 if (task.getResult().exists()) {
                     numVegetable = task.getResult().getValue(Integer.class);
                 } else {
-                    // if doesn't exist, set it to 0
                     numVegetable = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // consumption ////////////////////////////////////////////
@@ -302,35 +299,29 @@ public class DailyEmissionProcessor {
                 if (task.getResult().exists()) {
                     numCloth = task.getResult().getValue(Integer.class);
                 } else {
-                    // if doesn't exist, set it to 0
                     numCloth = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // cloth purchase frequency
-        // TODO: replace with actual path
-        // TODO: uncomment
-//        DatabaseReference clothesFreqRef = myRef.child("questionnaire_responses")
-//                .child("consumption").child("0").child("answer");
-//        clothesFreqRef.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                if (task.getResult().exists()) {
-//                    clothFrequency = task.getResult().getValue(String.class);
-//                } else {
-//                    // if doesn't exist, set it to ""
-//                    clothFrequency = "";
-//                }
-//            } else {
-//                // Handle Firebase request failure
-//                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        clothFrequency = "Monthly";
+        DatabaseReference clothesFreqRef = myRef.child("clothes_purchase_frequency");
+        clothesFreqRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (task.getResult().exists()) {
+                    clothFrequency = task.getResult().getValue(String.class);
+                } else {
+                    clothFrequency = "";
+                }
+            } else {
+                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+            onComplete.run();
+        });
+        // clothFrequency = "Monthly";
 
         // number of electronic devices purchased
         DatabaseReference deviceRef = myRef.child("daily_emission").child(dateKey)
@@ -344,7 +335,7 @@ public class DailyEmissionProcessor {
                     if (electronicsMap != null) {
                         // Sum up the values in the map
                         for (Object value : electronicsMap.values()) {
-                            if (value instanceof Number){
+                            if (value instanceof Number) {
                                 numDevice += ((Number) value).intValue();
                             }
 
@@ -353,11 +344,11 @@ public class DailyEmissionProcessor {
                 } else {
                     numDevice = 0;
                 }
-                onComplete.run();
             } else {
                 // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // number of each type of other purchases
@@ -367,7 +358,6 @@ public class DailyEmissionProcessor {
         otherRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 if (task.getResult().exists()) {
-                    // TODO: make sure to verify this works!!!!!!!
                     Map<String, Object> otherMap = (Map<String, Object>) task.getResult().getValue();
                     if (otherMap != null) {
                         for (Map.Entry<String, Object> entry : otherMap.entrySet()) {
@@ -380,11 +370,10 @@ public class DailyEmissionProcessor {
                 } else {
                     otherPurchase = null;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
         // bill amount
@@ -398,47 +387,59 @@ public class DailyEmissionProcessor {
                 } else {
                     electricityBill = 0;
                 }
-                onComplete.run();
             } else {
-                // Handle Firebase request failure
                 Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
             }
+            onComplete.run();
         });
 
-        // the annual emission from last year
-        // TODO: change to correct path
-        // TODO: uncomment
-//        DatabaseReference annualBillRef = myRef.child("questionnaire_responses")
-//                .child("consumption").child("3").child("answer");;
-//        annualBillRef.get().addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//                if (task.getResult().exists()) {
-//                    annualBillEmission = task.getResult().getValue(Integer.class);
-//                } else {
-//                    annualBillEmission = 0;
-//                }
-//            } else {
-//                // Handle Firebase request failure
-//                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-        annualBillEmission = 2400;
+        // the annual housing emission from last year
+        DatabaseReference annualBillRef = myRef.child("averagetotalc02emissionsperyear_housing");
+        annualBillRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (task.getResult().exists()) {
+                    annualBillEmission = task.getResult().getValue(Integer.class);
+                } else {
+                    annualBillEmission = 0;
+                }
+            } else {
+                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+            onComplete.run();
+        });
+        // annualBillEmission = 2400;
+
+        // the usage of renewable energy
+        DatabaseReference renewableRef = myRef.child("renewable_energy");
+        renewableRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                if (task.getResult().exists()) {
+                    renewableEnergy = task.getResult().getValue(String.class);
+                } else {
+                    renewableEnergy = "";
+                }
+            } else {
+                Toast.makeText(context, "Failed to fetch data", Toast.LENGTH_SHORT).show();
+            }
+            onComplete.run();
+        });
     }
 
     public double carCalculator() {
-        // Car emission - use emissionFactor x distance
+        // Car emission - emissionFactor x distance
         double emissionFactor;
-        switch (carType.toLowerCase()) {
-            case "gasoline":
+        switch (carType) {
+            case "Gasoline":
+            case "I don't know":
                 emissionFactor = 0.24;
                 break;
-            case "diesel":
+            case "Diesel":
                 emissionFactor = 0.27;
                 break;
-            case "hybrid":
+            case "Hybrid":
                 emissionFactor = 0.16;
                 break;
-            case "electric":
+            case "Electric":
                 emissionFactor = 0.05;
                 break;
             default:
@@ -461,32 +462,11 @@ public class DailyEmissionProcessor {
         //      exclusive. (this makes sense because having higher foot print is a better warning
         //      for the user to reduce their foot print) [ex. 1-3 is 1 <= ___ < 3]
         double annual;
-        // TODO: replace the strings with the actual strings stored in database
-        Map<String, Integer> Occasionally = new HashMap<>();
-        Occasionally.put("under 1 hour", 246);
-        Occasionally.put("1-3 hours", 819);
-        Occasionally.put("3-5 hours", 1638);
-        Occasionally.put("5-10 hours", 3071);
-        Occasionally.put("more than 10 hour", 4095);
 
-        Map<String, Integer> Frequently = new HashMap<>();
-        Frequently.put("under 1 hour", 573);
-        Frequently.put("1-3 hours", 1911);
-        Frequently.put("3-5 hours", 3822);
-        Frequently.put("5-10 hours", 7166);
-        Frequently.put("more than 10 hour", 9555);
-
-        Map<String, Integer> Always = new HashMap<>();
-        Always.put("under 1 hour", 1050);
-        Always.put("1-3 hours", 2363);
-        Always.put("3-5 hours", 4103);
-        Always.put("5-10 hours", 9611);
-        Always.put("more than 10 hour", 13750);
-
-        // TODO: replace with the actual answers stored in database
-        if(frequency.equals("Yes, occasionally")) {
+        if(frequency.equals("Occasionally (1-2 times/week)")
+                || frequency.equals("Never")) {
             annual = Occasionally.get(timeSpent.toLowerCase());
-        } else if(frequency.equals("Frequently")) {
+        } else if(frequency.equals("Frequently (3-4 times/week)")) {
             annual = Frequently.get(timeSpent.toLowerCase());
         } else {
             annual = Always.get(timeSpent.toLowerCase());
@@ -496,7 +476,6 @@ public class DailyEmissionProcessor {
     }
 
     public double flightCalculator() {
-        // Short haul - we don't know total flight the user take in this year
         // Assumption: We take each category's emission, divide each one by the lower bound
         //             (for example, 1-2 flights = 225, then we divide 225 by 1) to get emission
         //             per flight for each category. Then, we find the average of those emission
@@ -505,11 +484,10 @@ public class DailyEmissionProcessor {
                 + (1800.0 / 11.0)) / 4.0;
         double dailyShortHaulEmission = emissionPerShortFlight * numShortHaul;
 
-        // Long haul - same issue and assumption as above
         double emissionPerLongFlight = ((825.0) + (2200.0 / 3.0) + (4400.0 / 6.0)
                 + (6600.0 / 11.0)) / 4.0;
         double dailyLongHaulEmission = emissionPerLongFlight * numLongHaul;
-       return dailyShortHaulEmission + dailyLongHaulEmission;
+        return dailyShortHaulEmission + dailyLongHaulEmission;
     }
 
     public double transportCalculator() {
@@ -600,8 +578,6 @@ public class DailyEmissionProcessor {
     }
 
     public double deviceCalculator() {
-        // From the formula, we assume that every device purchased converts to 300kg emission
-        // since 1 time a year turns into 300kg emission
         return numDevice * 300;
     }
 
@@ -664,12 +640,22 @@ public class DailyEmissionProcessor {
             // means the user have not yet logged their bill
             return 0;
         }
-        return annualBillEmission / 12.0;
+
+        // check the renewable energy usage
+        int reduction;
+        if(renewableEnergy.equals("Yes, primarily (more than 50% of energy use)")) {
+            reduction = 6000;
+        } else if (renewableEnergy.equals("Yes, partially (less than 50% of energy use)")) {
+            reduction = 4000;
+        } else {
+            reduction = 0;
+        }
+
+        // Add the reduction back to get the actual annual bill emission
+        return (annualBillEmission + reduction) / 12.0;
     }
 
     public double consumptionCalculator() {
-        // Assumptions, since monthly bills are tracked monthly, we do not include it in our
-        // daily emission
         return clothesCalculator() + deviceCalculator() + otherCalculator();
     }
 
