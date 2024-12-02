@@ -12,8 +12,8 @@ public class FoodCalculator {
         Map<String, Double> dietEmissions = Map.of(
                 "Vegetarian", 1000.0,
                 "Vegan", 500.0,
-                "Pescatarian", 1500.0,
-                "Meat-based", 0.0 // Will calculate based on meat consumption
+                "Pescatarian (fish/seafood)", 1500.0,
+                "Meat-based (eat all types of animal products)", 0.0 // Meat-based calculates separately
         );
 
         // CO2 emissions for meat consumption (kg/year)
@@ -53,68 +53,56 @@ public class FoodCalculator {
                 "Frequently", 140.4
         );
 
-        // Variables to store user responses
-        String dietType = "";
-        String beefConsumption = "";
-        String porkConsumption = "";
-        String chickenConsumption = "";
-        String fishConsumption = "";
-        String foodWaste = "";
+        // Fetch responses using helper method
+        String dietType = getResponseValue("q6", "a6", responses);
+        String beefConsumption = getResponseValue("q6_1_beef", "a6_1_beef", responses);
+        String porkConsumption = getResponseValue("q6_1_pork", "a6_1_pork", responses);
+        String chickenConsumption = getResponseValue("q6_1_chicken", "a6_1_chicken", responses);
+        String fishConsumption = getResponseValue("q6_1_fish", "a6_1_fish", responses);
+        String foodWaste = getResponseValue("q7", "a7", responses);
 
-        // Process responses
-        for (Map<String, String> response : responses) {
-            String question = response.getOrDefault("question", "");
-            String answer = response.getOrDefault("answer", "");
+        // Calculate diet emissions
+        if (dietEmissions.containsKey(dietType)) {
+            totalEmissions += dietEmissions.get(dietType);
+        }
 
-            switch (question) {
-                case "What best describes your diet?":
-                    dietType = answer;
-                    if (dietEmissions.containsKey(dietType)) {
-                        totalEmissions += dietEmissions.get(dietType);
-                    }
-                    break;
-
-                case "How often do you eat beef?":
-                    beefConsumption = answer;
-                    if (beefEmissions.containsKey(beefConsumption)) {
-                        totalEmissions += beefEmissions.get(beefConsumption);
-                    }
-                    break;
-
-                case "How often do you eat pork?":
-                    porkConsumption = answer;
-                    if (porkEmissions.containsKey(porkConsumption)) {
-                        totalEmissions += porkEmissions.get(porkConsumption);
-                    }
-                    break;
-
-                case "How often do you eat chicken?":
-                    chickenConsumption = answer;
-                    if (chickenEmissions.containsKey(chickenConsumption)) {
-                        totalEmissions += chickenEmissions.get(chickenConsumption);
-                    }
-                    break;
-
-                case "How often do you eat fish?":
-                    fishConsumption = answer;
-                    if (fishEmissions.containsKey(fishConsumption)) {
-                        totalEmissions += fishEmissions.get(fishConsumption);
-                    }
-                    break;
-
-                case "How often do you waste food or throw away uneaten leftovers?":
-                    foodWaste = answer;
-                    if (foodWasteEmissions.containsKey(foodWaste)) {
-                        totalEmissions += foodWasteEmissions.get(foodWaste);
-                    }
-                    break;
-
-                default:
-                    // Ignore unrelated questions
-                    break;
+        // Only calculate meat emissions if diet type is "Meat-based"
+        if ("Meat-based (eat all types of animal products)".equalsIgnoreCase(dietType)) {
+            if (beefEmissions.containsKey(beefConsumption)) {
+                totalEmissions += beefEmissions.get(beefConsumption);
             }
+
+            if (porkEmissions.containsKey(porkConsumption)) {
+                totalEmissions += porkEmissions.get(porkConsumption);
+            }
+
+            if (chickenEmissions.containsKey(chickenConsumption)) {
+                totalEmissions += chickenEmissions.get(chickenConsumption);
+            }
+
+            if (fishEmissions.containsKey(fishConsumption)) {
+                totalEmissions += fishEmissions.get(fishConsumption);
+            }
+        }
+
+        // Add food waste emissions
+        if (foodWasteEmissions.containsKey(foodWaste)) {
+            totalEmissions += foodWasteEmissions.get(foodWaste);
         }
 
         return totalEmissions; // Return total food-related emissions in kg/year
     }
+
+    /**
+     * Helper method to fetch a response value by question and answer keys.
+     */
+    private String getResponseValue(String questionKey, String answerKey, ArrayList<Map<String, String>> responses) {
+        for (Map<String, String> response : responses) {
+            if (response.containsKey(questionKey)) {
+                return response.getOrDefault(answerKey, "");
+            }
+        }
+        return "";
+    }
 }
+

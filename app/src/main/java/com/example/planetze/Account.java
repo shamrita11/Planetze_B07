@@ -92,7 +92,7 @@ public class Account extends BaseActivity {
                     carbonHousing = (carbonHousing != null) ? carbonHousing : 0.0;
 
                     // Format the values with 2 decimal places
-                    String carbonString = String.format("Total: %.2f", carbon);
+                    String carbonString = String.format("Total: %.2f kg", carbon);
                     String carbonFoodString = String.format("Food: %.2f kg per year", carbonFood);
                     String carbonTransportationString = String.format("Transportation: %.2f kg per year", carbonTransportation);
                     String carbonConsumptionString = String.format("Consumption: %.2f kg per year", carbonConsumption);
@@ -135,7 +135,7 @@ public class Account extends BaseActivity {
         buttonEditSurvey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), QuestionnaireWelcomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CarbonFootprintQuestionnaireActivity.class);
                 startActivity(intent);
                 finish();
             }

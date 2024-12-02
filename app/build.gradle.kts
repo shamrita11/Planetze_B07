@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.recyclerview)
     implementation(libs.material.calendarview)
+    androidTestImplementation (libs.mockito.android)
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.inline)
@@ -62,4 +63,7 @@ dependencies {
     annotationProcessor(libs.compiler)
     // Import for Splash Screen
     implementation(libs.core.splashscreen)
+
+
+
 }

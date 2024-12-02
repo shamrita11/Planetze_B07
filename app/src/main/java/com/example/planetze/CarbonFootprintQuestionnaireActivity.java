@@ -2,6 +2,7 @@ package com.example.planetze;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -12,11 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.planetze.tracker.TrackerActivity;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +36,7 @@ public class CarbonFootprintQuestionnaireActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.scrollview); // Reference your updated XML layout file
+        setContentView(R.layout.scrollview_questionnaire); // Reference your updated XML layout file
 
 
         // Link UI components to their IDs
@@ -123,68 +124,64 @@ public class CarbonFootprintQuestionnaireActivity extends AppCompatActivity {
                 String userId = UserSession.userId;
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(userId);
 
-                // Check if variables are already initialized
-                ref.addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        // Map for variables to initialize
-                        Map<String, Object> updates = new HashMap<>();
+                // Perform calculations
+                double transportationEmissions = new TransportationCalculator().calculateTransportationEmissions(responses);
+                double foodEmissions = new FoodCalculator().calculateFoodEmissions(responses);
+                double housingEmissions = new ExcelHousingCalculator(this).calculateHousingScore(responses);
+                double consumptionEmissions = new ConsumptionCalculator().calculateConsumptionEmissions(responses);
+                double totalAnnualEmissions = transportationEmissions + foodEmissions + consumptionEmissions; //+ housingEmissions;
 
+                // Extract additional variables
+                String typeOfCar = getResponseValue("q1_1", "a1_1");
+                String busFrequency = getResponseValue("q2", "a2");
+                String busTime = getResponseValue("q3", "a3");
+                String clothesFrequency = getResponseValue("q15", "a15");
 
-                            String selectedCountry = countrySpinner.getSelectedItem().toString();
-                            updates.put("usercountry", selectedCountry);
+                // Create the updates map
+                Map<String, Object> updates = new HashMap<>();
+                String selectedCountry = countrySpinner.getSelectedItem().toString();
+                updates.put("usercountry", selectedCountry);
+                updates.put("averagetotalc02emissionsperyear", totalAnnualEmissions);
+                updates.put("averagetotalc02emissionsperyear_food", foodEmissions);
+                updates.put("averagetotalc02emissionsperyear_consumption", consumptionEmissions);
+                updates.put("averagetotalc02emissionsperyear_housing", housingEmissions);
+                updates.put("averagetotalc02emissionsperyear_transportation", transportationEmissions);
+                updates.put("car_type", typeOfCar);
+                updates.put("bus_frequency", busFrequency);
+                updates.put("bus_time", busTime);
+                updates.put("clothes_purchase_frequency", clothesFrequency);
+                updates.put("on_boarded", true);
 
-                        if (!snapshot.hasChild("averagetotalc02emissionsperyear")) {
-                            updates.put("averagetotalc02emissionsperyear", 0);
-                        }
+                // Log updates map
+                Log.d("Debug", "Updates Map: " + updates.toString());
 
-                        if (!snapshot.hasChild("averagetotalc02emissionsperyear_food")) {
-                            updates.put("averagetotalc02emissionsperyear_food", 0);
-                        }
-
-                        if (!snapshot.hasChild("averagetotalc02emissionsperyear_consumption")) {
-                            updates.put("averagetotalc02emissionsperyear_consumption", 0);
-                        }
-
-                        if (!snapshot.hasChild("averagetotalc02emissionsperyear_housing")) {
-                            updates.put("averagetotalc02emissionsperyear_housing", 0);
-                        }
-
-                        if (!snapshot.hasChild("averagetotalc02emissionsperyear_transportation")) {
-                            updates.put("averagetotalc02emissionsperyear_transportation", 0);
-                        }
-
-                        updates.put("on_boarded", true); // Always set "on_boarded" to true
-
-                        if (!updates.isEmpty()) {
-                            ref.updateChildren(updates).addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    Intent intent = new Intent(CarbonFootprintQuestionnaireActivity.this, TrackerActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(CarbonFootprintQuestionnaireActivity.this, "Failed to update user data. Please try again.", Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        } else {
-                            // If no updates are needed, navigate directly to TrackerActivity
-                            Intent intent = new Intent(CarbonFootprintQuestionnaireActivity.this, TrackerActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(CarbonFootprintQuestionnaireActivity.this, "Failed to check user data. Please try again.", Toast.LENGTH_LONG).show();
+                // Update the database
+                ref.updateChildren(updates).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Log.d("Debug", "Data updated successfully.");
+                        Intent intent = new Intent(CarbonFootprintQuestionnaireActivity.this, TrackerActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Log.e("Debug", "Failed to update data.");
+                        Toast.makeText(CarbonFootprintQuestionnaireActivity.this, "Failed to update user data. Please try again.", Toast.LENGTH_LONG).show();
                     }
                 });
             }
         });
     }
+    //helper function to get values from a certain question
+    private String getResponseValue(String questionKey, String answerKey) {
+        for (Map<String, String> response : responses) {
+            if (response.containsKey(questionKey)) {
+                return response.getOrDefault(answerKey, "");
+            }
+        }
+        return ""; // Return an empty string if no response is found
+    }
 
 
-        /**
+    /**
          * Sets up the question flow to display one question at a time
          * while dynamically managing question visibility and responses.
          */
