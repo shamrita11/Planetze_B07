@@ -19,30 +19,30 @@ public class TransportationCalculator {
         // Car distance ranges (in km)
         Map<String, Integer> carDistanceMap = Map.of(
                 "Up to 5,000 km (3,000 miles)", 5000,
-                "5,000–10,000 km (3,000 - 6,000 miles)", 10000,
-                "10,000–15,000 km (6,000 - 9,000 miles)", 15000,
-                "15,000–20,000 km (9,000 - 12,000 miles)", 20000,
-                "20,000–25,000 km (12,000 - 15,000 miles)", 25000,
+                "5,000–10,000 km (3,000-6,000 miles)", 10000,
+                "10,000–15,000 km (6,000-9,000 miles)", 15000,
+                "15,000–20,000 km (9,000-12,000 miles)", 20000,
+                "20,000–25,000 km (12,000-15,000 miles)", 25000,
                 "More than 25,000 km (15,000 miles)", 35000
         );
 
         // Public transport emissions table
         Map<String, Map<String, Double>> publicTransportEmissions = Map.of(
-                "Occasionally", Map.of(
+                "Occasionally (1-2 times/week)", Map.of(
                         "Under 1 hour", 246.0,
                         "1-3 hours", 819.0,
                         "3-5 hours", 1638.0,
                         "5-10 hours", 3071.0,
                         "More than 10 hours", 4095.0
                 ),
-                "Frequently", Map.of(
+                "Frequently (3-4 times/week)", Map.of(
                         "Under 1 hour", 573.0,
                         "1-3 hours", 1911.0,
                         "3-5 hours", 3822.0,
                         "5-10 hours", 7166.0,
                         "More than 10 hours", 9555.0
                 ),
-                "Always", Map.of(
+                "Always (5+ times/week)", Map.of(
                         "Under 1 hour", 573.0,
                         "1-3 hours", 1911.0,
                         "3-5 hours", 3822.0,
@@ -77,61 +77,36 @@ public class TransportationCalculator {
         String shortHaulFlightCount = getResponseValue("q4", "a4", responses);
         String longHaulFlightCount = getResponseValue("q5", "a5", responses);
 
-//        // Calculate car emissions
-//        if ("Yes".equalsIgnoreCase(carOwnership)) {
-//            if (carEmissionFactors.containsKey(carType)) {
-//                if (carDistanceMap.containsKey(carDistance)) {
-//                    double emissionFactor = carEmissionFactors.get(carType);
-//                    int distance = carDistanceMap.get(carDistance);
-//                    totalEmissions += emissionFactor * distance;
-//                } else {
-//                    System.out.println("Car distance not found: " + carDistance);
-//                }
-//            } else {
-//                System.out.println("Car type not found: " + carType);
-//            }
-//        } else {
-//            System.out.println("User does not own a car.");
-//        }
-
-        if ("Yes".equalsIgnoreCase(carOwnership != null ? carOwnership.trim() : "")
-                && carEmissionFactors.containsKey(carType != null ? carType.trim().toLowerCase() : "")
-                && carDistanceMap.containsKey(carDistance != null ? carDistance.trim().toLowerCase() : "")) {
-
-            double emissionFactor = carEmissionFactors.get(carType.trim().toLowerCase());
-            int distance = carDistanceMap.get(carDistance.trim().toLowerCase());
-            totalEmissions += emissionFactor * distance;
+        // Calculate car emissions
+        if ("Yes".equalsIgnoreCase(carOwnership)) {
+            if (carEmissionFactors.containsKey(carType)) {
+                if (carDistanceMap.containsKey(carDistance)) {
+                    double emissionFactor = carEmissionFactors.get(carType);
+                    int distance = carDistanceMap.get(carDistance);
+                    totalEmissions += emissionFactor * distance;
+                } else {
+                    System.out.println("Car distance not found: " + carDistance);
+                }
+            } else {
+                System.out.println("Car type not found: " + carType);
+            }
         } else {
-            System.out.println("Car data incomplete or user does not own a car.");
+            System.out.println("User does not own a car.");
         }
+
 
 
         // Calculate public transport emissions
-//        if (publicTransportEmissions.containsKey(transportFrequency)) {
-//            if (publicTransportEmissions.get(transportFrequency).containsKey(transportTime)) {
-//                totalEmissions += publicTransportEmissions.get(transportFrequency).get(transportTime);
-//            } else {
-//                System.out.println("Transport time not found: " + transportTime);
-//            }
-//        } else {
-//            System.out.println("Transport frequency not found: " + transportFrequency);
-//        }
-
-        // Normalize inputs
-        String normalizedFrequency = transportFrequency != null ? transportFrequency.trim() : "";
-        String normalizedTime = transportTime != null ? transportTime.trim() : "";
-
-        // Check for public transport emissions
-        if (publicTransportEmissions.containsKey(normalizedFrequency)) {
-            Map<String, Double> timeMap = publicTransportEmissions.get(normalizedFrequency);
-            if (timeMap != null && timeMap.containsKey(normalizedTime)) {
-                totalEmissions += timeMap.get(normalizedTime);
+        if (publicTransportEmissions.containsKey(transportFrequency)) {
+            if (publicTransportEmissions.get(transportFrequency).containsKey(transportTime)) {
+                totalEmissions += publicTransportEmissions.get(transportFrequency).get(transportTime);
             } else {
-                System.out.println("Public transport time data incomplete: " + normalizedTime);
+                System.out.println("Transport time not found: " + transportTime);
             }
         } else {
-            System.out.println("Public transport frequency data incomplete: " + normalizedFrequency);
+            System.out.println("Transport frequency not found: " + transportFrequency);
         }
+
 
 
 
@@ -166,5 +141,8 @@ public class TransportationCalculator {
     }
 
 }
+
+
+
 
 
