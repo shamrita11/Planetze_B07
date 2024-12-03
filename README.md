@@ -65,7 +65,8 @@ The app’s user interface (UI) was initially designed using Figma, adhering to 
 2. Open the project in Android Studio. 
 3. Build and run the project on an Android device or emulator. 
 ## Demo
-**embed demo video here 
+[![Demo Video](https://img.youtube.com/vi/P-J9M93AbB4/0.jpg)](https://www.youtube.com/watch?v=P-J9M93AbB4)
+
 ## Contributors
 - [Shahad Osman](https://github.com/osmanshd)
 - [Nabaa Naji](https://github.com/NabaaNaji)
