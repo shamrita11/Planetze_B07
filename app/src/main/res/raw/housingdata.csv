@@ -1,191 +1,1441 @@
 Type of Home,Size of Home (sq. ft.),Occupants,Monthly Electricity Bill,Heating Source,CO2e (kg)
 Detached house,Under 1000 sq. ft.,1,Under $50,Natural Gas,2400
-Detached house,Under 1000 sq. ft.,1,$50–$100,Electricity,200
-Detached house,Under 1000 sq. ft.,1,$100–$150,Oil,2100
-Detached house,Under 1000 sq. ft.,1,$150–$200,Propane,2870
-Detached house,Under 1000 sq. ft.,1,Over $200,Wood,2170
+Detached house,Under 1000 sq. ft.,1,Under $50,Electricity,200
+Detached house,Under 1000 sq. ft.,1,Under $50,Oil,2100
+Detached house,Under 1000 sq. ft.,1,Under $50,Propane,2870
+Detached house,Under 1000 sq. ft.,1,Under $50,Wood,2170
+Detached house,Under 1000 sq. ft.,1,Under $50,Other,1948
+Detached house,Under 1000 sq. ft.,1,$50-$100,Natural Gas,2440
+Detached house,Under 1000 sq. ft.,1,$50-$100,Electricity,400
+Detached house,Under 1000 sq. ft.,1,$50-$100,Oil,5200
+Detached house,Under 1000 sq. ft.,1,$50-$100,Propane,4400
+Detached house,Under 1000 sq. ft.,1,$50-$100,Wood,2340
+Detached house,Under 1000 sq. ft.,1,$50-$100,Other,2956
+Detached house,Under 1000 sq. ft.,1,$100-$150,Natural Gas,2610
+Detached house,Under 1000 sq. ft.,1,$100-$150,Electricity,1200
+Detached house,Under 1000 sq. ft.,1,$100-$150,Oil,6100
+Detached house,Under 1000 sq. ft.,1,$100-$150,Propane,5400
+Detached house,Under 1000 sq. ft.,1,$100-$150,Wood,2510
+Detached house,Under 1000 sq. ft.,1,$100-$150,Other,3564
+Detached house,Under 1000 sq. ft.,1,$150-$200,Natural Gas,2780
+Detached house,Under 1000 sq. ft.,1,$150-$200,Electricity,1700
+Detached house,Under 1000 sq. ft.,1,$150-$200,Oil,7200
+Detached house,Under 1000 sq. ft.,1,$150-$200,Propane,6400
+Detached house,Under 1000 sq. ft.,1,$150-$200,Wood,2680
+Detached house,Under 1000 sq. ft.,1,$150-$200,Other,4152
+Detached house,Under 1000 sq. ft.,1,Over $200,Natural Gas,3100
+Detached house,Under 1000 sq. ft.,1,Over $200,Electricity,2300
+Detached house,Under 1000 sq. ft.,1,Over $200,Oil,8200
+Detached house,Under 1000 sq. ft.,1,Over $200,Propane,7400
+Detached house,Under 1000 sq. ft.,1,Over $200,Wood,3000
+Detached house,Under 1000 sq. ft.,1,Over $200,Other,4800
 Detached house,Under 1000 sq. ft.,2,Under $50,Natural Gas,2600
-Detached house,Under 1000 sq. ft.,2,$50–$100,Electricity,250
-Detached house,Under 1000 sq. ft.,2,$100–$150,Oil,2650
-Detached house,Under 1000 sq. ft.,2,$150–$200,Propane,3470
-Detached house,Under 1000 sq. ft.,2,Over $200,Wood,2370
-Townhouse,Under 1000 sq. ft.,1,Under $50,Natural Gas,1971
-Townhouse,Under 1000 sq. ft.,1,$50–$100,Electricity,300
-Townhouse,Under 1000 sq. ft.,1,$100–$150,Oil,2400
-Townhouse,Under 1000 sq. ft.,1,$150–$200,Propane,1500
-Townhouse,Under 1000 sq. ft.,1,Over $200,Wood,2000
-Townhouse,Under 1000 sq. ft.,2,Under $50,Natural Gas,2160
-Townhouse,Under 1000 sq. ft.,2,$50–$100,Electricity,410
-Townhouse,Under 1000 sq. ft.,2,$100–$150,Oil,2523
-Townhouse,Under 1000 sq. ft.,2,$150–$200,Propane,1850
-Townhouse,Under 1000 sq. ft.,2,Over $200,Wood,2250
-Condo/Apartment,Under 1000 sq. ft.,1,Under $50,Natural Gas,1680
-Condo/Apartment,Under 1000 sq. ft.,1,$50–$100,Electricity,200
-Condo/Apartment,Under 1000 sq. ft.,1,$100–$150,Oil,0
-Condo/Apartment,Under 1000 sq. ft.,1,$150–$200,Propane,1320
-Condo/Apartment,Under 1000 sq. ft.,1,Over $200,Wood,1600
-Condo/Apartment,Under 1000 sq. ft.,2,Under $50,Natural Gas,1870
-Condo/Apartment,Under 1000 sq. ft.,2,$50–$100,Electricity,250
-Condo/Apartment,Under 1000 sq. ft.,2,$100–$150,Oil,0
-Condo/Apartment,Under 1000 sq. ft.,2,$150–$200,Propane,1550
-Condo/Apartment,Under 1000 sq. ft.,2,Over $200,Wood,1850
-Detached house,1000–2000 sq. ft.,1,Under $50,Natural Gas,2800
-Detached house,1000–2000 sq. ft.,1,$50–$100,Electricity,300
-Detached house,1000–2000 sq. ft.,1,$100–$150,Oil,3800
-Detached house,1000–2000 sq. ft.,1,$150–$200,Propane,3770
-Detached house,1000–2000 sq. ft.,1,Over $200,Wood,3670
-Detached house,1000–2000 sq. ft.,2,Under $50,Natural Gas,3000
-Detached house,1000–2000 sq. ft.,2,$50–$100,Electricity,380
-Detached house,1000–2000 sq. ft.,2,$100–$150,Oil,4000
-Detached house,1000–2000 sq. ft.,2,$150–$200,Propane,4470
-Detached house,1000–2000 sq. ft.,2,Over $200,Wood,4170
-Townhouse,1000–2000 sq. ft.,1,Under $50,Natural Gas,2443
-Townhouse,1000–2000 sq. ft.,1,$50–$100,Electricity,300
-Townhouse,1000–2000 sq. ft.,1,$100–$150,Oil,2590
-Townhouse,1000–2000 sq. ft.,1,$150–$200,Propane,3170
-Townhouse,1000–2000 sq. ft.,1,Over $200,Wood,1400
-Townhouse,1000–2000 sq. ft.,2,Under $50,Natural Gas,2727
-Townhouse,1000–2000 sq. ft.,2,$50–$100,Electricity,380
-Townhouse,1000–2000 sq. ft.,2,$100–$150,Oil,2620
-Townhouse,1000–2000 sq. ft.,2,$150–$200,Propane,3770
-Townhouse,1000–2000 sq. ft.,2,Over $200,Wood,1560
-Condo/Apartment,1000–2000 sq. ft.,1,Under $50,Natural Gas,2060
-Condo/Apartment,1000–2000 sq. ft.,1,$50–$100,Electricity,300
-Condo/Apartment,1000–2000 sq. ft.,1,$100–$150,Oil,0
-Condo/Apartment,1000–2000 sq. ft.,1,$150–$200,Propane,1500
-Condo/Apartment,1000–2000 sq. ft.,1,Over $200,Wood,1800
-Condo/Apartment,1000–2000 sq. ft.,2,Under $50,Natural Gas,2260
-Condo/Apartment,1000–2000 sq. ft.,2,$50–$100,Electricity,400
-Condo/Apartment,1000–2000 sq. ft.,2,$100–$150,Oil,0
-Condo/Apartment,1000–2000 sq. ft.,2,$150–$200,Propane,1700
-Condo/Apartment,1000–2000 sq. ft.,2,Over $200,Wood,2200
-Detached house,Over 2000 sq. ft.,1,Under $50,Natural Gas,2800
-Detached house,Over 2000 sq. ft.,1,$50–$100,Electricity,320
-Detached house,Over 2000 sq. ft.,1,$100–$150,Oil,5400
-Detached house,Over 2000 sq. ft.,1,$150–$200,Propane,5570
-Detached house,Over 2000 sq. ft.,1,Over $200,Wood,4170
-Detached house,Over 2000 sq. ft.,2,Under $50,Natural Gas,2880
-Detached house,Over 2000 sq. ft.,2,$50–$100,Electricity,450
-Detached house,Over 2000 sq. ft.,2,$100–$150,Oil,6200
-Detached house,Over 2000 sq. ft.,2,$150–$200,Propane,6170
-Detached house,Over 2000 sq. ft.,2,Over $200,Wood,4670
+Detached house,Under 1000 sq. ft.,2,Under $50,Electricity,250
+Detached house,Under 1000 sq. ft.,2,Under $50,Oil,2650
+Detached house,Under 1000 sq. ft.,2,Under $50,Propane,3470
+Detached house,Under 1000 sq. ft.,2,Under $50,Wood,2370
+Detached house,Under 1000 sq. ft.,2,Under $50,Other,2268
+Detached house,Under 1000 sq. ft.,2,$50-$100,Natural Gas,2640
+Detached house,Under 1000 sq. ft.,2,$50-$100,Electricity,500
+Detached house,Under 1000 sq. ft.,2,$50-$100,Oil,5400
+Detached house,Under 1000 sq. ft.,2,$50-$100,Propane,4600
+Detached house,Under 1000 sq. ft.,2,$50-$100,Wood,2540
+Detached house,Under 1000 sq. ft.,2,$50-$100,Other,3136
+Detached house,Under 1000 sq. ft.,2,$100-$150,Natural Gas,2810
+Detached house,Under 1000 sq. ft.,2,$100-$150,Electricity,1450
+Detached house,Under 1000 sq. ft.,2,$100-$150,Oil,6250
+Detached house,Under 1000 sq. ft.,2,$100-$150,Propane,5600
+Detached house,Under 1000 sq. ft.,2,$100-$150,Wood,2710
+Detached house,Under 1000 sq. ft.,2,$100-$150,Other,3764
+Detached house,Under 1000 sq. ft.,2,$150-$200,Natural Gas,2980
+Detached house,Under 1000 sq. ft.,2,$150-$200,Electricity,1900
+Detached house,Under 1000 sq. ft.,2,$150-$200,Oil,7400
+Detached house,Under 1000 sq. ft.,2,$150-$200,Propane,6600
+Detached house,Under 1000 sq. ft.,2,$150-$200,Wood,2880
+Detached house,Under 1000 sq. ft.,2,$150-$200,Other,4352
+Detached house,Under 1000 sq. ft.,2,Over $200,Natural Gas,3100
+Detached house,Under 1000 sq. ft.,2,Over $200,Electricity,2500
+Detached house,Under 1000 sq. ft.,2,Over $200,Oil,8400
+Detached house,Under 1000 sq. ft.,2,Over $200,Propane,7600
+Detached house,Under 1000 sq. ft.,2,Over $200,Wood,3200
+Detached house,Under 1000 sq. ft.,2,Over $200,Other,4960
 Detached house,Under 1000 sq. ft.,3-4,Under $50,Natural Gas,2700
-Detached house,Under 1000 sq. ft.,3-4,$50–$100,Electricity,380
-Detached house,Under 1000 sq. ft.,3-4,$100–$150,Oil,3200
-Detached house,Under 1000 sq. ft.,3-4,$150–$200,Propane,4370
-Detached house,Under 1000 sq. ft.,3-4,Over $200,Wood,2670
+Detached house,Under 1000 sq. ft.,3-4,Under $50,Electricity,380
+Detached house,Under 1000 sq. ft.,3-4,Under $50,Oil,3200
+Detached house,Under 1000 sq. ft.,3-4,Under $50,Propane,4370
+Detached house,Under 1000 sq. ft.,3-4,Under $50,Wood,2670
+Detached house,Under 1000 sq. ft.,3-4,Under $50,Other,2664
+Detached house,Under 1000 sq. ft.,3-4,$50-$100,Natural Gas,2940
+Detached house,Under 1000 sq. ft.,3-4,$50-$100,Electricity,550
+Detached house,Under 1000 sq. ft.,3-4,$50-$100,Oil,5700
+Detached house,Under 1000 sq. ft.,3-4,$50-$100,Propane,4900
+Detached house,Under 1000 sq. ft.,3-4,$50-$100,Wood,2840
+Detached house,Under 1000 sq. ft.,3-4,$50-$100,Other,3386
+Detached house,Under 1000 sq. ft.,3-4,$100-$150,Natural Gas,3110
+Detached house,Under 1000 sq. ft.,3-4,$100-$150,Electricity,1600
+Detached house,Under 1000 sq. ft.,3-4,$100-$150,Oil,6700
+Detached house,Under 1000 sq. ft.,3-4,$100-$150,Propane,5900
+Detached house,Under 1000 sq. ft.,3-4,$100-$150,Wood,3010
+Detached house,Under 1000 sq. ft.,3-4,$100-$150,Other,4064
+Detached house,Under 1000 sq. ft.,3-4,$150-$200,Natural Gas,3280
+Detached house,Under 1000 sq. ft.,3-4,$150-$200,Electricity,2050
+Detached house,Under 1000 sq. ft.,3-4,$150-$200,Oil,7700
+Detached house,Under 1000 sq. ft.,3-4,$150-$200,Propane,6900
+Detached house,Under 1000 sq. ft.,3-4,$150-$200,Wood,3180
+Detached house,Under 1000 sq. ft.,3-4,$150-$200,Other,4622
+Detached house,Under 1000 sq. ft.,3-4,Over $200,Natural Gas,3600
+Detached house,Under 1000 sq. ft.,3-4,Over $200,Electricity,2700
+Detached house,Under 1000 sq. ft.,3-4,Over $200,Oil,8700
+Detached house,Under 1000 sq. ft.,3-4,Over $200,Propane,7900
+Detached house,Under 1000 sq. ft.,3-4,Over $200,Wood,3500
+Detached house,Under 1000 sq. ft.,3-4,Over $200,Other,5280
 Detached house,Under 1000 sq. ft.,5 or more,Under $50,Natural Gas,3000
-Detached house,Under 1000 sq. ft.,5 or more,$50–$100,Electricity,450
-Detached house,Under 1000 sq. ft.,5 or more,$100–$150,Oil,3700
-Detached house,Under 1000 sq. ft.,5 or more,$150–$200,Propane,5270
-Detached house,Under 1000 sq. ft.,5 or more,Over $200,Wood,2970
-Detached house,1000–2000 sq. ft.,3-4,Under $50,Natural Gas,3380
-Detached house,1000–2000 sq. ft.,3-4,$50–$100,Electricity,500
-Detached house,1000–2000 sq. ft.,3-4,$100–$150,Oil,4700
-Detached house,1000–2000 sq. ft.,3-4,$150–$200,Propane,5670
-Detached house,1000–2000 sq. ft.,3-4,Over $200,Wood,4870
-Detached house,1000–2000 sq. ft.,5 or more,Under $50,Natural Gas,3860
-Detached house,1000–2000 sq. ft.,5 or more,$50–$100,Electricity,600
-Detached house,1000–2000 sq. ft.,5 or more,$100–$150,Oil,5350
-Detached house,1000–2000 sq. ft.,5 or more,$150–$200,Propane,6570
-Detached house,1000–2000 sq. ft.,5 or more,Over $200,Wood,5670
-Detached house,Over 2000 sq. ft.,3-4,Under $50,Natural Gas,3000
-Detached house,Over 2000 sq. ft.,3-4,$50–$100,Electricity,520
-Detached house,Over 2000 sq. ft.,3-4,$100–$150,Oil,7000
-Detached house,Over 2000 sq. ft.,3-4,$150–$200,Propane,6970
-Detached house,Over 2000 sq. ft.,3-4,Over $200,Wood,5270
-Detached house,Over 2000 sq. ft.,5 or more,Under $50,Natural Gas,3230
-Detached house,Over 2000 sq. ft.,5 or more,$50–$100,Electricity,675
-Detached house,Over 2000 sq. ft.,5 or more,$100–$150,Oil,8900
-Detached house,Over 2000 sq. ft.,5 or more,$150–$200,Propane,7970
-Detached house,Over 2000 sq. ft.,5 or more,Over $200,Wood,6170
+Detached house,Under 1000 sq. ft.,5 or more,Under $50,Electricity,450
+Detached house,Under 1000 sq. ft.,5 or more,Under $50,Oil,3700
+Detached house,Under 1000 sq. ft.,5 or more,Under $50,Propane,5270
+Detached house,Under 1000 sq. ft.,5 or more,Under $50,Wood,2970
+Detached house,Under 1000 sq. ft.,5 or more,Under $50,Other,3078
+Detached house,Under 1000 sq. ft.,5 or more,$50-$100,Natural Gas,3240
+Detached house,Under 1000 sq. ft.,5 or more,$50-$100,Electricity,600
+Detached house,Under 1000 sq. ft.,5 or more,$50-$100,Oil,6000
+Detached house,Under 1000 sq. ft.,5 or more,$50-$100,Propane,5200
+Detached house,Under 1000 sq. ft.,5 or more,$50-$100,Wood,3140
+Detached house,Under 1000 sq. ft.,5 or more,$50-$100,Other,3636
+Detached house,Under 1000 sq. ft.,5 or more,$100-$150,Natural Gas,3410
+Detached house,Under 1000 sq. ft.,5 or more,$100-$150,Electricity,1800
+Detached house,Under 1000 sq. ft.,5 or more,$100-$150,Oil,6950
+Detached house,Under 1000 sq. ft.,5 or more,$100-$150,Propane,6200
+Detached house,Under 1000 sq. ft.,5 or more,$100-$150,Wood,3310
+Detached house,Under 1000 sq. ft.,5 or more,$100-$150,Other,4334
+Detached house,Under 1000 sq. ft.,5 or more,$150-$200,Natural Gas,3580
+Detached house,Under 1000 sq. ft.,5 or more,$150-$200,Electricity,2200
+Detached house,Under 1000 sq. ft.,5 or more,$150-$200,Oil,8000
+Detached house,Under 1000 sq. ft.,5 or more,$150-$200,Propane,7200
+Detached house,Under 1000 sq. ft.,5 or more,$150-$200,Wood,3480
+Detached house,Under 1000 sq. ft.,5 or more,$150-$200,Other,4892
+Detached house,Under 1000 sq. ft.,5 or more,Over $200,Natural Gas,3900
+Detached house,Under 1000 sq. ft.,5 or more,Over $200,Electricity,3000
+Detached house,Under 1000 sq. ft.,5 or more,Over $200,Oil,9000
+Detached house,Under 1000 sq. ft.,5 or more,Over $200,Propane,8200
+Detached house,Under 1000 sq. ft.,5 or more,Over $200,Wood,3800
+Detached house,Under 1000 sq. ft.,5 or more,Over $200,Other,5580
+Detached house,1000-2000 sq. ft.,1,Under $50,Natural Gas,2800
+Detached house,1000-2000 sq. ft.,1,Under $50,Electricity,300
+Detached house,1000-2000 sq. ft.,1,Under $50,Oil,3800
+Detached house,1000-2000 sq. ft.,1,Under $50,Propane,3770
+Detached house,1000-2000 sq. ft.,1,Under $50,Wood,3670
+Detached house,1000-2000 sq. ft.,1,Under $50,Other,2868
+Detached house,1000-2000 sq. ft.,1,$50-$100,Natural Gas,5900
+Detached house,1000-2000 sq. ft.,1,$50-$100,Electricity,600
+Detached house,1000-2000 sq. ft.,1,$50-$100,Oil,5300
+Detached house,1000-2000 sq. ft.,1,$50-$100,Propane,3940
+Detached house,1000-2000 sq. ft.,1,$50-$100,Wood,3840
+Detached house,1000-2000 sq. ft.,1,$50-$100,Other,4116
+Detached house,1000-2000 sq. ft.,1,$100-$150,Natural Gas,6500
+Detached house,1000-2000 sq. ft.,1,$100-$150,Electricity,1200
+Detached house,1000-2000 sq. ft.,1,$100-$150,Oil,6200
+Detached house,1000-2000 sq. ft.,1,$100-$150,Propane,7100
+Detached house,1000-2000 sq. ft.,1,$100-$150,Wood,4010
+Detached house,1000-2000 sq. ft.,1,$100-$150,Other,4882
+Detached house,1000-2000 sq. ft.,1,$150-$200,Natural Gas,7100
+Detached house,1000-2000 sq. ft.,1,$150-$200,Electricity,1800
+Detached house,1000-2000 sq. ft.,1,$150-$200,Oil,7200
+Detached house,1000-2000 sq. ft.,1,$150-$200,Propane,4280
+Detached house,1000-2000 sq. ft.,1,$150-$200,Wood,4180
+Detached house,1000-2000 sq. ft.,1,$150-$200,Other,4912
+Detached house,1000-2000 sq. ft.,1,Over $200,Natural Gas,8300
+Detached house,1000-2000 sq. ft.,1,Over $200,Electricity,2400
+Detached house,1000-2000 sq. ft.,1,Over $200,Oil,8200
+Detached house,1000-2000 sq. ft.,1,Over $200,Propane,4600
+Detached house,1000-2000 sq. ft.,1,Over $200,Wood,4500
+Detached house,1000-2000 sq. ft.,1,Over $200,Other,5600
+Detached house,1000-2000 sq. ft.,2,Under $50,Natural Gas,3000
+Detached house,1000-2000 sq. ft.,2,Under $50,Electricity,380
+Detached house,1000-2000 sq. ft.,2,Under $50,Oil,4000
+Detached house,1000-2000 sq. ft.,2,Under $50,Propane,4470
+Detached house,1000-2000 sq. ft.,2,Under $50,Wood,4170
+Detached house,1000-2000 sq. ft.,2,Under $50,Other,3204
+Detached house,1000-2000 sq. ft.,2,$50-$100,Natural Gas,6100
+Detached house,1000-2000 sq. ft.,2,$50-$100,Electricity,800
+Detached house,1000-2000 sq. ft.,2,$50-$100,Oil,5440
+Detached house,1000-2000 sq. ft.,2,$50-$100,Propane,4640
+Detached house,1000-2000 sq. ft.,2,$50-$100,Wood,4340
+Detached house,1000-2000 sq. ft.,2,$50-$100,Other,4264
+Detached house,1000-2000 sq. ft.,2,$100-$150,Natural Gas,6700
+Detached house,1000-2000 sq. ft.,2,$100-$150,Electricity,1450
+Detached house,1000-2000 sq. ft.,2,$100-$150,Oil,6400
+Detached house,1000-2000 sq. ft.,2,$100-$150,Propane,7230
+Detached house,1000-2000 sq. ft.,2,$100-$150,Wood,4510
+Detached house,1000-2000 sq. ft.,2,$100-$150,Other,4858
+Detached house,1000-2000 sq. ft.,2,$150-$200,Natural Gas,7300
+Detached house,1000-2000 sq. ft.,2,$150-$200,Electricity,2000
+Detached house,1000-2000 sq. ft.,2,$150-$200,Oil,7400
+Detached house,1000-2000 sq. ft.,2,$150-$200,Propane,4980
+Detached house,1000-2000 sq. ft.,2,$150-$200,Wood,4680
+Detached house,1000-2000 sq. ft.,2,$150-$200,Other,5272
+Detached house,1000-2000 sq. ft.,2,Over $200,Natural Gas,8500
+Detached house,1000-2000 sq. ft.,2,Over $200,Electricity,2600
+Detached house,1000-2000 sq. ft.,2,Over $200,Oil,8400
+Detached house,1000-2000 sq. ft.,2,Over $200,Propane,5300
+Detached house,1000-2000 sq. ft.,2,Over $200,Wood,5000
+Detached house,1000-2000 sq. ft.,2,Over $200,Other,5760
+Detached house,1000-2000 sq. ft.,3-4,Under $50,Natural Gas,3380
+Detached house,1000-2000 sq. ft.,3-4,Under $50,Electricity,500
+Detached house,1000-2000 sq. ft.,3-4,Under $50,Oil,4700
+Detached house,1000-2000 sq. ft.,3-4,Under $50,Propane,5670
+Detached house,1000-2000 sq. ft.,3-4,Under $50,Wood,4870
+Detached house,1000-2000 sq. ft.,3-4,Under $50,Other,3844
+Detached house,1000-2000 sq. ft.,3-4,$50-$100,Natural Gas,6400
+Detached house,1000-2000 sq. ft.,3-4,$50-$100,Electricity,1050
+Detached house,1000-2000 sq. ft.,3-4,$50-$100,Oil,5800
+Detached house,1000-2000 sq. ft.,3-4,$50-$100,Propane,5740
+Detached house,1000-2000 sq. ft.,3-4,$50-$100,Wood,5040
+Detached house,1000-2000 sq. ft.,3-4,$50-$100,Other,4806
+Detached house,1000-2000 sq. ft.,3-4,$100-$150,Natural Gas,7000
+Detached house,1000-2000 sq. ft.,3-4,$100-$150,Electricity,1600
+Detached house,1000-2000 sq. ft.,3-4,$100-$150,Oil,6700
+Detached house,1000-2000 sq. ft.,3-4,$100-$150,Propane,7400
+Detached house,1000-2000 sq. ft.,3-4,$100-$150,Wood,5210
+Detached house,1000-2000 sq. ft.,3-4,$100-$150,Other,5582
+Detached house,1000-2000 sq. ft.,3-4,$150-$200,Natural Gas,7600
+Detached house,1000-2000 sq. ft.,3-4,$150-$200,Electricity,2250
+Detached house,1000-2000 sq. ft.,3-4,$150-$200,Oil,7700
+Detached house,1000-2000 sq. ft.,3-4,$150-$200,Propane,5985
+Detached house,1000-2000 sq. ft.,3-4,$150-$200,Wood,5380
+Detached house,1000-2000 sq. ft.,3-4,$150-$200,Other,5783
+Detached house,1000-2000 sq. ft.,3-4,Over $200,Natural Gas,8800
+Detached house,1000-2000 sq. ft.,3-4,Over $200,Electricity,2800
+Detached house,1000-2000 sq. ft.,3-4,Over $200,Oil,8700
+Detached house,1000-2000 sq. ft.,3-4,Over $200,Propane,6350
+Detached house,1000-2000 sq. ft.,3-4,Over $200,Wood,5750
+Detached house,1000-2000 sq. ft.,3-4,Over $200,Other,6480
+Detached house,1000-2000 sq. ft.,5 or more,Under $50,Natural Gas,3860
+Detached house,1000-2000 sq. ft.,5 or more,Under $50,Electricity,600
+Detached house,1000-2000 sq. ft.,5 or more,Under $50,Oil,5350
+Detached house,1000-2000 sq. ft.,5 or more,Under $50,Propane,6570
+Detached house,1000-2000 sq. ft.,5 or more,Under $50,Wood,5670
+Detached house,1000-2000 sq. ft.,5 or more,Under $50,Other,4408
+Detached house,1000-2000 sq. ft.,5 or more,$50-$100,Natural Gas,6700
+Detached house,1000-2000 sq. ft.,5 or more,Electricity,1200
+Detached house,1000-2000 sq. ft.,5 or more,Oil,6100
+Detached house,1000-2000 sq. ft.,5 or more,Propane,6740
+Detached house,1000-2000 sq. ft.,5 or more,Wood,5840
+Detached house,1000-2000 sq. ft.,5 or more,Other,5316
+Detached house,1000-2000 sq. ft.,5 or more,$100-$150,Natural Gas,7300
+Detached house,1000-2000 sq. ft.,5 or more,Electricity,1800
+Detached house,1000-2000 sq. ft.,5 or more,Oil,7000
+Detached house,1000-2000 sq. ft.,5 or more,Propane,7550
+Detached house,1000-2000 sq. ft.,5 or more,Wood,6010
+Detached house,1000-2000 sq. ft.,5 or more,Other,5732
+Detached house,1000-2000 sq. ft.,5 or more,$150-$200,Natural Gas,7900
+Detached house,1000-2000 sq. ft.,5 or more,Electricity,2400
+Detached house,1000-2000 sq. ft.,5 or more,Oil,8000
+Detached house,1000-2000 sq. ft.,5 or more,Propane,7080
+Detached house,1000-2000 sq. ft.,5 or more,Wood,6180
+Detached house,1000-2000 sq. ft.,5 or more,Other,6112
+Detached house,1000-2000 sq. ft.,5 or more,Over $200,Natural Gas,9100
+Detached house,1000-2000 sq. ft.,5 or more,Electricity,3100
+Detached house,1000-2000 sq. ft.,5 or more,Oil,9000
+Detached house,1000-2000 sq. ft.,5 or more,Propane,7400
+Detached house,1000-2000 sq. ft.,5 or more,Wood,6500
+Detached house,1000-2000 sq. ft.,5 or more,Other,7220
+Detached house,Over 2000 sq. ft.,1,Under $50,Natural Gas,2800
+Detached house,Over 2000 sq. ft.,1,Under $50,Electricity,320
+Detached house,Over 2000 sq. ft.,1,Under $50,Oil,5400
+Detached house,Over 2000 sq. ft.,1,Under $50,Propane,5570
+Detached house,Over 2000 sq. ft.,1,Under $50,Wood,4170
+Detached house,Over 2000 sq. ft.,1,Under $50,Other,3652
+Detached house,Over 2000 sq. ft.,1,$50-$100,Natural Gas,3000
+Detached house,Over 2000 sq. ft.,1,$50-$100,Electricity,600
+Detached house,Over 2000 sq. ft.,1,$50-$100,Oil,10500
+Detached house,Over 2000 sq. ft.,1,$50-$100,Propane,5740
+Detached house,Over 2000 sq. ft.,1,$50-$100,Wood,4340
+Detached house,Over 2000 sq. ft.,1,$50-$100,Other,4820
+Detached house,Over 2000 sq. ft.,1,$100-$150,Natural Gas,3200
+Detached house,Over 2000 sq. ft.,1,$100-$150,Electricity,1800
+Detached house,Over 2000 sq. ft.,1,$100-$150,Oil,14000
+Detached house,Over 2000 sq. ft.,1,$100-$150,Propane,5800
+Detached house,Over 2000 sq. ft.,1,$100-$150,Wood,4510
+Detached house,Over 2000 sq. ft.,1,$100-$150,Other,5702
+Detached house,Over 2000 sq. ft.,1,$150-$200,Natural Gas,3400
+Detached house,Over 2000 sq. ft.,1,$150-$200,Electricity,2700
+Detached house,Over 2000 sq. ft.,1,$150-$200,Oil,17500
+Detached house,Over 2000 sq. ft.,1,$150-$200,Propane,5852
+Detached house,Over 2000 sq. ft.,1,$150-$200,Wood,4680
+Detached house,Over 2000 sq. ft.,1,$150-$200,Other,6696
+Detached house,Over 2000 sq. ft.,1,Over $200,Natural Gas,3600
+Detached house,Over 2000 sq. ft.,1,Over $200,Electricity,3600
+Detached house,Over 2000 sq. ft.,1,Over $200,Oil,21000
+Detached house,Over 2000 sq. ft.,1,Over $200,Propane,6100
+Detached house,Over 2000 sq. ft.,1,Over $200,Wood,5000
+Detached house,Over 2000 sq. ft.,1,Over $200,Other,7860
+Detached house,Over 2000 sq. ft.,2,Under $50,Natural Gas,2880
+Detached house,Over 2000 sq. ft.,2,Under $50,Electricity,450
+Detached house,Over 2000 sq. ft.,2,Under $50,Oil,6200
+Detached house,Over 2000 sq. ft.,2,Under $50,Propane,6170
+Detached house,Over 2000 sq. ft.,2,Under $50,Wood,4670
+Detached house,Over 2000 sq. ft.,2,Under $50,Other,4074
+Detached house,Over 2000 sq. ft.,2,$50-$100,Natural Gas,3200
+Detached house,Over 2000 sq. ft.,2,$50-$100,Electricity,900
+Detached house,Over 2000 sq. ft.,2,$50-$100,Oil,11000
+Detached house,Over 2000 sq. ft.,2,$50-$100,Propane,6340
+Detached house,Over 2000 sq. ft.,2,$50-$100,Wood,4840
+Detached house,Over 2000 sq. ft.,2,$50-$100,Other,4860
+Detached house,Over 2000 sq. ft.,2,$100-$150,Natural Gas,3400
+Detached house,Over 2000 sq. ft.,2,$100-$150,Electricity,2100
+Detached house,Over 2000 sq. ft.,2,$100-$150,Oil,15500
+Detached house,Over 2000 sq. ft.,2,$100-$150,Propane,6410
+Detached house,Over 2000 sq. ft.,2,$100-$150,Wood,5010
+Detached house,Over 2000 sq. ft.,2,$100-$150,Other,6464
+Detached house,Over 2000 sq. ft.,2,$150-$200,Natural Gas,3600
+Detached house,Over 2000 sq. ft.,2,$150-$200,Electricity,3100
+Detached house,Over 2000 sq. ft.,2,$150-$200,Oil,18100
+Detached house,Over 2000 sq. ft.,2,$150-$200,Propane,6560
+Detached house,Over 2000 sq. ft.,2,$150-$200,Wood,5180
+Detached house,Over 2000 sq. ft.,2,$150-$200,Other,7108
+Detached house,Over 2000 sq. ft.,2,Over $200,Natural Gas,3800
+Detached house,Over 2000 sq. ft.,2,Over $200,Electricity,3800
+Detached house,Over 2000 sq. ft.,2,Over $200,Oil,22000
+Detached house,Over 2000 sq. ft.,2,Over $200,Propane,6840
+Detached house,Over 2000 sq. ft.,2,Over $200,Wood,5500
+Detached house,Over 2000 sq. ft.,2,Over $200,Other,7848
+Detached house,Over 2000 sq. ft.,3-4,Under $50,Natural Gas,4100
+Detached house,Over 2000 sq. ft.,3-4,Under $50,Electricity,600
+Detached house,Over 2000 sq. ft.,3-4,Under $50,Oil,6800
+Detached house,Over 2000 sq. ft.,3-4,Under $50,Propane,7170
+Detached house,Over 2000 sq. ft.,3-4,Under $50,Wood,5270
+Detached house,Over 2000 sq. ft.,3-4,Under $50,Other,4792
+Detached house,Over 2000 sq. ft.,3-4,$50-$100,Natural Gas,4500
+Detached house,Over 2000 sq. ft.,3-4,$50-$100,Electricity,1050
+Detached house,Over 2000 sq. ft.,3-4,$50-$100,Oil,12000
+Detached house,Over 2000 sq. ft.,3-4,$50-$100,Propane,7340
+Detached house,Over 2000 sq. ft.,3-4,$50-$100,Wood,5440
+Detached house,Over 2000 sq. ft.,3-4,$50-$100,Other,6070
+Detached house,Over 2000 sq. ft.,3-4,$100-$150,Natural Gas,5000
+Detached house,Over 2000 sq. ft.,3-4,$100-$150,Electricity,2400
+Detached house,Over 2000 sq. ft.,3-4,$100-$150,Oil,16500
+Detached house,Over 2000 sq. ft.,3-4,$100-$150,Propane,7410
+Detached house,Over 2000 sq. ft.,3-4,$100-$150,Wood,5610
+Detached house,Over 2000 sq. ft.,3-4,$100-$150,Other,7416
+Detached house,Over 2000 sq. ft.,3-4,$150-$200,Natural Gas,5600
+Detached house,Over 2000 sq. ft.,3-4,$150-$200,Electricity,3600
+Detached house,Over 2000 sq. ft.,3-4,$150-$200,Oil,19100
+Detached house,Over 2000 sq. ft.,3-4,$150-$200,Propane,7560
+Detached house,Over 2000 sq. ft.,3-4,$150-$200,Wood,5780
+Detached house,Over 2000 sq. ft.,3-4,$150-$200,Other,7732
+Detached house,Over 2000 sq. ft.,3-4,Over $200,Natural Gas,5800
+Detached house,Over 2000 sq. ft.,3-4,Over $200,Electricity,4400
+Detached house,Over 2000 sq. ft.,3-4,Over $200,Oil,23000
+Detached house,Over 2000 sq. ft.,3-4,Over $200,Propane,7840
+Detached house,Over 2000 sq. ft.,3-4,Over $200,Wood,6000
+Detached house,Over 2000 sq. ft.,3-4,Over $200,Other,8948
+Detached house,Over 2000 sq. ft.,5 or more,Under $50,Natural Gas,4400
+Detached house,Over 2000 sq. ft.,5 or more,Under $50,Electricity,750
+Detached house,Over 2000 sq. ft.,5 or more,Under $50,Oil,7400
+Detached house,Over 2000 sq. ft.,5 or more,Under $50,Propane,8100
+Detached house,Over 2000 sq. ft.,5 or more,Under $50,Wood,6100
+Detached house,Over 2000 sq. ft.,5 or more,Under $50,Other,5150
+Detached house,Over 2000 sq. ft.,5 or more,$50-$100,Natural Gas,4700
+Detached house,Over 2000 sq. ft.,5 or more,Electricity,1200
+Detached house,Over 2000 sq. ft.,5 or more,Oil,12500
+Detached house,Over 2000 sq. ft.,5 or more,Propane,8340
+Detached house,Over 2000 sq. ft.,5 or more,Wood,6500
+Detached house,Over 2000 sq. ft.,5 or more,Other,6638
+Detached house,Over 2000 sq. ft.,5 or more,$100-$150,Natural Gas,5300
+Detached house,Over 2000 sq. ft.,5 or more,Electricity,2800
+Detached house,Over 2000 sq. ft.,5 or more,Oil,18000
+Detached house,Over 2000 sq. ft.,5 or more,Propane,8410
+Detached house,Over 2000 sq. ft.,5 or more,Wood,6800
+Detached house,Over 2000 sq. ft.,5 or more,Other,8262
+Detached house,Over 2000 sq. ft.,5 or more,$150-$200,Natural Gas,6000
+Detached house,Over 2000 sq. ft.,5 or more,Electricity,3700
+Detached house,Over 2000 sq. ft.,5 or more,Oil,20500
+Detached house,Over 2000 sq. ft.,5 or more,Propane,8560
+Detached house,Over 2000 sq. ft.,5 or more,Wood,7000
+Detached house,Over 2000 sq. ft.,5 or more,Other,9240
+Detached house,Over 2000 sq. ft.,5 or more,Over $200,Natural Gas,6600
+Detached house,Over 2000 sq. ft.,5 or more,Electricity,4600
+Detached house,Over 2000 sq. ft.,5 or more,Oil,25000
+Detached house,Over 2000 sq. ft.,5 or more,Propane,8800
+Detached house,Over 2000 sq. ft.,5 or more,Wood,7300
+Detached house,Over 2000 sq. ft.,5 or more,Other,11160
+Semi-detached house,Under 1000 sq. ft.,1,Under $50,Natural Gas,2200
+Semi-detached house,Under 1000 sq. ft.,1,Under $50,Electricity,180
+Semi-detached house,Under 1000 sq. ft.,1,Under $50,Oil,1900
+Semi-detached house,Under 1000 sq. ft.,1,Under $50,Propane,2670
+Semi-detached house,Under 1000 sq. ft.,1,Under $50,Wood,1970
+Semi-detached house,Under 1000 sq. ft.,1,Under $50,Other,1804
+Semi-detached house,Under 1000 sq. ft.,1,$50-$100,Natural Gas,2240
+Semi-detached house,Under 1000 sq. ft.,1,$50-$100,Electricity,300
+Semi-detached house,Under 1000 sq. ft.,1,$50-$100,Oil,4900
+Semi-detached house,Under 1000 sq. ft.,1,$50-$100,Propane,3800
+Semi-detached house,Under 1000 sq. ft.,1,$50-$100,Wood,2140
+Semi-detached house,Under 1000 sq. ft.,1,$50-$100,Other,2676
+Semi-detached house,Under 1000 sq. ft.,1,$100-$150,Natural Gas,2410
+Semi-detached house,Under 1000 sq. ft.,1,$100-$150,Electricity,900
+Semi-detached house,Under 1000 sq. ft.,1,$100-$150,Oil,5700
+Semi-detached house,Under 1000 sq. ft.,1,$100-$150,Propane,4700
+Semi-detached house,Under 1000 sq. ft.,1,$100-$150,Wood,2310
+Semi-detached house,Under 1000 sq. ft.,1,$100-$150,Other,3204
+Semi-detached house,Under 1000 sq. ft.,1,$150-$200,Natural Gas,2580
+Semi-detached house,Under 1000 sq. ft.,1,$150-$200,Electricity,1400
+Semi-detached house,Under 1000 sq. ft.,1,$150-$200,Oil,6800
+Semi-detached house,Under 1000 sq. ft.,1,$150-$200,Propane,5700
+Semi-detached house,Under 1000 sq. ft.,1,$150-$200,Wood,2480
+Semi-detached house,Under 1000 sq. ft.,1,$150-$200,Other,3792
+Semi-detached house,Under 1000 sq. ft.,1,Over $200,Natural Gas,2900
+Semi-detached house,Under 1000 sq. ft.,1,Over $200,Electricity,2200
+Semi-detached house,Under 1000 sq. ft.,1,Over $200,Oil,7800
+Semi-detached house,Under 1000 sq. ft.,1,Over $200,Propane,6700
+Semi-detached house,Under 1000 sq. ft.,1,Over $200,Wood,2800
+Semi-detached house,Under 1000 sq. ft.,1,Over $200,Other,4480
+Semi-detached house,Under 1000 sq. ft.,2,Under $50,Natural Gas,2300
+Semi-detached house,Under 1000 sq. ft.,2,Under $50,Electricity,250
+Semi-detached house,Under 1000 sq. ft.,2,Under $50,Oil,2000
+Semi-detached house,Under 1000 sq. ft.,2,Under $50,Propane,2870
+Semi-detached house,Under 1000 sq. ft.,2,Under $50,Wood,2170
+Semi-detached house,Under 1000 sq. ft.,2,Under $50,Other,1922
+Semi-detached house,Under 1000 sq. ft.,2,$50-$100,Natural Gas,2340
+Semi-detached house,Under 1000 sq. ft.,2,$50-$100,Electricity,400
+Semi-detached house,Under 1000 sq. ft.,2,$50-$100,Oil,5100
+Semi-detached house,Under 1000 sq. ft.,2,$50-$100,Propane,4000
+Semi-detached house,Under 1000 sq. ft.,2,$50-$100,Wood,2340
+Semi-detached house,Under 1000 sq. ft.,2,$50-$100,Other,2836
+Semi-detached house,Under 1000 sq. ft.,2,$100-$150,Natural Gas,2510
+Semi-detached house,Under 1000 sq. ft.,2,$100-$150,Electricity,1000
+Semi-detached house,Under 1000 sq. ft.,2,$100-$150,Oil,5900
+Semi-detached house,Under 1000 sq. ft.,2,$100-$150,Propane,4900
+Semi-detached house,Under 1000 sq. ft.,2,$100-$150,Wood,2510
+Semi-detached house,Under 1000 sq. ft.,2,$100-$150,Other,3364
+Semi-detached house,Under 1000 sq. ft.,2,$150-$200,Natural Gas,2680
+Semi-detached house,Under 1000 sq. ft.,2,$150-$200,Electricity,1600
+Semi-detached house,Under 1000 sq. ft.,2,$150-$200,Oil,7000
+Semi-detached house,Under 1000 sq. ft.,2,$150-$200,Propane,5900
+Semi-detached house,Under 1000 sq. ft.,2,$150-$200,Wood,2680
+Semi-detached house,Under 1000 sq. ft.,2,$150-$200,Other,3972
+Semi-detached house,Under 1000 sq. ft.,2,Over $200,Natural Gas,3000
+Semi-detached house,Under 1000 sq. ft.,2,Over $200,Electricity,2400
+Semi-detached house,Under 1000 sq. ft.,2,Over $200,Oil,8000
+Semi-detached house,Under 1000 sq. ft.,2,Over $200,Propane,7000
+Semi-detached house,Under 1000 sq. ft.,2,Over $200,Wood,3000
+Semi-detached house,Under 1000 sq. ft.,2,Over $200,Other,4480
 Semi-detached house,Under 1000 sq. ft.,3-4,Under $50,Natural Gas,2732
-Semi-detached house,Under 1000 sq. ft.,3-4,$50–$100,Electricity,500
-Semi-detached house,Under 1000 sq. ft.,3-4,$100–$150,Oil,2680
-Semi-detached house,Under 1000 sq. ft.,3-4,$150–$200,Propane,2450
-Semi-detached house,Under 1000 sq. ft.,3-4,Over $200,Wood,2700
+Semi-detached house,Under 1000 sq. ft.,3-4,Under $50,Electricity,500
+Semi-detached house,Under 1000 sq. ft.,3-4,Under $50,Oil,2680
+Semi-detached house,Under 1000 sq. ft.,3-4,Under $50,Propane,2450
+Semi-detached house,Under 1000 sq. ft.,3-4,Under $50,Wood,2700
+Semi-detached house,Under 1000 sq. ft.,3-4,Under $50,Other,2212
+Semi-detached house,Under 1000 sq. ft.,3-4,$50-$100,Natural Gas,2900
+Semi-detached house,Under 1000 sq. ft.,3-4,$50-$100,Electricity,560
+Semi-detached house,Under 1000 sq. ft.,3-4,$50-$100,Oil,3300
+Semi-detached house,Under 1000 sq. ft.,3-4,$50-$100,Propane,3100
+Semi-detached house,Under 1000 sq. ft.,3-4,$50-$100,Wood,3500
+Semi-detached house,Under 1000 sq. ft.,3-4,$50-$100,Other,2872
+Semi-detached house,Under 1000 sq. ft.,3-4,$100-$150,Natural Gas,3100
+Semi-detached house,Under 1000 sq. ft.,3-4,$100-$150,Electricity,1620
+Semi-detached house,Under 1000 sq. ft.,3-4,$100-$150,Oil,3500
+Semi-detached house,Under 1000 sq. ft.,3-4,$100-$150,Propane,3300
+Semi-detached house,Under 1000 sq. ft.,3-4,$100-$150,Wood,3700
+Semi-detached house,Under 1000 sq. ft.,3-4,$100-$150,Other,3048
+Semi-detached house,Under 1000 sq. ft.,3-4,$150-$200,Natural Gas,3700
+Semi-detached house,Under 1000 sq. ft.,3-4,$150-$200,Electricity,2000
+Semi-detached house,Under 1000 sq. ft.,3-4,$150-$200,Oil,3700
+Semi-detached house,Under 1000 sq. ft.,3-4,$150-$200,Propane,3500
+Semi-detached house,Under 1000 sq. ft.,3-4,$150-$200,Wood,3900
+Semi-detached house,Under 1000 sq. ft.,3-4,$150-$200,Other,3360
+Semi-detached house,Under 1000 sq. ft.,3-4,Over $200,Natural Gas,3500
+Semi-detached house,Under 1000 sq. ft.,3-4,Over $200,Electricity,2600
+Semi-detached house,Under 1000 sq. ft.,3-4,Over $200,Oil,3900
+Semi-detached house,Under 1000 sq. ft.,3-4,Over $200,Propane,3700
+Semi-detached house,Under 1000 sq. ft.,3-4,Over $200,Wood,4100
+Semi-detached house,Under 1000 sq. ft.,3-4,Over $200,Other,3560
 Semi-detached house,Under 1000 sq. ft.,5 or more,Under $50,Natural Gas,3199
-Semi-detached house,Under 1000 sq. ft.,5 or more,$50–$100,Electricity,580
-Semi-detached house,Under 1000 sq. ft.,5 or more,$100–$150,Oil,2750
-Semi-detached house,Under 1000 sq. ft.,5 or more,$150–$200,Propane,2600
-Semi-detached house,Under 1000 sq. ft.,5 or more,Over $200,Wood,3000
-Semi-detached house,1000–2000 sq. ft.,3-4,Under $50,Natural Gas,3151
-Semi-detached house,1000–2000 sq. ft.,3-4,$50–$100,Electricity,550
-Semi-detached house,1000–2000 sq. ft.,3-4,$100–$150,Oil,3599
-Semi-detached house,1000–2000 sq. ft.,3-4,$150–$200,Propane,4700
-Semi-detached house,1000–2000 sq. ft.,3-4,Over $200,Wood,2100
-Semi-detached house,1000–2000 sq. ft.,5 or more,Under $50,Natural Gas,3578
-Semi-detached house,1000–2000 sq. ft.,5 or more,$50–$100,Electricity,605
-Semi-detached house,1000–2000 sq. ft.,5 or more,$100–$150,Oil,3700
-Semi-detached house,1000–2000 sq. ft.,5 or more,$150–$200,Propane,4900
-Semi-detached house,1000–2000 sq. ft.,5 or more,Over $200,Wood,2500
+Semi-detached house,Under 1000 sq. ft.,5 or more,Under $50,Electricity,580
+Semi-detached house,Under 1000 sq. ft.,5 or more,Under $50,Oil,2750
+Semi-detached house,Under 1000 sq. ft.,5 or more,Under $50,Propane,2600
+Semi-detached house,Under 1000 sq. ft.,5 or more,Under $50,Wood,3000
+Semi-detached house,Under 1000 sq. ft.,5 or more,Under $50,Other,2425
+Semi-detached house,Under 1000 sq. ft.,5 or more,$50-$100,Natural Gas,3200
+Semi-detached house,Under 1000 sq. ft.,5 or more,$50-$100,Electricity,600
+Semi-detached house,Under 1000 sq. ft.,5 or more,$50-$100,Oil,3600
+Semi-detached house,Under 1000 sq. ft.,5 or more,$50-$100,Propane,3400
+Semi-detached house,Under 1000 sq. ft.,5 or more,$50-$100,Wood,3800
+Semi-detached house,Under 1000 sq. ft.,5 or more,$50-$100,Other,3520
+Semi-detached house,Under 1000 sq. ft.,5 or more,$100-$150,Natural Gas,3600
+Semi-detached house,Under 1000 sq. ft.,5 or more,$100-$150,Electricity,1820
+Semi-detached house,Under 1000 sq. ft.,5 or more,$100-$150,Oil,3800
+Semi-detached house,Under 1000 sq. ft.,5 or more,$100-$150,Propane,3600
+Semi-detached house,Under 1000 sq. ft.,5 or more,$100-$150,Wood,4000
+Semi-detached house,Under 1000 sq. ft.,5 or more,$100-$150,Other,3364
+Semi-detached house,Under 1000 sq. ft.,5 or more,$150-$200,Natural Gas,4000
+Semi-detached house,Under 1000 sq. ft.,5 or more,$150-$200,Electricity,2200
+Semi-detached house,Under 1000 sq. ft.,5 or more,$150-$200,Oil,4200
+Semi-detached house,Under 1000 sq. ft.,5 or more,$150-$200,Propane,3800
+Semi-detached house,Under 1000 sq. ft.,5 or more,$150-$200,Wood,4200
+Semi-detached house,Under 1000 sq. ft.,5 or more,$150-$200,Other,3684
+Semi-detached house,Under 1000 sq. ft.,5 or more,Over $200,Natural Gas,4400
+Semi-detached house,Under 1000 sq. ft.,5 or more,Over $200,Electricity,3000
+Semi-detached house,Under 1000 sq. ft.,5 or more,Over $200,Oil,4200
+Semi-detached house,Under 1000 sq. ft.,5 or more,Over $200,Propane,4000
+Semi-detached house,Under 1000 sq. ft.,5 or more,Over $200,Wood,4400
+Semi-detached house,Under 1000 sq. ft.,5 or more,Over $200,Other,4000
+Semi-detached house,1000-2000 sq. ft.,1,Under $50,Natural Gas,2443
+Semi-detached house,1000-2000 sq. ft.,1,Under $50,Electricity,300
+Semi-detached house,1000-2000 sq. ft.,1,Under $50,Oil,3400
+Semi-detached house,1000-2000 sq. ft.,1,Under $50,Propane,4000
+Semi-detached house,1000-2000 sq. ft.,1,Under $50,Wood,1500
+Semi-detached house,1000-2000 sq. ft.,1,Under $50,Other,2328
+Semi-detached house,1000-2000 sq. ft.,1,$50-$100,Natural Gas,4000
+Semi-detached house,1000-2000 sq. ft.,1,$50-$100,Electricity,600
+Semi-detached house,1000-2000 sq. ft.,1,$50-$100,Oil,4000
+Semi-detached house,1000-2000 sq. ft.,1,$50-$100,Propane,5000
+Semi-detached house,1000-2000 sq. ft.,1,$50-$100,Wood,2500
+Semi-detached house,1000-2000 sq. ft.,1,$50-$100,Other,3220
+Semi-detached house,1000-2000 sq. ft.,1,$100-$150,Natural Gas,4500
+Semi-detached house,1000-2000 sq. ft.,1,$100-$150,Electricity,1200
+Semi-detached house,1000-2000 sq. ft.,1,$100-$150,Oil,6100
+Semi-detached house,1000-2000 sq. ft.,1,$100-$150,Propane,7000
+Semi-detached house,1000-2000 sq. ft.,1,$100-$150,Wood,4100
+Semi-detached house,1000-2000 sq. ft.,1,$100-$150,Other,4680
+Semi-detached house,1000-2000 sq. ft.,1,$150-$200,Natural Gas,5000
+Semi-detached house,1000-2000 sq. ft.,1,$150-$200,Electricity,1800
+Semi-detached house,1000-2000 sq. ft.,1,$150-$200,Oil,8000
+Semi-detached house,1000-2000 sq. ft.,1,$150-$200,Propane,9000
+Semi-detached house,1000-2000 sq. ft.,1,$150-$200,Wood,5500
+Semi-detached house,1000-2000 sq. ft.,1,$150-$200,Other,5860
+Semi-detached house,1000-2000 sq. ft.,1,Over $200,Natural Gas,6000
+Semi-detached house,1000-2000 sq. ft.,1,Over $200,Electricity,2400
+Semi-detached house,1000-2000 sq. ft.,1,Over $200,Oil,10550
+Semi-detached house,1000-2000 sq. ft.,1,Over $200,Propane,12000
+Semi-detached house,1000-2000 sq. ft.,1,Over $200,Wood,7220
+Semi-detached house,1000-2000 sq. ft.,1,Over $200,Other,7034
+Semi-detached house,1000-2000 sq. ft.,2,Under $50,Natural Gas,2727
+Semi-detached house,1000-2000 sq. ft.,2,Under $50,Electricity,410
+Semi-detached house,1000-2000 sq. ft.,2,Under $50,Oil,3499
+Semi-detached house,1000-2000 sq. ft.,2,Under $50,Propane,4300
+Semi-detached house,1000-2000 sq. ft.,2,Under $50,Wood,1800
+Semi-detached house,1000-2000 sq. ft.,2,Under $50,Other,2607
+Semi-detached house,1000-2000 sq. ft.,2,$50-$100,Natural Gas,5200
+Semi-detached house,1000-2000 sq. ft.,2,$50-$100,Electricity,800
+Semi-detached house,1000-2000 sq. ft.,2,$50-$100,Oil,4600
+Semi-detached house,1000-2000 sq. ft.,2,$50-$100,Propane,6200
+Semi-detached house,1000-2000 sq. ft.,2,$50-$100,Wood,2700
+Semi-detached house,1000-2000 sq. ft.,2,$50-$100,Other,3900
+Semi-detached house,1000-2000 sq. ft.,2,$100-$150,Natural Gas,6000
+Semi-detached house,1000-2000 sq. ft.,2,$100-$150,Electricity,1550
+Semi-detached house,1000-2000 sq. ft.,2,$100-$150,Oil,6900
+Semi-detached house,1000-2000 sq. ft.,2,$100-$150,Propane,8000
+Semi-detached house,1000-2000 sq. ft.,2,$100-$150,Wood,4300
+Semi-detached house,1000-2000 sq. ft.,2,$100-$150,Other,5150
+Semi-detached house,1000-2000 sq. ft.,2,$150-$200,Natural Gas,6500
+Semi-detached house,1000-2000 sq. ft.,2,$150-$200,Electricity,2000
+Semi-detached house,1000-2000 sq. ft.,2,$150-$200,Oil,8800
+Semi-detached house,1000-2000 sq. ft.,2,$150-$200,Propane,10200
+Semi-detached house,1000-2000 sq. ft.,2,$150-$200,Wood,6000
+Semi-detached house,1000-2000 sq. ft.,2,$150-$200,Other,7100
+Semi-detached house,1000-2000 sq. ft.,2,Over $200,Natural Gas,7800
+Semi-detached house,1000-2000 sq. ft.,2,Over $200,Electricity,2500
+Semi-detached house,1000-2000 sq. ft.,2,Over $200,Oil,10900
+Semi-detached house,1000-2000 sq. ft.,2,Over $200,Propane,13200
+Semi-detached house,1000-2000 sq. ft.,2,Over $200,Wood,8000
+Semi-detached house,1000-2000 sq. ft.,2,Over $200,Other,8680
+Semi-detached house,1000-2000 sq. ft.,3-4,Under $50,Natural Gas,3151
+Semi-detached house,1000-2000 sq. ft.,3-4,Under $50,Electricity,550
+Semi-detached house,1000-2000 sq. ft.,3-4,Under $50,Oil,3599
+Semi-detached house,1000-2000 sq. ft.,3-4,Under $50,Propane,4700
+Semi-detached house,1000-2000 sq. ft.,3-4,Under $50,Wood,2100
+Semi-detached house,1000-2000 sq. ft.,3-4,Under $50,Other,2820
+Semi-detached house,1000-2000 sq. ft.,3-4,$50-$100,Natural Gas,6800
+Semi-detached house,1000-2000 sq. ft.,3-4,$50-$100,Electricity,1050
+Semi-detached house,1000-2000 sq. ft.,3-4,$50-$100,Oil,5100
+Semi-detached house,1000-2000 sq. ft.,3-4,$50-$100,Propane,7300
+Semi-detached house,1000-2000 sq. ft.,3-4,$50-$100,Wood,3500
+Semi-detached house,1000-2000 sq. ft.,3-4,$50-$100,Other,4750
+Semi-detached house,1000-2000 sq. ft.,3-4,$100-$150,Natural Gas,7800
+Semi-detached house,1000-2000 sq. ft.,3-4,$100-$150,Electricity,1700
+Semi-detached house,1000-2000 sq. ft.,3-4,$100-$150,Oil,7300
+Semi-detached house,1000-2000 sq. ft.,3-4,$100-$150,Propane,9100
+Semi-detached house,1000-2000 sq. ft.,3-4,$100-$150,Wood,4850
+Semi-detached house,1000-2000 sq. ft.,3-4,$100-$150,Other,6150
+Semi-detached house,1000-2000 sq. ft.,3-4,$150-$200,Natural Gas,8800
+Semi-detached house,1000-2000 sq. ft.,3-4,$150-$200,Electricity,2250
+Semi-detached house,1000-2000 sq. ft.,3-4,$150-$200,Oil,9200
+Semi-detached house,1000-2000 sq. ft.,3-4,$150-$200,Propane,11000
+Semi-detached house,1000-2000 sq. ft.,3-4,$150-$200,Wood,6800
+Semi-detached house,1000-2000 sq. ft.,3-4,$150-$200,Other,7650
+Semi-detached house,1000-2000 sq. ft.,3-4,Over $200,Natural Gas,9800
+Semi-detached house,1000-2000 sq. ft.,3-4,Over $200,Electricity,2800
+Semi-detached house,1000-2000 sq. ft.,3-4,Over $200,Oil,11200
+Semi-detached house,1000-2000 sq. ft.,3-4,Over $200,Propane,14100
+Semi-detached house,1000-2000 sq. ft.,3-4,Over $200,Wood,8600
+Semi-detached house,1000-2000 sq. ft.,3-4,Over $200,Other,8900
+Semi-detached house,1000-2000 sq. ft.,5 or more,Under $50,Natural Gas,3578
+Semi-detached house,1000-2000 sq. ft.,5 or more,Under $50,Electricity,1000
+Semi-detached house,1000-2000 sq. ft.,5 or more,Under $50,Oil,4400
+Semi-detached house,1000-2000 sq. ft.,5 or more,Under $50,Propane,6370
+Semi-detached house,1000-2000 sq. ft.,5 or more,Under $50,Wood,5970
+Semi-detached house,1000-2000 sq. ft.,5 or more,Under $50,Other,4263
+Semi-detached house,1000-2000 sq. ft.,5 or more,$50-$100,Natural Gas,4800
+Semi-detached house,1000-2000 sq. ft.,5 or more,$50-$100,Electricity,850
+Semi-detached house,1000-2000 sq. ft.,5 or more,$50-$100,Oil,6540
+Semi-detached house,1000-2000 sq. ft.,5 or more,$50-$100,Propane,6140
+Semi-detached house,1000-2000 sq. ft.,5 or more,$50-$100,Wood,4750
+Semi-detached house,1000-2000 sq. ft.,5 or more,$50-$100,Other,4955
+Semi-detached house,1000-2000 sq. ft.,5 or more,$100-$150,Natural Gas,6000
+Semi-detached house,1000-2000 sq. ft.,5 or more,$100-$150,Electricity,6710
+Semi-detached house,1000-2000 sq. ft.,5 or more,$100-$150,Oil,7100
+Semi-detached house,1000-2000 sq. ft.,5 or more,$100-$150,Propane,7000
+Semi-detached house,1000-2000 sq. ft.,5 or more,$100-$150,Wood,6800
+Semi-detached house,1000-2000 sq. ft.,5 or more,$100-$150,Other,6722
+Semi-detached house,1000-2000 sq. ft.,5 or more,$150-$200,Natural Gas,6880
+Semi-detached house,1000-2000 sq. ft.,5 or more,$150-$200,Electricity,6480
+Semi-detached house,1000-2000 sq. ft.,5 or more,$150-$200,Oil,19000
+Semi-detached house,1000-2000 sq. ft.,5 or more,$150-$200,Propane,4500
+Semi-detached house,1000-2000 sq. ft.,5 or more,$150-$200,Wood,16000
+Semi-detached house,1000-2000 sq. ft.,5 or more,$150-$200,Other,7200
+Semi-detached house,1000-2000 sq. ft.,5 or more,Over $200,Natural Gas,6800
+Semi-detached house,1000-2000 sq. ft.,5 or more,Over $200,Electricity,9100
+Semi-detached house,1000-2000 sq. ft.,5 or more,Over $200,Oil,15000
+Semi-detached house,1000-2000 sq. ft.,5 or more,Over $200,Propane,5430
+Semi-detached house,1000-2000 sq. ft.,5 or more,Over $200,Wood,19000
+Semi-detached house,1000-2000 sq. ft.,5 or more,Over $200,Other,9066
+Semi-detached house,Over 2000 sq. ft.,1,Under $50,Natural Gas,2821
+Semi-detached house,Over 2000 sq. ft.,1,Under $50,Electricity,300
+Semi-detached house,Over 2000 sq. ft.,1,Under $50,Oil,3820
+Semi-detached house,Over 2000 sq. ft.,1,Under $50,Propane,4370
+Semi-detached house,Over 2000 sq. ft.,1,Under $50,Wood,3970
+Semi-detached house,Over 2000 sq. ft.,1,Under $50,Other,3822
+Semi-detached house,Over 2000 sq. ft.,1,$50-$100,Natural Gas,1200
+Semi-detached house,Over 2000 sq. ft.,1,$50-$100,Electricity,5500
+Semi-detached house,Over 2000 sq. ft.,1,$50-$100,Oil,4540
+Semi-detached house,Over 2000 sq. ft.,1,$50-$100,Propane,4140
+Semi-detached house,Over 2000 sq. ft.,1,$50-$100,Wood,10000
+Semi-detached house,Over 2000 sq. ft.,1,$50-$100,Other,6300
+Semi-detached house,Over 2000 sq. ft.,1,$100-$150,Natural Gas,8500
+Semi-detached house,Over 2000 sq. ft.,1,$100-$150,Electricity,4710
+Semi-detached house,Over 2000 sq. ft.,1,$100-$150,Oil,4310
+Semi-detached house,Over 2000 sq. ft.,1,$100-$150,Propane,12500
+Semi-detached house,Over 2000 sq. ft.,1,$100-$150,Wood,2400
+Semi-detached house,Over 2000 sq. ft.,1,$100-$150,Other,6472
+Semi-detached house,Over 2000 sq. ft.,1,$150-$200,Natural Gas,4880
+Semi-detached house,Over 2000 sq. ft.,1,$150-$200,Electricity,4480
+Semi-detached house,Over 2000 sq. ft.,1,$150-$200,Oil,15000
+Semi-detached house,Over 2000 sq. ft.,1,$150-$200,Propane,3000
+Semi-detached house,Over 2000 sq. ft.,1,$150-$200,Wood,14000
+Semi-detached house,Over 2000 sq. ft.,1,$150-$200,Other,8572
+Semi-detached house,Over 2000 sq. ft.,1,Over $200,Natural Gas,9800
+Semi-detached house,Over 2000 sq. ft.,1,Over $200,Electricity,2800
+Semi-detached house,Over 2000 sq. ft.,1,Over $200,Oil,11200
+Semi-detached house,Over 2000 sq. ft.,1,Over $200,Propane,14100
+Semi-detached house,Over 2000 sq. ft.,1,Over $200,Wood,8600
+Semi-detached house,Over 2000 sq. ft.,1,Over $200,Other,8900
+Semi-detached house,Over 2000 sq. ft.,2,Under $50,Natural Gas,3010
+Semi-detached house,Over 2000 sq. ft.,2,Under $50,Electricity,560
+Semi-detached house,Over 2000 sq. ft.,2,Under $50,Oil,4000
+Semi-detached house,Over 2000 sq. ft.,2,Under $50,Propane,4870
+Semi-detached house,Over 2000 sq. ft.,2,Under $50,Wood,4470
+Semi-detached house,Over 2000 sq. ft.,2,Under $50,Other,4932
+Semi-detached house,Over 2000 sq. ft.,2,$50-$100,Natural Gas,8800
+Semi-detached house,Over 2000 sq. ft.,2,$50-$100,Electricity,1400
+Semi-detached house,Over 2000 sq. ft.,2,$50-$100,Oil,6000
+Semi-detached house,Over 2000 sq. ft.,2,$50-$100,Propane,5040
+Semi-detached house,Over 2000 sq. ft.,2,$50-$100,Wood,4640
+Semi-detached house,Over 2000 sq. ft.,2,$50-$100,Other,5216
+Semi-detached house,Over 2000 sq. ft.,2,$100-$150,Natural Gas,12000
+Semi-detached house,Over 2000 sq. ft.,2,$100-$150,Electricity,2000
+Semi-detached house,Over 2000 sq. ft.,2,$100-$150,Oil,9200
+Semi-detached house,Over 2000 sq. ft.,2,$100-$150,Propane,5210
+Semi-detached house,Over 2000 sq. ft.,2,$100-$150,Wood,4810
+Semi-detached house,Over 2000 sq. ft.,2,$100-$150,Other,6464
+Semi-detached house,Over 2000 sq. ft.,2,$150-$200,Natural Gas,14800
+Semi-detached house,Over 2000 sq. ft.,2,$150-$200,Electricity,2600
+Semi-detached house,Over 2000 sq. ft.,2,$150-$200,Oil,12000
+Semi-detached house,Over 2000 sq. ft.,2,$150-$200,Propane,5380
+Semi-detached house,Over 2000 sq. ft.,2,$150-$200,Wood,4980
+Semi-detached house,Over 2000 sq. ft.,2,$150-$200,Other,7960
+Semi-detached house,Over 2000 sq. ft.,2,Over $200,Natural Gas,16800
+Semi-detached house,Over 2000 sq. ft.,2,Over $200,Electricity,3500
+Semi-detached house,Over 2000 sq. ft.,2,Over $200,Oil,14800
+Semi-detached house,Over 2000 sq. ft.,2,Over $200,Propane,5700
+Semi-detached house,Over 2000 sq. ft.,2,Over $200,Wood,5300
+Semi-detached house,Over 2000 sq. ft.,2,Over $200,Other,9120
 Semi-detached house,Over 2000 sq. ft.,3-4,Under $50,Natural Gas,3261
-Semi-detached house,Over 2000 sq. ft.,3-4,$50–$100,Electricity,890
-Semi-detached house,Over 2000 sq. ft.,3-4,$100–$150,Oil,4307
-Semi-detached house,Over 2000 sq. ft.,3-4,$150–$200,Propane,5670
-Semi-detached house,Over 2000 sq. ft.,3-4,Over $200,Wood,5270
+Semi-detached house,Over 2000 sq. ft.,3-4,Under $50,Electricity,890
+Semi-detached house,Over 2000 sq. ft.,3-4,Under $50,Oil,4307
+Semi-detached house,Over 2000 sq. ft.,3-4,Under $50,Propane,5670
+Semi-detached house,Over 2000 sq. ft.,3-4,Under $50,Wood,4870
+Semi-detached house,Over 2000 sq. ft.,3-4,Under $50,Other,4240
+Semi-detached house,Over 2000 sq. ft.,3-4,$50-$100,Natural Gas,8800
+Semi-detached house,Over 2000 sq. ft.,3-4,$50-$100,Electricity,1650
+Semi-detached house,Over 2000 sq. ft.,3-4,$50-$100,Oil,6100
+Semi-detached house,Over 2000 sq. ft.,3-4,$50-$100,Propane,5840
+Semi-detached house,Over 2000 sq. ft.,3-4,$50-$100,Wood,5040
+Semi-detached house,Over 2000 sq. ft.,3-4,$50-$100,Other,5490
+Semi-detached house,Over 2000 sq. ft.,3-4,$100-$150,Natural Gas,12800
+Semi-detached house,Over 2000 sq. ft.,3-4,$100-$150,Electricity,2400
+Semi-detached house,Over 2000 sq. ft.,3-4,$100-$150,Oil,10200
+Semi-detached house,Over 2000 sq. ft.,3-4,$100-$150,Propane,5810
+Semi-detached house,Over 2000 sq. ft.,3-4,$100-$150,Wood,5410
+Semi-detached house,Over 2000 sq. ft.,3-4,$100-$150,Other,7310
+Semi-detached house,Over 2000 sq. ft.,3-4,$150-$200,Natural Gas,16800
+Semi-detached house,Over 2000 sq. ft.,3-4,$150-$200,Electricity,3600
+Semi-detached house,Over 2000 sq. ft.,3-4,$150-$200,Oil,14200
+Semi-detached house,Over 2000 sq. ft.,3-4,$150-$200,Propane,6140
+Semi-detached house,Over 2000 sq. ft.,3-4,$150-$200,Wood,5740
+Semi-detached house,Over 2000 sq. ft.,3-4,$150-$200,Other,8656
+Semi-detached house,Over 2000 sq. ft.,3-4,Over $200,Natural Gas,19200
+Semi-detached house,Over 2000 sq. ft.,3-4,Over $200,Electricity,4500
+Semi-detached house,Over 2000 sq. ft.,3-4,Over $200,Oil,16200
+Semi-detached house,Over 2000 sq. ft.,3-4,Over $200,Propane,6510
+Semi-detached house,Over 2000 sq. ft.,3-4,Over $200,Wood,6140
+Semi-detached house,Over 2000 sq. ft.,3-4,Over $200,Other,9250
 Semi-detached house,Over 2000 sq. ft.,5 or more,Under $50,Natural Gas,3578
-Semi-detached house,Over 2000 sq. ft.,5 or more,$50–$100,Electricity,1000
-Semi-detached house,Over 2000 sq. ft.,5 or more,$100–$150,Oil,4400
-Semi-detached house,Over 2000 sq. ft.,5 or more,$150–$200,Propane,6370
-Semi-detached house,Over 2000 sq. ft.,5 or more,Over $200,Wood,5970
+Semi-detached house,Over 2000 sq. ft.,5 or more,Under $50,Electricity,1000
+Semi-detached house,Over 2000 sq. ft.,5 or more,Under $50,Oil,4400
+Semi-detached house,Over 2000 sq. ft.,5 or more,Under $50,Propane,6370
+Semi-detached house,Over 2000 sq. ft.,5 or more,Under $50,Wood,5970
+Semi-detached house,Over 2000 sq. ft.,5 or more,Under $50,Other,12500
+Semi-detached house,Over 2000 sq. ft.,5 or more,$50-$100,Natural Gas,1800
+Semi-detached house,Over 2000 sq. ft.,5 or more,$50-$100,Electricity,8500
+Semi-detached house,Over 2000 sq. ft.,5 or more,$50-$100,Oil,6540
+Semi-detached house,Over 2000 sq. ft.,5 or more,$50-$100,Propane,6140
+Semi-detached house,Over 2000 sq. ft.,5 or more,$50-$100,Wood,15000
+Semi-detached house,Over 2000 sq. ft.,5 or more,$50-$100,Other,2400
+Semi-detached house,Over 2000 sq. ft.,5 or more,$100-$150,Natural Gas,11000
+Semi-detached house,Over 2000 sq. ft.,5 or more,$100-$150,Electricity,6710
+Semi-detached house,Over 2000 sq. ft.,5 or more,$100-$150,Oil,6310
+Semi-detached house,Over 2000 sq. ft.,5 or more,$100-$150,Propane,17500
+Semi-detached house,Over 2000 sq. ft.,5 or more,$100-$150,Wood,3000
+Semi-detached house,Over 2000 sq. ft.,5 or more,$100-$150,Other,14000
+Semi-detached house,Over 2000 sq. ft.,5 or more,$150-$200,Natural Gas,6880
+Semi-detached house,Over 2000 sq. ft.,5 or more,$150-$200,Electricity,6480
+Semi-detached house,Over 2000 sq. ft.,5 or more,$150-$200,Oil,19000
+Semi-detached house,Over 2000 sq. ft.,5 or more,$150-$200,Propane,4500
+Semi-detached house,Over 2000 sq. ft.,5 or more,$150-$200,Wood,16000
+Semi-detached house,Over 2000 sq. ft.,5 or more,$150-$200,Other,7200
+Semi-detached house,Over 2000 sq. ft.,5 or more,Over $200,Natural Gas,6800
+Semi-detached house,Over 2000 sq. ft.,5 or more,Over $200,Electricity,9100
+Semi-detached house,Over 2000 sq. ft.,5 or more,Over $200,Oil,15000
+Semi-detached house,Over 2000 sq. ft.,5 or more,Over $200,Propane,5430
+Semi-detached house,Over 2000 sq. ft.,5 or more,Over $200,Wood,19000
+Semi-detached house,Over 2000 sq. ft.,5 or more,Over $200,Other,4500
+Townhouse,Under 1000 sq. ft.,1,Under $50,Natural Gas,1971
+Townhouse,Under 1000 sq. ft.,1,Under $50,Electricity,300
+Townhouse,Under 1000 sq. ft.,1,Under $50,Oil,3270
+Townhouse,Under 1000 sq. ft.,1,Under $50,Propane,2800
+Townhouse,Under 1000 sq. ft.,1,Under $50,Wood,2500
+Townhouse,Under 1000 sq. ft.,1,Under $50,Other,2600
+Townhouse,Under 1000 sq. ft.,1,$50-$100,Natural Gas,3800
+Townhouse,Under 1000 sq. ft.,1,$50-$100,Electricity,500
+Townhouse,Under 1000 sq. ft.,1,$50-$100,Oil,4000
+Townhouse,Under 1000 sq. ft.,1,$50-$100,Propane,3000
+Townhouse,Under 1000 sq. ft.,1,$50-$100,Wood,2700
+Townhouse,Under 1000 sq. ft.,1,$50-$100,Other,2900
+Townhouse,Under 1000 sq. ft.,1,$100-$150,Natural Gas,6000
+Townhouse,Under 1000 sq. ft.,1,$100-$150,Electricity,700
+Townhouse,Under 1000 sq. ft.,1,$100-$150,Oil,5000
+Townhouse,Under 1000 sq. ft.,1,$100-$150,Propane,3500
+Townhouse,Under 1000 sq. ft.,1,$100-$150,Wood,3200
+Townhouse,Under 1000 sq. ft.,1,$100-$150,Other,3400
+Townhouse,Under 1000 sq. ft.,1,$150-$200,Natural Gas,8000
+Townhouse,Under 1000 sq. ft.,1,$150-$200,Electricity,1000
+Townhouse,Under 1000 sq. ft.,1,$150-$200,Oil,7000
+Townhouse,Under 1000 sq. ft.,1,$150-$200,Propane,4000
+Townhouse,Under 1000 sq. ft.,1,$150-$200,Wood,3500
+Townhouse,Under 1000 sq. ft.,1,$150-$200,Other,3800
+Townhouse,Under 1000 sq. ft.,1,Over $200,Natural Gas,10000
+Townhouse,Under 1000 sq. ft.,1,Over $200,Electricity,1500
+Townhouse,Under 1000 sq. ft.,1,Over $200,Oil,9000
+Townhouse,Under 1000 sq. ft.,1,Over $200,Propane,5000
+Townhouse,Under 1000 sq. ft.,1,Over $200,Wood,4000
+Townhouse,Under 1000 sq. ft.,1,Over $200,Other,4500
+Townhouse,Under 1000 sq. ft.,2,Under $50,Natural Gas,2160
+Townhouse,Under 1000 sq. ft.,2,Under $50,Electricity,410
+Townhouse,Under 1000 sq. ft.,2,Under $50,Oil,2523
+Townhouse,Under 1000 sq. ft.,2,Under $50,Propane,1850
+Townhouse,Under 1000 sq. ft.,2,Under $50,Wood,2250
+Townhouse,Under 1000 sq. ft.,2,Under $50,Other,2910
+Townhouse,Under 1000 sq. ft.,2,$50-$100,Natural Gas,550
+Townhouse,Under 1000 sq. ft.,2,$50-$100,Electricity,3100
+Townhouse,Under 1000 sq. ft.,2,$50-$100,Oil,2800
+Townhouse,Under 1000 sq. ft.,2,$50-$100,Propane,3000
+Townhouse,Under 1000 sq. ft.,2,$50-$100,Wood,3210
+Townhouse,Under 1000 sq. ft.,2,$50-$100,Other,1250
+Townhouse,Under 1000 sq. ft.,2,$100-$150,Natural Gas,3750
+Townhouse,Under 1000 sq. ft.,2,$100-$150,Electricity,3500
+Townhouse,Under 1000 sq. ft.,2,$100-$150,Oil,3300
+Townhouse,Under 1000 sq. ft.,2,$100-$150,Propane,5500
+Townhouse,Under 1000 sq. ft.,2,$100-$150,Wood,1750
+Townhouse,Under 1000 sq. ft.,2,$100-$150,Other,4600
+Townhouse,Under 1000 sq. ft.,2,$150-$200,Natural Gas,4500
+Townhouse,Under 1000 sq. ft.,2,$150-$200,Electricity,3500
+Townhouse,Under 1000 sq. ft.,2,$150-$200,Oil,3500
+Townhouse,Under 1000 sq. ft.,2,$150-$200,Propane,9500
+Townhouse,Under 1000 sq. ft.,2,$150-$200,Wood,2100
+Townhouse,Under 1000 sq. ft.,2,$150-$200,Other,5200
+Townhouse,Under 1000 sq. ft.,2,Over $200,Natural Gas,6800
+Townhouse,Under 1000 sq. ft.,2,Over $200,Electricity,3700
+Townhouse,Under 1000 sq. ft.,2,Over $200,Oil,7300
+Townhouse,Under 1000 sq. ft.,2,Over $200,Propane,4700
+Townhouse,Under 1000 sq. ft.,2,Over $200,Wood,4500
+Townhouse,Under 1000 sq. ft.,2,Over $200,Other,5500
 Townhouse,Under 1000 sq. ft.,3-4,Under $50,Natural Gas,2500
-Townhouse,Under 1000 sq. ft.,3-4,$50–$100,Electricity,500
-Townhouse,Under 1000 sq. ft.,3-4,$100–$150,Oil,2600
-Townhouse,Under 1000 sq. ft.,3-4,$150–$200,Propane,2100
-Townhouse,Under 1000 sq. ft.,3-4,Over $200,Wood,2500
+Townhouse,Under 1000 sq. ft.,3-4,Under $50,Electricity,500
+Townhouse,Under 1000 sq. ft.,3-4,Under $50,Oil,2600
+Townhouse,Under 1000 sq. ft.,3-4,Under $50,Propane,2100
+Townhouse,Under 1000 sq. ft.,3-4,Under $50,Wood,2500
+Townhouse,Under 1000 sq. ft.,3-4,Under $50,Other,3000
+Townhouse,Under 1000 sq. ft.,3-4,$50-$100,Natural Gas,580
+Townhouse,Under 1000 sq. ft.,3-4,$50-$100,Electricity,3250
+Townhouse,Under 1000 sq. ft.,3-4,$50-$100,Oil,3400
+Townhouse,Under 1000 sq. ft.,3-4,$50-$100,Propane,3300
+Townhouse,Under 1000 sq. ft.,3-4,$50-$100,Wood,3500
+Townhouse,Under 1000 sq. ft.,3-4,$50-$100,Other,4100
+Townhouse,Under 1000 sq. ft.,3-4,$100-$150,Natural Gas,1320
+Townhouse,Under 1000 sq. ft.,3-4,$100-$150,Electricity,3900
+Townhouse,Under 1000 sq. ft.,3-4,$100-$150,Oil,4100
+Townhouse,Under 1000 sq. ft.,3-4,$100-$150,Propane,3520
+Townhouse,Under 1000 sq. ft.,3-4,$100-$150,Wood,6200
+Townhouse,Under 1000 sq. ft.,3-4,$100-$150,Other,4800
+Townhouse,Under 1000 sq. ft.,3-4,$150-$200,Natural Gas,1900
+Townhouse,Under 1000 sq. ft.,3-4,$150-$200,Electricity,4800
+Townhouse,Under 1000 sq. ft.,3-4,$150-$200,Oil,5200
+Townhouse,Under 1000 sq. ft.,3-4,$150-$200,Propane,3720
+Townhouse,Under 1000 sq. ft.,3-4,$150-$200,Wood,10200
+Townhouse,Under 1000 sq. ft.,3-4,$150-$200,Other,5300
+Townhouse,Under 1000 sq. ft.,3-4,Over $200,Natural Gas,2300
+Townhouse,Under 1000 sq. ft.,3-4,Over $200,Electricity,5300
+Townhouse,Under 1000 sq. ft.,3-4,Over $200,Oil,7200
+Townhouse,Under 1000 sq. ft.,3-4,Over $200,Propane,4000
+Townhouse,Under 1000 sq. ft.,3-4,Over $200,Wood,10200
+Townhouse,Under 1000 sq. ft.,3-4,Over $200,Other,5300
 Townhouse,Under 1000 sq. ft.,5 or more,Under $50,Natural Gas,2800
-Townhouse,Under 1000 sq. ft.,5 or more,$50–$100,Electricity,550
-Townhouse,Under 1000 sq. ft.,5 or more,$100–$150,Oil,2720
-Townhouse,Under 1000 sq. ft.,5 or more,$150–$200,Propane,2500
-Townhouse,Under 1000 sq. ft.,5 or more,Over $200,Wood,2600
-Townhouse,1000–2000 sq. ft.,3-4,Under $50,Natural Gas,3111
-Townhouse,1000–2000 sq. ft.,3-4,$50–$100,Electricity,550
-Townhouse,1000–2000 sq. ft.,3-4,$100–$150,Oil,2730
-Townhouse,1000–2000 sq. ft.,3-4,$150–$200,Propane,4670
-Townhouse,1000–2000 sq. ft.,3-4,Over $200,Wood,1900
-Townhouse,1000–2000 sq. ft.,5 or more,Under $50,Natural Gas,3580
-Townhouse,1000–2000 sq. ft.,5 or more,$50–$100,Electricity,590
-Townhouse,1000–2000 sq. ft.,5 or more,$100–$150,Oil,2800
-Townhouse,1000–2000 sq. ft.,5 or more,$150–$200,Propane,5570
-Townhouse,1000–2000 sq. ft.,5 or more,Over $200,Wood,2200
+Townhouse,Under 1000 sq. ft.,5 or more,Under $50,Electricity,550
+Townhouse,Under 1000 sq. ft.,5 or more,Under $50,Oil,3000
+Townhouse,Under 1000 sq. ft.,5 or more,Under $50,Propane,2500
+Townhouse,Under 1000 sq. ft.,5 or more,Under $50,Wood,2800
+Townhouse,Under 1000 sq. ft.,5 or more,Under $50,Other,3200
+Townhouse,Under 1000 sq. ft.,5 or more,$50-$100,Natural Gas,750
+Townhouse,Under 1000 sq. ft.,5 or more,$50-$100,Electricity,3500
+Townhouse,Under 1000 sq. ft.,5 or more,$50-$100,Oil,3800
+Townhouse,Under 1000 sq. ft.,5 or more,$50-$100,Propane,3600
+Townhouse,Under 1000 sq. ft.,5 or more,$50-$100,Wood,4000
+Townhouse,Under 1000 sq. ft.,5 or more,$50-$100,Other,4600
+Townhouse,Under 1000 sq. ft.,5 or more,$100-$150,Natural Gas,1550
+Townhouse,Under 1000 sq. ft.,5 or more,$100-$150,Electricity,4500
+Townhouse,Under 1000 sq. ft.,5 or more,$100-$150,Oil,5000
+Townhouse,Under 1000 sq. ft.,5 or more,$100-$150,Propane,4300
+Townhouse,Under 1000 sq. ft.,5 or more,$100-$150,Wood,7000
+Townhouse,Under 1000 sq. ft.,5 or more,$100-$150,Other,5800
+Townhouse,Under 1000 sq. ft.,5 or more,$150-$200,Natural Gas,2050
+Townhouse,Under 1000 sq. ft.,5 or more,$150-$200,Electricity,5500
+Townhouse,Under 1000 sq. ft.,5 or more,$150-$200,Oil,6000
+Townhouse,Under 1000 sq. ft.,5 or more,$150-$200,Propane,4900
+Townhouse,Under 1000 sq. ft.,5 or more,$150-$200,Wood,10500
+Townhouse,Under 1000 sq. ft.,5 or more,$150-$200,Other,6300
+Townhouse,Under 1000 sq. ft.,5 or more,Over $200,Natural Gas,3000
+Townhouse,Under 1000 sq. ft.,5 or more,Over $200,Electricity,6500
+Townhouse,Under 1000 sq. ft.,5 or more,Over $200,Oil,8200
+Townhouse,Under 1000 sq. ft.,5 or more,Over $200,Propane,5500
+Townhouse,Under 1000 sq. ft.,5 or more,Over $200,Wood,10500
+Townhouse,Under 1000 sq. ft.,5 or more,Over $200,Other,7000
+Townhouse,1000-2000 sq. ft.,1,Under $50,Natural Gas,2443
+Townhouse,1000-2000 sq. ft.,1,Under $50,Electricity,514
+Townhouse,1000-2000 sq. ft.,1,Under $50,Oil,2685
+Townhouse,1000-2000 sq. ft.,1,Under $50,Propane,2241
+Townhouse,1000-2000 sq. ft.,1,Under $50,Wood,2485
+Townhouse,1000-2000 sq. ft.,1,Under $50,Other,2900
+Townhouse,1000-2000 sq. ft.,1,$50-$100,Natural Gas,624
+Townhouse,1000-2000 sq. ft.,1,$50-$100,Electricity,3512
+Townhouse,1000-2000 sq. ft.,1,$50-$100,Oil,3671
+Townhouse,1000-2000 sq. ft.,1,$50-$100,Propane,3191
+Townhouse,1000-2000 sq. ft.,1,$50-$100,Wood,3900
+Townhouse,1000-2000 sq. ft.,1,$50-$100,Other,4100
+Townhouse,1000-2000 sq. ft.,1,$100-$150,Natural Gas,1390
+Townhouse,1000-2000 sq. ft.,1,$100-$150,Electricity,4100
+Townhouse,1000-2000 sq. ft.,1,$100-$150,Oil,4290
+Townhouse,1000-2000 sq. ft.,1,$100-$150,Propane,3921
+Townhouse,1000-2000 sq. ft.,1,$100-$150,Wood,5900
+Townhouse,1000-2000 sq. ft.,1,$100-$150,Other,4800
+Townhouse,1000-2000 sq. ft.,1,$150-$200,Natural Gas,1920
+Townhouse,1000-2000 sq. ft.,1,$150-$200,Electricity,5000
+Townhouse,1000-2000 sq. ft.,1,$150-$200,Oil,5181
+Townhouse,1000-2000 sq. ft.,1,$150-$200,Propane,4521
+Townhouse,1000-2000 sq. ft.,1,$150-$200,Wood,8000
+Townhouse,1000-2000 sq. ft.,1,$150-$200,Other,5100
+Townhouse,1000-2000 sq. ft.,1,Over $200,Natural Gas,2310
+Townhouse,1000-2000 sq. ft.,1,Over $200,Electricity,5500
+Townhouse,1000-2000 sq. ft.,1,Over $200,Oil,6900
+Townhouse,1000-2000 sq. ft.,1,Over $200,Propane,4800
+Townhouse,1000-2000 sq. ft.,1,Over $200,Wood,8200
+Townhouse,1000-2000 sq. ft.,1,Over $200,Other,5500
+Townhouse,1000-2000 sq. ft.,2,Under $50,Natural Gas,2300
+Townhouse,1000-2000 sq. ft.,2,Under $50,Electricity,520
+Townhouse,1000-2000 sq. ft.,2,Under $50,Oil,2400
+Townhouse,1000-2000 sq. ft.,2,Under $50,Propane,2100
+Townhouse,1000-2000 sq. ft.,2,Under $50,Wood,2500
+Townhouse,1000-2000 sq. ft.,2,Under $50,Other,2700
+Townhouse,1000-2000 sq. ft.,2,$50-$100,Natural Gas,600
+Townhouse,1000-2000 sq. ft.,2,$50-$100,Electricity,3400
+Townhouse,1000-2000 sq. ft.,2,$50-$100,Oil,3500
+Townhouse,1000-2000 sq. ft.,2,$50-$100,Propane,3100
+Townhouse,1000-2000 sq. ft.,2,$50-$100,Wood,3800
+Townhouse,1000-2000 sq. ft.,2,$50-$100,Other,4000
+Townhouse,1000-2000 sq. ft.,2,$100-$150,Natural Gas,1300
+Townhouse,1000-2000 sq. ft.,2,$100-$150,Electricity,4000
+Townhouse,1000-2000 sq. ft.,2,$100-$150,Oil,4200
+Townhouse,1000-2000 sq. ft.,2,$100-$150,Propane,3800
+Townhouse,1000-2000 sq. ft.,2,$100-$150,Wood,5800
+Townhouse,1000-2000 sq. ft.,2,$100-$150,Other,4700
+Townhouse,1000-2000 sq. ft.,2,$150-$200,Natural Gas,1900
+Townhouse,1000-2000 sq. ft.,2,$150-$200,Electricity,4900
+Townhouse,1000-2000 sq. ft.,2,$150-$200,Oil,5100
+Townhouse,1000-2000 sq. ft.,2,$150-$200,Propane,4400
+Townhouse,1000-2000 sq. ft.,2,$150-$200,Wood,7900
+Townhouse,1000-2000 sq. ft.,2,$150-$200,Other,5000
+Townhouse,1000-2000 sq. ft.,2,Over $200,Natural Gas,2300
+Townhouse,1000-2000 sq. ft.,2,Over $200,Electricity,5400
+Townhouse,1000-2000 sq. ft.,2,Over $200,Oil,6800
+Townhouse,1000-2000 sq. ft.,2,Over $200,Propane,4700
+Townhouse,1000-2000 sq. ft.,2,Over $200,Wood,8100
+Townhouse,1000-2000 sq. ft.,2,Over $200,Other,5400
+Townhouse,1000-2000 sq. ft.,3-4,Under $50,Natural Gas,2400
+Townhouse,1000-2000 sq. ft.,3-4,Under $50,Electricity,540
+Townhouse,1000-2000 sq. ft.,3-4,Under $50,Oil,2500
+Townhouse,1000-2000 sq. ft.,3-4,Under $50,Propane,2200
+Townhouse,1000-2000 sq. ft.,3-4,Under $50,Wood,2600
+Townhouse,1000-2000 sq. ft.,3-4,Under $50,Other,2800
+Townhouse,1000-2000 sq. ft.,3-4,$50-$100,Natural Gas,620
+Townhouse,1000-2000 sq. ft.,3-4,$50-$100,Electricity,3500
+Townhouse,1000-2000 sq. ft.,3-4,$50-$100,Oil,3600
+Townhouse,1000-2000 sq. ft.,3-4,$50-$100,Propane,3200
+Townhouse,1000-2000 sq. ft.,3-4,$50-$100,Wood,3900
+Townhouse,1000-2000 sq. ft.,3-4,$50-$100,Other,4100
+Townhouse,1000-2000 sq. ft.,3-4,$100-$150,Natural Gas,1400
+Townhouse,1000-2000 sq. ft.,3-4,$100-$150,Electricity,4100
+Townhouse,1000-2000 sq. ft.,3-4,$100-$150,Oil,4300
+Townhouse,1000-2000 sq. ft.,3-4,$100-$150,Propane,3900
+Townhouse,1000-2000 sq. ft.,3-4,$100-$150,Wood,5900
+Townhouse,1000-2000 sq. ft.,3-4,$100-$150,Other,4800
+Townhouse,1000-2000 sq. ft.,3-4,$150-$200,Natural Gas,2000
+Townhouse,1000-2000 sq. ft.,3-4,$150-$200,Electricity,5000
+Townhouse,1000-2000 sq. ft.,3-4,$150-$200,Oil,5200
+Townhouse,1000-2000 sq. ft.,3-4,$150-$200,Propane,4500
+Townhouse,1000-2000 sq. ft.,3-4,$150-$200,Wood,8000
+Townhouse,1000-2000 sq. ft.,3-4,$150-$200,Other,5100
+Townhouse,1000-2000 sq. ft.,3-4,Over $200,Natural Gas,2400
+Townhouse,1000-2000 sq. ft.,3-4,Over $200,Electricity,5500
+Townhouse,1000-2000 sq. ft.,3-4,Over $200,Oil,6900
+Townhouse,1000-2000 sq. ft.,3-4,Over $200,Propane,4800
+Townhouse,1000-2000 sq. ft.,3-4,Over $200,Wood,8200
+Townhouse,1000-2000 sq. ft.,3-4,Over $200,Other,5500
+Townhouse,1000-2000 sq. ft.,5 or more,Under $50,Natural Gas,2600
+Townhouse,1000-2000 sq. ft.,5 or more,Under $50,Electricity,600
+Townhouse,1000-2000 sq. ft.,5 or more,Under $50,Oil,2700
+Townhouse,1000-2000 sq. ft.,5 or more,Under $50,Propane,2400
+Townhouse,1000-2000 sq. ft.,5 or more,Under $50,Wood,2800
+Townhouse,1000-2000 sq. ft.,5 or more,Under $50,Other,3000
+Townhouse,1000-2000 sq. ft.,5 or more,$50-$100,Natural Gas,700
+Townhouse,1000-2000 sq. ft.,5 or more,$50-$100,Electricity,3700
+Townhouse,1000-2000 sq. ft.,5 or more,$50-$100,Oil,3800
+Townhouse,1000-2000 sq. ft.,5 or more,$50-$100,Propane,3400
+Townhouse,1000-2000 sq. ft.,5 or more,$50-$100,Wood,4000
+Townhouse,1000-2000 sq. ft.,5 or more,$50-$100,Other,4200
+Townhouse,1000-2000 sq. ft.,5 or more,$100-$150,Natural Gas,1500
+Townhouse,1000-2000 sq. ft.,5 or more,$100-$150,Electricity,4300
+Townhouse,1000-2000 sq. ft.,5 or more,$100-$150,Oil,4500
+Townhouse,1000-2000 sq. ft.,5 or more,$100-$150,Propane,4100
+Townhouse,1000-2000 sq. ft.,5 or more,$100-$150,Wood,6100
+Townhouse,1000-2000 sq. ft.,5 or more,$100-$150,Other,5000
+Townhouse,1000-2000 sq. ft.,5 or more,$150-$200,Natural Gas,2100
+Townhouse,1000-2000 sq. ft.,5 or more,$150-$200,Electricity,5200
+Townhouse,1000-2000 sq. ft.,5 or more,$150-$200,Oil,5400
+Townhouse,1000-2000 sq. ft.,5 or more,$150-$200,Propane,4700
+Townhouse,1000-2000 sq. ft.,5 or more,$150-$200,Wood,8300
+Townhouse,1000-2000 sq. ft.,5 or more,$150-$200,Other,5500
+Townhouse,1000-2000 sq. ft.,5 or more,Over $200,Natural Gas,2600
+Townhouse,1000-2000 sq. ft.,5 or more,Over $200,Electricity,5800
+Townhouse,1000-2000 sq. ft.,5 or more,Over $200,Oil,7100
+Townhouse,1000-2000 sq. ft.,5 or more,Over $200,Propane,5000
+Townhouse,1000-2000 sq. ft.,5 or more,Over $200,Wood,8500
+Townhouse,1000-2000 sq. ft.,5 or more,Over $200,Other,5800
+Townhouse,Over 2000 sq. ft.,1,Under $50,Natural Gas,2822
+Townhouse,Over 2000 sq. ft.,1,Under $50,Electricity,300
+Townhouse,Over 2000 sq. ft.,1,Under $50,Oil,2810
+Townhouse,Over 2000 sq. ft.,1,Under $50,Propane,3340
+Townhouse,Over 2000 sq. ft.,1,Under $50,Wood,3800
+Townhouse,Over 2000 sq. ft.,1,Under $50,Other,3014
+Townhouse,Over 2000 sq. ft.,1,$50-$100,Natural Gas,3600
+Townhouse,Over 2000 sq. ft.,1,$50-$100,Electricity,1200
+Townhouse,Over 2000 sq. ft.,1,$50-$100,Oil,4300
+Townhouse,Over 2000 sq. ft.,1,$50-$100,Propane,5900
+Townhouse,Over 2000 sq. ft.,1,$50-$100,Wood,3500
+Townhouse,Over 2000 sq. ft.,1,$50-$100,Other,3700
+Townhouse,Over 2000 sq. ft.,1,$100-$150,Natural Gas,5300
+Townhouse,Over 2000 sq. ft.,1,$100-$150,Electricity,1800
+Townhouse,Over 2000 sq. ft.,1,$100-$150,Oil,3510
+Townhouse,Over 2000 sq. ft.,1,$100-$150,Propane,4100
+Townhouse,Over 2000 sq. ft.,1,$100-$150,Wood,8000
+Townhouse,Over 2000 sq. ft.,1,$100-$150,Other,4542
+Townhouse,Over 2000 sq. ft.,1,$150-$200,Natural Gas,5440
+Townhouse,Over 2000 sq. ft.,1,$150-$200,Electricity,2400
+Townhouse,Over 2000 sq. ft.,1,$150-$200,Oil,3800
+Townhouse,Over 2000 sq. ft.,1,$150-$200,Propane,4200
+Townhouse,Over 2000 sq. ft.,1,$150-$200,Wood,9500
+Townhouse,Over 2000 sq. ft.,1,$150-$200,Other,5068
+Townhouse,Over 2000 sq. ft.,1,Over $200,Natural Gas,5670
+Townhouse,Over 2000 sq. ft.,1,Over $200,Electricity,2800
+Townhouse,Over 2000 sq. ft.,1,Over $200,Oil,6200
+Townhouse,Over 2000 sq. ft.,1,Over $200,Propane,4300
+Townhouse,Over 2000 sq. ft.,1,Over $200,Wood,9500
+Townhouse,Over 2000 sq. ft.,1,Over $200,Other,5694
+Townhouse,Over 2000 sq. ft.,2,Under $50,Natural Gas,3010
+Townhouse,Over 2000 sq. ft.,2,Under $50,Electricity,560
+Townhouse,Over 2000 sq. ft.,2,Under $50,Oil,3000
+Townhouse,Over 2000 sq. ft.,2,Under $50,Propane,3940
+Townhouse,Over 2000 sq. ft.,2,Under $50,Wood,4070
+Townhouse,Over 2000 sq. ft.,2,Under $50,Other,2916
+Townhouse,Over 2000 sq. ft.,2,$50-$100,Natural Gas,3840
+Townhouse,Over 2000 sq. ft.,2,$50-$100,Electricity,1380
+Townhouse,Over 2000 sq. ft.,2,$50-$100,Oil,4900
+Townhouse,Over 2000 sq. ft.,2,$50-$100,Propane,6330
+Townhouse,Over 2000 sq. ft.,2,$50-$100,Wood,3930
+Townhouse,Over 2000 sq. ft.,2,$50-$100,Other,4076
+Townhouse,Over 2000 sq. ft.,2,$100-$150,Natural Gas,5690
+Townhouse,Over 2000 sq. ft.,2,$100-$150,Electricity,2000
+Townhouse,Over 2000 sq. ft.,2,$100-$150,Oil,4110
+Townhouse,Over 2000 sq. ft.,2,$100-$150,Propane,4500
+Townhouse,Over 2000 sq. ft.,2,$100-$150,Wood,8300
+Townhouse,Over 2000 sq. ft.,2,$100-$150,Other,4920
+Townhouse,Over 2000 sq. ft.,2,$150-$200,Natural Gas,5600
+Townhouse,Over 2000 sq. ft.,2,$150-$200,Electricity,2500
+Townhouse,Over 2000 sq. ft.,2,$150-$200,Oil,4280
+Townhouse,Over 2000 sq. ft.,2,$150-$200,Propane,4640
+Townhouse,Over 2000 sq. ft.,2,$150-$200,Wood,10100
+Townhouse,Over 2000 sq. ft.,2,$150-$200,Other,5424
+Townhouse,Over 2000 sq. ft.,2,Over $200,Natural Gas,5800
+Townhouse,Over 2000 sq. ft.,2,Over $200,Electricity,3000
+Townhouse,Over 2000 sq. ft.,2,Over $200,Oil,6900
+Townhouse,Over 2000 sq. ft.,2,Over $200,Propane,4700
+Townhouse,Over 2000 sq. ft.,2,Over $200,Wood,11000
+Townhouse,Over 2000 sq. ft.,2,Over $200,Other,6080
 Townhouse,Over 2000 sq. ft.,3-4,Under $50,Natural Gas,3300
-Townhouse,Over 2000 sq. ft.,3-4,$50–$100,Electricity,890
-Townhouse,Over 2000 sq. ft.,3-4,$100–$150,Oil,3468
-Townhouse,Over 2000 sq. ft.,3-4,$150–$200,Propane,4840
-Townhouse,Over 2000 sq. ft.,3-4,Over $200,Wood,5000
+Townhouse,Over 2000 sq. ft.,3-4,Under $50,Electricity,890
+Townhouse,Over 2000 sq. ft.,3-4,Under $50,Oil,3468
+Townhouse,Over 2000 sq. ft.,3-4,Under $50,Propane,4840
+Townhouse,Over 2000 sq. ft.,3-4,Under $50,Wood,5000
+Townhouse,Over 2000 sq. ft.,3-4,Under $50,Other,3499
+Townhouse,Over 2000 sq. ft.,3-4,$50-$100,Natural Gas,3900
+Townhouse,Over 2000 sq. ft.,3-4,$50-$100,Electricity,1600
+Townhouse,Over 2000 sq. ft.,3-4,$50-$100,Oil,5320
+Townhouse,Over 2000 sq. ft.,3-4,$50-$100,Propane,6440
+Townhouse,Over 2000 sq. ft.,3-4,$50-$100,Wood,4360
+Townhouse,Over 2000 sq. ft.,3-4,$50-$100,Other,4324
+Townhouse,Over 2000 sq. ft.,3-4,$100-$150,Natural Gas,6250
+Townhouse,Over 2000 sq. ft.,3-4,$100-$150,Electricity,2200
+Townhouse,Over 2000 sq. ft.,3-4,$100-$150,Oil,5010
+Townhouse,Over 2000 sq. ft.,3-4,$100-$150,Propane,4780
+Townhouse,Over 2000 sq. ft.,3-4,$100-$150,Wood,9000
+Townhouse,Over 2000 sq. ft.,3-4,$100-$150,Other,5448
+Townhouse,Over 2000 sq. ft.,3-4,$150-$200,Natural Gas,5800
+Townhouse,Over 2000 sq. ft.,3-4,$150-$200,Electricity,2650
+Townhouse,Over 2000 sq. ft.,3-4,$150-$200,Oil,5380
+Townhouse,Over 2000 sq. ft.,3-4,$150-$200,Propane,5000
+Townhouse,Over 2000 sq. ft.,3-4,$150-$200,Wood,10300
+Townhouse,Over 2000 sq. ft.,3-4,$150-$200,Other,5846
+Townhouse,Over 2000 sq. ft.,3-4,Over $200,Natural Gas,6100
+Townhouse,Over 2000 sq. ft.,3-4,Over $200,Electricity,3800
+Townhouse,Over 2000 sq. ft.,3-4,Over $200,Oil,7500
+Townhouse,Over 2000 sq. ft.,3-4,Over $200,Propane,5100
+Townhouse,Over 2000 sq. ft.,3-4,Over $200,Wood,11000
+Townhouse,Over 2000 sq. ft.,3-4,Over $200,Other,7060
 Townhouse,Over 2000 sq. ft.,5 or more,Under $50,Natural Gas,3600
-Townhouse,Over 2000 sq. ft.,5 or more,$50–$100,Electricity,1000
-Townhouse,Over 2000 sq. ft.,5 or more,$100–$150,Oil,3760
-Townhouse,Over 2000 sq. ft.,5 or more,$150–$200,Propane,5740
-Townhouse,Over 2000 sq. ft.,5 or more,Over $200,Wood,5600
+Townhouse,Over 2000 sq. ft.,5 or more,Under $50,Electricity,1000
+Townhouse,Over 2000 sq. ft.,5 or more,Under $50,Oil,3760
+Townhouse,Over 2000 sq. ft.,5 or more,Under $50,Propane,5740
+Townhouse,Over 2000 sq. ft.,5 or more,Under $50,Wood,5600
+Townhouse,Over 2000 sq. ft.,5 or more,Under $50,Other,3940
+Townhouse,Over 2000 sq. ft.,5 or more,$50-$100,Natural Gas,5100
+Townhouse,Over 2000 sq. ft.,5 or more,$50-$100,Electricity,1750
+Townhouse,Over 2000 sq. ft.,5 or more,$50-$100,Oil,5800
+Townhouse,Over 2000 sq. ft.,5 or more,$50-$100,Propane,6900
+Townhouse,Over 2000 sq. ft.,5 or more,$50-$100,Wood,5000
+Townhouse,Over 2000 sq. ft.,5 or more,$50-$100,Other,4710
+Townhouse,Over 2000 sq. ft.,5 or more,$100-$150,Natural Gas,6500
+Townhouse,Over 2000 sq. ft.,5 or more,$100-$150,Electricity,2300
+Townhouse,Over 2000 sq. ft.,5 or more,$100-$150,Oil,5910
+Townhouse,Over 2000 sq. ft.,5 or more,$100-$150,Propane,5360
+Townhouse,Over 2000 sq. ft.,5 or more,$100-$150,Wood,9500
+Townhouse,Over 2000 sq. ft.,5 or more,$100-$150,Other,5914
+Townhouse,Over 2000 sq. ft.,5 or more,$150-$200,Natural Gas,6000
+Townhouse,Over 2000 sq. ft.,5 or more,$150-$200,Electricity,2800
+Townhouse,Over 2000 sq. ft.,5 or more,$150-$200,Oil,6200
+Townhouse,Over 2000 sq. ft.,5 or more,$150-$200,Propane,5400
+Townhouse,Over 2000 sq. ft.,5 or more,$150-$200,Wood,11000
+Townhouse,Over 2000 sq. ft.,5 or more,$150-$200,Other,6880
+Townhouse,Over 2000 sq. ft.,5 or more,Over $200,Natural Gas,6350
+Townhouse,Over 2000 sq. ft.,5 or more,Over $200,Electricity,4300
+Townhouse,Over 2000 sq. ft.,5 or more,Over $200,Oil,7850
+Townhouse,Over 2000 sq. ft.,5 or more,Over $200,Propane,5500
+Townhouse,Over 2000 sq. ft.,5 or more,Over $200,Wood,11000
+Townhouse,Over 2000 sq. ft.,5 or more,Over $200,Other,7010
+Condo/Apartment,Under 1000 sq. ft.,1,Under $50,Natural Gas,1680
+Condo/Apartment,Under 1000 sq. ft.,1,Under $50,Electricity,200
+Condo/Apartment,Under 1000 sq. ft.,1,Under $50,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,1,Under $50,Propane,1320
+Condo/Apartment,Under 1000 sq. ft.,1,Under $50,Wood,1600
+Condo/Apartment,Under 1000 sq. ft.,1,Under $50,Other,1150
+Condo/Apartment,Under 1000 sq. ft.,1,$50-$100,Natural Gas,2240
+Condo/Apartment,Under 1000 sq. ft.,1,$50-$100,Electricity,500
+Condo/Apartment,Under 1000 sq. ft.,1,$50-$100,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,1,$50-$100,Propane,2100
+Condo/Apartment,Under 1000 sq. ft.,1,$50-$100,Wood,1800
+Condo/Apartment,Under 1000 sq. ft.,1,$50-$100,Other,1660
+Condo/Apartment,Under 1000 sq. ft.,1,$100-$150,Natural Gas,2800
+Condo/Apartment,Under 1000 sq. ft.,1,$100-$150,Electricity,900
+Condo/Apartment,Under 1000 sq. ft.,1,$100-$150,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,1,$100-$150,Propane,3000
+Condo/Apartment,Under 1000 sq. ft.,1,$100-$150,Wood,2800
+Condo/Apartment,Under 1000 sq. ft.,1,$100-$150,Other,2375
+Condo/Apartment,Under 1000 sq. ft.,1,$150-$200,Natural Gas,3700
+Condo/Apartment,Under 1000 sq. ft.,1,$150-$200,Electricity,1400
+Condo/Apartment,Under 1000 sq. ft.,1,$150-$200,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,1,$150-$200,Propane,3300
+Condo/Apartment,Under 1000 sq. ft.,1,$150-$200,Wood,3000
+Condo/Apartment,Under 1000 sq. ft.,1,$150-$200,Other,2850
+Condo/Apartment,Under 1000 sq. ft.,1,Over $200,Natural Gas,5000
+Condo/Apartment,Under 1000 sq. ft.,1,Over $200,Electricity,1900
+Condo/Apartment,Under 1000 sq. ft.,1,Over $200,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,1,Over $200,Propane,5700
+Condo/Apartment,Under 1000 sq. ft.,1,Over $200,Wood,3500
+Condo/Apartment,Under 1000 sq. ft.,1,Over $200,Other,4025
+Condo/Apartment,Under 1000 sq. ft.,2,Under $50,Natural Gas,1870
+Condo/Apartment,Under 1000 sq. ft.,2,Under $50,Electricity,250
+Condo/Apartment,Under 1000 sq. ft.,2,Under $50,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,2,Under $50,Propane,1550
+Condo/Apartment,Under 1000 sq. ft.,2,Under $50,Wood,1850
+Condo/Apartment,Under 1000 sq. ft.,2,Under $50,Other,1370
+Condo/Apartment,Under 1000 sq. ft.,2,$50-$100,Natural Gas,2430
+Condo/Apartment,Under 1000 sq. ft.,2,$50-$100,Electricity,550
+Condo/Apartment,Under 1000 sq. ft.,2,$50-$100,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,2,$50-$100,Propane,2400
+Condo/Apartment,Under 1000 sq. ft.,2,$50-$100,Wood,2000
+Condo/Apartment,Under 1000 sq. ft.,2,$50-$100,Other,1845
+Condo/Apartment,Under 1000 sq. ft.,2,$100-$150,Natural Gas,3000
+Condo/Apartment,Under 1000 sq. ft.,2,$100-$150,Electricity,1100
+Condo/Apartment,Under 1000 sq. ft.,2,$100-$150,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,2,$100-$150,Propane,3300
+Condo/Apartment,Under 1000 sq. ft.,2,$100-$150,Wood,3000
+Condo/Apartment,Under 1000 sq. ft.,2,$100-$150,Other,2600
+Condo/Apartment,Under 1000 sq. ft.,2,$150-$200,Natural Gas,4100
+Condo/Apartment,Under 1000 sq. ft.,2,$150-$200,Electricity,1600
+Condo/Apartment,Under 1000 sq. ft.,2,$150-$200,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,2,$150-$200,Propane,3700
+Condo/Apartment,Under 1000 sq. ft.,2,$150-$200,Wood,3100
+Condo/Apartment,Under 1000 sq. ft.,2,$150-$200,Other,3125
+Condo/Apartment,Under 1000 sq. ft.,2,Over $200,Natural Gas,7200
+Condo/Apartment,Under 1000 sq. ft.,2,Over $200,Electricity,2100
+Condo/Apartment,Under 1000 sq. ft.,2,Over $200,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,2,Over $200,Propane,6000
+Condo/Apartment,Under 1000 sq. ft.,2,Over $200,Wood,3600
+Condo/Apartment,Under 1000 sq. ft.,2,Over $200,Other,4725
 Condo/Apartment,Under 1000 sq. ft.,3-4,Under $50,Natural Gas,2170
-Condo/Apartment,Under 1000 sq. ft.,3-4,$50–$100,Electricity,380
-Condo/Apartment,Under 1000 sq. ft.,3-4,$100–$150,Oil,0
-Condo/Apartment,Under 1000 sq. ft.,3-4,$150–$200,Propane,1800
-Condo/Apartment,Under 1000 sq. ft.,3-4,Over $200,Wood,2000
+Condo/Apartment,Under 1000 sq. ft.,3-4,Under $50,Electricity,380
+Condo/Apartment,Under 1000 sq. ft.,3-4,Under $50,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,3-4,Under $50,Propane,1800
+Condo/Apartment,Under 1000 sq. ft.,3-4,Under $50,Wood,2000
+Condo/Apartment,Under 1000 sq. ft.,3-4,Under $50,Other,1587
+Condo/Apartment,Under 1000 sq. ft.,3-4,$50-$100,Natural Gas,2719
+Condo/Apartment,Under 1000 sq. ft.,3-4,$50-$100,Electricity,580
+Condo/Apartment,Under 1000 sq. ft.,3-4,$50-$100,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,3-4,$50-$100,Propane,2800
+Condo/Apartment,Under 1000 sq. ft.,3-4,$50-$100,Wood,2300
+Condo/Apartment,Under 1000 sq. ft.,3-4,$50-$100,Other,2100
+Condo/Apartment,Under 1000 sq. ft.,3-4,$100-$150,Natural Gas,3200
+Condo/Apartment,Under 1000 sq. ft.,3-4,$100-$150,Electricity,1200
+Condo/Apartment,Under 1000 sq. ft.,3-4,$100-$150,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,3-4,$100-$150,Propane,3700
+Condo/Apartment,Under 1000 sq. ft.,3-4,$100-$150,Wood,3300
+Condo/Apartment,Under 1000 sq. ft.,3-4,$100-$150,Other,2850
+Condo/Apartment,Under 1000 sq. ft.,3-4,$150-$200,Natural Gas,4400
+Condo/Apartment,Under 1000 sq. ft.,3-4,$150-$200,Electricity,1700
+Condo/Apartment,Under 1000 sq. ft.,3-4,$150-$200,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,3-4,$150-$200,Propane,4400
+Condo/Apartment,Under 1000 sq. ft.,3-4,$150-$200,Wood,3500
+Condo/Apartment,Under 1000 sq. ft.,3-4,$150-$200,Other,3500
+Condo/Apartment,Under 1000 sq. ft.,3-4,Over $200,Natural Gas,8000
+Condo/Apartment,Under 1000 sq. ft.,3-4,Over $200,Electricity,2200
+Condo/Apartment,Under 1000 sq. ft.,3-4,Over $200,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,3-4,Over $200,Propane,6600
+Condo/Apartment,Under 1000 sq. ft.,3-4,Over $200,Wood,3900
+Condo/Apartment,Under 1000 sq. ft.,3-4,Over $200,Other,5150
 Condo/Apartment,Under 1000 sq. ft.,5 or more,Under $50,Natural Gas,2440
-Condo/Apartment,Under 1000 sq. ft.,5 or more,$50–$100,Electricity,450
-Condo/Apartment,Under 1000 sq. ft.,5 or more,$100–$150,Oil,0
-Condo/Apartment,Under 1000 sq. ft.,5 or more,$150–$200,Propane,2000
-Condo/Apartment,Under 1000 sq. ft.,5 or more,Over $200,Wood,2100
-Condo/Apartment,1000–2000 sq. ft.,3-4,Under $50,Natural Gas,2540
-Condo/Apartment,1000–2000 sq. ft.,3-4,$50–$100,Electricity,500
-Condo/Apartment,1000–2000 sq. ft.,3-4,$100–$150,Oil,0
-Condo/Apartment,1000–2000 sq. ft.,3-4,$150–$200,Propane,2100
-Condo/Apartment,1000–2000 sq. ft.,3-4,Over $200,Wood,2500
-Condo/Apartment,1000–2000 sq. ft.,5 or more,Under $50,Natural Gas,3010
-Condo/Apartment,1000–2000 sq. ft.,5 or more,$50–$100,Electricity,620
-Condo/Apartment,1000–2000 sq. ft.,5 or more,$100–$150,Oil,0
-Condo/Apartment,1000–2000 sq. ft.,5 or more,$150–$200,Propane,2300
-Condo/Apartment,1000–2000 sq. ft.,5 or more,Over $200,Wood,2700
-Condo/Apartment,Over 2000 sq. ft.,3-4,Under $50,Natural Gas,3010
-Condo/Apartment,Over 2000 sq. ft.,3-4,$50–$100,Electricity,900
-Condo/Apartment,Over 2000 sq. ft.,3-4,$100–$150,Oil,0
-Condo/Apartment,Over 2000 sq. ft.,3-4,$150–$200,Propane,2450
-Condo/Apartment,Over 2000 sq. ft.,3-4,Over $200,Wood,2900
-Condo/Apartment,Over 2000 sq. ft.,5 or more,Under $50,Natural Gas,3577
-Condo/Apartment,Over 2000 sq. ft.,5 or more,$50–$100,Electricity,980
-Condo/Apartment,Over 2000 sq. ft.,5 or more,$100–$150,Oil,0
-Condo/Apartment,Over 2000 sq. ft.,5 or more,$150–$200,Propane,2600
-Condo/Apartment,Over 2000 sq. ft.,5 or more,Over $200,Wood,3300
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Under $50,Electricity,450
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Under $50,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Under $50,Propane,2000
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Under $50,Wood,2100
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Under $50,Other,1748
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$50-$100,Natural Gas,2997
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$50-$100,Electricity,600
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$50-$100,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$50-$100,Propane,3200
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$50-$100,Wood,2400
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$50-$100,Other,2299
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$100-$150,Natural Gas,3500
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$100-$150,Electricity,1300
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$100-$150,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$100-$150,Propane,4300
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$100-$150,Wood,3500
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$100-$150,Other,3150
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$150-$200,Natural Gas,5200
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$150-$200,Electricity,1900
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$150-$200,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$150-$200,Propane,5200
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$150-$200,Wood,3900
+Condo/Apartment,Under 1000 sq. ft.,5 or more,$150-$200,Other,4055
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Over $200,Natural Gas,10000
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Over $200,Electricity,2600
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Over $200,Oil,0
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Over $200,Propane,7000
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Over $200,Wood,4200
+Condo/Apartment,Under 1000 sq. ft.,5 or more,Over $200,Other,5950
+Condo/Apartment,1000-2000 sq. ft.,1,Under $50,Natural Gas,2060
+Condo/Apartment,1000-2000 sq. ft.,1,Under $50,Electricity,300
+Condo/Apartment,1000-2000 sq. ft.,1,Under $50,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,1,Under $50,Propane,1500
+Condo/Apartment,1000-2000 sq. ft.,1,Under $50,Wood,1800
+Condo/Apartment,1000-2000 sq. ft.,1,Under $50,Other,1415
+Condo/Apartment,1000-2000 sq. ft.,1,$50-$100,Natural Gas,2500
+Condo/Apartment,1000-2000 sq. ft.,1,$50-$100,Electricity,550
+Condo/Apartment,1000-2000 sq. ft.,1,$50-$100,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,1,$50-$100,Propane,3000
+Condo/Apartment,1000-2000 sq. ft.,1,$50-$100,Wood,2200
+Condo/Apartment,1000-2000 sq. ft.,1,$50-$100,Other,2063
+Condo/Apartment,1000-2000 sq. ft.,1,$100-$150,Natural Gas,3100
+Condo/Apartment,1000-2000 sq. ft.,1,$100-$150,Electricity,1250
+Condo/Apartment,1000-2000 sq. ft.,1,$100-$150,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,1,$100-$150,Propane,4100
+Condo/Apartment,1000-2000 sq. ft.,1,$100-$150,Wood,3200
+Condo/Apartment,1000-2000 sq. ft.,1,$100-$150,Other,2913
+Condo/Apartment,1000-2000 sq. ft.,1,$150-$200,Natural Gas,4000
+Condo/Apartment,1000-2000 sq. ft.,1,$150-$200,Electricity,1900
+Condo/Apartment,1000-2000 sq. ft.,1,$150-$200,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,1,$150-$200,Propane,4550
+Condo/Apartment,1000-2000 sq. ft.,1,$150-$200,Wood,3100
+Condo/Apartment,1000-2000 sq. ft.,1,$150-$200,Other,3388
+Condo/Apartment,1000-2000 sq. ft.,1,Over $200,Natural Gas,5350
+Condo/Apartment,1000-2000 sq. ft.,1,Over $200,Electricity,2300
+Condo/Apartment,1000-2000 sq. ft.,1,Over $200,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,1,Over $200,Propane,6000
+Condo/Apartment,1000-2000 sq. ft.,1,Over $200,Wood,3900
+Condo/Apartment,1000-2000 sq. ft.,1,Over $200,Other,4513
+Condo/Apartment,1000-2000 sq. ft.,2,Under $50,Natural Gas,2260
+Condo/Apartment,1000-2000 sq. ft.,2,Under $50,Electricity,400
+Condo/Apartment,1000-2000 sq. ft.,2,Under $50,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,2,Under $50,Propane,1700
+Condo/Apartment,1000-2000 sq. ft.,2,Under $50,Wood,2200
+Condo/Apartment,1000-2000 sq. ft.,2,Under $50,Other,1640
+Condo/Apartment,1000-2000 sq. ft.,2,$50-$100,Natural Gas,2880
+Condo/Apartment,1000-2000 sq. ft.,2,$50-$100,Electricity,670
+Condo/Apartment,1000-2000 sq. ft.,2,$50-$100,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,2,$50-$100,Propane,3400
+Condo/Apartment,1000-2000 sq. ft.,2,$50-$100,Wood,2500
+Condo/Apartment,1000-2000 sq. ft.,2,$50-$100,Other,2363
+Condo/Apartment,1000-2000 sq. ft.,2,$100-$150,Natural Gas,3300
+Condo/Apartment,1000-2000 sq. ft.,2,$100-$150,Electricity,1450
+Condo/Apartment,1000-2000 sq. ft.,2,$100-$150,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,2,$100-$150,Propane,4600
+Condo/Apartment,1000-2000 sq. ft.,2,$100-$150,Wood,3500
+Condo/Apartment,1000-2000 sq. ft.,2,$100-$150,Other,3213
+Condo/Apartment,1000-2000 sq. ft.,2,$150-$200,Natural Gas,4950
+Condo/Apartment,1000-2000 sq. ft.,2,$150-$200,Electricity,2300
+Condo/Apartment,1000-2000 sq. ft.,2,$150-$200,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,2,$150-$200,Propane,4950
+Condo/Apartment,1000-2000 sq. ft.,2,$150-$200,Wood,3300
+Condo/Apartment,1000-2000 sq. ft.,2,$150-$200,Other,3875
+Condo/Apartment,1000-2000 sq. ft.,2,Over $200,Natural Gas,7550
+Condo/Apartment,1000-2000 sq. ft.,2,Over $200,Electricity,2500
+Condo/Apartment,1000-2000 sq. ft.,2,Over $200,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,2,Over $200,Propane,6300
+Condo/Apartment,1000-2000 sq. ft.,2,Over $200,Wood,4200
+Condo/Apartment,1000-2000 sq. ft.,2,Over $200,Other,5138
+Condo/Apartment,1000-2000 sq. ft.,3-4,Under $50,Natural Gas,2540
+Condo/Apartment,1000-2000 sq. ft.,3-4,Under $50,Electricity,500
+Condo/Apartment,1000-2000 sq. ft.,3-4,Under $50,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,3-4,Under $50,Propane,2100
+Condo/Apartment,1000-2000 sq. ft.,3-4,Under $50,Wood,2500
+Condo/Apartment,1000-2000 sq. ft.,3-4,Under $50,Other,1910
+Condo/Apartment,1000-2000 sq. ft.,3-4,$50-$100,Natural Gas,3110
+Condo/Apartment,1000-2000 sq. ft.,3-4,$50-$100,Electricity,780
+Condo/Apartment,1000-2000 sq. ft.,3-4,$50-$100,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,3-4,$50-$100,Propane,3800
+Condo/Apartment,1000-2000 sq. ft.,3-4,$50-$100,Wood,2900
+Condo/Apartment,1000-2000 sq. ft.,3-4,$50-$100,Other,2648
+Condo/Apartment,1000-2000 sq. ft.,3-4,$100-$150,Natural Gas,3500
+Condo/Apartment,1000-2000 sq. ft.,3-4,$100-$150,Electricity,1750
+Condo/Apartment,1000-2000 sq. ft.,3-4,$100-$150,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,3-4,$100-$150,Propane,5000
+Condo/Apartment,1000-2000 sq. ft.,3-4,$100-$150,Wood,3600
+Condo/Apartment,1000-2000 sq. ft.,3-4,$100-$150,Other,3463
+Condo/Apartment,1000-2000 sq. ft.,3-4,$150-$200,Natural Gas,5350
+Condo/Apartment,1000-2000 sq. ft.,3-4,$150-$200,Electricity,2700
+Condo/Apartment,1000-2000 sq. ft.,3-4,$150-$200,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,3-4,$150-$200,Propane,5350
+Condo/Apartment,1000-2000 sq. ft.,3-4,$150-$200,Wood,3700
+Condo/Apartment,1000-2000 sq. ft.,3-4,$150-$200,Other,4275
+Condo/Apartment,1000-2000 sq. ft.,3-4,Over $200,Natural Gas,8200
+Condo/Apartment,1000-2000 sq. ft.,3-4,Over $200,Electricity,3100
+Condo/Apartment,1000-2000 sq. ft.,3-4,Over $200,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,3-4,Over $200,Propane,7000
+Condo/Apartment,1000-2000 sq. ft.,3-4,Over $200,Wood,4500
+Condo/Apartment,1000-2000 sq. ft.,3-4,Over $200,Other,5700
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Under $50,Natural Gas,3010
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Under $50,Electricity,620
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Under $50,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Under $50,Propane,2300
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Under $50,Wood,2700
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Under $50,Other,2158
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$50-$100,Natural Gas,3320
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$50-$100,Electricity,900
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$50-$100,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$50-$100,Propane,4200
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$50-$100,Wood,3300
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$50-$100,Other,2930
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$100-$150,Natural Gas,3900
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$100-$150,Electricity,2100
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$100-$150,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$100-$150,Propane,5400
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$100-$150,Wood,4000
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$100-$150,Other,3850
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$150-$200,Natural Gas,6000
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$150-$200,Electricity,3000
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$150-$200,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$150-$200,Propane,6000
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$150-$200,Wood,4200
+Condo/Apartment,1000-2000 sq. ft.,5 or more,$150-$200,Other,4800
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Over $200,Natural Gas,10500
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Over $200,Electricity,3100
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Over $200,Oil,0
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Over $200,Propane,7400
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Over $200,Wood,4700
+Condo/Apartment,1000-2000 sq. ft.,5 or more,Over $200,Other,6425
+Condo/Apartment,Over 2000 sq. ft.,1,Under $50,Natural Gas,2900
+Condo/Apartment,Over 2000 sq. ft.,1,Under $50,Electricity,700
+Condo/Apartment,Over 2000 sq. ft.,1,Under $50,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,1,Under $50,Propane,2400
+Condo/Apartment,Over 2000 sq. ft.,1,Under $50,Wood,2800
+Condo/Apartment,Over 2000 sq. ft.,1,Under $50,Other,2200
+Condo/Apartment,Over 2000 sq. ft.,1,$50-$100,Natural Gas,3500
+Condo/Apartment,Over 2000 sq. ft.,1,$50-$100,Electricity,1200
+Condo/Apartment,Over 2000 sq. ft.,1,$50-$100,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,1,$50-$100,Propane,4000
+Condo/Apartment,Over 2000 sq. ft.,1,$50-$100,Wood,3200
+Condo/Apartment,Over 2000 sq. ft.,1,$50-$100,Other,2975
+Condo/Apartment,Over 2000 sq. ft.,1,$100-$150,Natural Gas,4200
+Condo/Apartment,Over 2000 sq. ft.,1,$100-$150,Electricity,1800
+Condo/Apartment,Over 2000 sq. ft.,1,$100-$150,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,1,$100-$150,Propane,5000
+Condo/Apartment,Over 2000 sq. ft.,1,$100-$150,Wood,3800
+Condo/Apartment,Over 2000 sq. ft.,1,$100-$150,Other,3700
+Condo/Apartment,Over 2000 sq. ft.,1,$150-$200,Natural Gas,5100
+Condo/Apartment,Over 2000 sq. ft.,1,$150-$200,Electricity,2500
+Condo/Apartment,Over 2000 sq. ft.,1,$150-$200,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,1,$150-$200,Propane,5200
+Condo/Apartment,Over 2000 sq. ft.,1,$150-$200,Wood,3900
+Condo/Apartment,Over 2000 sq. ft.,1,$150-$200,Other,4175
+Condo/Apartment,Over 2000 sq. ft.,1,Over $200,Natural Gas,6800
+Condo/Apartment,Over 2000 sq. ft.,1,Over $200,Electricity,3000
+Condo/Apartment,Over 2000 sq. ft.,1,Over $200,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,1,Over $200,Propane,7200
+Condo/Apartment,Over 2000 sq. ft.,1,Over $200,Wood,4500
+Condo/Apartment,Over 2000 sq. ft.,1,Over $200,Other,5375
+Condo/Apartment,Over 2000 sq. ft.,2,Under $50,Natural Gas,3150
+Condo/Apartment,Over 2000 sq. ft.,2,Under $50,Electricity,800
+Condo/Apartment,Over 2000 sq. ft.,2,Under $50,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,2,Under $50,Propane,2700
+Condo/Apartment,Over 2000 sq. ft.,2,Under $50,Wood,3000
+Condo/Apartment,Over 2000 sq. ft.,2,Under $50,Other,2413
+Condo/Apartment,Over 2000 sq. ft.,2,$50-$100,Natural Gas,3800
+Condo/Apartment,Over 2000 sq. ft.,2,$50-$100,Electricity,1300
+Condo/Apartment,Over 2000 sq. ft.,2,$50-$100,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,2,$50-$100,Propane,4400
+Condo/Apartment,Over 2000 sq. ft.,2,$50-$100,Wood,3500
+Condo/Apartment,Over 2000 sq. ft.,2,$50-$100,Other,3250
+Condo/Apartment,Over 2000 sq. ft.,2,$100-$150,Natural Gas,4500
+Condo/Apartment,Over 2000 sq. ft.,2,$100-$150,Electricity,2000
+Condo/Apartment,Over 2000 sq. ft.,2,$100-$150,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,2,$100-$150,Propane,5500
+Condo/Apartment,Over 2000 sq. ft.,2,$100-$150,Wood,4200
+Condo/Apartment,Over 2000 sq. ft.,2,$100-$150,Other,4050
+Condo/Apartment,Over 2000 sq. ft.,2,$150-$200,Natural Gas,6200
+Condo/Apartment,Over 2000 sq. ft.,2,$150-$200,Electricity,3000
+Condo/Apartment,Over 2000 sq. ft.,2,$150-$200,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,2,$150-$200,Propane,6300
+Condo/Apartment,Over 2000 sq. ft.,2,$150-$200,Wood,4700
+Condo/Apartment,Over 2000 sq. ft.,2,$150-$200,Other,5050
+Condo/Apartment,Over 2000 sq. ft.,2,Over $200,Natural Gas,9200
+Condo/Apartment,Over 2000 sq. ft.,2,Over $200,Electricity,3500
+Condo/Apartment,Over 2000 sq. ft.,2,Over $200,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,2,Over $200,Propane,7500
+Condo/Apartment,Over 2000 sq. ft.,2,Over $200,Wood,5100
+Condo/Apartment,Over 2000 sq. ft.,2,Over $200,Other,6325
+Condo/Apartment,Over 2000 sq. ft.,3-4,Under $50,Natural Gas,3400
+Condo/Apartment,Over 2000 sq. ft.,3-4,Under $50,Electricity,900
+Condo/Apartment,Over 2000 sq. ft.,3-4,Under $50,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,3-4,Under $50,Propane,3100
+Condo/Apartment,Over 2000 sq. ft.,3-4,Under $50,Wood,3300
+Condo/Apartment,Over 2000 sq. ft.,3-4,Under $50,Other,2675
+Condo/Apartment,Over 2000 sq. ft.,3-4,$50-$100,Natural Gas,4000
+Condo/Apartment,Over 2000 sq. ft.,3-4,$50-$100,Electricity,1500
+Condo/Apartment,Over 2000 sq. ft.,3-4,$50-$100,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,3-4,$50-$100,Propane,4700
+Condo/Apartment,Over 2000 sq. ft.,3-4,$50-$100,Wood,3900
+Condo/Apartment,Over 2000 sq. ft.,3-4,$50-$100,Other,3525
+Condo/Apartment,Over 2000 sq. ft.,3-4,$100-$150,Natural Gas,4800
+Condo/Apartment,Over 2000 sq. ft.,3-4,$100-$150,Electricity,2200
+Condo/Apartment,Over 2000 sq. ft.,3-4,$100-$150,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,3-4,$100-$150,Propane,6000
+Condo/Apartment,Over 2000 sq. ft.,3-4,$100-$150,Wood,4600
+Condo/Apartment,Over 2000 sq. ft.,3-4,$100-$150,Other,4400
+Condo/Apartment,Over 2000 sq. ft.,3-4,$150-$200,Natural Gas,6700
+Condo/Apartment,Over 2000 sq. ft.,3-4,$150-$200,Electricity,3400
+Condo/Apartment,Over 2000 sq. ft.,3-4,$150-$200,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,3-4,$150-$200,Propane,6900
+Condo/Apartment,Over 2000 sq. ft.,3-4,$150-$200,Wood,5100
+Condo/Apartment,Over 2000 sq. ft.,3-4,$150-$200,Other,5525
+Condo/Apartment,Over 2000 sq. ft.,3-4,Over $200,Natural Gas,9900
+Condo/Apartment,Over 2000 sq. ft.,3-4,Over $200,Electricity,4000
+Condo/Apartment,Over 2000 sq. ft.,3-4,Over $200,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,3-4,Over $200,Propane,7800
+Condo/Apartment,Over 2000 sq. ft.,3-4,Over $200,Wood,5500
+Condo/Apartment,Over 2000 sq. ft.,3-4,Over $200,Other,6800
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Under $50,Natural Gas,4000
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Under $50,Electricity,1100
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Under $50,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Under $50,Propane,3500
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Under $50,Wood,3700
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Under $50,Other,3075
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$50-$100,Natural Gas,4600
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$50-$100,Electricity,1700
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$50-$100,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$50-$100,Propane,5200
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$50-$100,Wood,4400
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$50-$100,Other,3975
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$100-$150,Natural Gas,5500
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$100-$150,Electricity,2600
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$100-$150,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$100-$150,Propane,6500
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$100-$150,Wood,5000
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$100-$150,Other,4900
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$150-$200,Natural Gas,7600
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$150-$200,Electricity,3900
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$150-$200,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$150-$200,Propane,7900
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$150-$200,Wood,5800
+Condo/Apartment,Over 2000 sq. ft.,5 or more,$150-$200,Other,6300
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Over $200,Natural Gas,11300
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Over $200,Electricity,4500
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Over $200,Oil,0
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Over $200,Propane,8300
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Over $200,Wood,6200
+Condo/Apartment,Over 2000 sq. ft.,5 or more,Over $200,Other,7575
